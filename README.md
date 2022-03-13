@@ -24,9 +24,11 @@ Pastikan anda sudah mengistall software dibawah
 4. Copy paste file **.env.example** dan beri nama **.env**
 5. Buka file **.env** dan cari `DB_DATABASE`
 6. Isi `DB_DATABASE` dengan `surveyasia`
-7. Jalankan perintah `php artisan migrate:fresh --seed`
-8. Setelah selesai jalankan perintah `php artisan serve`
-9. Coba di browser dengan url (http://localhost:8000)
+7. buka php-myadmin dan buat database dengan nama 'surveyasia'
+8. Jalankan perintah `php artisan migrate:fresh --seed`
+9. Setelah selesai jalankan perintah `php artisan serve`
+10. Coba di browser dengan url (http://localhost:8000)
+
 
 
 # Info
