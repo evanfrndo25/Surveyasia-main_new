@@ -1,0 +1,84 @@
+.custom-breadcrumb a:hover {
+    color: rgb(0, 183, 255) !important;
+}
+
+.active-2 {
+    color: rgb(0, 183, 255) !important;
+}
+
+.custom-breadcrumb span:hover {
+    padding-bottom: 21px !important;
+    border-bottom: 3px solid rgb(0, 183, 255) !important;
+}
+
+.breadcrumb > li + li:before {
+    content: "" !important;
+}
+
+.breadcrumb {
+    padding: 19px;
+    font-size: 14px;
+    color: #aaa !important;
+    letter-spacing: 2px;
+    border-radius: 5px !important;
+}
+
+.fa,
+i {
+    color: rgb(0, 183, 255) !important;
+    font-size: 10px;
+}
+
+.fa-angle-double-right {
+    color: #aaa !important;
+}
+
+.first {
+    background-color: white !important;
+}
+
+a {
+    text-decoration: none !important;
+    color: #aaa !important;
+}
+
+a:focus,
+a:active {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.fa-caret-right,
+.fa-angle-double-right {
+    font-size: 20px !important;
+}
+
+.fa-caret-right {
+    vertical-align: middle;
+}
+
+.four ol {
+    background-color: rgb(51, 0, 80) !important;
+}
+
+@media (max-width: 767px) {
+    .breadcrumb {
+        font-size: 10px;
+    }
+
+    .breadcrumb-item + .breadcrumb-item {
+        padding-left: 0;
+    }
+
+    .fa {
+        font-size: 9px !important;
+    }
+
+    .breadcrumb {
+        letter-spacing: 1px !important;
+    }
+
+    .breadcrumb > * div {
+        max-width: 60px;
+    }
+}

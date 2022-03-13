@@ -1,0 +1,373 @@
+body {
+    font-family: "Poppins", sans-serif;
+    overflow-x: hidden;
+}
+
+.ff-inter {
+    font-family: "Inter", sans-serif;
+}
+
+.fs-12px {
+    font-size: 12px;
+}
+
+.fs-14px {
+    font-size: 14px;
+}
+
+.fw-semibold {
+    font-weight: 600;
+}
+
+.text-justify {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.radius-default {
+    border-radius: 8px;
+}
+
+.radius-16px {
+    border-radius: 16px;
+}
+
+.bg-light-grey {
+    background-color: #eee;
+}
+
+.bg-dark-blue {
+    background-color: #0e243a;
+}
+
+.bg-default {
+    background-color: #1a94cd;
+}
+
+.btn-default {
+    background-color: #1a94cd;
+}
+.btn-default:hover {
+    background-color: #4eb8e9;
+}
+
+.btn-outline-default {
+    border-color: #1a94cd;
+    color: #1a94cd;
+}
+.btn-outline-default:hover {
+    background-color: #1a94cd;
+    color: #fff;
+}
+
+.text-default {
+    color: #1a94cd !important;
+}
+
+.link-default {
+    color: #1a94cd !important;
+}
+.link-default:hover,
+.link-default:focus {
+    color: #4eb8e9 !important;
+}
+
+.border-default {
+    border-color: #1a94cd !important;
+}
+
+.vl {
+    height: 40px;
+    border: 1px solid #999;
+}
+
+.landing-page {
+    background-image: url("/assets/img/hero.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.title-landing-page {
+    padding: 0px 100px;
+}
+
+.bg-light-orange {
+    background-color: #fff1d8;
+}
+
+.bg-table-orange {
+    background-color: #ebe2e2;
+}
+
+.bg-orange {
+    background-color: #ef4c29;
+}
+
+.btn-orange {
+    background-color: #ef4c29;
+    color: white;
+}
+.btn-orange:hover {
+    background-color: #ff7833;
+    color: white;
+}
+
+.btn-outline-orange {
+    border-color: #ef4c29;
+    color: #ef4c29;
+}
+.btn-outline-orange:hover {
+    background-color: #ef4c29;
+    color: white;
+}
+
+.form-check-input-orange,
+.form-check-input-orange:focus {
+    border-color: #ef4c29;
+}
+
+.form-check-input-orange:checked {
+    background-color: #ef4c29;
+    border-color: #ef4c29;
+}
+
+.text-orange {
+    color: #ef4c29;
+}
+
+.link-orange,
+.link-orange:focus {
+    color: #ef4c29;
+}
+.link-orange:hover {
+    color: #ffa840;
+}
+
+.table-orange,
+.table-orange > td,
+.table-orange > th {
+    background-color: #ef4c29;
+}
+.table-orange tbody + tbody,
+.table-orange td,
+.table-orange th,
+.table-orange thead th {
+    border-color: #ef4c29;
+}
+.table-hover .table-orange:hover {
+    background-color: #ffa840;
+}
+.table-hover .table-orange:hover > td,
+.table-hover .table-orange:hover > th {
+    background-color: #ffa840;
+}
+
+.hero-about {
+    background-image: url("/assets/img/about.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.faq-card {
+    background-color: #fff;
+    height: 150px;
+    border-radius: 16px;
+}
+
+.bg-light-default {
+    background-color: #f6f8fd;
+}
+
+.hr-vm {
+    width: 5%;
+    border: 3px solid #1a94cd;
+    border-radius: 10px;
+}
+
+.hr-vm-orange {
+    width: 100px;
+    border: 3px solid #ef4c29;
+    border-radius: 10px;
+}
+
+.hero-blog img,
+.hero-blog .card,
+.history-survey .card,
+.header-survey .card,
+.tutorial .card {
+    border-radius: 16px;
+}
+
+/* Auth */
+.auth {
+    background-image: url("/assets/img/bg_auth.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.card-btn:hover {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+/* End Auth */
+
+.comparison-price {
+    background-color: #f7fafc;
+}
+
+.sidebar-active {
+    background: #1a94cd;
+    color: #fff;
+}
+
+/* Sidebar Researcher Dashboard */
+
+.s-active {
+    background-color: #ebe2e2;
+    border-right: 4px solid #ef4c29;
+}
+
+#layoutSidenav .nav-link:hover {
+    background-color: #c93e1f;
+    color: #ffff !important;
+}
+
+#layoutSidenav .nav-link:focus {
+    color: #212529 !important;
+}
+
+#layoutSidenav .nav-link .sb-nav-link-icon {
+    color: inherit;
+}
+/* END OF Sidebar Researcher Dashboard */
+
+.object-fit-cover {
+    object-fit: cover;
+}
+
+/* KTP */
+#drop_zone {
+    background-color: #fff;
+    border: #000 2px dashed;
+    width: 100%;
+    padding: 120px 0;
+    /* cursor: pointer; */
+}
+/* End KTP */
+
+.form-range::-webkit-slider-thumb {
+    background-color: #1a94cd;
+}
+
+.slider-respondent::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    background: #ef4c29 !important;
+    cursor: pointer;
+}
+
+.slider-respondent::-moz-range-thumb {
+    background: #ef4c29 !important;
+    cursor: pointer;
+}
+
+/* quetion nav */
+/* body {
+    padding-top: 90px;
+} */
+@media (min-width: 768px) {
+    body {
+        padding-top: 0;
+    }
+}
+@media (min-width: 1000px) {
+    body {
+        margin-right: 0px;
+    }
+}
+.navbar.fixed-right {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030;
+}
+@media (min-width: 680px) {
+    .navbar.fixed-right {
+        bottom: 0;
+        width: 300px;
+        flex-flow: column nowrap;
+        align-items: flex-start;
+    }
+    .navbar.fixed-right .navbar-collapse {
+        flex-grow: 0;
+        flex-direction: column;
+        width: 100%;
+    }
+    .navbar.fixed-right .navbar-collapse .navbar-nav {
+        flex-direction: column;
+        width: 100%;
+    }
+    .navbar.fixed-right .navbar-collapse .navbar-nav .nav-item {
+        width: 100%;
+    }
+    .navbar.fixed-right .navbar-collapse .navbar-nav .nav-item .dropdown-menu {
+        top: 0;
+    }
+}
+@media (min-width: 768px) {
+    .navbar.fixed-right {
+        left: auto;
+    }
+    .navbar.fixed-right .navbar-nav .nav-item .dropdown-toggle:after {
+        border-top: 0.3em solid transparent;
+        border-left: none;
+        border-bottom: 0.3em solid transparent;
+        border-right: 0.3em solid;
+        vertical-align: baseline;
+    }
+    .navbar.fixed-right .navbar-nav .nav-item .dropdown-menu {
+        left: auto;
+        right: 100%;
+    }
+}
+/* end quetion nav */
+
+/* progress bar circle */
+.proses-circle {
+    display: flex;
+    align-items: center;
+}
+
+/*===== The CSS =====*/
+.proses {
+    width: 150px;
+    z-index: 1;
+}
+.proses .track,
+.proses .fill {
+    fill: rgba(0, 0, 0, 0);
+    stroke-width: 5;
+    transform: rotate(90deg) translate(0px, -80px);
+}
+.proses .track {
+    stroke: #d3d3d3;
+}
+.proses .fill {
+    stroke: #1a94cd;
+    stroke-dasharray: 219.99078369140625;
+    stroke-dashoffset: -219.99078369140625;
+    transition: stroke-dashoffset 2s;
+}
+.proses .value {
+    fill: black;
+    text-anchor: middle;
+}
+.proses .per {
+    font-size: 5px;
+    fill: black;
+    text-anchor: middle;
+}
+/* end progress bar circle */

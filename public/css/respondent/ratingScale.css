@@ -1,0 +1,41 @@
+/* RATING 1 STYLE */
+.rating {
+    border: 1px #999 solid;
+    display: flex;
+    font-size:0;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row-reverse;
+    background: linear-gradient(to right, #EF4C29 , #EF4C29, #F99E3F)
+}
+.rating input {
+    display: none
+}
+.rating label {
+    display: flex;
+    width: 65px;
+    height: 65px;
+    font-size: 24px;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    color: #000;
+  cursor: pointer;
+}
+.rating label {
+    border-left: 1px #999 solid;
+    transition: .3s;
+}
+.rating input[type='radio']:hover~label,
+input[type='radio']:checked~label{
+    background: none;
+    color: #fff;
+}
+/* END OF RATING 1 STYLE */
+
+
+/* RATING 3 STYLE */
+.bg-blue-redup {
+    background-color: #93a4f0;
+}
+/* END OF RATING 3 STYLE */

@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+html { height: 100%; }
+
+body {
+    font-family: "Poppins", sans-serif;
+    overflow-x: hidden;
+}
+.font-montserrat {
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+#sidebar-dashboard{
+    min-height: 100%;
+}
+
+.nopadding {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+.bg-special-black {
+    background-color: #363740;
+}
+.bg-special-blue {
+    background-color: #109CF1;
+}
+.bg-very-light {
+    background-color: #FCFCFC;
+}
+.dp-admin {
+    border-radius: 50%;
+    padding: 2px;
+    border: 2px solid #DFE0EB
+}
+.text-semi-light {
+    color: #C5C7CD;
+}
+#sidebar-dashboard > a{
+    color: #A4A6B3;
+}
+.text-sidebar {
+    color: inherit;
+}
+.text-special-blue {
+    color: #109CF1;
+}
+#sidebar-dashboard > a:hover {
+    background-color: rgba(159, 162, 180, 0.08);
+}
+#sidebar-dashboard .active {
+    border-left: 4px solid #FCFCFC;
+    background-color: rgba(159, 162, 180, 0.08);
+    color: #FCFCFC !important;
+}
+
+.form-select:focus,
+.btn:focus,
+.form-control:focus {
+    box-shadow: 0 0px 0px 3px #36374060;
+}
+
+
+#btn-add-template {
+    box-shadow: 0px 4px 10px rgba(16, 156, 241, 0.24);
+}
+#bg-login {
+    background-image: url("../assets/img/bg-login-admin.jpg");
+    position: fixed;
+    background-repeat:no-repeat;
+    background-size: cover;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+}
+#cont-login {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    border-radius: 8px;
+}
+#cont-login > img {
+    padding-bottom: 70px;
+}
+.border-r-sedang {
+    border-radius: 8px;
+}
+.border-r-besar {
+    border-radius: 16px;
+}
+.table-no-border-head > thead > tr > th {
+    border: none;
+}
+#table-news > tbody > tr {
+    border-top: 10px solid rgb(255, 255, 255);
+    border-bottom: 10px solid rgb(255, 255, 255);   
+
+}
+
+.text-published {
+    border: 2px solid #9AE6B4;
+    color: #9AE6B4;
+}
+
+.text-draft {
+    border: 2px solid #FC8181;
+    color: #FC8181;
+}
+
+.text-scheduled {
+    border: 2px solid #F6AD55;
+    color: #F6AD55;
+}
+.text-pending {
+    background-color: #FAFDD4;
+    color: #AC9D16;
+}
+
+.text-rejected {
+    background-color: #FDD4D4;
+    color: #AC1616;
+}
+
+.text-complete {
+    background-color: #DCFDD4;
+    color: #4FAC16;
+}
+.text-mini {
+    font-size: 11px;
+}
+
+
+.sub{
+    text-decoration: none;
+    color: #363740;
+
+}
+.sub::hover{
+    color: gray;
+}
+
+@media (min-width: 768px){
+    .dropdown-menu-notif {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        top: 100% !important;
+        width: 320px;
+        background-color: #F2F2F2;
+        max-height: 400px;
+        overflow-y: scroll;
+      }
+}
+
+/* Question-bank */
+
+#table-question-bank > tbody > tr > td,
+#table-question-bank > thead > tr > th {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    word-wrap: break-word;
+    max-width: 150px;
+}
+
+/* template */
+#table-template > tbody > tr > td,
+#table-template > thead > tr > th {
+   text-align: center;
+}
+
+/* Kategori Question Bank  */
+.borderNav {
+    border-color: #109CF1 !important;
+    border-width: 4px !important;
+}

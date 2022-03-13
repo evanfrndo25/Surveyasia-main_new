@@ -1,0 +1,40 @@
+/* scale 1 STYLE */
+.scale {
+    border: 1px #999 solid;
+    display: flex;
+    font-size: 0;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row-reverse;
+    background: linear-gradient(to right, #ef4c29, #ef4c29, #f99e3f);
+}
+.scale input {
+    display: none;
+}
+.scale label {
+    display: flex;
+    width: 55px;
+    height: 45px;
+    font-size: 16px;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    color: #000;
+    cursor: pointer;
+}
+.scale label {
+    border-left: 1px #999 solid;
+    transition: 0.3s;
+}
+.scale input[type="radio"]:hover ~ label,
+input[type="radio"]:checked ~ label {
+    background: none;
+    color: #fff;
+}
+/* END OF scale 1 STYLE */
+
+/* scale 3 STYLE */
+.bg-blue-redup {
+    background-color: #93a4f0;
+}
+/* END OF scale 3 STYLE */
