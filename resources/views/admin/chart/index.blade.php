@@ -48,8 +48,8 @@
                             <div class="card-footer">
                                 <div class="btn-group" role="group" aria-label="Basic example">
                                     {{-- <button type="button" class="btn btn-primary">Update</button> --}}
-                                    <button type="button"
-                                        class="btn me-3 rounded px-3 py-2 bg-special-blue text-white">Add</button>
+                                    <a href="#"
+                                        class="btn me-3 rounded px-3 py-2 bg-special-blue text-white">Add</a>
                                     <button type="button"
                                         class="btn me-3 rounded px-3 py-2 btn-primary">Edit</button>
                                     <form action="{{ route('admin.chart.destroy', $chart->id)}}" method="POST">

@@ -33,8 +33,8 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="mb-3">
-                                        <img src="" class="img-fluid" alt=""
-                                            width="400px">
+                                        <img src="./Screenshot 2022-03-15 112116.jpg" class="img-fluid" alt=""
+                                            style="height: 100%; width: 400px;">
                                     </div>
                                 </div>
                             </div>
