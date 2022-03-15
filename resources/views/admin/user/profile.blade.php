@@ -33,7 +33,8 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="mb-3">
-                                        <img src="" class="img-fluid" alt=""
+                                        <!--  must active public storage  -->
+                                        <img src="{{ asset('storage/'.$user->profile->image_ktp) }}" class="img-fluid" alt=""
                                             width="400px">
                                     </div>
                                 </div>
