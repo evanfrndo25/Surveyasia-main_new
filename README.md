@@ -27,7 +27,7 @@ Pastikan anda sudah mengistall software dibawah
 7. buka php-myadmin dan buat database dengan nama 'surveyasia'
 8. Jalankan perintah `php artisan migrate:fresh --seed`
 9. Jalankan perintah `php artisan storage:link`
-10 Setelah selesai jalankan perintah `php artisan serve`
+10. Setelah selesai jalankan perintah `php artisan serve`
 11. Coba di browser dengan url (http://localhost:8000)
 
 
