@@ -87,15 +87,26 @@
                             @else
                             <td>Active</td>
                             @endif
-                            <td scope="col" class="text-end pe-3">
-                                <div class="btn-group" role="group" aria-label="Basic example">
-                                    <a class="btn bg-special-blue"
+                            <td scope="col" class="text-end">
+                                <div class="justify-content-center" role="group" aria-label="Basic example">
+                                    <a class="px-3 py-2 my-1 btn bg-special-blue text-white"
                                         href="{{ route('admin.questionbank.show', $item->id) }}">Add
                                         questions</a>
-                                    <button type="button" class="btn btn-primary">Middle</button>
-                                    <button type="button" class="btn btn-primary">Right</button>
+                                    {{-- <a class="dropdown-item" href="{{route('questionbank.edit',$item->id)}}"
+                                    data-bs-toggle="modal" data-bs-target="#modal-add-sub-template"
+                                    data-title="{{ $item->question_bank_template_id }}"
+                                    data-title="{{ $item->sub_template_name }}"
+                                    data-escription="{{ $item->sub_template_name }}"
+                                    data-id="{{ $item->id }}">Edit </a> --}}
+                                    <a class="px-3 py-2 my-1 btn btn-primary"
+                                        href="{{route('admin.questionbank.edit',['questionbank' => $item->id])}}">Edit
+                                    </a>
+                                    @method('delete')
+                                    @csrf
+                                    <button type="submit" class="px-3 py-2 my-1 btn btn-danger"
+                                        onclick="return confirm('Apakah kamu yakin ingin menghapus?')">Delete</button>
                                 </div>
-                                <a href="#" role="button" id="dropdown-manage-news" data-bs-toggle="dropdown"
+                                <!-- <a href="#" role="button" id="dropdown-manage-news" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     <i class="bi bi-three-dots fs-3 text-secondary"></i>
                                 </a>
@@ -131,7 +142,7 @@
                                         </form>
                                     </li>
 
-                                </ul>
+                                </ul> -->
                             </td>
                             {{-- <td class="text-end"><a href="{{ route('admin.questionbank.show', $item->id) }}"
                             class="btn bg-special-blue text-white">

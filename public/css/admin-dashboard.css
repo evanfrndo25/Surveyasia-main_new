@@ -1,16 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-html { height: 100%; }
+html {
+    height: 100%;
+}
 
 body {
     font-family: "Poppins", sans-serif;
     overflow-x: hidden;
 }
 .font-montserrat {
-    font-family: 'Montserrat', sans-serif !important;
+    font-family: "Montserrat", sans-serif !important;
 }
 
-#sidebar-dashboard{
+#sidebar-dashboard {
     min-height: 100%;
 }
 
@@ -22,35 +24,38 @@ body {
     background-color: #363740;
 }
 .bg-special-blue {
-    background-color: #109CF1;
+    background-color: #109cf1;
+}
+.bg-special-blue:hover {
+    background-color: #007dca;
 }
 .bg-very-light {
-    background-color: #FCFCFC;
+    background-color: #fcfcfc;
 }
 .dp-admin {
     border-radius: 50%;
     padding: 2px;
-    border: 2px solid #DFE0EB
+    border: 2px solid #dfe0eb;
 }
 .text-semi-light {
-    color: #C5C7CD;
+    color: #c5c7cd;
 }
-#sidebar-dashboard > a{
-    color: #A4A6B3;
+#sidebar-dashboard > a {
+    color: #a4a6b3;
 }
 .text-sidebar {
     color: inherit;
 }
 .text-special-blue {
-    color: #109CF1;
+    color: #109cf1;
 }
 #sidebar-dashboard > a:hover {
     background-color: rgba(159, 162, 180, 0.08);
 }
 #sidebar-dashboard .active {
-    border-left: 4px solid #FCFCFC;
+    border-left: 4px solid #fcfcfc;
     background-color: rgba(159, 162, 180, 0.08);
-    color: #FCFCFC !important;
+    color: #fcfcfc !important;
 }
 
 .form-select:focus,
@@ -59,14 +64,13 @@ body {
     box-shadow: 0 0px 0px 3px #36374060;
 }
 
-
 #btn-add-template {
     box-shadow: 0px 4px 10px rgba(16, 156, 241, 0.24);
 }
 #bg-login {
     background-image: url("../assets/img/bg-login-admin.jpg");
     position: fixed;
-    background-repeat:no-repeat;
+    background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
     top: 0;
@@ -92,62 +96,65 @@ body {
 }
 #table-news > tbody > tr {
     border-top: 10px solid rgb(255, 255, 255);
-    border-bottom: 10px solid rgb(255, 255, 255);   
-
+    border-bottom: 10px solid rgb(255, 255, 255);
 }
 
 .text-published {
-    border: 2px solid #9AE6B4;
-    color: #9AE6B4;
+    border: 2px solid #9ae6b4;
+    color: #9ae6b4;
 }
 
 .text-draft {
-    border: 2px solid #FC8181;
-    color: #FC8181;
+    border: 2px solid #fc8181;
+    color: #fc8181;
 }
 
 .text-scheduled {
-    border: 2px solid #F6AD55;
-    color: #F6AD55;
+    border: 2px solid #f6ad55;
+    color: #f6ad55;
 }
 .text-pending {
-    background-color: #FAFDD4;
-    color: #AC9D16;
+    background-color: #fafdd4;
+    color: #ac9d16;
 }
 
 .text-rejected {
-    background-color: #FDD4D4;
-    color: #AC1616;
+    background-color: #fdd4d4;
+    color: #ac1616;
 }
 
 .text-complete {
-    background-color: #DCFDD4;
-    color: #4FAC16;
+    background-color: #dcfdd4;
+    color: #4fac16;
 }
 .text-mini {
     font-size: 11px;
 }
 
-
-.sub{
+.sub {
     text-decoration: none;
     color: #363740;
-
 }
-.sub::hover{
+.sub:hover {
     color: gray;
 }
+.btn-add {
+    text-decoration: none;
+}
+.btn-add:hover {
+    background-color: rgb(238, 238, 238);
+}
 
-@media (min-width: 768px){
+@media (min-width: 768px) {
     .dropdown-menu-notif {
         left: 50% !important;
         transform: translateX(-50%) !important;
         top: 100% !important;
         width: 320px;
-        background-color: #F2F2F2;
+        background-color: #f2f2f2;
         max-height: 400px;
         overflow-y: scroll;
-      }
+    }
 }
 
 /* Question-bank */
@@ -163,11 +170,11 @@ body {
 /* template */
 #table-template > tbody > tr > td,
 #table-template > thead > tr > th {
-   text-align: center;
+    text-align: center;
 }
 
 /* Kategori Question Bank  */
 .borderNav {
-    border-color: #109CF1 !important;
+    border-color: #109cf1 !important;
     border-width: 4px !important;
 }
