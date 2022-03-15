@@ -22,6 +22,14 @@
                             onclick="clickToCopy()"><i class="far fa-copy"></i></a>
                     </div>
                 </div>
+                <div class="col-md-6">
+                    <h5 class="text-center qrcode"> QR CODE</h5>
+                    <div class="d-flex align-items-center">
+                        <!-- put qrcode here -->
+
+                         <!-- put qrcode here -->
+                    </div>
+                </div>
             </div>
         </div>
         {{-- End Share Link --}}

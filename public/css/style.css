@@ -371,3 +371,14 @@ body {
     text-anchor: middle;
 }
 /* end progress bar circle */
+
+
+/* qr code */
+
+@media (max-width: 767.98px) {
+    .qrcode {
+        margin-top: 50px;
+    }
+}
+
+
