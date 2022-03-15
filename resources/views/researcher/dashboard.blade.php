@@ -115,9 +115,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-1 text-center d-flex justify-content-center align-items-center mt-3 mt-md-0">
-                                <a href="#" class="link-dark"><i class="bi bi-chevron-down fs-5"></i></a>
+                            <div class="col d-flex justify-content-center align-items-center">
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <p class="fs-14px">Hapus</p>
+                                        <a href="#" class="link-dark">
+                                            <i class="fa fa-thin fa-trash fs-4"></i>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
+                            {{-- <div class="col-md-1 text-center d-flex justify-content-center align-items-center mt-3 mt-md-0">
+                                <a href="#" class="link-dark"><i class="bi bi-chevron-down fs-5"></i></a>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
