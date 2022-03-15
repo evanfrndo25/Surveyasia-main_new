@@ -88,6 +88,13 @@
                             <td>Active</td>
                             @endif
                             <td scope="col" class="text-end pe-3">
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <a class="btn bg-special-blue"
+                                        href="{{ route('admin.questionbank.show', $item->id) }}">Add
+                                        questions</a>
+                                    <button type="button" class="btn btn-primary">Middle</button>
+                                    <button type="button" class="btn btn-primary">Right</button>
+                                </div>
                                 <a href="#" role="button" id="dropdown-manage-news" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     <i class="bi bi-three-dots fs-3 text-secondary"></i>
