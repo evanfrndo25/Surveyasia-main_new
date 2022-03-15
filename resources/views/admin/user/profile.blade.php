@@ -33,14 +33,9 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="mb-3">
-<<<<<<< HEAD
-                                        <img src="./Screenshot 2022-03-15 112116.jpg" class="img-fluid" alt=""
-                                            style="height: 100%; width: 400px;">
-=======
                                         <!--  must active public storage  -->
                                         <img src="{{ asset('storage/'.$user->profile->image_ktp) }}" class="img-fluid" alt=""
                                             width="400px">
->>>>>>> 5023463b76bd30f339cb9a431feeebae9253b773
                                     </div>
                                 </div>
                             </div>
