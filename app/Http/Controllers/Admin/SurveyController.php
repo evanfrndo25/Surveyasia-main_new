@@ -45,7 +45,7 @@ class SurveyController extends Controller
             // 'user' => $user,
             'categories' => SurveyCategory::select(['id', 'name'])->get()
         ];
-
+        
         return view('admin.survey.index', $data);
     }
 
@@ -157,4 +157,10 @@ class SurveyController extends Controller
     //         "surveys" => $surveys->get()
     //     ]);
     // }
+
+    public function destroy(Survey $survey)
+    {
+        $survey->delete();
+        return back()->with('status', 'Deleted Survey success');
+    }
 }
