@@ -53,7 +53,7 @@
                                         {{ $chart->name }}
                                     </td>
                                     <td class="text-center">
-                                        {{ $chart->chart_type }}
+                                        {{ $chart->type }}-chart
                                     </td>
                                     <td class="text-center">
                                         <!-- <p class="card-text">{{ Str::limit($chart->description, 50, '...') }}</p> -->
@@ -61,18 +61,24 @@
                                            ></canvas>
                                     </td>
                                    <td class="text-center">
-                                        <!-- Jika Aktif -->
-                                    <p class="text-success my-auto">On</p>
-                                    <!-- Jika Mati -->
-                                    <p class="text-danger my-auto d-none">Off</p>
+                                    @if ($chart->status == 0)
+                                        <p class="text-danger my-auto">Off</p>
+                                    @else
+                                        <p class="text-success my-auto">On</p>
+                                    @endif
                                    </td>
                                     <td class="text-center">
-                                        <p class="my-auto">Premium</p>
+                                        <p class="my-auto">{{ $chart->chart_type }}</p>
                                     </td>
                                     <td class="text-center">
-                                        <button type="button" class="btn bg-special-blue text-white px-3">
+                                        <a 
+                                            href="{{ route('admin.chart.edit', $chart->id) }}"
+                                            class="btn bg-special-blue text-white px-3"
+                                        >
                                             <i class="bi bi-vector-pen"></i>
-                                            Edit Chart</button>
+                                            Edit
+                                        </a>
+                                    </form>
                                     </td>
                                 </tr>
 
