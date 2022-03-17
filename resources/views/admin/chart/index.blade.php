@@ -73,10 +73,10 @@
                                     <td class="text-center">
                                         <a 
                                             href="{{ route('admin.chart.edit', $chart->id) }}"
-                                            class="btn bg-special-blue text-white px-3"
+                                            class="btn bg-special-blue text-white px-4 py-2"
                                         >
                                             <i class="bi bi-vector-pen"></i>
-                                            Edit
+                                            Edit Chart
                                         </a>
                                     </form>
                                     </td>
