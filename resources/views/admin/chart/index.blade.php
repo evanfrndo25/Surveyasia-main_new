@@ -204,5 +204,6 @@
 <script>
     var data = {{ Illuminate\Support\Js::from($charts) }}
 </script>
+<script src="https://unpkg.com/chartjs-chart-wordcloud@3"></script>
 <script src="{{ asset('js/charts/chart-admin.js') }}" type="module"></script>
 @endsection

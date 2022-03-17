@@ -21,11 +21,10 @@ function getChart() {
 import { randomInt, randomRgb } from "./chart-utils.js";
 
 $(function () {
-    console.log(data);
     for (let i = 0; i < data.length; i++) {
         const config = JSON.parse(data[i].default_configuration);
         config.type = data[i].type;
-        config.data = generateRandomData(7, i);
+        config.data = generateRandomData(7, data[i].type);
         config.options = {
             plugins: {
                 title: {
@@ -42,7 +41,7 @@ $(function () {
 
 function drawChart() {}
 
-function generateRandomData(length, index) {
+function generateRandomData(length, type) {
     var labels = [];
     var datas = [];
     var colors = [];
@@ -50,14 +49,14 @@ function generateRandomData(length, index) {
 
     for (let i = 0; i < length; i++) {
         labels.push("Data " + (i + 1));
-        if (index == 5 || index == 6) {
+        if (type == 'scatter' || type == 'bubble') {
             datas.push({
                 x: randomInt(20, 3),
                 y: randomInt(20, 3),
                 r: randomInt(20, 3),
             });
         } else {
-            datas.push(randomInt(200, 10));
+            datas.push(randomInt(50, 10));
         }
         colors.push(randomRgb());
         // if (index == 0) borders.push(randomRgb(0.5));
