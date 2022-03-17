@@ -15,14 +15,9 @@
         <div class="col-10 nopadding">
             @include('admin.component.header')
             <div class="container pt-4">
-                <div class="row pb-5 pt-3">
-                    <div class="col-3">
-                        <input class="form-control rounded-pill" type="search" placeholder="Search" aria-label="Search">
-                    </div>
-                    <div class="col text-end">
-                        <a href="{{ route('admin.chart.create') }}"
-                            class="btn bg-special-blue text-white shadow small"><i class="bi bi-plus-lg me-2"></i> Add
-                            Chart</a>
+                <div class="row">
+                    <div class="col">
+                        <a href="{{ route('admin.chart.create') }}" class="btn btn-success mb-2">+ Create Chart</a>
                     </div>
                 </div>
                 @if (session()->has('status'))
@@ -31,61 +26,6 @@
                 </div>
                 @endif
                 <div class="row">
-                    <div class="col">
-                        <table class="table table-no-border-head align-middle">
-                            <thead>
-                                <tr class="fw-bold">
-                                    <td scope="col" class="text-center">Nama Chart</td>
-                                    <td scope="col" class="text-center">Kategori Chart</td>
-                                    <td scope="col" class="text-center">Preview</td>
-                                    <td scope="col" class="text-center">Status</td>
-                                    <td scope="col" class="text-center">Aktifitas</td>
-                                    <td scope="col" class="text-center">Action</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @php
-                                $num = 0;
-                                @endphp
-                                @forelse ($charts as $chart)
-                                <tr>
-                                    <td class="text-center">
-                                        {{ $chart->name }}
-                                    </td>
-                                    <td class="text-center">
-                                        {{ $chart->chart_type }}
-                                    </td>
-                                    <td class="text-center">
-                                        <!-- <p class="card-text">{{ Str::limit($chart->description, 50, '...') }}</p> -->
-                                        <canvas class="mx-3" id="chart{{ $num }}" style="max-width: 250px;"
-                                           ></canvas>
-                                    </td>
-                                   <td class="text-center">
-                                        <!-- Jika Aktif -->
-                                    <p class="text-success my-auto">On</p>
-                                    <!-- Jika Mati -->
-                                    <p class="text-danger my-auto d-none">Off</p>
-                                   </td>
-                                    <td class="text-center">
-                                        <p class="my-auto">Premium</p>
-                                    </td>
-                                    <td class="text-center">
-                                        <button type="button" class="btn bg-special-blue text-white px-3">
-                                            <i class="bi bi-vector-pen"></i>
-                                            Edit Chart</button>
-                                    </td>
-                                </tr>
-
-                                @php
-                                $num++;
-                                @endphp
-                                @empty
-                                @endforelse
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <!-- <div class="row">
                     @php
                     $num = 0;
                     @endphp
@@ -129,7 +69,7 @@
                     @endphp
                     @empty
                     @endforelse
-                </div> -->
+                </div>
 
             </div>
         </div>
@@ -196,7 +136,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js">
 </script>
 <script>
-    var data = {{ Illuminate\Support\Js::from($charts) }}
+   var data = {{ Illuminate\Support\Js::from($charts) }}
 </script>
 <script src="{{ asset('js/charts/chart-admin.js') }}" type="module"></script>
 @endsection
