@@ -25,7 +25,7 @@ class ChartController extends Controller
             // 'charts' => ChartResource::collection(Chart::latest()->get())
             'charts' => Chart::get()
         ];
-
+        
         return view('admin.chart.index', $data);
     }
     public function search(Request $request)
@@ -102,8 +102,8 @@ class ChartController extends Controller
      */
     public function edit(Chart $chart)
     {
-        $typeChart = Chart::all(['type']);
-
+        $typeChart = Chart::select('type')->distinct()->get();
+        
         return view('admin.chart.edit', [
             'title' => 'edit Chart',
             'chart' => $chart,
@@ -125,7 +125,7 @@ class ChartController extends Controller
             'name' => 'required',
             'type' => 'required',
             'chart_type' => 'required',
-            // 'status' => 'required',
+            'status' => 'required',
             'img' => 'image|file|max:1024'
         ]);
 
@@ -136,7 +136,7 @@ class ChartController extends Controller
             $chart['img'] = $request->file('img')->store('chart-img');
         }
         Chart::where('id', $id)->update($chart);
-        return redirect('admin/chart/')->with('status', 'Success post news!');
+        return redirect('admin/chart/')->with('status', 'Updated Chart success');
     }
 
     /**
