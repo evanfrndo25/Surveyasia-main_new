@@ -60,9 +60,17 @@
                                 <button type="button" class="btn bg-special-blue text-white">
                                 <i class="bi bi-vector-pen"></i>
                                     Show</button>
-                                <button type="button" class="btn bg-danger text-white">
+                                <!-- <button type="button" class="btn bg-danger text-white">
                                 <i class="bi bi-trash"></i>
-                                    Delete</button>
+                                    Delete</button> -->
+                                <a 
+                                    href="{{ route('admin.survey.destroy', $item->id) }}" 
+                                    class="btn bg-danger text-white"
+                                    onclick="return confirm('Apakah kamu yakin ingin menghapus?')"
+                                >
+                                    <i class="bi bi-trash"></i>
+                                    Delete
+                                </a> 
                             </td>
                         </tr>
                         @endforeach

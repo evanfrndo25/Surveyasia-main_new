@@ -370,7 +370,11 @@ Route::middleware(['is_admin', 'role:admin'])->group(function () {
         Route::post('/{questionbank}/questions', [QuestionBankTemplateController::class, 'storeQuestions'])->name('storeQuestions');
         Route::resource('chart', ChartController::class);
         Route::post('/news/search', [NewsController::class, 'search'])->name('news.search');
-        Route::resource('survey', SurveyInAdmin::class);
+        
+        // survey Admin
+        // Route::resource('survey', SurveyInAdmin::class);
+        Route::get('survey', [SurveyInAdmin::class, 'index'])->name('survey.index');
+        Route::get('survey/{survey}/delete', [SurveyInAdmin::class, 'destroy'])->name('survey.destroy');
         Route::get('data-verification', [UserController::class, 'dataVerify'])->name('dataVerify');
     });
 });
