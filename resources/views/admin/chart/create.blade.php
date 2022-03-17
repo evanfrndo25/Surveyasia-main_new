@@ -65,7 +65,7 @@
                                         @enderror
                                     </div>
                                     <div class="mb-4">
-                                        <label for="deskripsi" class="form-label"> Type</label>
+                                        <label for="type" class="form-label"> Type</label>
                                         <input type="text"
                                             class="form-control rounded-pill border-0 bg-light px-3  @error('type') is-invalid @enderror"
                                             placeholder="Masukan type" id="judul" name="type">
@@ -82,9 +82,9 @@
                                     <div class="mb-4">
                                         <label for="deskripsi" class="form-label">Status</label>
                                         <select class="form-select border-0 bg-light px-3 rounded-pill"
-                                            aria-label="Default select example" name="chart_status">
-                                            <option value="on">On</option>
-                                            <option value="off">Off</option>
+                                            aria-label="Default select example" name="status">
+                                            <option value="1">On</option>
+                                            <option value="0">Off</option>
                                         </select>
                                     </div>
                                     <div class="mb-4">
