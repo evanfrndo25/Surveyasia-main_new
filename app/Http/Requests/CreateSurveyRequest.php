@@ -24,7 +24,7 @@ class CreateSurveyRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required', 'string', 'unique:surveys'],
+            'title' => ['required', 'string'],
             'description' => ['required', 'string'],
             'user_id' => ['required'],
             'estimate_completion' => ['required'],
