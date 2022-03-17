@@ -91,8 +91,7 @@
                                     <a class="px-3 py-2 my-1 btn bg-special-blue text-white"
                                         href="{{ route('admin.questionbank.show', $item->id) }}">Add
                                         questions</a>
-<<<<<<< HEAD
-                                    <form id="edit-form" class="form-horizontal" method="POST" action="">
+                                   <form id="edit-form" class="form-horizontal" method="POST" action="">
                                         {{-- <a class="dropdown-item" href="{{route('questionbank.edit',$item->id)}}"
                                         data-bs-toggle="modal" data-bs-target="#modal-add-sub-template"
                                         data-title="{{ $item->question_bank_template_id }}"
@@ -102,24 +101,25 @@
                                         <a class="px-3 py-2 my-1 btn btn-primary"
                                             href="{{route('admin.questionbank.edit',['questionbank' => $item->id])}}">Edit
                                         </a>
-                                    </form>
-=======
-                                    {{-- <a class="dropdown-item" href="{{route('questionbank.edit',$item->id)}}"
-                                    data-bs-toggle="modal" data-bs-target="#modal-add-sub-template"
-                                    data-title="{{ $item->question_bank_template_id }}"
-                                    data-title="{{ $item->sub_template_name }}"
-                                    data-escription="{{ $item->sub_template_name }}"
-                                    data-id="{{ $item->id }}">Edit </a> --}}
-                                    <a class="px-3 py-2 my-1 btn btn-primary"
-                                        href="{{route('admin.questionbank.edit',['questionbank' => $item->id])}}">Edit
-                                    </a>
->>>>>>> 89075e00637870ef34ed4e146e2acb96e97cecc7
-                                    <form action="{{ route('admin.questionbank.destroy', $item->id)}}" method="POST">
-                                        @method('delete')
-                                        @csrf
-                                        <button type="submit" class="px-3 py-2 my-1 btn btn-danger"
-                                            onclick="return confirm('Apakah kamu yakin ingin menghapus?')">Delete</button>
-                                    </form>
+                                        </form>
+                 
+                                        <!-- {{-- <a class="dropdown-item" href="{{route('questionbank.edit',$item->id)}}"
+                                        data-bs-toggle="modal" data-bs-target="#modal-add-sub-template"
+                                        data-title="{{ $item->question_bank_template_id }}"
+                                        data-title="{{ $item->sub_template_name }}"
+                                        data-escription="{{ $item->sub_template_name }}"
+                                        data-id="{{ $item->id }}">Edit </a> --}}
+                                        <a class="px-3 py-2 my-1 btn btn-primary"
+                                            href="{{route('admin.questionbank.edit',['questionbank' => $item->id])}}">Edit
+                                        </a> -->
+                    
+                                        <form action="{{ route('admin.questionbank.destroy', $item->id)}}"
+                                            method="POST">
+                                            @method('delete')
+                                            @csrf
+                                            <button type="submit" class="px-3 py-2 my-1 btn btn-danger"
+                                                onclick="return confirm('Apakah kamu yakin ingin menghapus?')">Delete</button>
+                                        </form>
                                 </div>
                                 <!-- <a href="#" role="button" id="dropdown-manage-news" data-bs-toggle="dropdown"
                                     aria-expanded="false">
@@ -203,8 +203,7 @@
                                     <div class="mb-3">
                                         <label for="title" class="form-label">Sub Template
                                             Name</label>
-                                        {{-- <input type="hidden" class="form-control border-r-besar"
-                        id="id" name="id"> --}}
+                                        {{-- <input type="hidden" class="form-control border-r-besar" id="id" name="id"> --}}
                                         <input type="text" class="form-control border-r-besar" id="Sub Template"
                                             name="sub_template_name">
                                     </div>
