@@ -102,10 +102,13 @@ class ChartController extends Controller
      */
     public function edit(Chart $chart)
     {
+        $typeChart = Chart::all(['type']);
+
         return view('admin.chart.edit', [
-            // 'title' => 'edit Chart',
+            'title' => 'edit Chart',
             'chart' => $chart,
-            "submit" => "Update"
+            'submit' => 'Update',
+            'typeChart' => $typeChart
         ]);
     }
 
@@ -119,10 +122,10 @@ class ChartController extends Controller
     public function update(Request $request, $id)
     {
         $chart = $request->validate([
-            'chart' => 'required',
-            'jenis' => 'required',
-            'aktivitas' => 'required',
-            'status' => 'required',
+            'name' => 'required',
+            'type' => 'required',
+            'chart_type' => 'required',
+            // 'status' => 'required',
             'img' => 'image|file|max:1024'
         ]);
 
