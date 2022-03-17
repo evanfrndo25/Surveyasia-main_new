@@ -58,7 +58,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <tbody>
 
                         {{-- LOOPING DATA --}}
 
@@ -88,10 +87,23 @@
                             <td>Active</td>
                             @endif
                             <td scope="col" class="text-end">
-                                <div class="justify-content-center" role="group" aria-label="Basic example">
+                                <div role="group" aria-label="Basic example">
                                     <a class="px-3 py-2 my-1 btn bg-special-blue text-white"
                                         href="{{ route('admin.questionbank.show', $item->id) }}">Add
                                         questions</a>
+<<<<<<< HEAD
+                                    <form id="edit-form" class="form-horizontal" method="POST" action="">
+                                        {{-- <a class="dropdown-item" href="{{route('questionbank.edit',$item->id)}}"
+                                        data-bs-toggle="modal" data-bs-target="#modal-add-sub-template"
+                                        data-title="{{ $item->question_bank_template_id }}"
+                                        data-title="{{ $item->sub_template_name }}"
+                                        data-escription="{{ $item->sub_template_name }}"
+                                        data-id="{{ $item->id }}">Edit </a> --}}
+                                        <a class="px-3 py-2 my-1 btn btn-primary"
+                                            href="{{route('admin.questionbank.edit',['questionbank' => $item->id])}}">Edit
+                                        </a>
+                                    </form>
+=======
                                     {{-- <a class="dropdown-item" href="{{route('questionbank.edit',$item->id)}}"
                                     data-bs-toggle="modal" data-bs-target="#modal-add-sub-template"
                                     data-title="{{ $item->question_bank_template_id }}"
@@ -101,6 +113,7 @@
                                     <a class="px-3 py-2 my-1 btn btn-primary"
                                         href="{{route('admin.questionbank.edit',['questionbank' => $item->id])}}">Edit
                                     </a>
+>>>>>>> 89075e00637870ef34ed4e146e2acb96e97cecc7
                                     <form action="{{ route('admin.questionbank.destroy', $item->id)}}" method="POST">
                                         @method('delete')
                                         @csrf
