@@ -101,10 +101,12 @@
                                     <a class="px-3 py-2 my-1 btn btn-primary"
                                         href="{{route('admin.questionbank.edit',['questionbank' => $item->id])}}">Edit
                                     </a>
-                                    @method('delete')
-                                    @csrf
-                                    <button type="submit" class="px-3 py-2 my-1 btn btn-danger"
-                                        onclick="return confirm('Apakah kamu yakin ingin menghapus?')">Delete</button>
+                                    <form action="{{ route('admin.questionbank.destroy', $item->id)}}" method="POST">
+                                        @method('delete')
+                                        @csrf
+                                        <button type="submit" class="px-3 py-2 my-1 btn btn-danger"
+                                            onclick="return confirm('Apakah kamu yakin ingin menghapus?')">Delete</button>
+                                    </form>
                                 </div>
                                 <!-- <a href="#" role="button" id="dropdown-manage-news" data-bs-toggle="dropdown"
                                     aria-expanded="false">

@@ -153,7 +153,6 @@ class QuestionBankTemplateController extends Controller
 
     public function destroy($id_questionbank)
     {
-
         $questionbank_templates = QuestionBankSubTemplate::find($id_questionbank)->delete();
         return back()->with('status', 'Deleted sub template success');
     }
