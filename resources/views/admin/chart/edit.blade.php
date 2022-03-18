@@ -39,35 +39,21 @@
                         <div class="col-6">
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Nama Chart</label>
-                                <input type="text" name="chart" class="form-control rounded-pill border-0 bg-light px-3"
+                                <input type="text" name="name" class="form-control rounded-pill border-0 bg-light px-3"
                                     placeholder="Masukan Nama Chart" id="exampleFormControlInput1"
-                                    value="{{ $chart->chart }}">
+                                    value="{{ $chart->name }}">
                             </div>
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Kategori Chart</label>
                                 <select class="form-select rounded-pill border-0 bg-light px-3"
-                                    aria-label="Default select example" name="jenis">
-                                    @if ($chart->jenis == 'Pie Chart')
-                                    <option selected value="Pie Chart">Pie Chart</option>
-                                    <option value="Bar Chart">Bar Chart</option>
-                                    <option value="Line Chart">Line Chart</option>
-                                    <option value="Column Chart">Column Chart</option>
-                                    @elseif($chart->jenis == 'Bar Chart')
-                                    <option value="Pie Chart">Pie Chart</option>
-                                    <option selected value="Bar Chart">Bar Chart</option>
-                                    <option value="Line Chart">Line Chart</option>
-                                    <option value="Column Chart">Column Chart</option>
-                                    @elseif($chart->jenis == 'Line Chart')
-                                    <option value="Pie Chart">Pie Chart</option>
-                                    <option value="Bar Chart">Bar Chart</option>
-                                    <option selected value="Line Chart">Line Chart</option>
-                                    <option value="Column Chart">Column Chart</option>
-                                    @else
-                                    <option value="Pie Chart">Pie Chart</option>
-                                    <option value="Bar Chart">Bar Chart</option>
-                                    <option value="Line Chart">Line Chart</option>
-                                    <option selected value="Column Chart">Column Chart</option>
-                                    @endif
+                                    aria-label="Default select example" name="type">
+                                    @foreach ($typeChart as $tchart)
+                                        @if ($tchart->type == $chart->type)
+                                            <option selected value="{{ $chart->type }}">{{ $chart->type }}</option>
+                                        @else
+                                            <option value="{{ $tchart->type }}">{{ $tchart->type }}</option>
+                                        @endif
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -76,7 +62,7 @@
                                 <label for="exampleFormControlInput1" class="form-label">Status</label>
                                 <select class="form-select rounded-pill border-0 bg-light px-3"
                                     aria-label="Default select example" name="status">
-                                    @if ($chart->status == '0')
+                                    @if ($chart->status == 0)
                                     <option selected value="0">Off</option>
                                     <option value="1">On</option>
                                     @else
@@ -88,13 +74,13 @@
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Aktivitas</label>
                                 <select class="form-select rounded-pill border-0 bg-light px-3"
-                                    aria-label="Default select example" name="aktivitas">
-                                    @if ($chart->aktivitas == 'Free')
-                                    <option selected value="Free">Free</option>
-                                    <option value="Premium">Premium</option>
+                                    aria-label="Default select example" name="chart_type">
+                                    @if ($chart->chart_type == 'free')
+                                    <option selected value="free">free</option>
+                                    <option value="premium">premium</option>
                                     @else
-                                    <option value="Free">Free</option>
-                                    <option selected value="Premium">Premium</option>
+                                    <option value="free">free</option>
+                                    <option selected value="premium">premium</option>
                                     @endif
                                 </select>
                             </div>
@@ -106,7 +92,7 @@
                                 <label for="deskripsi" class="form-label">Description</label>
                                 <textarea
                                     class="form-control rounded-3 border-0 bg-light"
-                                     rows="3" name="description" placeholder="Tulis disini..."></textarea>
+                                     rows="3" name="description" placeholder="Tulis disini...">{{ $chart->description }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -124,7 +110,7 @@
                     </div> -->
                     <!-- Akhir Codingan Batch 1 Uploa Foto -->
                     <div class="text-center mt-5 pt-3">
-                        <button type="submit" class="btn bg-special-blue text-white mx-auto px-5 py-2">Add
+                        <button type="submit" class="btn bg-special-blue text-white mx-auto px-5 py-2">Update
                             Chart</button>
                     </div>
                 </form>
