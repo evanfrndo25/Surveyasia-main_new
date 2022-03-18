@@ -38,7 +38,24 @@
                             @csrf
                             <div class="row justify-content-center text-center">
                                 <div class="col-6">
+                                    <!-- Edit Baru Dropdown Library From -->
                                     <div class="mb-4">
+                                        <label for="deskripsi" class="form-label">Libray From</label>
+                                        <select
+                                            class="form-select rounded-pill border-0 bg-light px-3  @error('library_from') is-invalid @enderror"
+                                            id="judul"  name="library_from">
+                                            <option value="0">Chart JS</option>
+                                        </select>
+                                        @error('library_from')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+                                    </div>
+                                    <!--  Akhir Edit Baru Dropdown Library From -->
+
+                                    <!-- Chart lama Input Text Library Form -->
+                                    <!-- <div class="mb-4">
                                         <label for="deskripsi" class="form-label"> Libray From</label>
                                         <input type="text"
                                             class="form-control rounded-pill border-0 bg-light px-3  @error('library_from') is-invalid @enderror"
@@ -48,7 +65,9 @@
                                             {{ $message }}
                                         </div>
                                         @enderror
-                                    </div>
+                                    </div> -->
+                                    <!-- Akhir Chart lama Input Text Library Form -->
+
                                 </div>
                             </div>
                             <div class="row">
@@ -65,6 +84,20 @@
                                         @enderror
                                     </div>
                                     <div class="mb-4">
+                                        <label for="deskripsi" class="form-label">Type</label>
+                                        <select class="form-select rounded-pill border-0 bg-light px-3  @error('type') is-invalid @enderror" id="judul" name="type">
+                                            <option value="line">line</option>
+                                            <option value="bar">bar</option>
+                                            <option value="pie">pie</option>
+                                            <option value="doughnut">doughnut</option>
+                                            <option value="polarArea">polarArea</option>
+                                            <option value="scatter">scatter</option>
+                                            <option value="bubble">bubble</option>
+                                            <option value="radar">radar</option>
+                                            <option value="wordCloud">wordCloud</option>
+                                        </select>
+                                    </div>
+                                    <!-- <div class="mb-4">
                                         <label for="type" class="form-label"> Type</label>
                                         <input type="text"
                                             class="form-control rounded-pill border-0 bg-light px-3  @error('type') is-invalid @enderror"
@@ -75,7 +108,7 @@
                                         </div>
                                         @enderror
                                         <p class="text-muted">line,bar,dll</p>
-                                    </div>
+                                    </div> -->
 
                                 </div>
                                 <div class="col-6">
@@ -116,6 +149,7 @@
                     </div>
                     </form>
 
+                    <!-- Codingan Batch 1 -->
                     <!-- <div class="col-6">
                         {{-- <div class="mb-4">
                                     <label for="foto" class="form-label">Upload Foto</label>
@@ -130,6 +164,7 @@
                                     <button type="submit" class="btn bg-special-blue text-white mx-auto px-lg-5">Buat News</button>
                                 </div> --}}
                     </div> -->
+                    <!-- Akhir Codingan Batch 1 -->
                 </div>
             </div>
         </div>
