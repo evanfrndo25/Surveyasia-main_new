@@ -220,7 +220,7 @@ Route::middleware(['auth', 'role:respondent', 'verified'])->group(function () {
                 ->name('surveys.')
                 ->group(function () {
                     // survey details
-                    Route::get('{survey:slug}', [
+                    Route::get('{survey}', [
                         RespondenSurveyController::class,
                         'details',
                     ])->name('show');
