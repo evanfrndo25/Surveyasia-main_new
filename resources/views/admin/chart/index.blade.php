@@ -31,7 +31,51 @@
                 </div>
                 @endif
                 <div class="row">
-                    <div class="col">
+                    @php
+                    $num = 0;
+                    @endphp
+                    @forelse ($charts as $chart)
+                    <div class="col-6 py-2">
+                        <div class="card">
+                            <div class="row card-header">
+                                <div class="col text-end">
+                                    <p class="my-auto fw-bold">{{ $chart->chart_type }} </p>
+                                </div>
+                                <div class="col-1">
+                                    <p class="my-auto">-</p>
+                                </div>
+                                <div class="my-auto col">
+                                    @if ($chart->status == 0)
+                                    <p class="text-danger my-auto fw-bold">Off</p>
+                                    @else
+                                    <p class="text-success my-auto fw-bold">On</p>
+                                    @endif
+                                </div>
+                            </div>
+                            <canvas class="mx-3" id="chart{{ $num }}" style="max-height: 250px;"></canvas>
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <h5 class="card-title">{{ $chart->type }}-chart</h5>
+                                    <p class="px-3">-</p>
+                                    <h5 class="card-title">{{ $chart->name }}</h5>
+                                </div>
+                                <p class="card-text">{{ Str::limit($chart->description, 100, '...') }}</p>
+                                <div class="d-grid gap-2">
+                                    <a href="{{ route('admin.chart.edit', $chart->id) }}"
+                                        class="btn bg-special-blue text-white px-4 py-2">
+                                        <i class="bi bi-vector-pen"></i>
+                                        Edit Chart
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @php
+                    $num++;
+                    @endphp
+                    @empty
+                    @endforelse
+                    <!-- <div class="col">
                         <table class="table table-no-border-head align-middle">
                             <thead>
                                 <tr class="fw-bold">
@@ -56,29 +100,25 @@
                                         {{ $chart->type }}-chart
                                     </td>
                                     <td class="text-center">
-                                        <!-- <p class="card-text">{{ Str::limit($chart->description, 50, '...') }}</p> -->
-                                        <canvas class="mx-3" id="chart{{ $num }}" style="max-width: 250px;"
-                                           ></canvas>
+                                        <p class="card-text">{{ Str::limit($chart->description, 50, '...') }}</p>
+                                        <canvas class="mx-3" id="chart{{ $num }}" style="max-width: 250px;"></canvas>
                                     </td>
-                                   <td class="text-center">
-                                    @if ($chart->status == 0)
+                                    <td class="text-center">
+                                        @if ($chart->status == 0)
                                         <p class="text-danger my-auto">Off</p>
-                                    @else
+                                        @else
                                         <p class="text-success my-auto">On</p>
-                                    @endif
-                                   </td>
+                                        @endif
+                                    </td>
                                     <td class="text-center">
                                         <p class="my-auto">{{ $chart->chart_type }}</p>
                                     </td>
                                     <td class="text-center">
-                                        <a 
-                                            href="{{ route('admin.chart.edit', $chart->id) }}"
-                                            class="btn bg-special-blue text-white px-4 py-2"
-                                        >
+                                        <a href="{{ route('admin.chart.edit', $chart->id) }}"
+                                            class="btn bg-special-blue text-white px-4 py-2">
                                             <i class="bi bi-vector-pen"></i>
                                             Edit Chart
                                         </a>
-                                    </form>
                                     </td>
                                 </tr>
 
@@ -89,7 +129,7 @@
                                 @endforelse
                             </tbody>
                         </table>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- <div class="row">
                     @php
@@ -202,7 +242,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js">
 </script>
 <script>
-    var data = {{ Illuminate\Support\Js::from($charts) }}
+  var data = {{ Illuminate\Support\Js::from($charts) }}
 </script>
 <script src="https://unpkg.com/chartjs-chart-wordcloud@3"></script>
 <script src="{{ asset('js/charts/chart-admin.js') }}" type="module"></script>
