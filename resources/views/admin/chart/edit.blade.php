@@ -96,6 +96,9 @@
                             </div>
                         </div>
                     </div>
+                    <div class="text-end mt-3 pt-3">
+                        <button type="submit"  class="btn text-danger mx-auto px-5 py-2">  <i class="bi bi-trash"></i> Hapus Chart</button>
+                    </div>
 
                     <!-- Codingan Batch 1 Uploa Foto -->
                     <!-- <div class="mb-3">
@@ -109,7 +112,7 @@
                         <input type="hidden" class="form-control" name="oldImg" value="{{ $chart->img }}">
                     </div> -->
                     <!-- Akhir Codingan Batch 1 Uploa Foto -->
-                    <div class="text-center mt-5 pt-3">
+                    <div class="text-center mt-3">
                         <button type="submit" class="btn bg-special-blue text-white mx-auto px-5 py-2">Update
                             Chart</button>
                     </div>
