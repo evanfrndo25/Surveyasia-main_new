@@ -83,6 +83,8 @@
                                         </div>
                                         @enderror
                                     </div>
+
+                                    <!--  Edit Baru Dropdown Type -->
                                     <div class="mb-4">
                                         <label for="deskripsi" class="form-label">Type</label>
                                         <select class="form-select rounded-pill border-0 bg-light px-3  @error('type') is-invalid @enderror" id="judul" name="type">
@@ -97,6 +99,9 @@
                                             <option value="wordCloud">wordCloud</option>
                                         </select>
                                     </div>
+                                    <!--  Akhir Edit Baru Dropdown Type -->
+
+                                    <!-- Lama Input Text Type -->
                                     <!-- <div class="mb-4">
                                         <label for="type" class="form-label"> Type</label>
                                         <input type="text"
@@ -109,6 +114,7 @@
                                         @enderror
                                         <p class="text-muted">line,bar,dll</p>
                                     </div> -->
+                                    <!--  Akhir Lama Input Text Type -->
 
                                 </div>
                                 <div class="col-6">
