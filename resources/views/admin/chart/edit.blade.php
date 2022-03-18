@@ -97,7 +97,14 @@
                         </div>
                     </div>
                     <div class="text-end mt-3 pt-3">
-                        <button type="submit"  class="btn text-danger mx-auto px-5 py-2">  <i class="bi bi-trash"></i> Hapus Chart</button>
+                        <a 
+                            href="{{ route('admin.chart.destroy', $chart->id) }}"
+                            class="btn text-danger mx-auto px-5 py-2"
+                            onclick="confirm('Apakah anda yakin ingin menghapus chart ini?')"
+                        >
+                            <i class="bi bi-trash"></i>
+                            Hapus Chart
+                        </a>
                     </div>
 
                     <!-- Codingan Batch 1 Uploa Foto -->
