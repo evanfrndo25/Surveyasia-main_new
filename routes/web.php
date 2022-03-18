@@ -368,7 +368,17 @@ Route::middleware(['is_admin', 'role:admin'])->group(function () {
         Route::resource('transaction', TransactionController::class);
         Route::resource('questionbank', QuestionBankTemplateController::class);
         Route::post('/{questionbank}/questions', [QuestionBankTemplateController::class, 'storeQuestions'])->name('storeQuestions');
-        Route::resource('chart', ChartController::class);
+        // Route::resource('chart', ChartController::class);
+        Route::prefix('chart')->name('chart.')->group(function() {
+            Route::get('/', [ChartController::class, 'index'])->name('index');
+            Route::post('/', [ChartController::class, 'store'])->name('store');
+            Route::get('/create', [ChartController::class, 'create'])->name('create');
+            Route::get('/{chart}', [ChartController::class, 'show'])->name('show');
+            Route::put('/{chart}', [ChartController::class, 'update'])->name('update');
+            Route::get('/{chart}/edit', [ChartController::class, 'edit'])->name('edit');
+            Route::get('/{chart}/delete', [ChartController::class, 'destroy'])->name('destroy');
+        });
+
         Route::post('/news/search', [NewsController::class, 'search'])->name('news.search');
         
         // survey Admin

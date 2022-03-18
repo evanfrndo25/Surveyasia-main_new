@@ -125,8 +125,7 @@ class ChartController extends Controller
             'name' => 'required',
             'type' => 'required',
             'chart_type' => 'required',
-            'status' => 'required',
-            'img' => 'image|file|max:1024'
+            'status' => 'required'
         ]);
 
         if ($request->file('img')) {
@@ -151,6 +150,6 @@ class ChartController extends Controller
             Storage::delete($chart->img);
         }
         $chart->delete();
-        return back()->with('status', 'Deleted Chart success');
+        return redirect('/admin/chart')->with('status', 'Deleted Chart success');
     }
 }
