@@ -71,14 +71,14 @@ class ChartController extends Controller
             'chart_type' => 'required',
             'type' => 'required',
             'library_from' => 'required',
+            'status' => 'required'
         ]);
-
-        $chart['status'] = '0';
         $chart['supported_questions'] = 'Multiple options';
         $chart['default_configuration'] = '{"type":null,"data":null,"options":null}';
         // if ($request->file('img')) {
         //     $chart['img'] = $request->file('img')->store('chart-img');
         // }
+        // var_dump($chart); die;
         Chart::create($chart);
         return redirect('admin/chart/')->with('status', 'Success add Chart!');
     }
