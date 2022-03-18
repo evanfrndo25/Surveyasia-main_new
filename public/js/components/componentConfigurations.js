@@ -21,6 +21,7 @@ export const textBoxComponent = {
             change: function () {},
         }, */
     },
+
     media: {
         /* mediaType: "image",
         source: "https://images.unsplash.com/photo-1638913662252-70efce1e60a7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=550&q=80",
@@ -90,6 +91,8 @@ export const multiOptionsComponent = {
     meta: {},
 };
 
+
+
 export const scaleComponent = {
     question: "Example Question",
     componentName: "scale",
@@ -138,6 +141,7 @@ export const ratingStarComponent = {
         maxVal: 10,
         // position: 0,
     },
+
     // options: [10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
     otherOption: {
         inputType: "text",

@@ -7,16 +7,18 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-md-6 col-lg-6 col-sm-12 border">
+                    <div class="col-md-12 col-lg-12 col-sm-12">
                         <nav>
                             <div class="nav nav-tabs mt-3" id="nav-tab" role="tablist">
                                 <button class="nav-link link-dark active" id="nav-basic-tab" data-bs-toggle="tab" data-bs-target="#nav-basic"
                                     type="button" role="tab" aria-controls="nav-basic" aria-selected="true">Basic</button>
                                 {{-- <button class="nav-link link-dark" id="nav-data-tab" data-bs-toggle="tab" data-bs-target="#nav-data" type="button"
                                     role="tab" aria-controls="nav-data" aria-selected="false">Data</button> --}}
+                                <button class="nav-link link-dark" id="nav-logic-tab" data-bs-toggle="tab" data-bs-target="#nav-logic"
+                                    type="button" role="tab" aria-controls="nav-logic" aria-selected="false">Logic</button>
                                 <button class="nav-link link-dark" id="nav-validation-tab" data-bs-toggle="tab" data-bs-target="#nav-validation"
                                     type="button" role="tab" aria-controls="nav-validation" aria-selected="false">Validation</button>
-                                <button class="nav-link link-dark" id="nav-media-tab" data-bs-toggle="tab" data-bs-target="#nav-media" type="button"
+                                <button class="nav-link link-dark" id="nav-media-tab" data-bs-toggle="tab" data-bs-target="#nav-media" type="bu tton"
                                     role="tab" aria-controls="nav-media" aria-selected="false">Media</button>
                             </div>
                         </nav>
@@ -26,6 +28,7 @@
 
                                 </div>
                             </div>
+                            
                             {{-- <div class="tab-pane fade" id="nav-data" role="tabpanel" aria-labelledby="nav-data-tab">
                                 <div id="dataOptionContainer" class="container mt-3 mb-3">
                                     <div class="row mb-3">
@@ -109,9 +112,130 @@
                                     </div>
                                 </div>
                             </div> --}}
-                            <div class="tab-pane fade" id="nav-validation" role="tabpanel" aria-labelledby="nav-validation-tab">
-                                <div id="questionValidationContainer" class="container mt-3 mb-3">
+                            <div class="tab-pane fade" id="nav-logic" role="tabpanel" aria-labelledby="nav-logic-tab">
+                                <div id="questionLogicContainer" class="container mt-3 mb-3">
 
+                                    <div class="row">
+                                    
+                                    <!-- option 1 -->
+                                    <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="" class="mb-3">Pilihan Opsi</label>
+                                            <div class="input-group">
+                                                <div class="input-group-text" style="background: #F99E3F ">
+                                                  <input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input" disabled>
+                                                </div>
+                                                <input type="text" class="form-control" aria-label="Text input with radio button" placeholder="Opsi 1" disabled style="background-color: #ffffff">
+                                              </div>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <div class="row">
+                                                <div class="col-md-12 mb-3">
+                                                    <label for="">Lanjutkan Ke</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                                    <option selected> -- Choose Part  --</option>
+                                                    <option value="1">One</option>
+                                                    <option value="2">Two</option>
+                                                    <option value="3">Three</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                                    <option selected> -- Choose The Question  --</option>
+                                                    <option value="1">One</option>
+                                                    <option value="2">Two</option>
+                                                    <option value="3">Three</option>
+                                                    </select>
+                                                </div>
+                                            </div>                      
+                                        </div>
+                                        
+                                        <div class="col-md-1">
+                                            
+                                        </div>
+                                    </div>
+                                    <!-- option 1 -->
+
+                                    <!-- option 2 -->
+                                    <div class="col-md-12 mt-3">
+                                        <div class="row">
+                                            <div class="col-md-4">                       
+                                                    <div class="input-group">
+                                                        <div class="input-group-text" style="background: #F99E3F ">
+                                                          <input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input" disabled>
+                                                        </div>
+                                                        <input type="text" class="form-control" aria-label="Text input with radio button" placeholder="Opsi 2" disabled style="background-color: #ffffff">
+                                                    </div>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                                            <option selected> -- Choose Part  --</option>
+                                                            <option value="1">One</option>
+                                                            <option value="2">Two</option>
+                                                            <option value="3">Three</option>
+                                                            </select>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                                            <option selected> -- Choose The Question  --</option>
+                                                            <option value="1">One</option>
+                                                            <option value="2">Two</option>
+                                                            <option value="3">Three</option>
+                                                            </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- option 2 -->
+
+                                    <!-- option 3 -->
+                                    <div class="col-md-12 mt-3">
+                                        <div class="row">
+                                            <div class="col-md-4">                       
+                                                    <div class="input-group">
+                                                        <div class="input-group-text" style="background: #F99E3F "  >
+                                                          <input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input" disabled>
+                                                        </div>
+                                                        <input type="text" class="form-control" aria-label="Text input with radio button" placeholder="Opsi 3" disabled style="background-color: #ffffff">
+                                                    </div>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                                            <option selected> -- Choose Part  --</option>
+                                                            <option value="1">One</option>
+                                                            <option value="2">Two</option>
+                                                            <option value="3">Three</option>
+                                                            </select>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                                            <option selected> -- Choose The Question  --</option>
+                                                            <option value="1">One</option>
+                                                            <option value="2">Two</option>
+                                                            <option value="3">Three</option>
+                                                            </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- option 3 -->
+                                </div>
+
+                                </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="nav-validation" role="tabpanel" aria-labelledby="nav-validation-tab">
+                                <div id="questionValidationContainer" class="container mt-3mj mb-3">
+                                    
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="nav-media" role="tabpanel" aria-labelledby="nav-media-tab">
@@ -121,15 +245,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-6 col-sm-12">
-                        <div class="container mb-3 mt-3">
-                            <h5>Preview</h5>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnCloseEdit">Close</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnCloseEdit" style="background-color: #ef4c29">Save</button>
             </div>
         </div>
     </div>

@@ -9,6 +9,9 @@ export class DropDown extends Component {
         this.blueprint = config;
     }
 
+    
+
+
     content() {
         const wrapper = document.createElement("ul");
         wrapper.id = uniqid("options");

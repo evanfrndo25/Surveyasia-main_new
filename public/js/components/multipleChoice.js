@@ -8,6 +8,10 @@ export class MultipleChoice extends Component {
         this.blueprint = config;
     }
 
+
+
+    minimum
+
     content() {
         const row = document.createElement("div");
         row.className += "row mb-3";
@@ -262,6 +266,8 @@ export class MultipleChoice extends Component {
                     checkedCount++;
                 }
             });
+
+            minimum
 
             const validations = instance.blueprint.validations;
 

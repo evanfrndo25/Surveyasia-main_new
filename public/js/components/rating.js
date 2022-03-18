@@ -2,6 +2,8 @@ import Blueprint from "./blueprint.js";
 import { Component } from "./component.js";
 import uniqid from "./util.js";
 
+
+
 export class Rating extends Component {
     constructor(config) {
         /* let option = Object.create(Blueprint);
