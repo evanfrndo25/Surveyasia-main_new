@@ -19,6 +19,7 @@ class CreateChartsTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->enum('chart_type', ['free', 'premium'])->default('free');
+            $table->boolean('status');
 
             // chart config type
             $table->tinyText('type');

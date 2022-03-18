@@ -125,6 +125,10 @@ Route::middleware(['auth', 'role:researcher', 'verified'])->group(function () {
                         'storeSurvey',
                     ])->name('store');
 
+                    //delete survey
+                    Route::get('tasks/{id}', [SurveyController::class, 'destroy'])->name('delete');
+
+
                     //create questions
                     Route::post('/{survey}/questions', [
                         SurveyController::class,
@@ -216,7 +220,7 @@ Route::middleware(['auth', 'role:respondent', 'verified'])->group(function () {
                 ->name('surveys.')
                 ->group(function () {
                     // survey details
-                    Route::get('{survey:slug}', [
+                    Route::get('{survey}', [
                         RespondenSurveyController::class,
                         'details',
                     ])->name('show');
@@ -366,7 +370,11 @@ Route::middleware(['is_admin', 'role:admin'])->group(function () {
         Route::post('/{questionbank}/questions', [QuestionBankTemplateController::class, 'storeQuestions'])->name('storeQuestions');
         Route::resource('chart', ChartController::class);
         Route::post('/news/search', [NewsController::class, 'search'])->name('news.search');
-        Route::resource('survey', SurveyInAdmin::class);
+        
+        // survey Admin
+        // Route::resource('survey', SurveyInAdmin::class);
+        Route::get('survey', [SurveyInAdmin::class, 'index'])->name('survey.index');
+        Route::get('survey/{survey}/delete', [SurveyInAdmin::class, 'destroy'])->name('survey.destroy');
         Route::get('data-verification', [UserController::class, 'dataVerify'])->name('dataVerify');
     });
 });

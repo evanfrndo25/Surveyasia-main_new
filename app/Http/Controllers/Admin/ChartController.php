@@ -25,7 +25,7 @@ class ChartController extends Controller
             // 'charts' => ChartResource::collection(Chart::latest()->get())
             'charts' => Chart::get()
         ];
-
+        
         return view('admin.chart.index', $data);
     }
     public function search(Request $request)
@@ -71,14 +71,14 @@ class ChartController extends Controller
             'chart_type' => 'required',
             'type' => 'required',
             'library_from' => 'required',
+            'status' => 'required'
         ]);
-
-        $chart['status'] = '0';
         $chart['supported_questions'] = 'Multiple options';
         $chart['default_configuration'] = '{"type":null,"data":null,"options":null}';
         // if ($request->file('img')) {
         //     $chart['img'] = $request->file('img')->store('chart-img');
         // }
+        // var_dump($chart); die;
         Chart::create($chart);
         return redirect('admin/chart/')->with('status', 'Success add Chart!');
     }
@@ -102,10 +102,13 @@ class ChartController extends Controller
      */
     public function edit(Chart $chart)
     {
+        $typeChart = Chart::select('type')->distinct()->get();
+        
         return view('admin.chart.edit', [
-            // 'title' => 'edit Chart',
+            'title' => 'edit Chart',
             'chart' => $chart,
-            "submit" => "Update"
+            'submit' => 'Update',
+            'typeChart' => $typeChart
         ]);
     }
 
@@ -119,9 +122,9 @@ class ChartController extends Controller
     public function update(Request $request, $id)
     {
         $chart = $request->validate([
-            'chart' => 'required',
-            'jenis' => 'required',
-            'aktivitas' => 'required',
+            'name' => 'required',
+            'type' => 'required',
+            'chart_type' => 'required',
             'status' => 'required',
             'img' => 'image|file|max:1024'
         ]);
@@ -133,7 +136,7 @@ class ChartController extends Controller
             $chart['img'] = $request->file('img')->store('chart-img');
         }
         Chart::where('id', $id)->update($chart);
-        return redirect('admin/chart/')->with('status', 'Success post news!');
+        return redirect('admin/chart/')->with('status', 'Updated Chart success');
     }
 
     /**

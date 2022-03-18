@@ -85,6 +85,12 @@ class SurveyController extends Controller
         return $action->execute($request);
     }
 
+    public function destroy($id)
+    {
+        Survey::find($id)->delete();
+        return back();
+    }
+
     public function storeQuestions(CreateSurveyQuestionRequest $request)
     {
         $action = new CreateSurveyQuestionAction();
