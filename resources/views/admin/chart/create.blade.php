@@ -44,7 +44,7 @@
                                         <select
                                             class="form-select rounded-pill border-0 bg-light px-3  @error('library_from') is-invalid @enderror"
                                             id="judul"  name="library_from">
-                                            <option value="0">Chart JS</option>
+                                            <option selected value="Chart Js">Chart JS</option>
                                         </select>
                                         @error('library_from')
                                         <div class="invalid-feedback">
@@ -88,7 +88,7 @@
                                     <div class="mb-4">
                                         <label for="deskripsi" class="form-label">Type</label>
                                         <select class="form-select rounded-pill border-0 bg-light px-3  @error('type') is-invalid @enderror" id="judul" name="type">
-                                            <option value="line">line</option>
+                                            <option selected value="line">line</option>
                                             <option value="bar">bar</option>
                                             <option value="pie">pie</option>
                                             <option value="doughnut">doughnut</option>
@@ -122,7 +122,7 @@
                                         <label for="deskripsi" class="form-label">Status</label>
                                         <select class="form-select border-0 bg-light px-3 rounded-pill"
                                             aria-label="Default select example" name="status">
-                                            <option value="1">On</option>
+                                            <option selected value="1">On</option>
                                             <option value="0">Off</option>
                                         </select>
                                     </div>
@@ -130,7 +130,7 @@
                                         <label for="deskripsi" class="form-label">Chart Type</label>
                                         <select class="form-select border-0 bg-light px-3 rounded-pill"
                                             aria-label="Default select example" name="chart_type">
-                                            <option value="free">Free</option>
+                                            <option selected value="free">Free</option>
                                             <option value="premium">Premium</option>
                                         </select>
                                     </div>
