@@ -141,7 +141,7 @@
                                 <label for="deskripsi" class="form-label">Description</label>
                                 <textarea
                                     class="form-control rounded-3 border-0 bg-light @error('description') is-invalid @enderror"
-                                    id="deskripsi" rows="3" name="description"></textarea>
+                                    id="deskripsi" placeholder="Tulis disini..." rows="3" name="description"></textarea>
                                 @error('description')
                                 <div class="invalid-feedback">
                                     {{ $message }}

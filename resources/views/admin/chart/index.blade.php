@@ -35,6 +35,7 @@
                     $num = 0;
                     @endphp
                     @forelse ($charts as $chart)
+                    <!-- Chart Card Baru -->
                     <div class="col-6 py-2">
                         <div class="card">
                             <div class="row card-header">
@@ -70,11 +71,14 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Akhir Chart Card Baru -->
                     @php
                     $num++;
                     @endphp
                     @empty
                     @endforelse
+
+                    <!-- Chart Table -->
                     <!-- <div class="col">
                         <table class="table table-no-border-head align-middle">
                             <thead>
@@ -130,6 +134,7 @@
                             </tbody>
                         </table>
                     </div> -->
+                    <!-- Akhir Chart Table -->
                 </div>
                 <!-- <div class="row">
                     @php
