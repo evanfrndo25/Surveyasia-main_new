@@ -171,7 +171,7 @@
                         <h6 class="card-title fw-semibold m-0">{{ $surveys[$j]->title }}</h6>
                         <p class="card-text text-muted fs-12px">
                             by {{ $surveys[$j]->user->nama_lengkap }}</p>
-                        <a href="{{ route('respondent.surveys.show', $surveys[$j]->slug) }}"
+                        <a href="{{ route('respondent.surveys.show', $surveys[$j]->id) }}"
                             class="btn btn-orange radius-default text-white w-100" role="button">Mulai</a>
                     </div>
                 </div>
@@ -194,7 +194,7 @@
                         {{ $survey->user->nama_lengkap }}</p>
 
                     @can('verifiedByAdmin')
-                    <a href="{{ route('respondent.surveys.show', $survey->slug) }}"
+                    <a href="{{ route('respondent.surveys.show', $survey->id) }}"
                         class="btn btn-orange radius-default text-white w-100" role="button">Mulai
                     </a>
                     @elsecannot('verifiedByAdmin')
