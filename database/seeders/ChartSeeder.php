@@ -41,6 +41,7 @@ class ChartSeeder extends Seeder
                     'name' => $charts[$i],
                     'type' => $types[$i],
                     'library_from' => 'Chart JS',
+                    'status' => 0,
                     'supported_questions' => $supported,
                     'default_configuration' => $configJSON
                 ])
