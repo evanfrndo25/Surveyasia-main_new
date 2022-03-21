@@ -21,6 +21,11 @@
                 </div>
                 @endif
                 <h3 class="text-center py-3">Edit Chart</h3>
+                <div class="row justify-content-center text-center">
+                    <div class="col-6 mb-4">
+                        <canvas class="mx-3" id="chartPreview" style="max-height: 250px;"></canvas>
+                    </div>
+                </div>
                 <form action="{{ route('admin.chart.update', $chart->id) }}" method="post"
                     enctype="multipart/form-data">
                     @method('put')
@@ -45,7 +50,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Kategori Chart</label>
-                                <select class="form-select rounded-pill border-0 bg-light px-3"
+                                <select class="form-select rounded-pill border-0 bg-light px-3" id="chartCategory"
                                     aria-label="Default select example" name="type">
                                     @foreach ($typeChart as $tchart)
                                     @if ($tchart->type == $chart->type)
@@ -155,5 +160,13 @@
         </div>
     </div>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
+<script>
+    var data = {{ Illuminate\Support\Js::from($chart) }};
+    const type = document.getElementById('chartCategory').value;
+</script>
+<script src="https://unpkg.com/chartjs-chart-wordcloud@3"></script>
+<script src="{{ asset('js/charts/chart-admin-edit.js') }}" type="module"></script>
 
 @endsection
