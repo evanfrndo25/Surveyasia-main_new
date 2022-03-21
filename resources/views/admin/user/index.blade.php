@@ -134,13 +134,17 @@
                                                         href="{{ route('admin.users.profile', $user->id) }}">Show/update</a>
                                                 </li>
                                                 <li>
-                                                    <form action="{{ route('admin.users.destroy', $user->id) }}"
+                                                    <button type="button" class="dropdown-item" data-bs-toggle="modal"
+                                                        data-bs-target="#exampleModal">
+                                                        Hapus
+                                                    </button>
+                                                    <!-- <form action="{{ route('admin.users.destroy', $user->id) }}"
                                                         method="post">
                                                         @method('delete')
                                                         @csrf
                                                         <button type="submit" class="dropdown-item"
                                                             onclick="return confirm('Apakah kamu yakin ingin menghapus?')">Delete</button>
-                                                    </form>
+                                                    </form> -->
                                                 </li>
                                             </ul>
                                         </td>
@@ -158,5 +162,31 @@
     </div>
 </div>
 
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="btn ms-auto">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="{{ asset('assets/img/delete.png') }}" class="img-fluid" alt="">
+                <h2 class="text-center">Delete Chart?</h2>
+                <p class="px-5 small text-secondary text-center">(Nama Chart) Lorem, ipsum dolor
+                    sit amet consectetur adipisicing elit. Facere expedita, non iure natus optio
+                    odio totam? Corrupti fugit placeat aperiam error numquam illo optio voluptas
+                    facere nulla ut rem, impedit soluta, aut nam architecto minus accusamus
+                    atque.</p>
+            </div>
+            <div class="row p-5">
+                <div class="col d-grid gap-2">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </div>
+                <div class="col d-grid gap-2">
+                    <button type="button" class="btn bg-special-blue text-white">Tidak</button>
+                </div>
 
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

@@ -48,11 +48,11 @@
                                 <select class="form-select rounded-pill border-0 bg-light px-3"
                                     aria-label="Default select example" name="type">
                                     @foreach ($typeChart as $tchart)
-                                        @if ($tchart->type == $chart->type)
-                                            <option selected value="{{ $chart->type }}">{{ $chart->type }}</option>
-                                        @else
-                                            <option value="{{ $tchart->type }}">{{ $tchart->type }}</option>
-                                        @endif
+                                    @if ($tchart->type == $chart->type)
+                                    <option selected value="{{ $chart->type }}">{{ $chart->type }}</option>
+                                    @else
+                                    <option value="{{ $tchart->type }}">{{ $tchart->type }}</option>
+                                    @endif
                                     @endforeach
                                 </select>
                             </div>
@@ -90,21 +90,23 @@
                         <div class="col">
                             <div class="mb-4">
                                 <label for="deskripsi" class="form-label">Description</label>
-                                <textarea
-                                    class="form-control rounded-3 border-0 bg-light"
-                                     rows="3" name="description" placeholder="Tulis disini...">{{ $chart->description }}</textarea>
+                                <textarea class="form-control rounded-3 border-0 bg-light" rows="3" name="description"
+                                    placeholder="Tulis disini...">{{ $chart->description }}</textarea>
                             </div>
                         </div>
                     </div>
                     <div class="text-end mt-3 pt-3">
-                        <a 
-                            href="{{ route('admin.chart.destroy', $chart->id) }}"
+                        <button type="button" class="btn text-danger mx-auto px-5 py-2r" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                            <i class="bi bi-trash"></i>
+                            Hapus
+                        </button>
+                        <!-- <a href="{{ route('admin.chart.destroy', $chart->id) }}"
                             class="btn text-danger mx-auto px-5 py-2"
-                            onclick="confirm('Apakah anda yakin ingin menghapus chart ini?')"
-                        >
+                            onclick="confirm('Apakah anda yakin ingin menghapus chart ini?')">
                             <i class="bi bi-trash"></i>
                             Hapus Chart
-                        </a>
+                        </a> -->
                     </div>
 
                     <!-- Codingan Batch 1 Uploa Foto -->
@@ -124,6 +126,35 @@
                             Chart</button>
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal delete -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="btn ms-auto">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="{{ asset('assets/img/delete.png') }}" class="img-fluid" alt="">
+                <h2 class="text-center">Delete Chart?</h2>
+                <p class="px-5 small text-secondary text-center">(Nama Chart) Lorem, ipsum dolor
+                    sit amet consectetur adipisicing elit. Facere expedita, non iure natus optio
+                    odio totam? Corrupti fugit placeat aperiam error numquam illo optio voluptas
+                    facere nulla ut rem, impedit soluta, aut nam architecto minus accusamus
+                    atque.</p>
+            </div>
+            <div class="row p-5">
+                <div class="col d-grid gap-2">
+                    <a href="{{ route('admin.chart.destroy', $chart->id) }}" class="btn btn-danger">Iya</a>
+                </div>
+                <div class="col d-grid gap-2">
+                    <button type="button" class="btn bg-special-blue text-white">Tidak</button>
+                </div>
+
             </div>
         </div>
     </div>

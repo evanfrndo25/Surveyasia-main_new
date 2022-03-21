@@ -58,21 +58,56 @@
                             <td>{{ $item->created_at->diffForHumans() }}</td>
                             <td>
                                 <button type="button" class="btn bg-special-blue text-white">
-                                <i class="bi bi-vector-pen"></i>
+                                    <i class="bi bi-vector-pen"></i>
                                     Show</button>
                                 <!-- <button type="button" class="btn bg-danger text-white">
                                 <i class="bi bi-trash"></i>
                                     Delete</button> -->
-                                <a 
-                                    href="{{ route('admin.survey.destroy', $item->id) }}" 
+
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+                                    <i class="bi bi-trash"></i>
+                                    Hapus
+                                </button>
+                                <!-- <a href="{{ route('admin.survey.destroy', $item->id) }}"
                                     class="btn bg-danger text-white"
-                                    onclick="return confirm('Apakah kamu yakin ingin menghapus?')"
-                                >
+                                    onclick="return confirm('Apakah kamu yakin ingin menghapus?')">
                                     <i class="bi bi-trash"></i>
                                     Delete
-                                </a> 
+                                </a> -->
                             </td>
                         </tr>
+                        
+                        <!-- Modal delete -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="btn ms-auto">
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <img src="{{ asset('assets/img/delete.png') }}" class="img-fluid" alt="">
+                                        <h2 class="text-center">Delete Chart?</h2>
+                                        <p class="px-5 small text-secondary text-center">(Nama Chart) Lorem, ipsum dolor
+                                            sit amet consectetur adipisicing elit. Facere expedita, non iure natus optio
+                                            odio totam? Corrupti fugit placeat aperiam error numquam illo optio voluptas
+                                            facere nulla ut rem, impedit soluta, aut nam architecto minus accusamus
+                                            atque.</p>
+                                    </div>
+                                    <div class="row p-5">
+                                        <div class="col d-grid gap-2">
+                                            <a href="{{ route('admin.survey.destroy', $item->id) }}" class="btn btn-danger">Iya</a>
+                                        </div>
+                                        <div class="col d-grid gap-2">
+                                            <button type="button" class="btn bg-special-blue text-white">Tidak</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         @endforeach
                     </tbody>
                 </table>
