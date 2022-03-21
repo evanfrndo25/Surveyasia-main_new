@@ -6,6 +6,7 @@
 
 @include('researcher.layouts.pricing-modal')
 @include('researcher.modals.create-survey-modal')
+@include('researcher.modals.delete-survey-modal')
 <div class="container-fluid p-3 p-md-5">
     @if (session('verified'))
     <div class="alert alert-success col-md-4 col-md-offset-4" role="alert">
@@ -123,9 +124,11 @@
                     <div class="row text-center">
                         <div class="col">
                             <p class="fs-14px">Hapus</p>
-                            <a href="{{ route('researcher.surveys.delete', $survey->id) }}" class="link-dark">
+                            <button type="button" class="btn link-dark" data-bs-toggle="modal" data-bs-target="#deleteSurveyModal"><i class="fa fa-thin fa-trash fs-4"></i>
+                            </button>
+                            {{-- <a href="{{ route('researcher.surveys.delete', $survey->id) }}" class="link-dark">
                                 <i class="fa fa-thin fa-trash fs-4"></i>
-                            </a>
+                            </a> --}}
                         </div>
                     </div>
                 </div>

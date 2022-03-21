@@ -4,6 +4,8 @@
 @extends('researcher.layouts.navbar2')
 @section('content')
 
+@include('researcher.modals.download-report-modal')
+
     @php
     $no = 1;
     @endphp
@@ -28,16 +30,20 @@
                         <h6>{{ $survey->attempted }}/{{ $survey->max_attempt }} Responden</h6>
                     </div>
                     <div class="dropdown mt-3">
-                        <button class="btn btn-orange radius-default w-100" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                        <button class="btn btn-orange radius-default w-100" type="button"  data-bs-toggle="modal" data-bs-target="#downloadReportModal"
+                            aria-expanded="false">Download Result <i class="fas fa-download ms-5"></i>
+                        </button>
+                        {{-- <button class="btn btn-orange radius-default w-100" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
                             aria-expanded="false">Download Result <i class="fas fa-download ms-5"></i>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <li><a class="dropdown-item" href="customize-diagram/export_excel?id={{ $survey->id }}">Excel</a>
                             </li>
                             <li><span class="dropdown-item" id="btnChartExport" style="cursor: pointer;">PDF</span></li>
-                            {{-- <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
-                        </ul>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul> --}}
                     </div>
+                    
                     <div class="mt-3">
                         <a class="btn btn-secondary rounded-pill w-100 radius-default" href="https://analysis.surveyasia.id/" target="_blank"
                             role="button">Advance Analysis
@@ -50,7 +56,7 @@
                             <div class="col">
                                 <div class="card radius-default">
                                     <div class="card-body">
-                                        <div class="d-flex top-0 end-0 justify-content-end" id="exportsContainer{{ $question->id }}">
+                                        {{-- <div class="d-flex top-0 end-0 justify-content-end" id="exportsContainer{{ $question->id }}">
                                             <div class="dropdown">
                                                 <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="exportsContainerBtn"
                                                     data-bs-toggle="dropdown" aria-expanded="false">
@@ -65,7 +71,7 @@
                                                     <li><button class="dropdown-item fs-6 fw-light" id="asExc">EXCEL</button></li>
                                                 </ul>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                         <div id="chart{{ $question->id }}" class="p-3" style="height: 350px;">
                                         </div>
                                     </div>
