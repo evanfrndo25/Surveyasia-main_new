@@ -170,14 +170,10 @@
             </div>
             <div class="modal-body">
                 <img src="{{ asset('assets/img/delete.png') }}" class="img-fluid" alt="">
-                <h2 class="text-center">Delete Chart?</h2>
-                <p class="px-5 small text-secondary text-center">(Nama Chart) Lorem, ipsum dolor
-                    sit amet consectetur adipisicing elit. Facere expedita, non iure natus optio
-                    odio totam? Corrupti fugit placeat aperiam error numquam illo optio voluptas
-                    facere nulla ut rem, impedit soluta, aut nam architecto minus accusamus
-                    atque.</p>
+                <h2 class="text-center">Delete User?</h2>
+                <p class="px-5 small text-secondary text-center">Apakah kamu yakin ingin menghapus <span class="fw-bold">(nama yang dihapus)?</span> , Jika anda menghapus chart, maka chart pada admin akan terhapus secara <span class="fw-bold">permanen</span> .</p>
             </div>
-            <div class="row p-5">
+            <div class="row px-5 pb-5">
                 <div class="col d-grid gap-2">
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </div>
