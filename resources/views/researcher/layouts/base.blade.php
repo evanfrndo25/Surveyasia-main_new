@@ -26,9 +26,11 @@
     <link rel='icon' type='image/png' href='/favicon-surveyasia-32.png' />
     <link rel='shortcut icon' type='image/x-icon' href='/favicon-surveyasia-32.ico' />
 
+
     {{-- Font Awesome --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous">
     </script>
+    
 
     {{-- jQuery --}}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"

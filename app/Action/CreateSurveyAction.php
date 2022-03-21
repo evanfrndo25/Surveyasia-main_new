@@ -24,13 +24,8 @@ class CreateSurveyAction
             'user_id' => $request->user_id,
             'category_id' => $category,
             'shareable' => $shareable,
-<<<<<<< HEAD
-            'signature' => Str::title(100),
-            'slug' => Str::slug($request->title, ''),
-=======
-            'signature' => Str::slug($request->title, '-'),
+            'signature' => Str::random(4).$request->title,
             'slug' => Str::slug($request->title, '-'),
->>>>>>> ad9595c2cf79b03cd0561310c1664a7b4d4702f8
             'max_attempt' => $maxAttempt,
             'estimate_completion' => $estimateCompletion,
             'reward_point' => $reward

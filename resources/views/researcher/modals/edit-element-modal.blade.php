@@ -129,14 +129,14 @@
                                                 <input type="text" class="form-control" aria-label="Text input with radio button" placeholder="Opsi 1" disabled style="background-color: #ffffff">
                                               </div>
                                         </div>
-                                        <div class="col-md-7">
+                                        <div class="col-md-8">
                                             <div class="row">
                                                 <div class="col-md-12 mb-3">
                                                     <label for="">Lanjutkan Ke</label>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-5">
                                                     <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                                                    <option selected> -- Choose Part  --</option>
+                                                    <option selected> -- Select Part  --</option>
                                                     <option value="1">One</option>
                                                     <option value="2">Two</option>
                                                     <option value="3">Three</option>
@@ -150,12 +150,12 @@
                                                     <option value="3">Three</option>
                                                     </select>
                                                 </div>
+                                                <div class="col-md-1">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                </div>
                                             </div>                      
                                         </div>
                                         
-                                        <div class="col-md-1">
-                                            
-                                        </div>
                                     </div>
                                     <!-- option 1 -->
 
@@ -170,11 +170,11 @@
                                                         <input type="text" class="form-control" aria-label="Text input with radio button" placeholder="Opsi 2" disabled style="background-color: #ffffff">
                                                     </div>
                                             </div>
-                                            <div class="col-md-7">
+                                            <div class="col-md-8">
                                                 <div class="row">
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-5">
                                                         <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                                                            <option selected> -- Choose Part  --</option>
+                                                            <option selected> -- Select Part  --</option>
                                                             <option value="1">One</option>
                                                             <option value="2">Two</option>
                                                             <option value="3">Three</option>
@@ -187,6 +187,9 @@
                                                             <option value="2">Two</option>
                                                             <option value="3">Three</option>
                                                             </select>
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <h5><i class="icofont-trash"></i></h5>
                                                     </div>
                                                 </div>
                                             </div>
@@ -205,11 +208,11 @@
                                                         <input type="text" class="form-control" aria-label="Text input with radio button" placeholder="Opsi 3" disabled style="background-color: #ffffff">
                                                     </div>
                                             </div>
-                                            <div class="col-md-7">
+                                            <div class="col-md-8">
                                                 <div class="row">
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-5">
                                                         <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                                                            <option selected> -- Choose Part  --</option>
+                                                            <option selected> -- Select Part  --</option>
                                                             <option value="1">One</option>
                                                             <option value="2">Two</option>
                                                             <option value="3">Three</option>
@@ -222,6 +225,9 @@
                                                             <option value="2">Two</option>
                                                             <option value="3">Three</option>
                                                             </select>
+                                                    </div>
+                                                    <div class="col-md-1">
+                                                        <i class="fa-solid fa-trash"></i>
                                                     </div>
                                                 </div>
                                             </div>
@@ -248,6 +254,7 @@
                 </div>
             </div>
             <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnCloseEdit" style="background-color: #f2f2f2; color:black;">Cancel</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnCloseEdit" style="background-color: #ef4c29">Save</button>
             </div>
         </div>
