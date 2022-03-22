@@ -34,7 +34,7 @@
                                   <select class="form-select border-r-besar"
                                     aria-label="Default select example"
                                     name="status">
-                                  @if ($news->status == '0')
+                                  @if ($news->status == 0)
                                     <option selected value="0">Draft</option>
                                     <option value="1">Published</option>
                                   @else
@@ -49,10 +49,10 @@
                                           {{ $message }}
                                       </div>
                                   @enderror
-                              </div>
+                                </div>
                                 <div class="mb-3">
                                     <label for="judul" class="form-label">Title</label>
-                                    <input type="text" class="form-control  @error('title') is-invalid @enderror" id="judul" name="title" value="{{ $news->title }}">
+                                    <input type="text" class="form-control  @error('title') is-invalid @enderror" id="judul" name="title" value="{{ old('title', $news->title) }}">
                                     @error('title')
                                         <div class="invalid-feedback">
                                             {{ $message }}
