@@ -288,7 +288,7 @@ Route::middleware(['auth', 'role:respondent', 'verified'])->group(function () {
 // shareable link
 Route::get('survey/{code}', [RespondenSurveyController::class, 'sharedSurvey'])
     ->name('survey.share')
-    ->middleware(['auth', 'role:respondent', 'verified', 'verify_profile']);
+    ->middleware(['auth', 'verified', 'verify_profile']);
 
 //editprofile
 Route::middleware(['auth', 'verified'])->group(function () {

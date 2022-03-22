@@ -61,6 +61,15 @@
                                 @enderror
                             </div>
                             <div class="mb-3">
+                                <label for="category" class="form-label">Kategori</label>
+                                <input type="text" class="form-control border-r-besar border-0 bg-light py-2  @error('category') is-invalid @enderror" id="category" name="category" value="{{ old('category', $news->category) }}" required>
+                                @error('category')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
                                 <label for="foto" class="form-label border-r-besar">Upload Foto</label>
                                 <input type="file" class="form-control" id="foto" name="img">
                             </div>

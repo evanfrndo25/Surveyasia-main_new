@@ -67,12 +67,12 @@ class NewsController extends Controller
         $news = $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'img' => 'image|file|max:1024'
+            'img' => 'image|file|max:1024',
+            'category' => 'required'
         ]);
         // status :
         // 0 = draft, 1 = publish, 
-        $news['status'] = '0';
-        $news['category'] = '1';
+        $news['status'] = '1';
         $news['author'] = '1';
         $news['slug'] = Str::slug(request('title'));
         // dd($news);
@@ -125,11 +125,11 @@ class NewsController extends Controller
             'title' => 'required',
             'description' => 'required',
             'status' => 'required',
-            'img' => 'image|file|max:1024'
+            'img' => 'image|file|max:1024',
+            'category' => 'required'
         ]);
         // status :
         // 0 = draft, 1 = publish, 2 = draft
-        $news['category'] = '1';
         $news['author'] = '1';
         if ($request->file('img')) {
             if ($request->oldImg) {

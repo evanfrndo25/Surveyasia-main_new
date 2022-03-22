@@ -29,7 +29,7 @@
                                 @csrf
                                 <div class="mb-3">
                                     <label for="judul" class="form-label">Title</label>
-                                    <input type="text" class="form-control  @error('title') is-invalid @enderror" id="judul" name="title">
+                                    <input type="text" class="form-control  @error('title') is-invalid @enderror" id="judul" name="title" placeholder="Masukkan judul berita..." required>
                                     @error('title')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -45,6 +45,15 @@
                                     <textarea class="my-editor form-control @error('description') is-invalid @enderror" id="my-editor" rows="10"
                                         name="description"></textarea>
                                     @error('description')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label for="category" class="form-label">Kategori</label>
+                                    <input type="text" class="form-control  @error('category') is-invalid @enderror" id="judul" name="category" placeholder="Example: Bussiness, Study, Hoby..." required>
+                                    @error('category')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
