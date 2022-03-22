@@ -5,6 +5,7 @@
     body {
         background-color: #F7FAFC;
     }
+
 </style>
 
 <link rel="stylesheet" href="{{ asset('css/admin-dashboard.css') }}">
@@ -22,11 +23,14 @@
 
             <div class="container mt-2" style="height: 650px;">
                 <div class="row bg-white px-4 py-5">
-                    <div class="col">
-                        <img width="200" src="{{ url('storage/'.$news->img) }}">
-                        <h5>{{ $news->title }}</h5>
-                        <p>{!! $news->description !!}</p>
-                        
+                    <div class="col-6">
+                        <div class="card p-4">
+                            <h5 class="px-3">{{ $news->title }}</h5>
+                            <img src="{{ url('storage/'.$news->img) }}">
+                            <div class="card-body">
+                                <p>{!! $news->description !!}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

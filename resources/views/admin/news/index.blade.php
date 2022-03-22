@@ -23,28 +23,34 @@
                     {{ session()->get('status') }}
                 </div>
                 @endif
-                <div class="position-relative input-group align-items-center" style="width: 15%">
-                    <input type="text" class="form-control rounded-pill py-2 text-center"
-                        placeholder="Search everything" aria-label="search" aria-describedby="basic-addon1"
-                        style="font-size: 12px">
-                    <a href="#">
-                        <i
-                            class="position-absolute top-50 start-0 translate-middle-y bi bi-search p-2 ms-1 text-secondary"></i>
-                    </a>
+                <div class="row py-4">
+                    <div class="col">
+                        <div class=" input-group align-items-center w-50" >
+                            <input type="text" class="form-control rounded-pill py-2 text-center"
+                                placeholder="Search everything" aria-label="search" aria-describedby="basic-addon1"
+                                style="font-size: 12px">
+                            <a href="#">
+                                <i
+                                    class="position-absolute top-50 start-0 translate-middle-y bi bi-search p-2 ms-1 text-secondary"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col">
+                    <div class="text-end">
+                            <a href="{{ route('admin.news.create') }}" class="btn bg-special-blue text-white">
+                                <i class="bi bi-vector-pen"></i>
+                                Add News
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
                 <table class="table align-middle" id="table-news">
                     <thead>
                         <tr class="fw-bold">
-                            <td scope="col" class="w-50">Title</td>
-                            <td scope="col">Status</td>
-                            <td scope="col">Category</td>
-                            <td scope="col" class="text-end ms-5">
-                                <a href="{{ route('admin.news.create') }}" class="btn bg-special-blue text-white">
-                                    <i class="bi bi-vector-pen"></i>
-                                    Add News
-                                </a>
-                            </td>
+                            <td scope="col" class="w-50 text-center">Title</td>
+                            <td scope="col" class="text-center">Status</td>
+                            <td scope="col" class="text-center">Category</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -53,45 +59,45 @@
                         @foreach ($news as $item)
                         <tr style="background-color: #F7FAFC;">
                             <td scope="col" class="py-4">
-                                <h6 class="fw-bold" style="color: #2A4365">  {{ $item->title }}</h6>
+                                <h6 class="fw-bold" style="color: #2A4365"> {{ $item->title }}</h6>
                                 <span class="d-block text-secondary" style="font-size: 13px">Posted
                                     {{ $item->created_at->diffForHumans() }}</span>
                             </td>
-                            <td scope="col">
+                            <td scope="col" class="text-center">
                                 @if ($item->status == 0)
-                                <div class="text-published rounded-pill text-center ">
-                                    Drafted
+                                <div class="bg-danger text-white rounded-pill text-center ">
+                                    Tidak di publis
                                 </div>
                                 @else
-                                <div class="text-published rounded-pill text-center ">
-                                    Published
+                                <div class="bg-success text-white rounded-pill text-center ">
+                                    Publis
                                 </div>
                                 @endif
                             </td>
-                            <td scope="col">
+                            <td scope="col" class="text-center">
                                 {{-- <span class="fw-bold">120</span> --}}
-                                Tech
+                                Teknologi
                                 {{-- <i class="bi bi-arrow-up-circle text-success"></i> --}}
 
                             </td>
-                            <td scope="col" class="text-end pe-3">
+                            <td scope="col" class="text-center" class="text-end pe-3">
                                 <a href="#" role="button" id="dropdown-manage-news" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     <i class="bi bi-three-dots fs-3 text-secondary"></i>
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="dropdown-manage-news">
-                                    <li><a class="dropdown-item"
-                                            href="{{ route('admin.news.show',$item->slug) }}">Show</a></li>
+                                <ul class="dropdown-menu bg-dark" aria-labelledby="dropdown-manage-news">
+                                    <li><a class="dropdown-item text-white"
+                                            href="{{ route('admin.news.show',$item->slug) }}"></i><i class="bi bi-zoom-in pe-3"></i>Pratinjau</a></li>
                                     <li>
-                                    <li><a class="dropdown-item" href="{{ route('admin.news.edit',$item->slug) }}">Edit
+                                    <li><a class="dropdown-item text-white" href="{{ route('admin.news.edit',$item->slug) }}"><i class="bi bi-gear-fill pe-3"></i>Edit
                                         </a></li>
                                     <li>
                                         <form action="{{ route('admin.news.destroy', $item->id) }}" method="post">
                                             @method('delete')
                                             @csrf
                                             <input type="hidden" name="img" value="{{ $item->img }}">
-                                            <button type="submit" class="dropdown-item"
-                                                onclick="return confirm('Apakah kamu yakin ingin menghapus?')">Delete</button>
+                                            <button type="submit" class="dropdown-item text-white"
+                                                onclick="return confirm('Apakah kamu yakin ingin menghapus?')"><i class="bi bi-trash pe-3"></i>Delete</button>
                                         </form>
                                     </li>
                                 </ul>
