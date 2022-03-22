@@ -25,7 +25,7 @@
                 @endif
                 <div class="row py-4">
                     <div class="col">
-                        <div class=" input-group align-items-center w-50" >
+                        <div class=" input-group align-items-center w-50">
                             <input type="text" class="form-control rounded-pill py-2 text-center"
                                 placeholder="Search everything" aria-label="search" aria-describedby="basic-addon1"
                                 style="font-size: 12px">
@@ -36,7 +36,7 @@
                         </div>
                     </div>
                     <div class="col">
-                    <div class="text-end">
+                        <div class="text-end">
                             <a href="{{ route('admin.news.create') }}" class="btn bg-special-blue text-white">
                                 <i class="bi bi-vector-pen"></i>
                                 Add News
@@ -65,11 +65,11 @@
                             </td>
                             <td scope="col" class="text-center">
                                 @if ($item->status == 0)
-                                <div class="bg-danger text-white rounded-pill text-center ">
+                                <div class="bg-danger text-white rounded-pill py-1 text-center ">
                                     Tidak di publis
                                 </div>
                                 @else
-                                <div class="bg-success text-white rounded-pill text-center ">
+                                <div class="bg-success text-white rounded-pill py-1 text-center ">
                                     Publis
                                 </div>
                                 @endif
@@ -87,22 +87,69 @@
                                 </a>
                                 <ul class="dropdown-menu bg-dark" aria-labelledby="dropdown-manage-news">
                                     <li><a class="dropdown-item text-white"
-                                            href="{{ route('admin.news.show',$item->slug) }}"></i><i class="bi bi-zoom-in pe-3"></i>Pratinjau</a></li>
+                                            href="{{ route('admin.news.show',$item->slug) }}"></i><i
+                                                class="bi bi-zoom-in pe-3"></i>Pratinjau</a></li>
                                     <li>
-                                    <li><a class="dropdown-item text-white" href="{{ route('admin.news.edit',$item->slug) }}"><i class="bi bi-gear-fill pe-3"></i>Edit
+                                    <li><a class="dropdown-item text-white"
+                                            href="{{ route('admin.news.edit',$item->slug) }}"><i
+                                                class="bi bi-gear-fill pe-3"></i>Edit
                                         </a></li>
                                     <li>
+                                        <button type="button" class="btn dropdown-item text-white" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal">
+                                            <i class="bi bi-trash pe-2"></i>
+                                            Hapus
+                                        </button>
+                                    </li>
+                                    <!-- <li>
                                         <form action="{{ route('admin.news.destroy', $item->id) }}" method="post">
                                             @method('delete')
                                             @csrf
                                             <input type="hidden" name="img" value="{{ $item->img }}">
                                             <button type="submit" class="dropdown-item text-white"
-                                                onclick="return confirm('Apakah kamu yakin ingin menghapus?')"><i class="bi bi-trash pe-3"></i>Delete</button>
+                                                onclick="return confirm('Apakah kamu yakin ingin menghapus?')"><i
+                                                    class="bi bi-trash pe-3"></i>Delete</button>
                                         </form>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </td>
                         </tr>
+
+                        <!-- Modal delete -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="btn ms-auto">
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <img src="{{ asset('assets/img/delete.png') }}" class="img-fluid" alt="">
+                                        <h2 class="text-center">Delete Survey?</h2>
+                                        <p class="px-5 small text-secondary text-center">Apakah kamu yakin ingin
+                                            menghapus <span class="fw-bold">(nama yang dihapus)?</span> , Jika anda
+                                            menghapus chart, maka chart pada admin akan terhapus secara <span
+                                                class="fw-bold">permanen</span> .</p>
+                                    </div>
+                                    <div class="row px-5 pb-5">
+                                        <div class="col d-grid gap-2">
+                                            <form action="{{ route('admin.news.destroy', $item->id) }}" method="post">
+                                                @method('delete')
+                                                @csrf
+                                                <input type="hidden" name="img" value="{{ $item->img }}">
+                                                <button type="submit" class="dropdown-item text-white"><i
+                                                        class="bi bi-trash pe-3"></i>Delete</button>
+                                            </form>
+                                        </div>
+                                        <div class="col d-grid gap-2">
+                                            <button type="button" class="btn bg-special-blue text-white">Tidak</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         @endforeach
                     </tbody>
                 </table>
