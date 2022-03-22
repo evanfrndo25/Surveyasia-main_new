@@ -58,8 +58,15 @@
                                     {{ $item->created_at->diffForHumans() }}</span>
                             </td>
                             <td scope="col">
+                                @if ($item->status == 0)
                                 <div class="text-published rounded-pill text-center ">
-                                    Published</div>
+                                    Drafted
+                                </div>
+                                @else
+                                <div class="text-published rounded-pill text-center ">
+                                    Published
+                                </div>
+                                @endif
                             </td>
                             <td scope="col">
                                 {{-- <span class="fw-bold">120</span> --}}
