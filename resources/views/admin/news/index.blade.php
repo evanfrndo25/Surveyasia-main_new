@@ -75,10 +75,7 @@
                                 @endif
                             </td>
                             <td scope="col" class="text-center">
-                                {{-- <span class="fw-bold">120</span> --}}
-                                Teknologi
-                                {{-- <i class="bi bi-arrow-up-circle text-success"></i> --}}
-
+                                {{ $item->category }}
                             </td>
                             <td scope="col" class="text-center" class="text-end pe-3">
                                 <a href="#" role="button" id="dropdown-manage-news" data-bs-toggle="dropdown"
