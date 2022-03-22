@@ -92,8 +92,8 @@
                                                 class="bi bi-gear-fill pe-3"></i>Edit
                                         </a></li>
                                     <li>
-                                        <button type="button" class="btn dropdown-item text-white" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal">
+                                        <button type="button" class="btn dropdown-item text-white"
+                                            data-bs-toggle="modal" data-bs-target="#exampleModal">
                                             <i class="bi bi-trash pe-2"></i>
                                             Hapus
                                         </button>
@@ -130,19 +130,17 @@
                                                 class="fw-bold">permanen</span> .</p>
                                     </div>
                                     <div class="row px-5 pb-5">
-                                        <div class="col d-grid gap-2">
-                                            <form action="{{ route('admin.news.destroy', $item->id) }}" method="post">
-                                                @method('delete')
-                                                @csrf
-                                                <input type="hidden" name="img" value="{{ $item->img }}">
-                                                <button type="submit" class="dropdown-item text-white"><i
-                                                        class="bi bi-trash pe-3"></i>Delete</button>
-                                            </form>
-                                        </div>
+                                        <form action="{{ route('admin.news.destroy', $item->id) }}" method="post">
+                                            @method('delete')
+                                            @csrf
+                                            <input type="hidden" name="img" value="{{ $item->img }}">
+                                            <div class="col d-grid gap-2">
+                                                <button type="submit" class="btn btn-danger">Iya</button>
+                                            </div>
+                                        </form>
                                         <div class="col d-grid gap-2">
                                             <button type="button" class="btn bg-special-blue text-white">Tidak</button>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
