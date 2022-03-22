@@ -57,15 +57,16 @@
                             <td>{{ $item->status }}</td>
                             <td>{{ $item->created_at->diffForHumans() }}</td>
                             <td>
-                                <button type="button" class="btn bg-special-blue text-white">
+                                <a 
+                                    href="{{ $item->shareable_link }}" 
+                                    class="btn bg-special-blue text-white"
+                                >
                                     <i class="bi bi-vector-pen"></i>
-                                    Show</button>
-                                <!-- <button type="button" class="btn bg-danger text-white">
-                                <i class="bi bi-trash"></i>
-                                    Delete</button> -->
+                                    Show
+                                </a>
 
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">
+                                    data-bs-target="#deleteModal{{ $item->id }}">
                                     <i class="bi bi-trash"></i>
                                     Hapus
                                 </button>
@@ -79,7 +80,7 @@
                         </tr>
                         
                         <!-- Modal delete -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        <div class="modal fade" id="deleteModal{{ $item->id }}" tabindex="-1" aria-labelledby="deleteModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -90,14 +91,14 @@
                                     <div class="modal-body">
                                         <img src="{{ asset('assets/img/delete.png') }}" class="img-fluid" alt="">
                                         <h2 class="text-center">Delete Survey?</h2>
-                                        <p class="px-5 small text-secondary text-center">Apakah kamu yakin ingin menghapus <span class="fw-bold">(nama yang dihapus)?</span> , Jika anda menghapus chart, maka chart pada admin akan terhapus secara <span class="fw-bold">permanen</span> .</p>
+                                        <p class="px-5 small text-secondary text-center">Apakah kamu yakin ingin menghapus survey <span class="fw-bold">{{ $item->title }}</span>?<br>Jika anda menghapus survey, maka survey pada responden dan researcher akan terhapus secara <span class="fw-bold">permanen</span> .</p>
                                     </div>
                                     <div class="row px-5 pb-5">
                                         <div class="col d-grid gap-2">
                                             <a href="{{ route('admin.survey.destroy', $item->id) }}" class="btn btn-danger">Iya</a>
                                         </div>
                                         <div class="col d-grid gap-2">
-                                            <button type="button" class="btn bg-special-blue text-white">Tidak</button>
+                                            <button type="button" class="btn bg-special-blue text-white" data-bs-dismiss="modal">Tidak</button>
                                         </div>
 
                                     </div>
