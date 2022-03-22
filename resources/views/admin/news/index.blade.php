@@ -93,7 +93,7 @@
                                         </a></li>
                                     <li>
                                         <button type="button" class="btn dropdown-item text-white"
-                                            data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            data-bs-toggle="modal" data-bs-target="#deleteModal{{ $item->id }}">
                                             <i class="bi bi-trash pe-2"></i>
                                             Hapus
                                         </button>
@@ -113,7 +113,7 @@
                         </tr>
 
                         <!-- Modal delete -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        <div class="modal fade" id="deleteModal{{ $item->id }}" tabindex="-1" aria-labelledby="deleteModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -125,8 +125,8 @@
                                         <img src="{{ asset('assets/img/delete.png') }}" class="img-fluid" alt="">
                                         <h2 class="text-center">Delete Survey?</h2>
                                         <p class="px-5 small text-secondary text-center">Apakah kamu yakin ingin
-                                            menghapus <span class="fw-bold">(nama yang dihapus)?</span> , Jika anda
-                                            menghapus chart, maka chart pada admin akan terhapus secara <span
+                                            menghapus survey <span class="fw-bold">{{ $item->title }}</span> ? Jika anda
+                                            menghapus survey, maka survey pada researcher dan respondent akan terhapus secara <span
                                                 class="fw-bold">permanen</span> .</p>
                                     </div>
                                     <div class="row px-5 pb-5">
@@ -139,7 +139,7 @@
                                             </div>
                                         </form>
                                         <div class="col d-grid gap-2">
-                                            <button type="button" class="btn bg-special-blue text-white">Tidak</button>
+                                            <button type="button" class="btn bg-special-blue text-white" data-bs-dismiss="modal">Tidak</button>
                                         </div>
                                     </div>
                                 </div>
