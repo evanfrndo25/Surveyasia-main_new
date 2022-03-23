@@ -58,15 +58,6 @@ $(function () {
     });
 });
 
-$(function () {
-    $(".breadcrumb-item").on("click", function (e) {
-        $(".breadcrumb-item").removeClass(
-            "link-default text-decoration-underline"
-        );
-        $(this).addClass("link-default text-decoration-underline");
-    });
-});
-
 function valueSlider() {
     var slider = document.getElementById("totalRespondent");
     var output = document.getElementById("valueSlider");

@@ -1,6 +1,6 @@
 @extends('layouts.footer')
 @extends('layouts.base')
-@extends('researcher.layouts.breadcrumb')
+{{-- @extends('researcher.layouts.breadcrumb') --}}
 @extends('researcher.layouts.navbar2')
 
 <link rel="stylesheet" href="{{ asset('css/components/spinner.css') }}">
@@ -8,20 +8,15 @@
 <link rel="stylesheet" href="{{ asset('css/components/scale.css') }}">
 
 @section('content')
+    @include('researcher.layouts.breadcrumb')
     @include('researcher.modals.custom-components-modal')
     @include('researcher.modals.edit-element-modal')
     @include('researcher.modals.question-bank-modal')
     @include('layouts.alerts.delete-question')
     @include('researcher.layouts.sidebar')
+    
 
-    <script>
-        $(document).ready(function () {
-            $('ol.breadcrumb > li').click(function (e) {
-                $('ol.breadcrumb > li').removeClass('active');
-                $(this).addClass('active');
-            });
-        });
-    </script>
+    
 
     <script>
         var url = "{!! $url !!}";

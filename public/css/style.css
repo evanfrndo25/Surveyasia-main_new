@@ -5,14 +5,13 @@ body {
 
 /* Breadcrumb */
 .breadcrumb > .active > a {
-    color: #fff !important;
-    transition: background-color 0.5s, color 0.5s;
+    font-weight: bold;
+    background-color: #000;
 }
 
 .breadcrumb > .active {
-    color: #fff !important;
-    background-color: var(--color-primary);
-    transition: background-color 0.5s, color 0.5s;
+    font-weight: bold;
+    background-color: #000;
 }
 /* Breadcurmb */
 
