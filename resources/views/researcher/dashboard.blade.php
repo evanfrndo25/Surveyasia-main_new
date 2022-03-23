@@ -123,8 +123,9 @@
                 <div class="col d-flex justify-content-center align-items-center">
                     <div class="row text-center">
                         <div class="col">
-                            <p class="fs-14px">Hapus</p>
-                            <button type="button" class="btn link-dark" data-bs-toggle="modal" data-bs-target="#deleteSurveyModal"><i class="fa fa-thin fa-trash fs-4"></i>
+                            <p class="fs-14px mb-1">Hapus</p>
+                            <button type="button" class="btn link-dark" data-bs-toggle="modal" data-bs-target="#deleteSurveyModal">
+                                <i class="fal fa-trash fs-4 pt-1"></i>
                             </button>
                             {{-- <a href="{{ route('researcher.surveys.delete', $survey->id) }}" class="link-dark">
                                 <i class="fa fa-thin fa-trash fs-4"></i>

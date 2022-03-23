@@ -7,12 +7,27 @@ body {
     font-family: "Inter", sans-serif;
 }
 
+.active {
+    font-weight: bold;
+}
+
+.breadcrumb-item.s-active {
+    font-weight: bold;
+}
+.breadcrumb-item.active {
+    font-weight: bold;
+}
+
 .fs-12px {
     font-size: 12px;
 }
 
 .fs-14px {
     font-size: 14px;
+}
+
+.fs-36px {
+    font-size: 36px;
 }
 
 .fw-semibold {
@@ -372,7 +387,6 @@ body {
 }
 /* end progress bar circle */
 
-
 /* qr code */
 
 @media (max-width: 767.98px) {
@@ -380,5 +394,3 @@ body {
         margin-top: 50px;
     }
 }
-
-

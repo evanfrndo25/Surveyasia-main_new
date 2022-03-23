@@ -184,27 +184,27 @@ class SurveyController extends Controller
                     ],
                 ],
             ],
-            [
-                'library_name' => 'ChartJS',
-                'chart_list' =>  [
-                    [
-                        'name' => 'Bar Chart',
-                        'code' => 'cjs_bar'
-                    ],
-                    [
-                        'name' => 'Line Chart',
-                        'code' => 'cjs_line'
-                    ],
-                    [
-                        'name' => 'Pie Chart',
-                        'code' => 'cjs_pie'
-                    ],
-                    [
-                        'name' => 'Doughnut Chart',
-                        'code' => 'cjs_doughnut'
-                    ],
-                ],
-            ],
+            // [
+            //     'library_name' => 'ChartJS',
+            //     'chart_list' =>  [
+            //         [
+            //             'name' => 'Bar Chart',
+            //             'code' => 'cjs_bar'
+            //         ],
+            //         [
+            //             'name' => 'Line Chart',
+            //             'code' => 'cjs_line'
+            //         ],
+            //         [
+            //             'name' => 'Pie Chart',
+            //             'code' => 'cjs_pie'
+            //         ],
+            //         [
+            //             'name' => 'Doughnut Chart',
+            //             'code' => 'cjs_doughnut'
+            //         ],
+            //     ],
+            // ],
         ];
 
         $data = [

@@ -26,6 +26,8 @@
     <link rel='icon' type='image/png' href='/favicon-surveyasia-32.png' />
     <link rel='shortcut icon' type='image/x-icon' href='/favicon-surveyasia-32.ico' />
 
+    {{-- Font awesome Pro v5. --}}
+    <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet" />
 
     {{-- Font Awesome --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous">
