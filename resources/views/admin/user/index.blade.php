@@ -135,7 +135,7 @@
                                                 </li>
                                                 <li>
                                                     <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                                        data-bs-target="#exampleModal">
+                                                        data-bs-target="#deleteModal{{ $user->id }}">
                                                         Hapus
                                                     </button>
                                                     <!-- <form action="{{ route('admin.users.destroy', $user->id) }}"
@@ -150,7 +150,6 @@
                                         </td>
                                     </tr>
                                     @endforeach
-
                                 </tbody>
                             </table>
                         </div>
@@ -162,31 +161,33 @@
     </div>
 </div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+@foreach ($users as $usr)
+<div class="modal fade" id="deleteModal{{ $usr->id }}" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="btn ms-auto">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <img src="{{ asset('assets/img/delete.png') }}" class="img-fluid" alt="">
-                <h2 class="text-center">Delete Chart?</h2>
-                <p class="px-5 small text-secondary text-center">(Nama Chart) Lorem, ipsum dolor
-                    sit amet consectetur adipisicing elit. Facere expedita, non iure natus optio
-                    odio totam? Corrupti fugit placeat aperiam error numquam illo optio voluptas
-                    facere nulla ut rem, impedit soluta, aut nam architecto minus accusamus
-                    atque.</p>
-            </div>
-            <div class="row p-5">
-                <div class="col d-grid gap-2">
-                    <button type="submit" class="btn btn-danger">Delete</button>
+        <form action="{{ route('admin.users.destroy', $usr->id) }}" method="POST">
+        @method('delete')
+        @csrf
+            <div class="modal-content">
+                <div class="btn ms-auto">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="col d-grid gap-2">
-                    <button type="button" class="btn bg-special-blue text-white">Tidak</button>
+                <div class="modal-body">
+                    <img src="{{ asset('assets/img/delete.png') }}" class="img-fluid" alt="">
+                    <h2 class="text-center">Hapus Pengguna?</h2>
+                    <p class="px-5 small text-secondary text-center">Apakah kamu yakin ingin menghapus user <span class="fw-bold">{{ $usr->nama_lengkap }}</span>? Jika anda menghapus user, maka user akan terhapus secara <span class="fw-bold">permanen</span> .</p>
                 </div>
-
+                <div class="row px-5 pb-5">
+                    <div class="col d-grid gap-2">
+                        <button type="submit" class="btn btn-danger">Hapus</button>
+                    </div>
+                    <div class="col d-grid gap-2">
+                        <button type="button" class="btn bg-special-blue text-white" data-bs-dismiss="modal">Tidak</button>
+                    </div>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
 </div>
+@endforeach
+
 @endsection
