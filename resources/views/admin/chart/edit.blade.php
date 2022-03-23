@@ -22,7 +22,7 @@
                 @endif
                 <h3 class="text-center py-3">Edit Chart</h3>
                 <div class="row justify-content-center text-center">
-                    <div class="col-6 mb-4">
+                    <div class="col-6 mb-4" id="chart-target">
                         <canvas class="mx-3" id="chartPreview" style="max-height: 250px;"></canvas>
                     </div>
                 </div>
@@ -50,8 +50,12 @@
                             </div>
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Kategori Chart</label>
-                                <select class="form-select rounded-pill border-0 bg-light px-3" id="chartCategory"
-                                    aria-label="Default select example" name="type">
+                                <select 
+                                    class="form-select rounded-pill border-0 bg-light px-3" 
+                                    id="chartCategory"
+                                    aria-label="Default select example" 
+                                    name="type"
+                                >
                                     @foreach ($typeChart as $tchart)
                                     @if ($tchart->type == $chart->type)
                                     <option selected value="{{ $chart->type }}">{{ $chart->type }}</option>
