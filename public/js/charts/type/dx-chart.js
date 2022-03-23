@@ -251,7 +251,7 @@ export function barChartConfig({
         legend: legend == null ? baseLegend : legend,
         title: title == null ? baseTitle : title,
         export: {
-            enabled: true,
+            enabled: false,
         },
         tooltip: tooltip == null ? baseTooltip : tooltip,
         loadingIndicator: {
@@ -347,7 +347,7 @@ export function lineChartConfig({
         legend: legend == null ? baseLegend : legend,
         title: title == null ? baseTitle : title,
         export: {
-            enabled: true,
+            enabled: false,
         },
         tooltip: tooltip == null ? baseTooltip : tooltip,
         loadingIndicator: {
@@ -428,7 +428,7 @@ export function doughnutChartConfig({
         legend: legend == null ? baseLegend : legend,
         title: title == null ? baseTitle : title,
         export: {
-            enabled: true,
+            enabled: false,
         },
         tooltip: tooltip == null ? baseTooltip : tooltip,
         loadingIndicator: {
@@ -522,7 +522,7 @@ export function pieChartConfig({
         legend: legend == null ? baseLegend : legend,
         title: baseTitle,
         export: {
-            enabled: true,
+            enabled: false,
         },
         tooltip: tooltip == null ? baseTooltip : tooltip,
         loadingIndicator: {

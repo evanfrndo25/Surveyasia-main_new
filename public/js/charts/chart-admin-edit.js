@@ -20,8 +20,9 @@ function getChart() {
 
 import { randomInt, randomRgb } from "./chart-utils.js";
 
-$(function () {
-    const config = JSON.parse(data.default_configuration);
+export function running() {
+    let type = document.getElementById('chartCategory').value;
+    let config = JSON.parse(data.default_configuration);
     config.type = type;
     config.data = generateRandomData(7, type);
     config.options = {
@@ -33,10 +34,21 @@ $(function () {
         },
     };
     
-    const ctx = $("#chartPreview");
+    let ctx = $("#chartPreview");
 
-    const chart = new Chart(ctx, config);
+    var chart = new Chart(ctx, config);
+};
+
+$(function () {
+    running();
+})
+
+document.querySelector('#chartCategory').addEventListener('change', () => {
+    $("#chartPreview").remove();
+    $("#chart-target").append('<canvas class="mx-3" id="chartPreview" style="max-height: 250px;"></canvas>');
+    running();
 });
+
 
 export function generateRandomData(length, type) {
     var labels = [];

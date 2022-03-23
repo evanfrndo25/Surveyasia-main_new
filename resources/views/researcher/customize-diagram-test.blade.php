@@ -62,7 +62,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="d-flex top-0 end-0 justify-content-end" id="exportsContainer{{ $question->id }}">
-                                            <div class="dropdown">
+                                            {{-- <div class="dropdown">
                                                 <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="exportsContainerBtn"
                                                     data-bs-toggle="dropdown" aria-expanded="false">
                                                     Export
@@ -75,7 +75,7 @@
                                                     <li><button class="dropdown-item fs-6 fw-light" id="asCsv">CSV</button></li>
                                                     <li><button class="dropdown-item fs-6 fw-light" id="asExc">EXCEL</button></li>
                                                 </ul>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                         <div class="list-chart" id="chart{{ $question->id }}" style="height: 440px; padding-top: 30px;"></div>
                                     </div>

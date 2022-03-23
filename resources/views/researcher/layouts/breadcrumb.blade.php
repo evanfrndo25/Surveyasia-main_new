@@ -1,3 +1,4 @@
+@inject('request', 'Illuminate\Http\Request')
 {{-- Breadcrumb --}}
 <section class="breadcrumb-contact mt-3 ms-5" id="breadcrumb-contact">
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">

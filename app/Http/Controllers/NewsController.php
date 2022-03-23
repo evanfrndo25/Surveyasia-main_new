@@ -12,7 +12,7 @@ class NewsController extends Controller
     {
         $videoList = $this->_videoList();
         $data = [
-            'newsList' => News::latest()->paginate(6),
+            'newsList' => News::where('status', 1)->latest()->paginate(6),
         ];
 
         return view('news.index', $data, compact('videoList'));
