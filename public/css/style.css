@@ -3,6 +3,19 @@ body {
     overflow-x: hidden;
 }
 
+/* Breadcrumb */
+.breadcrumb > .active > a {
+    color: #fff !important;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.breadcrumb > .active {
+    color: #fff !important;
+    background-color: var(--color-primary);
+    transition: background-color 0.5s, color 0.5s;
+}
+/* Breadcurmb */
+
 .ff-inter {
     font-family: "Inter", sans-serif;
 }
@@ -372,7 +385,6 @@ body {
 }
 /* end progress bar circle */
 
-
 /* qr code */
 
 @media (max-width: 767.98px) {
@@ -380,5 +392,3 @@ body {
         margin-top: 50px;
     }
 }
-
-

@@ -15,6 +15,15 @@
     @include('researcher.layouts.sidebar')
 
     <script>
+        $(document).ready(function () {
+            $('ol.breadcrumb > li').click(function (e) {
+                $('ol.breadcrumb > li').removeClass('active');
+                $(this).addClass('active');
+            });
+        });
+    </script>
+
+    <script>
         var url = "{!! $url !!}";
     </script>
     <!-- Latest Sortable -->
