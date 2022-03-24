@@ -22,6 +22,7 @@ export const textBoxComponent = {
         }, */
     },
 
+    
     media: {
         /* mediaType: "image",
         source: "https://images.unsplash.com/photo-1638913662252-70efce1e60a7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=550&q=80",

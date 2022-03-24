@@ -26,6 +26,7 @@ export function CreateQuestion(config) {
         openEditModal(question);
     };
 
+
     if (config.questionType == "textBox") {
         question = new TextBox(config);
     } else if (config.questionType == "multiOptions") {

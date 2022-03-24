@@ -8,6 +8,7 @@ export class TextBox extends Component {
         this.blueprint = config;
     }
 
+    
     content() {
         const wrapper = document.createElement("div");
         wrapper.className += "mb-3";

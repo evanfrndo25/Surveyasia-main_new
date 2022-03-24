@@ -9,6 +9,8 @@ export class UploadFile extends Component {
         this.blueprint = config;
     }
 
+    
+
     content() {
         const wrapper = document.createElement("div");
         wrapper.className += "mb-3";
@@ -67,6 +69,7 @@ export class UploadFile extends Component {
         return wrapper;
     }
 
+    
     _buildInvalidContainer() {
         const container = document.createElement("div");
         container.id = "validationMessageContainer";

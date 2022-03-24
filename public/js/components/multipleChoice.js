@@ -8,6 +8,8 @@ export class MultipleChoice extends Component {
         this.blueprint = config;
     }
 
+    
+    
 
 
     minimum

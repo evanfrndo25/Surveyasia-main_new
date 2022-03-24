@@ -1,5 +1,6 @@
 <div class="card">
     <div class="card-body">
+        
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" id="chartStyeTab_{{ $question->id }}" role="tablist">
             <li class="nav-item" role="presentation">

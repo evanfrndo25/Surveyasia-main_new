@@ -73,7 +73,7 @@ function _initFields() {
     });
     btnSubmit.on("click", (event) => {
         event.preventDefault();
-        transformToLoadingButton(btnSubmit.get(0));
+        transformToLoadingButton(btnSubmit.get(1));
 
         // submit when all files are processed
         _saveForm().then(() => {

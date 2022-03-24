@@ -6,6 +6,7 @@ import uniqid, {
 } from "./util.js";
 import { configuration } from "./configuration.js";
 
+
 export class Component extends HTMLDivElement {
     constructor(config) {
         super();
@@ -17,6 +18,8 @@ export class Component extends HTMLDivElement {
             this._buildContainer();
         }
     }
+
+    
 
     _addComponent(parent, component) {
         parent.appendChild(component);
@@ -235,9 +238,9 @@ export class Component extends HTMLDivElement {
     _addButton() {
         let option = new Object();
         option.id = "addQuestionButton";
-        option.label = "Add ";
+        option.label = "Tambahkan Pertanyaan ";
         option.target = this.blueprint.componentId;
-        option.className = "btn btn-default text-white m-1";
+        option.className = "btn btn-warning text-white m-1";
         option.icon = this._buildIcon("fas fa-plus-square");
         return this._buildButton(option);
     }
@@ -246,7 +249,7 @@ export class Component extends HTMLDivElement {
         let option = new Object();
         option.id = "deleteQuestionButton";
         option.label = "Remove ";
-        option.className = "btn btn-orange text-white m-1";
+        option.className = "btn btn-danger text-white m-1";
         option.icon = this._buildIcon("fas fa-minus-square");
         option.target = this.blueprint.componentId;
         option.onclick = this.onNegativeButtonClickListener();
@@ -257,7 +260,7 @@ export class Component extends HTMLDivElement {
         let option = new Object();
         option.id = "editQuestionButton";
         option.label = "Edit ";
-        option.className = "btn btn-secondary m-1";
+        option.className = "btn btn-primary m-1";
         option.icon = this._buildIcon("fas fa-pen-square");
         option.target = this.blueprint.componentId;
         return this._buildButton(option);

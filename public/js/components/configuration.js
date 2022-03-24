@@ -8,6 +8,9 @@ export let configuration = {
         package: "Basic",
     },
 
+    
+    
+
     // used to store created question components
     components: [],
 
