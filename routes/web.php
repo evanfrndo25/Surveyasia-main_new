@@ -126,7 +126,7 @@ Route::middleware(['auth', 'role:researcher', 'verified'])->group(function () {
                     ])->name('store');
 
                     //delete survey
-                    Route::get('tasks/{id}', [SurveyController::class, 'destroy'])->name('delete');
+                    Route::delete('tasks/{id}', [SurveyController::class, 'destroy'])->name('delete');
 
 
                     //create questions
@@ -369,7 +369,7 @@ Route::middleware(['is_admin', 'role:admin'])->group(function () {
         Route::resource('questionbank', QuestionBankTemplateController::class);
         Route::post('/{questionbank}/questions', [QuestionBankTemplateController::class, 'storeQuestions'])->name('storeQuestions');
         // Route::resource('chart', ChartController::class);
-        Route::prefix('chart')->name('chart.')->group(function() {
+        Route::prefix('chart')->name('chart.')->group(function () {
             Route::get('/', [ChartController::class, 'index'])->name('index');
             Route::post('/', [ChartController::class, 'store'])->name('store');
             Route::get('/create', [ChartController::class, 'create'])->name('create');
@@ -380,7 +380,7 @@ Route::middleware(['is_admin', 'role:admin'])->group(function () {
         });
 
         Route::post('/news/search', [NewsController::class, 'search'])->name('news.search');
-        
+
         // survey Admin
         // Route::resource('survey', SurveyInAdmin::class);
         Route::get('survey', [SurveyInAdmin::class, 'index'])->name('survey.index');
