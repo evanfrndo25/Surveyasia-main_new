@@ -32,7 +32,6 @@
         <div class="card">
         
             
-            
             <div class="container mt-4">
             <form>
                 <label for="" style="font-size:18px; color: #00000099;">Deskripsi</label>
@@ -68,6 +67,7 @@
     <input type="hidden" name="survey_id" value="{{ $survey->id }}">
     <div class="mt-3" id="questions_container">
     </div>
+
     <div class="row">
         <div class="col-auto mx-auto border text-center" style="width: 50%; margin-top: 20px; font-size: 20px; padding:  20px;">
             <div id="submitBtn" class="disabled fade">
@@ -80,6 +80,51 @@
 
 </form>
 {{-- End Question Form --}}
+
+{{-- Page footer nomer Halaman --}}
+    <div class="row">
+        <div class="col-md-7">
+            <div class="row align-items-center">
+                <div class="col-auto">
+                    <p class="fs-14px fw-semibold mb-0">Tampilkan :</p>
+                </div>
+                <div class="col-auto">
+                    <select class="form-select" aria-label="Default select example">
+                        {{-- <option selected>Open this</option> --}}
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+                <div class="col-auto">
+                    <p class="fs-14px text-muted fw-semibold mb-0">Hasil : 1-3 dari 10</p>
+                    
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-outline-secondary text-muted"><i class="fas fa-angle-left"></i></button>
+                    <button class="btn btn-outline-secondary text-muted"><i class="fas fa-angle-right"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="row justify-content-end align-items-center">
+                <div class="col-auto">
+                    <p class="fs-14px fw-semibold mb-0">Halaman :</p>
+                </div>
+                <div class="col-auto">
+                    <select class="form-select" aria-label="Default select example">
+                        {{-- <option selected>Open this</option> --}}
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+    
+            </div>
+        </div>
+    </div>
+
+{{-- End Page halaman --}}
 
 <style>
     .btn1:hover{

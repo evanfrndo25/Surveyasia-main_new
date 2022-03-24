@@ -6,7 +6,6 @@ import uniqid, {
 } from "./util.js";
 import { configuration } from "./configuration.js";
 
-
 export class Component extends HTMLDivElement {
     constructor(config) {
         super();
@@ -18,8 +17,6 @@ export class Component extends HTMLDivElement {
             this._buildContainer();
         }
     }
-
-    
 
     _addComponent(parent, component) {
         parent.appendChild(component);
@@ -66,8 +63,14 @@ export class Component extends HTMLDivElement {
     }
 
     // researcher side
+    _buildContainerBagian() {
+        this.setAttribute("class", "mx-2 p-4 mb-3 border rounded-top");
+        this._addComponent(this, this._buildBody());
+        return this;
+    }
     _buildContainer() {
         this.setAttribute("id", this.blueprint.componentId);
+
         this.setAttribute(
             "class",
             "mx-2 p-4 mb-3 border rounded shadow-sm draggable"
