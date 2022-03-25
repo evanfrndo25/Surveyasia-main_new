@@ -18,7 +18,10 @@
                     <div class="row">
                         <div class="col">
                             <a href="{{ route('admin.questionbank.index') }}" class="mb-2 text-dark h5">
-                            <i class="bi bi-arrow-left pe-2"></i>Kembali </a> <h1 class="py-3">Edit</h1>
+                                <i class="bi bi-arrow-left pe-2"></i>
+                                Kembali 
+                            </a> 
+                            <h1 class="py-3">Edit</h1>
                                     <form action="{{ route('admin.questionbank.update',  ['questionbank' => $id])}}"
                                         method="post">
                                         @method('put')
@@ -61,7 +64,7 @@
                                             @foreach ($questionbanktemp as $dataitem)
                                             <textarea class="form-control border-r-besar border-0 bg-light"
                                                 id="description" rows="3" name="goals"
-                                                value="{{ $dataitem->goals }}"></textarea>
+                                                >{{ $dataitem->goals }}</textarea>
                                             <!-- <input class="form-control border-r-besar"
                             id="description" rows="3" name="goals" value="{{ $dataitem->goals }}"></input> -->
                                             @endforeach
