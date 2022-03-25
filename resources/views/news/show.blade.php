@@ -7,6 +7,7 @@
     <section class="header-detail-news pt-5" id="header-detail-news">
         <div class="container">
             <h1 class="text-center fw-bold">{{ $news->title }}</h1>
+            <img src="{{ url('storage/'.$news->img) }}" alt="News" class="img-fluid mb-3 w-20">
             <p>{!! $news->description !!}</p>
         </div>
     </section>
