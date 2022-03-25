@@ -152,10 +152,10 @@
                                     </div>
                                     <div class="modal-body">
                                         <img src="{{ asset('assets/img/delete.png') }}" class="img-fluid" alt="">
-                                        <h2 class="text-center">Delete Survey?</h2>
+                                        <h2 class="text-center">Hapus Question Bank?</h2>
                                         <p class="px-5 small text-secondary text-center">Apakah kamu yakin ingin
-                                            menghapus survey <span class="fw-bold">{{ $item->title }}</span> ? Jika anda
-                                            menghapus survey, maka survey pada researcher dan respondent akan terhapus
+                                            menghapus question bank <span class="fw-bold">{{ $item->sub_template_name }}</span> ? Jika dihapus, 
+                                            maka question bank pada researcher dan admin akan terhapus
                                             secara <span class="fw-bold">permanen</span> .</p>
                                     </div>
                                     <div class="row px-5 pb-5">
@@ -163,9 +163,9 @@
                                             method="POST">
                                             @method('delete')
                                             @csrf
-                                            <button type="submit" class="dropdown-item text-white"
-                                                onclick="return confirm('Apakah kamu yakin ingin menghapus?')"><i
-                                                    class="bi bi-trash pe-2"></i>Iya</button>
+                                            <div class="col d-grid gap-2">
+                                                <button type="submit" class="btn btn-danger">Iya</button>
+                                            </div>
                                         </form>
                                         <div class="col d-grid gap-2">
                                             <button type="button" class="btn bg-special-blue text-white"
