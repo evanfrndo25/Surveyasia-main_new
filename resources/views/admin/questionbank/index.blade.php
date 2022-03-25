@@ -22,9 +22,26 @@
                 </div>
                 @endif
 
-                <div class="d-flex justify-content-between">
-                    <h1>Question Bank</h1>
-                    <form action="{{ url('/admin/set-language') }}" method="get" id="form-language">
+                <div class="row pt-4 pb-5">
+                    <div class="col">
+                        <div class=" input-group align-items-center w-50">
+                            <input type="text" class="form-control rounded-pill py-2 text-center"
+                                placeholder="Search everything" aria-label="search" aria-describedby="basic-addon1"
+                                style="font-size: 12px">
+                            <a href="#">
+                                <i
+                                    class="position-absolute top-50 start-0 translate-middle-y bi bi-search p-2 ms-1 text-secondary"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col text-end">
+                        <a href="" class="btn bg-special-blue text-white" data-bs-toggle="modal"
+                            data-bs-target="#modal-add-sub-template">
+                            <i class="bi bi-vector-pen me-"></i>
+                            Add Sub Template
+                        </a>
+                    </div>
+                    <!-- <form action="{{ url('/admin/set-language') }}" method="get" id="form-language">
                         @if($language_active == 0)
                         <select class="form-control" name="language" id="language-select">
                             <option selected value="0">ENG</option>
@@ -36,24 +53,21 @@
                             <option selected value="1">IND</option>
                         </select>
                         @endif
-                    </form>
+                    </form> -->
                 </div>
                 <table class="table table-no-border-head align-middle">
                     <thead>
                         <tr class="fw-bold">
-                            <td scope="col">#</td>
-                            <td scope="col">Sub Template</td>
-                            <td scope="col">Template</td>
-                            {{-- <td scope="col">Goals</td> --}}
-                            <td scope="col">Jumlah Pertanyaan</td>
-                            <td scope="col">Aktivitas</td>
-                            <td scope="col">Status</td>
-                            <td class="text-end">
-                                <a href="" class="btn bg-special-blue text-white" data-bs-toggle="modal"
-                                    data-bs-target="#modal-add-sub-template">
-                                    <i class="bi bi-vector-pen me-"></i>
-                                    Add Sub Template
-                                </a>
+                            <td scope="col" class="text-center">No</td>
+                            <td scope="col" class="text-center">Bahasa</td>
+                            <td scope="col" class="text-center">Sub Template</td>
+                            <td scope="col" class="text-center">Template</td>
+                            {{-- <td scope="col" class="text-center">Goals</td> --}}
+                            <td scope="col" class="text-center">Jumlah Pertanyaan</td>
+                            <td scope="col" class="text-center">Aktivitas</td>
+                            <td scope="col" class="text-center">Status</td>
+                            <td scope="col" class="text-center">
+                                Action
                             </td>
                         </tr>
                     </thead>
@@ -66,98 +80,60 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
 
+                            <td class="text-center">ID
+                            </td>
+
                             @if (count($item->questions) == 0)
 
-                            <td><a href="#" class="sub">{{ $item->sub_template_name }}</a></td>
+                            <td class="text-center"><a href="#" class="sub">{{ $item->sub_template_name }}</a></td>
 
                             @else
-                            <td><a href="{{url('/admin/questionbank', ['id'=>$item])}}"
+                            <td class="text-center"><a href="{{url('/admin/questionbank', ['id'=>$item])}}"
                                     class="sub">{{ $item->sub_template_name }}</a></td>
 
                             @endif
-                            <td>{{ $item->template->template_name }}</td>
+                            <td class="text-center">{{ $item->template->template_name }}</td>
 
 
                             {{-- <td>{{ $item->goals }}</td> --}}
-                            <td>{{ $item->questions->count() }}</td>
-                            <td>{{ $item->aktivitas }}</td>
+                            <td class="text-center">{{ $item->questions->count() }}</td>
+                            <td class="text-center">{{ $item->aktivitas }}</td>
                             @if ($item->status == 0)
-                            <td>Not Active</td>
+                            <td class="text-center">Not Active</td>
                             @else
-                            <td>Active</td>
+                            <td class="text-center">Active</td>
                             @endif
                             <td scope="col" class="text-end">
-                                <div role="group" aria-label="Basic example">
-                                    <a class="px-3 py-2 my-1 btn bg-special-blue text-white"
-                                        href="{{ route('admin.questionbank.show', $item->id) }}">Add
-                                        questions</a>
-                                   <form id="edit-form" class="form-horizontal" method="POST" action="">
-                                        {{-- <a class="dropdown-item" href="{{route('questionbank.edit',$item->id)}}"
-                                        data-bs-toggle="modal" data-bs-target="#modal-add-sub-template"
-                                        data-title="{{ $item->question_bank_template_id }}"
-                                        data-title="{{ $item->sub_template_name }}"
-                                        data-escription="{{ $item->sub_template_name }}"
-                                        data-id="{{ $item->id }}">Edit </a> --}}
-                                        <a class="px-3 py-2 my-1 btn btn-primary"
-                                            href="{{route('admin.questionbank.edit',['questionbank' => $item->id])}}">Edit
+                                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Edit
+                                </button>
+                                <ul class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton1">
+                                    <li>
+                                        <a class="dropdown-item text-white"
+                                            href="{{ route('admin.questionbank.show', $item->id) }}"><i
+                                                class="bi bi-plus-lg pe-3"></i>Tambah Pertanyaan</a>
+                                    </li>
+                                    <li>
+                                    <li>
+                                        <a class="dropdown-item text-white" href="#"><i
+                                                class="bi bi-zoom-in pe-3"></i>Pratinjau Pertanyaan</a>
+                                    </li>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-white"
+                                            href="{{route('admin.questionbank.edit',['questionbank' => $item->id])}}"><i
+                                                class="bi bi-gear-fill pe-3"></i>Edit Tamplate
                                         </a>
-                                        </form>
-                 
-                                        <!-- {{-- <a class="dropdown-item" href="{{route('questionbank.edit',$item->id)}}"
-                                        data-bs-toggle="modal" data-bs-target="#modal-add-sub-template"
-                                        data-title="{{ $item->question_bank_template_id }}"
-                                        data-title="{{ $item->sub_template_name }}"
-                                        data-escription="{{ $item->sub_template_name }}"
-                                        data-id="{{ $item->id }}">Edit </a> --}}
-                                        <a class="px-3 py-2 my-1 btn btn-primary"
-                                            href="{{route('admin.questionbank.edit',['questionbank' => $item->id])}}">Edit
-                                        </a> -->
-                    
-                                        <form action="{{ route('admin.questionbank.destroy', $item->id)}}"
-                                            method="POST">
-                                            @method('delete')
-                                            @csrf
-                                            <button type="submit" class="px-3 py-2 my-1 btn btn-danger"
-                                                onclick="return confirm('Apakah kamu yakin ingin menghapus?')">Delete</button>
-                                        </form>
-                                </div>
-                                <!-- <a href="#" role="button" id="dropdown-manage-news" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    <i class="bi bi-three-dots fs-3 text-secondary"></i>
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="dropdown-manage-news">
-                                    <li>
-                                        <a class="dropdown-item"
-                                            href="{{ route('admin.questionbank.show', $item->id) }}">Add
-                                            questions</a>
                                     </li>
-                                    <form id="edit-form" class="form-horizontal" method="POST" action="">
-
-                                        <li>
-                                            {{-- <a class="dropdown-item" href="{{route('questionbank.edit',$item->id)}}"
-                                            data-bs-toggle="modal" data-bs-target="#modal-add-sub-template"
-                                            data-title="{{ $item->question_bank_template_id }}"
-                                            data-title="{{ $item->sub_template_name }}"
-                                            data-escription="{{ $item->sub_template_name }}"
-                                            data-id="{{ $item->id }}">Edit </a> --}}
-                                            <a class="dropdown-item"
-                                                href="{{route('admin.questionbank.edit',['questionbank' => $item->id])}}">Edit
-                                            </a>
-                                        </li>
-
-                                    </form>
                                     <li>
-
-                                        <form action="{{ route('admin.questionbank.destroy', $item->id)}}"
-                                            method="POST">
-                                            @method('delete')
-                                            @csrf
-                                            <button type="submit" class="dropdown-item"
-                                                onclick="return confirm('Apakah kamu yakin ingin menghapus?')">Delete</button>
-                                        </form>
+                                        <button type="button" class="btn dropdown-item text-white"
+                                            data-bs-toggle="modal" data-bs-target="#deleteModal{{ $item->id }}">
+                                            <i class="bi bi-trash pe-2"></i>
+                                            Hapus
+                                        </button>
                                     </li>
-
-                                </ul> -->
+                                </ul>
                             </td>
                             {{-- <td class="text-end"><a href="{{ route('admin.questionbank.show', $item->id) }}"
                             class="btn bg-special-blue text-white">
@@ -165,6 +141,40 @@
                             Detail</a>
                             </td> --}}
                         </tr>
+                        <!-- Modal delete -->
+                        <div class="modal fade" id="deleteModal{{ $item->id }}" tabindex="-1"
+                            aria-labelledby="deleteModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="btn ms-auto">
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <img src="{{ asset('assets/img/delete.png') }}" class="img-fluid" alt="">
+                                        <h2 class="text-center">Delete Survey?</h2>
+                                        <p class="px-5 small text-secondary text-center">Apakah kamu yakin ingin
+                                            menghapus survey <span class="fw-bold">{{ $item->title }}</span> ? Jika anda
+                                            menghapus survey, maka survey pada researcher dan respondent akan terhapus
+                                            secara <span class="fw-bold">permanen</span> .</p>
+                                    </div>
+                                    <div class="row px-5 pb-5">
+                                        <form action="{{ route('admin.questionbank.destroy', $item->id)}}"
+                                            method="POST">
+                                            @method('delete')
+                                            @csrf
+                                            <button type="submit" class="dropdown-item text-white"
+                                                onclick="return confirm('Apakah kamu yakin ingin menghapus?')"><i
+                                                    class="bi bi-trash pe-2"></i>Iya</button>
+                                        </form>
+                                        <div class="col d-grid gap-2">
+                                            <button type="button" class="btn bg-special-blue text-white"
+                                                data-bs-dismiss="modal">Tidak</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         @endforeach
                     </tbody>
                 </table>
@@ -179,7 +189,7 @@
             <div class="modal-content">
                 <div class="modal-body py-4">
                     <div class="d-flex justify-content-between">
-                        <h5 class="modal-title" id="exampleModalLabel">Add Sub Template
+                        <h5 class="modal-title" id="exampleModalLabel">Tambah Sub Tamplate
                         </h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
@@ -191,8 +201,8 @@
                                     @csrf
                                     <div class="mb-3">
                                         <label for="title" class="form-label">Template</label>
-                                        <select class="form-select border-r-besar" aria-label="Default select example"
-                                            name="question_bank_template_id">
+                                        <select class="form-select border-r-besar w-50 border-0 bg-light"
+                                            aria-label="Default select example" name="question_bank_template_id">
                                             {{-- <option selected>Choose Templates</option> --}}
                                             @foreach ($questionbank_templates as $item)
                                             <option value="{{ $item->id }}">
@@ -201,34 +211,33 @@
                                         </select>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="title" class="form-label">Sub Template
-                                            Name</label>
-                                        {{-- <input type="hidden" class="form-control border-r-besar" id="id" name="id"> --}}
-                                        <input type="text" class="form-control border-r-besar" id="Sub Template"
+                                        <label for="title" class="form-label">Nama Sub Template</label>
+                                        {{-- <input type="hidden" class="form-control border-r-besar border-0 bg-light" id="id" name="id"> --}}
+                                        <input type="text" class="form-control border-r-besar border-0 bg-light"
+                                            placeholder="Masukan Nama Template" id="Sub Template"
                                             name="sub_template_name">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="aktivitas" class="form-label">Activity</label>
-                                        <select class="form-select border-r-besar" id="aktivitas" rows="3"
-                                            name="aktivitas">
+                                        <label for="deskripsi" class="form-label">Tujuan Tamplate</label>
+                                        <input type="text" placeholder="Masukan Tujuan Tamplate" class="form-control border-r-besar border-0 bg-light" id="description" name="goals">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="aktivitas" class="form-label">Aktifitas</label>
+                                        <select class="form-select border-r-besar border-0 bg-light" id="aktivitas"
+                                            rows="3" name="aktivitas">
                                             <option>--Choose--</option>
                                             <option value="Free">Free</option>
                                             <option value="Premium">Premium</option>
                                         </select>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="language_id" class="form-label">Language</label>
-                                        <select class="form-select border-r-besar" id="language_id" rows="3"
-                                            name="language_id">
+                                        <label for="language_id" class="form-label">Bahasa</label>
+                                        <select class="form-select border-r-besar border-0 bg-light" id="language_id"
+                                            rows="3" name="language_id">
                                             <option>--Choose--</option>
                                             <option value="1">IND</option>
                                             <option value="0">ENG</option>
                                         </select>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="deskripsi" class="form-label">Goals</label>
-                                        <textarea class="form-control border-r-besar" id="description" rows="3"
-                                            name="goals"></textarea>
                                     </div>
                             </div>
                         </div>
