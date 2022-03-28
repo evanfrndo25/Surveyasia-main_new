@@ -824,8 +824,10 @@ export class Component extends HTMLDivElement {
         formData.append("signature", this.blueprint.componentId);
         formData.append("survey_title", this.blueprint.meta.survey.title);
         formData.append("ssf_file", file);
+
+        const origin_url = window.location.origin;
         $.ajax({
-            url: "http://localhost:8000/api/uploader/image", // url
+            url: `${origin_url}/api/uploader/image`, // url
             method: "POST",
             // option to prevent error (do not modify)
             contentType: false,
