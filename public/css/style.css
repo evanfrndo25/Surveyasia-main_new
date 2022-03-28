@@ -89,6 +89,10 @@ body {
     color: #ffb536;
 }
 
+.link-yellow:hover {
+    color: #ffa840;
+}
+
 .link-default {
     color: #1a94cd !important;
 }

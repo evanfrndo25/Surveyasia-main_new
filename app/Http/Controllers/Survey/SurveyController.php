@@ -292,4 +292,18 @@ class SurveyController extends Controller
         return $pdf->stream();
         // return $pdf->download('chart-export.pdf');
     }
+
+    public function exportPdf(Survey $survey)
+    {
+        $questions = $survey->questions;
+
+        $data = [
+            'survey' => $survey,
+            'questions' => $questions,
+            // 'url' => route('api.analytics.show', $survey->id),
+            // 'current' => $this->current,
+        ];
+
+        return view('researcher.export-pdf', $data);
+    }
 }

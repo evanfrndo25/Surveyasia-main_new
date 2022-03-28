@@ -62,18 +62,18 @@
                         <h6>{{ $survey->attempted }}/{{ $survey->max_attempt }} Responden</h6>
                     </div>
                     <div class="dropdown mt-3">
-                        <button class="btn btn-orange radius-default w-100" type="button"  data-bs-toggle="modal" data-bs-target="#downloadReportModal"
+                        {{-- <button class="btn btn-orange radius-default w-100" type="button"  data-bs-toggle="modal" data-bs-target="#downloadReportModal"
                             aria-expanded="false">Download Result <i class="fas fa-download ms-5"></i>
-                        </button>
-                        {{-- <button class="btn btn-orange radius-default w-100" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                        </button> --}}
+                        <button class="btn btn-orange radius-default w-100" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
                             aria-expanded="false">Download Result <i class="fas fa-download ms-5"></i>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <li><a class="dropdown-item" href="customize-diagram/export_excel?id={{ $survey->id }}">Excel</a>
                             </li>
                             <li><span class="dropdown-item" id="btnChartExport" style="cursor: pointer;">PDF</span></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul> --}}
+                            {{-- <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
+                        </ul>
                     </div>
                     
                     <div class="mt-3">
