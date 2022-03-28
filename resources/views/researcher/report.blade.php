@@ -71,7 +71,9 @@
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <li><a class="dropdown-item" href="customize-diagram/export_excel?id={{ $survey->id }}">Excel</a>
                             </li>
-                            <li><span class="dropdown-item" id="btnChartExport" style="cursor: pointer;">PDF</span></li>
+                            <li><a class="dropdown-item" href="customize-diagram/export-pdf?id={{ $survey->id }}">PDF</a>
+                            </li>
+                            {{-- <li><span class="dropdown-item" id="btnChartExport" style="cursor: pointer;">PDF</span></li> --}}
                             {{-- <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
                         </ul>
                     </div>
