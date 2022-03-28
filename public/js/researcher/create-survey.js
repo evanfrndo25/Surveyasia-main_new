@@ -448,8 +448,9 @@ function processFiles() {
 }
 
 function uploadFile(file) {
+    const origin_url = window.location.origin;
     const task = $.ajax({
-        url: "http://localhost:8000/api/uploader/image", // url
+        url: `${origin_url}/api/uploader/image`, // url
         method: "POST",
         // option to prevent error (do not modify)
         contentType: false,
