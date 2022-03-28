@@ -22,14 +22,14 @@
                         class="link-secondary text-decoration-none">Diagram</a>
                 </li>
                 <li class="breadcrumb-item"><a href=" {{ route('researcher.surveys.collectRespondent', $survey->id) }}"
-                        class="link-secondary text-decoration-none">Collect Respondent</a>
+                        class="link-secondary text-decoration-none">Kumpulkan Responden</a>
                 </li>
                 </li>
                 <li class="breadcrumb-item active"><a href=" {{ route('researcher.surveys.statusSurvey', $survey->id) }}"
                         class="link-secondary text-decoration-none">Status Survey</a>
                 </li>
                 <li class="breadcrumb-item"><a href=" {{ route('researcher.surveys.report', $survey->id) }}"
-                        class="link-secondary text-decoration-none">Analytics Result</a>
+                        class="link-secondary text-decoration-none">Hasil Analisis</a>
                 </li>
             </ol>
         </nav>
