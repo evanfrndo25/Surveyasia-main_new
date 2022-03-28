@@ -91,6 +91,16 @@ class SurveyController extends Controller
         return back();
     }
 
+    //Update survey
+    // public function update(Request $request, $id)
+    // {
+    //     Survey::find($id)->update([
+    //         'title' => $request->title,
+    //         'description' => $request->description
+    //     ]);
+    //     return redirect('/');
+    // }
+
     public function storeQuestions(CreateSurveyQuestionRequest $request)
     {
         $action = new CreateSurveyQuestionAction();
