@@ -18,7 +18,6 @@ import { renderQuestion } from "./util.js";
 import { configuration } from "../components/configuration.js";
 
 // initiate objects and variables
-
 export let totalQuestion = 0;
 let form = $("#formSurveyQuestion");
 let btnAdd = $("#btnAddQuestion");
@@ -73,7 +72,7 @@ function _initFields() {
     });
     btnSubmit.on("click", (event) => {
         event.preventDefault();
-        transformToLoadingButton(btnSubmit.get(1));
+        transformToLoadingButton(btnSubmit.get(0));
 
         // submit when all files are processed
         _saveForm().then(() => {

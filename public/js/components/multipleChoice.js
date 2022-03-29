@@ -11,7 +11,7 @@ export class MultipleChoice extends Component {
     
     
 
-
+add
     minimum
 
     content() {
@@ -502,13 +502,24 @@ export class MultipleChoice extends Component {
         }
 
         // add option button
+        
+
         const addOptionContainer = document.createElement("div");
         addOptionContainer.id = "addOptionContainer";
-        addOptionContainer.className += "d-flex justify-content-end mt-3";
+        addOptionContainer.className += "d-flex mt-3";
+
+        const saveOptionContainer = document.createElement("div");
+        saveOptionContainer.id = "addOptionContainer";
+        saveOptionContainer.className += "d-flex justify-content-end mt-3";
 
         const addOptionButton = document.createElement("button");
         addOptionButton.className += "btn btn-sm btn-default text-white";
         addOptionButton.innerHTML = "Add Option";
+
+        const saveOptionButton = document.createElement("button");
+        saveOptionButton.className += "btn btn-md btn-danger text-white";
+        saveOptionButton.innerHTML = "Save Option";
+
         const instance = this;
         addOptionButton.onclick = function (event) {
             event.preventDefault();
@@ -517,7 +528,11 @@ export class MultipleChoice extends Component {
 
         addOptionContainer.appendChild(addOptionButton);
 
+        saveOptionContainer.appendChild(saveOptionButton);
+
         wrapper.appendChild(addOptionContainer);
+
+        wrapper.appendChild(saveOptionContainer);
 
         return wrapper;
     }

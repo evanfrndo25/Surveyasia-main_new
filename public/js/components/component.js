@@ -6,7 +6,6 @@ import uniqid, {
 } from "./util.js";
 import { configuration } from "./configuration.js";
 
-
 export class Component extends HTMLDivElement {
     constructor(config) {
         super();

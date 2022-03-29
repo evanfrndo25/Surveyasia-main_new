@@ -67,14 +67,18 @@
     @csrf
     <input type="hidden" name="survey_id" value="{{ $survey->id }}">
     <div class="mt-3" id="questions_container">
+
+    
     </div>
     <div class="row">
         <div class="col-auto mx-auto border text-center" style="width: 50%; margin-top: 20px; font-size: 20px; padding:  20px;">
             <div id="submitBtn" class="disabled fade">
-               <button id="btnAddPart" data-bs-toggle="modal" data-bs-target="#partComponentModal" class="btn btn-md btn1 "><i class="bi bi-list" class="btn btn-sm " ></i> Tambahkan Bagian</button>
+               <span><button id="btnAddPart" data-bs-toggle="modal" data-bs-target="#partComponentModal" class="btn btn-md btn1 "><i class="bi bi-list" class="btn btn-sm " ></i> Tambahkan Bagian</button></span>
               <button class="btn btn-md btn2 "><i class="bi bi-eye" class="btn btn-sm "></i> Pratinjau</button>
-              <button class="btn btn-md btn3 "><i class="bi bi-save" class="btn btn-sm " id="submitBtn" type="submit"></i> Simpan </button>
+              <button class="btn btn-md btn3 "><i class="bi bi-save" class="btn btn-sm" id="saveBtn"></i> Simpan </button>
              </div>
+        </div>
+        <div>
         </div>
     </div>
 

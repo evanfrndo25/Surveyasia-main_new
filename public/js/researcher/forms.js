@@ -16,7 +16,6 @@ let noQuestion = $("#noQuestionContainer");
 let questionsContainer = $("#questions_container");
 
 
-
 $(function () {
     _initFields();
     _initQuestions();
