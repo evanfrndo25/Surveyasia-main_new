@@ -26,6 +26,8 @@
 
 @section('content')
 
+
+
 {{-- Analytics result --}}
 <section class="analytics-result py-5" id="analytics-result">
     <div class="container">

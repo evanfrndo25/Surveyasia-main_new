@@ -5,30 +5,24 @@ body {
 
 /* Breadcrumb */
 .breadcrumb > .active > a {
-    font-weight: bold;
-    background-color: #000;
+    font-weight: 600;
+    color: #ef4c29 !important;
+    /* border-bottom: 2px solid #ef4c29; */
 }
 
-.breadcrumb > .active {
-    font-weight: bold;
-    background-color: #000;
-}
+/* .breadcrumb > .active {
+} */
 /* Breadcurmb */
 
 .ff-inter {
     font-family: "Inter", sans-serif;
 }
 
-.active {
-    font-weight: bold;
-}
-
-.breadcrumb-item.s-active {
-    font-weight: bold;
-}
-.breadcrumb-item.active {
-    font-weight: bold;
-}
+/* .breadcrumb-item.active {
+    font-weight: 600;
+    color: #ef4c29 !important;
+    border-bottom: 2px solid #ef4c29;
+} */
 
 .fs-12px {
     font-size: 12px;
@@ -89,6 +83,14 @@ body {
 
 .text-default {
     color: #1a94cd !important;
+}
+
+.link-yellow {
+    color: #ffb536;
+}
+
+.link-yellow:hover {
+    color: #ffa840;
 }
 
 .link-default {

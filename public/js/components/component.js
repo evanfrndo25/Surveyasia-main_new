@@ -18,8 +18,6 @@ export class Component extends HTMLDivElement {
         }
     }
 
-    
-
     _addComponent(parent, component) {
         parent.appendChild(component);
     }
@@ -65,8 +63,18 @@ export class Component extends HTMLDivElement {
     }
 
     // researcher side
+    _buildContainerBagian() {
+        this.setAttribute("id", this.blueprint.componentId);
+        this.setAttribute("class", "mx-2 p-4 mb-3 border rounded-top");
+
+        this._addComponent(this, this._buildBody());
+
+        return this;
+    }
+
     _buildContainer() {
         this.setAttribute("id", this.blueprint.componentId);
+
         this.setAttribute(
             "class",
             "mx-2 p-4 mb-3 border rounded shadow-sm draggable"
@@ -820,8 +828,10 @@ export class Component extends HTMLDivElement {
         formData.append("signature", this.blueprint.componentId);
         formData.append("survey_title", this.blueprint.meta.survey.title);
         formData.append("ssf_file", file);
+
+        const origin_url = window.location.origin;
         $.ajax({
-            url: "http://localhost:8000/api/uploader/image", // url
+            url: `${origin_url}/api/uploader/image`, // url
             method: "POST",
             // option to prevent error (do not modify)
             contentType: false,

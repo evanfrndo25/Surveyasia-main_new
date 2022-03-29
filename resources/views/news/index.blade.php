@@ -71,7 +71,7 @@
                                 <div>
                                     <a href="{{ route('news.show', $news->slug) }}"
                                         class="link-dark text-decoration-none">
-                                        <img src="{{ asset('assets/img/blog_6.png') }}" alt="Blog 6"
+                                        <img src="{{ url('storage/'.$news->img) }}" alt="News"
                                             class="img-fluid mb-3 w-100">
                                         <p class="text-muted fw-light fs-14px mb-2">{{
                                             $news->created_at->diffForHumans() }}

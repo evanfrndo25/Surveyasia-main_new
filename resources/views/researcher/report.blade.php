@@ -1,10 +1,42 @@
 @extends('layouts.footer')
 @extends('layouts.base')
-@extends('researcher.layouts.breadcrumb')
+{{-- @extends('researcher.layouts.breadcrumb') --}}
 @extends('researcher.layouts.navbar2')
 @section('content')
 
 @include('researcher.modals.download-report-modal')
+
+{{-- Breadcrumb --}}
+    <section class="breadcrumb-contact mt-3 ms-5" id="breadcrumb-contact">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                        <a href="/researcher/surveys" class="link-yellow text-decoration-none"><i
+                            class="fas fa-home fa-fw"></i>
+                        Beranda</a></li>
+                <li class="breadcrumb-item">
+                    <a href=" {{ route('researcher.surveys.manage', $survey->id) }}"
+                        class="link-secondary text-decoration-none"> Survey</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href=" {{ route('researcher.surveys.customizeDiagram', $survey->id) }}"
+                        class="link-secondary text-decoration-none">Diagram</a>
+                </li>
+                <li class="breadcrumb-item"><a href=" {{ route('researcher.surveys.collectRespondent', $survey->id) }}"
+                        class="link-secondary text-decoration-none">Kumpulkan Responden</a>
+                </li>
+                </li>
+                <li class="breadcrumb-item"><a href=" {{ route('researcher.surveys.statusSurvey', $survey->id) }}"
+                        class="link-secondary text-decoration-none">Status Survey</a>
+                </li>
+                <li class="breadcrumb-item active"><a href=" {{ route('researcher.surveys.report', $survey->id) }}"
+                        class="link-secondary text-decoration-none">Hasil Analisis</a>
+                </li>
+            </ol>
+        </nav>
+    </section>
+    <hr class="mb-0">
+{{-- end Breadcrumb --}}
 
     @php
     $no = 1;
@@ -30,18 +62,20 @@
                         <h6>{{ $survey->attempted }}/{{ $survey->max_attempt }} Responden</h6>
                     </div>
                     <div class="dropdown mt-3">
-                        <button class="btn btn-orange radius-default w-100" type="button"  data-bs-toggle="modal" data-bs-target="#downloadReportModal"
+                        {{-- <button class="btn btn-orange radius-default w-100" type="button"  data-bs-toggle="modal" data-bs-target="#downloadReportModal"
                             aria-expanded="false">Download Result <i class="fas fa-download ms-5"></i>
-                        </button>
-                        {{-- <button class="btn btn-orange radius-default w-100" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                        </button> --}}
+                        <button class="btn btn-orange radius-default w-100" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
                             aria-expanded="false">Download Result <i class="fas fa-download ms-5"></i>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <li><a class="dropdown-item" href="customize-diagram/export_excel?id={{ $survey->id }}">Excel</a>
                             </li>
-                            <li><span class="dropdown-item" id="btnChartExport" style="cursor: pointer;">PDF</span></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul> --}}
+                            <li><a class="dropdown-item" href="customize-diagram/export-pdf?id={{ $survey->id }}">PDF</a>
+                            </li>
+                            {{-- <li><span class="dropdown-item" id="btnChartExport" style="cursor: pointer;">PDF</span></li> --}}
+                            {{-- <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
+                        </ul>
                     </div>
                     
                     <div class="mt-3">

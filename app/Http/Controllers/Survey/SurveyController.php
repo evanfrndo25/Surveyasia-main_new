@@ -91,6 +91,16 @@ class SurveyController extends Controller
         return back();
     }
 
+    //Update survey
+    // public function update(Request $request, $id)
+    // {
+    //     Survey::find($id)->update([
+    //         'title' => $request->title,
+    //         'description' => $request->description
+    //     ]);
+    //     return redirect('/');
+    // }
+
     public function storeQuestions(CreateSurveyQuestionRequest $request)
     {
         $action = new CreateSurveyQuestionAction();
@@ -291,5 +301,19 @@ class SurveyController extends Controller
         $pdf = PDF::loadView('pdf-tmp', compact('data'));
         return $pdf->stream();
         // return $pdf->download('chart-export.pdf');
+    }
+
+    public function exportPdf(Survey $survey)
+    {
+        $questions = $survey->questions;
+
+        $data = [
+            'survey' => $survey,
+            'questions' => $questions,
+            // 'url' => route('api.analytics.show', $survey->id),
+            // 'current' => $this->current,
+        ];
+
+        return view('researcher.export-pdf', $data);
     }
 }

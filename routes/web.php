@@ -126,7 +126,10 @@ Route::middleware(['auth', 'role:researcher', 'verified'])->group(function () {
                     ])->name('store');
 
                     //delete survey
-                    Route::delete('tasks/{id}', [SurveyController::class, 'destroy'])->name('delete');
+                    Route::delete('/{id}', [SurveyController::class, 'destroy'])->name('delete');
+
+                    //update survey
+                    // Route::put('/{id}', [SurveyController::class, 'update'])->name('update');
 
 
                     //create questions
@@ -141,13 +144,19 @@ Route::middleware(['auth', 'role:researcher', 'verified'])->group(function () {
                         'customizeDiagram',
                     ])->name('customizeDiagram');
 
-                    // customize diagram
+                    // customize diagram excel
                     Route::get('/{survey}/customize-diagram/export_excel', [
                         SurveyController::class,
                         'export_excel',
                     ])->name('answeExportExcel');
 
-                    // customize diagram
+                    // customize diagram pdf
+                    Route::get('/{survey}/customize-diagram/export-pdf', [
+                        SurveyController::class,
+                        'exportPdf',
+                    ])->name('exportPdf');
+
+                    // customize diagram 
                     Route::post('/{survey}/customize-diagram/export_pdf', [
                         SurveyController::class,
                         'answeExportPdf',

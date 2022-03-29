@@ -4,7 +4,7 @@
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                    <a href="/researcher/surveys" class="link-orange text-decoration-none"><i
+                    <a href="/researcher/surveys" class="link-yellow text-decoration-none"><i
                         class="fas fa-home fa-fw"></i>
                     Beranda</a></li>
             <li class="breadcrumb-item {{ Request::is('researcher.surveys.manage') ? 'active' : '' }}">
@@ -40,12 +40,12 @@
         //     });
         // });
 
-        $(function () {
-            $(".breadcrumb-item").on("click", function (e) {
-                $(".breadcrumb-item").removeClass("s-active");
-                $(this).addClass("s-active");
-            });
-        });
+        // $(function () {
+        //     $(".breadcrumb-item").on("click", function (e) {
+        //         $(".breadcrumb-item").removeClass("s-active");
+        //         $(this).addClass("s-active");
+        //     });
+        // });
 
         // $(function () {
         //     $(".breadcrumb-item").on("click", function (e) {
