@@ -306,12 +306,13 @@ class SurveyController extends Controller
     public function exportPdf(Survey $survey)
     {
         $questions = $survey->questions;
+        $this->current = "report";
 
         $data = [
             'survey' => $survey,
             'questions' => $questions,
-            // 'url' => route('api.analytics.show', $survey->id),
-            // 'current' => $this->current,
+            'url' => route('api.analytics.show', $survey->id),
+            'current' => $this->current,
         ];
 
         return view('researcher.export-pdf', $data);

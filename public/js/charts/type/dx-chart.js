@@ -23,7 +23,7 @@ const TYPE_DATA_GRID = "dxDataGrid";
     series: series == null ? baseSeries : series,
     legend: legend == null ? baseLegend : legend,
     title: title == null ? baseTitle : title,
-    export: {
+    export: { 
         enabled: true,
     },
     tooltip: tooltip == null ? baseTooltip : tooltip,

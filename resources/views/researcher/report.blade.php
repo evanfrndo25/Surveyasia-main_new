@@ -4,7 +4,7 @@
 @extends('researcher.layouts.navbar2')
 @section('content')
 
-@include('researcher.modals.download-report-modal')
+{{-- @include('researcher.modals.download-report-modal') --}}
 
 {{-- Breadcrumb --}}
     <section class="breadcrumb-contact mt-3 ms-5" id="breadcrumb-contact">
@@ -68,6 +68,7 @@
                         <button class="btn btn-orange radius-default w-100" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
                             aria-expanded="false">Download Result <i class="fas fa-download ms-5"></i>
                         </button>
+                        
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <li><a class="dropdown-item" href="customize-diagram/export_excel?id={{ $survey->id }}">Excel</a>
                             </li>
