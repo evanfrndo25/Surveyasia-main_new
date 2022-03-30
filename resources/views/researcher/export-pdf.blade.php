@@ -81,9 +81,9 @@ $no = 1;
     @include('researcher/scripts/anychart')
     <script src="{{ asset('js/app.js') }}"></script>
     @include('researcher/scripts/devexpress')
-    {{-- <script>
+    <script>
         var url = '{!! $url !!}';
-    </script> --}}
+    </script>
     <script src="{{ asset('js/charts/report.js') }}" type="module"></script>
     <script>
         var btnChartExport = document.getElementById('btnChartExport');
