@@ -50,12 +50,8 @@
                             </div>
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Kategori Chart</label>
-                                <select 
-                                    class="form-select rounded-pill border-0 bg-light px-3" 
-                                    id="chartCategory"
-                                    aria-label="Default select example" 
-                                    name="type"
-                                >
+                                <select class="form-select rounded-pill border-0 bg-light px-3" id="chartCategory"
+                                    aria-label="Default select example" name="type">
                                     @foreach ($typeChart as $tchart)
                                     @if ($tchart->type == $chart->type)
                                     <option selected value="{{ $chart->type }}">{{ $chart->type }}</option>
@@ -149,15 +145,18 @@
             </div>
             <div class="modal-body">
                 <img src="{{ asset('assets/img/delete.png') }}" class="img-fluid" alt="">
-                <h2 class="text-center">Delete Chart?</h2>
-                <p class="px-5 small text-secondary text-center">Apakah kamu yakin ingin menghapus <span class="fw-bold">{{ $chart->name }}</span>? <br>Jika anda menghapus chart, maka chart pada admin akan terhapus secara <span class="fw-bold">permanen</span> .</p>
+                <h2 class="text-center">Hapus Chart?</h2>
+                <p class="px-5 small text-secondary text-center">Apakah kamu yakin ingin menghapus <span
+                        class="fw-bold">{{ $chart->name }}</span>? <br>Jika anda menghapus chart, maka chart pada admin
+                    akan terhapus secara <span class="fw-bold">permanen</span> .</p>
             </div>
-            <div class="row px-5 pb-5">
+            <div class="row px-4 pb-5">
                 <div class="col d-grid gap-2">
-                    <a href="{{ route('admin.chart.destroy', $chart->id) }}" class="btn btn-danger">Iya</a>
+                    <a href="{{ route('admin.chart.destroy', $chart->id) }}" class="btn btn-danger">YA, HAPUS CHART</a>
                 </div>
                 <div class="col d-grid gap-2">
-                    <button type="button" class="btn bg-special-blue text-white" data-bs-dismiss="modal">Tidak</button>
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">TIDAK, 
+                        SIMPAN CHART</button>
                 </div>
 
             </div>
@@ -167,8 +166,13 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
 <script>
-    var data = {{ Illuminate\Support\Js::from($chart) }};
+    var data = {
+        {
+            Illuminate\ Support\ Js::from($chart)
+        }
+    };
     const type = document.getElementById('chartCategory').value;
+
 </script>
 <script src="https://unpkg.com/chartjs-chart-wordcloud@3"></script>
 <script src="{{ asset('js/charts/chart-admin-edit.js') }}" type="module"></script>

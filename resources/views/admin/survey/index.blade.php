@@ -57,10 +57,7 @@
                             <td>{{ $item->status }}</td>
                             <td>{{ $item->created_at->diffForHumans() }}</td>
                             <td>
-                                <a 
-                                    href="{{ $item->shareable_link }}" 
-                                    class="btn bg-special-blue text-white"
-                                >
+                                <a href="{{ $item->shareable_link }}" class="btn bg-special-blue text-white">
                                     <i class="bi bi-vector-pen"></i>
                                     Show
                                 </a>
@@ -78,27 +75,69 @@
                                 </a> -->
                             </td>
                         </tr>
-                        
+
                         <!-- Modal delete -->
-                        <div class="modal fade" id="deleteModal{{ $item->id }}" tabindex="-1" aria-labelledby="deleteModalLabel"
-                            aria-hidden="true">
+                        <div class="modal fade" id="deleteModal{{ $item->id }}" tabindex="-1"
+                            aria-labelledby="deleteModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="btn ms-auto">
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
-                                    <div class="modal-body">
-                                        <img src="{{ asset('assets/img/delete.png') }}" class="img-fluid" alt="">
-                                        <h2 class="text-center">Delete Survey?</h2>
-                                        <p class="px-5 small text-secondary text-center">Apakah kamu yakin ingin menghapus survey <span class="fw-bold">{{ $item->title }}</span>?<br>Jika anda menghapus survey, maka survey pada responden dan researcher akan terhapus secara <span class="fw-bold">permanen</span> .</p>
+                                    <div class="bg-white">
+                                        <h1 class="text-center"><i class="bi bi-trash display-1 text-danger"></i></h1>
+                                        <h4 class="text-center text-danger">Hapus Survey Researcher?</h4>
                                     </div>
-                                    <div class="row px-5 pb-5">
+                                    <div class="modal-body bg-light px-4">
+                                        <p class="small text-secondary text-center">Apakah kamu ingin menghapus
+                                            {{ $item->title }} Survey</p>
+                                        <div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                    id="flexRadioDefault1">
+                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                    Lorem ipsum dolor sit amet.
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                    id="flexRadioDefault2" checked>
+                                                <label class="form-check-label" for="flexRadioDefault2">
+                                                    Lorem ipsum dolor sit amet.
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                    id="flexRadioDefault3" checked>
+                                                <label class="form-check-label" for="flexRadioDefault3">
+                                                    Lorem ipsum dolor sit amet.
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                    id="flexRadioDefault4" checked>
+                                                <label class="form-check-label" for="flexRadioDefault4">
+                                                    Lorem ipsum dolor sit amet.
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                    id="flexRadioDefault5" checked>
+                                                <label class="form-check-label" for="flexRadioDefault5">
+                                                    Lorem ipsum dolor sit amet.
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row px-4 pb-5">
                                         <div class="col d-grid gap-2">
-                                            <a href="{{ route('admin.survey.destroy', $item->id) }}" class="btn btn-danger">Iya</a>
+                                            <a href="{{ route('admin.survey.destroy', $item->id) }}"
+                                                class="btn btn-danger">YA, HAPUS SURVEY</a>
                                         </div>
                                         <div class="col d-grid gap-2">
-                                            <button type="button" class="btn bg-special-blue text-white" data-bs-dismiss="modal">Tidak</button>
+                                            <button type="button" class="btn btn-outline-secondary"
+                                                data-bs-dismiss="modal">TIDAK, SIMPAN SURVEY</button>
                                         </div>
 
                                     </div>

@@ -112,13 +112,9 @@
                                     <li>
                                         <a class="dropdown-item text-white"
                                             href="{{ route('admin.questionbank.show', $item->id) }}"><i
-                                                class="bi bi-plus-lg pe-3"></i>Tambah Pertanyaan</a>
-                                    </li>
-                                    <li>
-                                    <li>
-                                        <a class="dropdown-item text-white" href="#"><i
                                                 class="bi bi-zoom-in pe-3"></i>Pratinjau Pertanyaan</a>
                                     </li>
+                                    <li>
                                     </li>
                                     <li>
                                         <a class="dropdown-item text-white"
@@ -158,18 +154,18 @@
                                             maka question bank pada researcher dan admin akan terhapus
                                             secara <span class="fw-bold">permanen</span> .</p>
                                     </div>
-                                    <div class="row px-5 pb-5">
+                                    <div class="row px-4 pb-5">
                                         <form action="{{ route('admin.questionbank.destroy', $item->id)}}"
                                             method="POST">
                                             @method('delete')
                                             @csrf
                                             <div class="col d-grid gap-2">
-                                                <button type="submit" class="btn btn-danger">Iya</button>
+                                                <button type="submit" class="btn btn-danger">YA, HAPUS</button>
                                             </div>
                                         </form>
                                         <div class="col d-grid gap-2">
-                                            <button type="button" class="btn bg-special-blue text-white"
-                                                data-bs-dismiss="modal">Tidak</button>
+                                            <button type="button" class="btn btn-outline-secondary"
+                                                data-bs-dismiss="modal">TIDAK, TETAP SIMPAN</button>
                                         </div>
                                     </div>
                                 </div>
