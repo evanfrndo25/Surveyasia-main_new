@@ -1,3 +1,4 @@
+@import url("https://pro.fontawesome.com/releases/v5.10.0/css/all.css");
 body {
     font-family: "Poppins", sans-serif;
     overflow-x: hidden;
@@ -87,6 +88,10 @@ body {
 
 .link-yellow {
     color: #ffb536;
+}
+
+.link-yellow:hover {
+    color: #ffa840;
 }
 
 .link-default {

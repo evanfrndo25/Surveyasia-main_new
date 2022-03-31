@@ -107,7 +107,7 @@ export const scaleComponent = {
         inputType: "radio",
         label: "example label",
         style: "scale",
-        minVal: 1,
+        minVal: 2,
         maxVal: 10,
         // position: 0,
     },

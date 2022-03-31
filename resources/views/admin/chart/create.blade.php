@@ -44,7 +44,9 @@
                                         <select
                                             class="form-select rounded-pill border-0 bg-light px-3  @error('library_from') is-invalid @enderror"
                                             id="judul"  name="library_from">
-                                            <option selected value="Chart Js">Chart JS</option>
+                                            <option selected value="Chart JS">Chart JS</option>
+                                            <option value="AnyChart">AnyChart</option>
+                                            <option value="DevExpress">DevExpress</option>
                                         </select>
                                         @error('library_from')
                                         <div class="invalid-feedback">
@@ -88,15 +90,30 @@
                                     <div class="mb-4">
                                         <label for="deskripsi" class="form-label">Type</label>
                                         <select class="form-select rounded-pill border-0 bg-light px-3  @error('type') is-invalid @enderror" id="judul" name="type">
-                                            <option selected value="line">line</option>
-                                            <option value="bar">bar</option>
-                                            <option value="pie">pie</option>
-                                            <option value="doughnut">doughnut</option>
-                                            <option value="polarArea">polarArea</option>
-                                            <option value="scatter">scatter</option>
-                                            <option value="bubble">bubble</option>
-                                            <option value="radar">radar</option>
-                                            <option value="wordCloud">wordCloud</option>
+                                            <optgroup label="Chart JS">
+                                            <option selected value="cjs_line">line (Chart JS)</option>
+                                            <option value="cjs_bar">bar (Chart JS)</option>
+                                            <option value="cjs_pie">pie (Chart JS)</option>
+                                            <option value="cjs_doughnut">doughnut (Chart JS)</option>
+                                            <option value="cjs_polarArea">polarArea (Chart JS)</option>
+                                            <option value="cjs_scatter">scatter (Chart JS)</option>
+                                            <option value="cjs_bubble">bubble (Chart JS)</option>
+                                            <option value="cjs_radar">radar (Chart JS)</option>
+                                            <option value="cjs_wordCloud">wordCloud (Chart JS)</option>
+
+                                            <optgroup label="AnyChart">
+                                            <option value="any_line">line (AnyChart)</option>
+                                            <option value="any_bar">bar (AnyChart)</option>
+                                            <option value="any_pie">pie (AnyChart)</option>
+                                            <option value="any_doughnut">doughnut (AnyChart)</option>
+                                            <option value="any_tag_cloud">tagCloud (AnyChart)</option>
+
+                                            <optgroup label="DevExpress">
+                                            <option value="dev_line">line (DevExpress)</option>
+                                            <option value="dev_bar">bar (DevExpress)</option>
+                                            <option value="dev_pie">pie (DevExpress)</option>
+                                            <option value="dev_doughnut">doughnut (DevExpress)</option>
+                                            <option value="dev_data_grid">data_grid (DevExpress)</option>
                                         </select>
                                     </div>
                                     <!--  Akhir Edit Baru Dropdown Type -->

@@ -93,7 +93,7 @@
                 <div class="col d-flex justify-content-center align-items-center">
                     <div class="row text-center">
                         <div class="col">
-                            <p class="fs-14px">Design</p>
+                            <p class="fs-14px">Desain</p>
                             <a href="{{ route('researcher.surveys.manage', $survey->id) }}" class="link-dark">
                                 <i class="bi bi-pencil-square fs-4"></i>
                             </a>
@@ -103,7 +103,7 @@
                 <div class="col d-flex justify-content-center align-items-center">
                     <div class="row text-center">
                         <div class="col">
-                            <p class="fs-14px">Report</p>
+                            <p class="fs-14px">Analisis</p>
                             <a href="{{ route('researcher.surveys.report', $survey->id) }}" class="link-dark">
                                 <i class="bi bi-bar-chart fs-4"></i>
                             </a>
@@ -113,7 +113,7 @@
                 <div class="col d-flex justify-content-center align-items-center">
                     <div class="row text-center">
                         <div class="col">
-                            <p class="fs-14px">Share</p>
+                            <p class="fs-14px">Bagikan</p>
                             <a href="{{ route('researcher.surveys.collectRespondent', $survey->id) }}"
                                 class="link-dark">
                                 <i class="bi bi-share fs-4"></i>

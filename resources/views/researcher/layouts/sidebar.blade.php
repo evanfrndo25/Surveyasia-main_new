@@ -18,7 +18,7 @@
                 <div class="row border pt-3 sidebar-survey">
                     <div class="col">
                         <i class="fas fa-database fa-fw"></i>
-                        <p>Questions Bank</p>
+                        <p>Bank Pertanyaan</p>
                     </div>
                 </div>
             </a>
@@ -27,7 +27,7 @@
                 <div class="row border pt-3">
                     <div class="col">
                         <i class="fas fa-dollar-sign fa-fw"></i>
-                        <p>Paid</p>
+                        <p>Bayar</p>
                     </div>
                 </div>
             </a>
@@ -57,7 +57,7 @@
                             </div>
                             <div class="col-md-6 text-center border p-3">
                                 <a href="#" class="link-dark text-decoration-none">
-                                    <h6>Layout</h6>
+                                    <h6>Tata letak</h6>
                                     <img src="/assets/img/style_layout.png" alt="Layout">
                                 </a>
                             </div>
@@ -70,12 +70,12 @@
                             <div class="col-md-6 text-center border p-3">
                                 <input type="file" name="uploadBackground" id="uploadBackground" hidden>
                                 <label for="uploadBackground" style="cursor: pointer;">
-                                    <h6>Background</h6>
+                                    <h6>Latar Belakang</h6>
                                     <img src="/assets/img/style_background.png" alt="Logo">
                                 </label>
                             </div>
                             <div class="col-md-6 text-center border p-3">
-                                <h6>Color</h6>
+                                <h6>Warna</h6>
                                 <div class="d-flex justify-content-center">
                                     <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#1a94cd"
                                         title="Choose your color">

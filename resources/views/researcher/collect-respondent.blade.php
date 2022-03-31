@@ -3,6 +3,7 @@
 {{-- @extends('researcher.layouts.breadcrumb') --}}
 @extends('researcher.layouts.navbar2')
 
+
 @section('content')
 
     {{-- Breadcrumb --}}
@@ -22,14 +23,14 @@
                         class="link-secondary text-decoration-none">Diagram</a>
                 </li>
                 <li class="breadcrumb-item active"><a href=" {{ route('researcher.surveys.collectRespondent', $survey->id) }}"
-                        class="link-secondary text-decoration-none">Collect Respondent</a>
+                        class="link-secondary text-decoration-none">Kumpulkan Responden</a>
                 </li>
                 </li>
                 <li class="breadcrumb-item"><a href=" {{ route('researcher.surveys.statusSurvey', $survey->id) }}"
                         class="link-secondary text-decoration-none">Status Survey</a>
                 </li>
                 <li class="breadcrumb-item"><a href=" {{ route('researcher.surveys.report', $survey->id) }}"
-                        class="link-secondary text-decoration-none">Analytics Result</a>
+                        class="link-secondary text-decoration-none">Hasil Analisis</a>
                 </li>
             </ol>
         </nav>
@@ -40,23 +41,34 @@
 {{-- Collect Respondent --}}
 <section class="collect-respondent py-5" id="collect-respondent">
     <div class="container">
-        <h4>Collect Responses</h4>
+        {{-- <h4>Collect Responses</h4> --}}
         {{-- Share Link --}}
         <div class="border rounded p-5" style="margin-bottom: 200px">
             <div class="row">
-                <div class="col-md-6">
-                    <h5>Share Link</h5>
-                    <p>Share this link with your respondents to collect their responses.</p>
-                    <div class="d-flex align-items-center">
+                <div class="col-md-7">
+                    <h5>Bagikan Tautan</h5>
+                    <p style="opacity: 80%;">Bagikan tautan ini dengan responden Anda untuk mengumpulkan tanggapan mereka</p>
+                    <div class="d-flex align-items-center mb-2">
                         <input type="text" class="form-control me-3" id="link-input"
                             value="{{ $survey->shareable_link }}" readonly>
-                        <a href="#" class="link-orange fs-4" data-bs-toggle="tooltip" title="Copy link"
+                        
+                        <div class="col-auto " id="button-hide" style="display: none;">
+                            <div class="d-flex">
+                                <a href="" class="btn fs-4 me-2 px-2 float-left" style="background-color: #EF4C29; color:white;"><i class="bi bi-check2"></i></a>
+                                <a href="" class="btn fs-4 me-2 px-2 float-left" style="background-color: #85848B; color:white;"><i class="bi bi-x-lg"></i></a>
+                            </div>
+                        </div>   
+                        
+                        
+                        <button style="background-color: #F2F2F2;" class="btn link-secondary fs-4 me-2" id="btn-edit" onclick="show()"><i class="fal fa-pen"></i></button>
+                        <a href="#" style="background-color: #F2F2F2;" class="btn link-secondary fs-4" data-bs-toggle="tooltip" title="Copy link"
                             onclick="clickToCopy()"><i class="far fa-copy"></i></a>
                     </div>
+                    <p class="fs-12px" style="opacity: 80%;">Edit tautan terlebih dahulu untuk mendapatkan QR Code</p>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <h5 class="text-center qrcode"> QR CODE</h5>
-                    <div class="d-flex align-items-center" style="padding-left: 120px">
+                    <div class="text-center">
                         {!! QrCode::size(250)->generate( $survey->shareable_link ); !!}
                     </div>
                 </div>
@@ -253,4 +265,17 @@
 </section>
 {{-- End Collect Respondent --}}
 
+<script type="text/javascript">
+function show(){
+var x = document.getElementById("button-hide");
+var y = document.getElementById("btn-edit");
+if (x.style.display === "none") {
+    x.style.display = "block";
+    y.style.display = "none";
+  } else {
+    x.style.display = "none";
+    y.style.display = "block";
+  }
+}
+</script>
 @endsection

@@ -23,11 +23,12 @@ class ChartController extends Controller
         $data = [
             'title' => $this->title,
             // 'charts' => ChartResource::collection(Chart::latest()->get())
-            'charts' => Chart::get()
+            'charts' => Chart::latest()->get()
         ];
         
         return view('admin.chart.index', $data);
     }
+    
     public function search(Request $request)
     {
         // $search = $request->search;
@@ -103,12 +104,14 @@ class ChartController extends Controller
     public function edit(Chart $chart)
     {
         $typeChart = Chart::select('type')->distinct()->get();
-        
         return view('admin.chart.edit', [
             'title' => 'edit Chart',
             'chart' => $chart,
             'submit' => 'Update',
-            'typeChart' => $typeChart
+            'typeChart' => $typeChart,
+            'preview_chart' => [
+                'default_configuration' => $chart->default_configuration,
+            ],
         ]);
     }
 
@@ -125,7 +128,8 @@ class ChartController extends Controller
             'name' => 'required',
             'type' => 'required',
             'chart_type' => 'required',
-            'status' => 'required'
+            'status' => 'required',
+            'library_from' => 'required'
         ]);
 
         if ($request->file('img')) {

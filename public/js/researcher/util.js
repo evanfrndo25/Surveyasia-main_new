@@ -5,10 +5,11 @@ import { TextBox } from "../components/textbox.js";
 import { UploadFile } from "../components/uploadFile.js";
 import uniqid from "../components/util.js";
 
+
 export function renderQuestion(config, after = null) {
     let questionsContainer = $("#questions_container");
     let questionElement;
-
+    
     if (config.componentId === undefined) {
         config.componentId = uniqid("component");
     }

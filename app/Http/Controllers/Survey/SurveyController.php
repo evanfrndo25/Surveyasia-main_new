@@ -20,6 +20,7 @@ use App\Action\CreateSurveyQuestionAction;
 use App\Http\Requests\CreateSurveyRequest;
 use App\Http\Requests\CreateSurveyDiagramRequest;
 use App\Http\Requests\CreateSurveyQuestionRequest;
+use App\Models\Chart;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\URL;
@@ -148,10 +149,42 @@ class SurveyController extends Controller
 
     public function customizeDiagram(Survey $survey)
     {
+        function mapper($datas) { // --> Mapping digunakan untuk mendapatkan nama dan tipe chart
+            $result = array();
+            foreach ($datas as  $data) {
+                $result[] = [
+                    'name' => $data->name,
+                    'code' => $data->type,
+                    'description' => $data->description,
+                ];
+            }
+            return $result;
+        }
+
         $this->current = "diagram";
+        $chart_any = [
+            'library_name' => 'AnyChart',
+            'chart_list' => mapper(Chart::where('library_from', 'AnyChart')->get())
+        ];
+
+        // Masih bug di bagian website surveynya
+        // $chart_cjs = [
+        //     'library_name' => 'Chart JS',
+        //     'chart_list' => mapper(Chart::where('library_from', 'Chart JS')->get())
+        // ];
+
+        $chart_dev = [
+            'library_name' => 'DevExpress',
+            'chart_list' => mapper(Chart::where('library_from', 'DevExpress')->get())
+        ];
+
+        // $charts = array_merge([$chart_any], [$chart_cjs], [$chart_dev]);
+        $charts = array_merge([$chart_any], [$chart_dev]);
+
 
         // replace this with real data
-        $charts = [
+        // charts_backup hanyalah contoh dari data charts yang dikirim
+        $charts_backup = [
             [
                 'library_name' => 'AnyChart',
                 'chart_list' => [
@@ -301,5 +334,20 @@ class SurveyController extends Controller
         $pdf = PDF::loadView('pdf-tmp', compact('data'));
         return $pdf->stream();
         // return $pdf->download('chart-export.pdf');
+    }
+
+    public function exportPdf(Survey $survey)
+    {
+        $questions = $survey->questions;
+        $this->current = "report";
+
+        $data = [
+            'survey' => $survey,
+            'questions' => $questions,
+            'url' => route('api.analytics.show', $survey->id),
+            'current' => $this->current,
+        ];
+
+        return view('researcher.export-pdf', $data);
     }
 }

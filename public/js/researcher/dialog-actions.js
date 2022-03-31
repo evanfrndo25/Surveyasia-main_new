@@ -6,7 +6,6 @@ import { Rating } from "../components/rating.js";
 import { openEditModal } from "./edit-dialog-options.js";
 
 export let modalDialog = $("#questionComponentModal");
-
 let targetId;
 let targetPosition;
 
