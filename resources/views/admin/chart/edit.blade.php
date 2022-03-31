@@ -213,7 +213,7 @@
                 }
             });
         } else {
-            let type_chart = ['pie', 'bar', 'line', 'doughnut', 'word_cloud'];
+            let type_chart = ['pie', 'bar', 'line', 'doughnut', 'wordCloud', 'scatter', 'polarArea'];
             $('#chartCategory option').remove();
             type_chart.forEach(t => {
                 if( `dev_${t}` == "{{ $chart->type }}" ) {
