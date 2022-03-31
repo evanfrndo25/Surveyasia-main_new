@@ -76,31 +76,91 @@ $(function () {
                 }
                 break;
             case "DevExpress":
-                let dxInstance =  Object.create(dxChartConstructor);
-                dxInstance.target = 'chart-container' + i;
-                dxInstance.question = null;
-                this.getElementById('chart' + i).remove();
-
+                const targetChart = $('#chart-container' + i);
                 switch (data[i].type.slice(4)) {
                     case "bar":
-                        dxInstance.dataSource  = randomDataForAnychart(7);
-                        dxInstance.createBarChart();
+                        this.getElementById('chart' + i).remove();
+                        targetChart.dxChart({
+                            dataSource: generateDataforDevX(7),
+                            title: null,
+                            commonSeriesSettings: {
+                              type: data[i].type.slice(4),
+                              label: {
+                                visible: true,
+                              },
+                              argumentField: 'label',
+                            },
+                            series: {
+                              name: 'Value',
+                              valueField: 'value',
+                              color: randomRgb(),
+                            },
+                          });
                         break;
                     case "line":
-                        dxInstance.dataSource  = randomDataForAnychart(7);
-                        dxInstance.createLineChart();
+                        targetChart.dxChart({
+                            dataSource: generateDataforDevX(7),
+                            title: null,
+                            commonSeriesSettings: {
+                              type: data[i].type.slice(4),
+                              label: {
+                                visible: true,
+                              },
+                              argumentField: 'label',
+                            },
+                            series: {
+                              name: 'Value',
+                              valueField: 'value',
+                              color: randomRgb(),
+                            },
+                          });
                         break;
                     case "pie":
-                        dxInstance.dataSource  = randomDataForAnychart(7);
-                        dxInstance.createPieChart();
+                        targetChart.dxPieChart({
+                            size: {
+                                width: 500,
+                            },
+                            palette: 'bright',
+                            dataSource: generateDataforDevX(7),
+                            series: [
+                            {
+                                argumentField: 'label',
+                                valueField: 'value',
+                                label: {
+                                    visible: true,
+                                    connector: {
+                                        visible: true,
+                                        width: 1,
+                                    },
+                                },
+                            },
+                            ],
+                            title: null,
+                          });
                         break;
                     case "doughnut":
-                        dxInstance.dataSource  = randomDataForAnychart(7);
-                        dxInstance.createDoughnutChart();
-                        break;
-                    case "data_grid":
-                        dxInstance.dataSource  = randomDataForAnychart(7);
-                        dxInstance.createDataGrid();
+                        targetChart.dxPieChart({
+                            type: 'doughnut',
+                            size: {
+                                width: 500,
+                            },
+                            palette: 'bright',
+                            dataSource: generateDataforDevX(7),
+                            series: [
+                            {
+                                argumentField: 'label',
+                                valueField: 'value',
+                                label: {
+                                    visible: true,
+                                    connector: {
+                                        visible: true,
+                                        width: 1,
+                                    },
+                                },
+                            },
+                            ],
+                            title: null,
+                          });
                         break;
                     default:
                         break;
@@ -169,3 +229,23 @@ const randomDataForAnychart = (length) => {
 
     return data;
 };
+
+const generateDataforDevX = (length) => {
+    const labels = [];
+    const series = [];
+    
+    for( let i = 0; i < length; i++ ) {
+        labels.push(`Data ${i+1}`);
+        series.push(randomInt(50, 100));
+    }
+
+    let data = [];
+    for (let i = 0; i < series.length; i++) {
+        data.push({ 
+            label: labels[i],
+            value: series[i]
+        });
+    }
+
+    return data;
+  }
