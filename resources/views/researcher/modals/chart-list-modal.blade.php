@@ -20,10 +20,9 @@
                                                 <div class="card-body">
                                                     <img class="card-img-top" src="{{ asset('assets/img/prototyping.png') }}" alt="Coming Soon">
                                                     <h6 class="card-title">{{ $item['name'] }}</h6>
-                                                    <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet
-                                                        recusandae
-                                                        repellat
-                                                        officia?</p>
+                                                    <p class="card-text">
+                                                        {{ $item['description'] }}
+                                                    </p>
                                                     <div class="d-flex justify-content-end">
                                                         <button type="button" data-chart-code="{{ $item['code'] }}"
                                                             class="btn btn-sm btn-primary">Apply</button>
