@@ -1,13 +1,13 @@
 <template id="deleteQuestionTemplate">
   <swal-title>
-    Are you sure wants to delete question ?
+    Kamu yakin ingin menghapus pertanyaan ini ?
   </swal-title>
   <swal-icon type="warning" color="red"></swal-icon>
-  <swal-button type="confirm">
-    Confirm
-  </swal-button>
   <swal-button type="cancel">
-    Cancel
+    Batal
+  </swal-button>
+  <swal-button type="confirm" color="orange">
+    Confirm
   </swal-button>
   <swal-param name="allowEscapeKey" value="false" />
   <swal-param name="customClass" value='{ "popup": "my-popup" }' />
