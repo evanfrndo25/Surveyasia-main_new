@@ -113,7 +113,6 @@
                                             <option value="dev_bar">bar (DevExpress)</option>
                                             <option value="dev_pie">pie (DevExpress)</option>
                                             <option value="dev_doughnut">doughnut (DevExpress)</option>
-                                            <option value="dev_data_grid">data_grid (DevExpress)</option>
                                         </select>
                                     </div>
                                     <!--  Akhir Edit Baru Dropdown Type -->
