@@ -195,7 +195,7 @@ const changeChartType = () => {
             select_type_chart.innerHTML += `<option value="dev_${t}">${t}</option>`;
         });
     } else {
-        let type_chart = ['pie', 'bar', 'line', 'doughnut', 'word_cloud'];
+        let type_chart = ['pie', 'bar', 'line', 'doughnut', 'wordCloud', 'scatter', 'polarArea'];
         $('#type option').remove();
         type_chart.forEach(t => {
             select_type_chart.innerHTML += `<option value="cjs_${t}">${t}</option>`;
