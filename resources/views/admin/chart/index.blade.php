@@ -53,10 +53,12 @@
                                     @endif
                                 </div>
                             </div>
-                            <canvas class="mx-3" id="chart{{ $num }}" style="max-height: 250px;"></canvas>
+                            <div id="chart-container{{ $num }}" style="max-height: 250px;">
+                                <canvas class="mx-3" id="chart{{ $num }}" style="max-height: 250px;"></canvas>
+                            </div>
                             <div class="card-body">
                                 <div class="d-flex">
-                                    <h5 class="card-title">{{ $chart->type }}-chart</h5>
+                                    <h5 class="card-title">({{ $chart->library_from }}) {{ substr($chart->type, 4) }}</h5>
                                     <p class="px-3">-</p>
                                     <h5 class="card-title">{{ $chart->name }}</h5>
                                 </div>
@@ -77,111 +79,7 @@
                     @endphp
                     @empty
                     @endforelse
-
-                    <!-- Chart Table -->
-                    <!-- <div class="col">
-                        <table class="table table-no-border-head align-middle">
-                            <thead>
-                                <tr class="fw-bold">
-                                    <td scope="col" class="text-center">Nama Chart</td>
-                                    <td scope="col" class="text-center">Kategori Chart</td>
-                                    <td scope="col" class="text-center">Preview</td>
-                                    <td scope="col" class="text-center">Status</td>
-                                    <td scope="col" class="text-center">Aktifitas</td>
-                                    <td scope="col" class="text-center">Action</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @php
-                                $num = 0;
-                                @endphp
-                                @forelse ($charts as $chart)
-                                <tr>
-                                    <td class="text-center">
-                                        {{ $chart->name }}
-                                    </td>
-                                    <td class="text-center">
-                                        {{ $chart->type }}-chart
-                                    </td>
-                                    <td class="text-center">
-                                        <p class="card-text">{{ Str::limit($chart->description, 50, '...') }}</p>
-                                        <canvas class="mx-3" id="chart{{ $num }}" style="max-width: 250px;"></canvas>
-                                    </td>
-                                    <td class="text-center">
-                                        @if ($chart->status == 0)
-                                        <p class="text-danger my-auto">Off</p>
-                                        @else
-                                        <p class="text-success my-auto">On</p>
-                                        @endif
-                                    </td>
-                                    <td class="text-center">
-                                        <p class="my-auto">{{ $chart->chart_type }}</p>
-                                    </td>
-                                    <td class="text-center">
-                                        <a href="{{ route('admin.chart.edit', $chart->id) }}"
-                                            class="btn bg-special-blue text-white px-4 py-2">
-                                            <i class="bi bi-vector-pen"></i>
-                                            Edit Chart
-                                        </a>
-                                    </td>
-                                </tr>
-
-                                @php
-                                $num++;
-                                @endphp
-                                @empty
-                                @endforelse
-                            </tbody>
-                        </table>
-                    </div> -->
-                    <!-- Akhir Chart Table -->
                 </div>
-                <!-- <div class="row">
-                    @php
-                    $num = 0;
-                    @endphp
-                    @forelse ($charts as $chart)
-                    <div class="col-6 mb-3">
-                        <div class="card" style="height: 450px">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <h6 class="card-title">{{ $chart->name }}</h6>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p class="text-primary">{{ $chart->chart_type }}</p>
-                                    </div>
-                                </div>
-
-                                <p class="card-text">{{ Str::limit($chart->description, 50, '...') }}</p>
-                                <canvas id="chart{{ $num }}" style="max-height: 250px"></canvas>
-                            </div>
-                            <div class="card-footer">
-                                <div class="btn-group" role="group" aria-label="Basic example">
-                                    {{-- <button type="button" class="btn btn-primary">Update</button> --}}
-                                    <a href="#"
-                                        class="btn me-3 rounded px-3 py-2 bg-special-blue text-white">Add</a>
-                                    <button type="button"
-                                        class="btn me-3 rounded px-3 py-2 btn-primary">Edit</button>
-                                    <form action="{{ route('admin.chart.destroy', $chart->id)}}" method="POST">
-                                        @method('delete')
-                                        @csrf
-                                        <button type="submit" class="btn me-3 rounded px-3 py-2 btn-danger btn-block"
-                                            onclick="return confirm('Apakah kamu yakin ingin menghapus?')">Delete</button>
-                                    </form>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    @php
-                    $num++;
-                    @endphp
-                    @empty
-                    @endforelse
-                </div> -->
-
             </div>
         </div>
     </div>
