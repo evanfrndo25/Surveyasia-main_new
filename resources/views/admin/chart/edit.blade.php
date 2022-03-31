@@ -37,7 +37,7 @@
                                 @php
                                     $library = ['Chart JS', 'AnyChart', 'DevExpress'];
                                 @endphp
-                                <select class="form-select rounded-pill border-0 bg-light px-3" name="library_from">
+                                <select class="form-select rounded-pill border-0 bg-light px-3" name="library_from" id="library_from" onchange="changeChartType()">
                                     @foreach ($library as $lib)
                                         @if ($chart->library_from == $lib)
                                             <option selected value="{{ $chart->library_from }}">{{ $chart->library_from }}</option>
@@ -61,13 +61,14 @@
                                 <label for="exampleFormControlInput1" class="form-label">Kategori Chart</label>
                                 <select class="form-select rounded-pill border-0 bg-light px-3" id="chartCategory"
                                     aria-label="Default select example" name="type">
-                                    @foreach ($typeChart as $tchart)
+                                    {{--@foreach ($typeChart as $tchart)
                                     @if ($tchart->type == $chart->type)
                                     <option selected value="{{ $chart->type }}">{{ $chart->type }}</option>
                                     @else
                                     <option value="{{ $tchart->type }}">{{ $tchart->type }}</option>
                                     @endif
-                                    @endforeach
+                                    @endforeach--}}
+                                    <option value="{{ $chart->type }}">{{ $chart->type }}</option>
                                 </select>
                             </div>
                         </div>
@@ -178,19 +179,55 @@
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
+
+<!-- 
+    Script ini digunakan untuk auto update Option di dalam Select
+    berdasarkan Library yang dipilih
+ -->
 <script>
-<<<<<<< HEAD
-    var data = {
-        {
-            Illuminate\ Support\ Js::from($chart)
+    $(function () {
+        changeChartType();
+    });
+
+    const changeChartType = () => {
+        const library_f = document.getElementById('library_from').value;
+        const select_type_chart = document.getElementById('chartCategory');
+        if( library_f == 'AnyChart') {
+            let type_chart = ['pie', 'bar', 'line', 'doughnut', 'tag_cloud'];
+            $('#chartCategory option').remove();
+            type_chart.forEach(t => {
+                if( `any_${t}` == "{{ $chart->type }}" ) {
+                    select_type_chart.innerHTML += `<option selected value="any_${t}">${t}</option>`;
+                } else {
+                    select_type_chart.innerHTML += `<option value="any_${t}">${t}</option>`;
+                }
+            });
+        } else if ( library_f == 'DevExpress' ) {
+            let type_chart = ['pie', 'bar', 'line', 'doughnut'];
+            $('#chartCategory option').remove();
+            type_chart.forEach(t => {
+                if( `dev_${t}` == "{{ $chart->type }}" ) {
+                    select_type_chart.innerHTML += `<option selected value="dev_${t}">${t}</option>`;
+                } else {
+                    select_type_chart.innerHTML += `<option value="dev_${t}">${t}</option>`;
+                }
+            });
+        } else {
+            let type_chart = ['pie', 'bar', 'line', 'doughnut', 'word_cloud'];
+            $('#chartCategory option').remove();
+            type_chart.forEach(t => {
+                if( `dev_${t}` == "{{ $chart->type }}" ) {
+                    select_type_chart.innerHTML += `<option selected value="cjs_${t}">${t}</option>`;
+                } else {
+                    select_type_chart.innerHTML += `<option value="cjs_${t}">${t}</option>`;
+                }
+            });
         }
     };
-    const type = document.getElementById('chartCategory').value;
-
-=======
+</script>
+<script>
     var default_conf = document.getElementById('default_configuration').textContent;
     var type = document.getElementById('chartCategory').value;
->>>>>>> 74451414730ceebed21482011c53441c1fd69358
 </script>
 <script src="https://unpkg.com/chartjs-chart-wordcloud@3"></script>
 <script src="{{ asset('js/charts/chart-admin-edit.js') }}" type="module"></script>
