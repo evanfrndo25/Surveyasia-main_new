@@ -34,8 +34,17 @@
                         <div class="col-6">
                             <div class="mb-4">
                                 <label for="deskripsi" class="form-label">Libray From</label>
-                                <select class="form-select rounded-pill border-0 bg-light px-3">
-                                    <option selected value="Chart Js">Chart JS</option>
+                                @php
+                                    $library = ['Chart JS', 'AnyChart', 'DevExpress'];
+                                @endphp
+                                <select class="form-select rounded-pill border-0 bg-light px-3" name="library_from">
+                                    @foreach ($library as $lib)
+                                        @if ($chart->library_from == $lib)
+                                            <option selected value="{{ $chart->library_from }}">{{ $chart->library_from }}</option>
+                                        @else
+                                            <option value="{{ $lib }}">{{ $lib }}</option>
+                                        @endif
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -159,16 +168,20 @@
                 <div class="col d-grid gap-2">
                     <button type="button" class="btn bg-special-blue text-white" data-bs-dismiss="modal">Tidak</button>
                 </div>
-
             </div>
         </div>
     </div>
 </div>
 
+<!-- Digunakan untuk memparsing dari PHP ke Javascript -->
+<div class="hidden" id="default_configuration">
+    {{ $preview_chart['default_configuration'] }}
+</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
 <script>
-    var data = {{ Illuminate\Support\Js::from($chart) }};
-    const type = document.getElementById('chartCategory').value;
+    var default_conf = document.getElementById('default_configuration').textContent;
+    var type = document.getElementById('chartCategory').value;
 </script>
 <script src="https://unpkg.com/chartjs-chart-wordcloud@3"></script>
 <script src="{{ asset('js/charts/chart-admin-edit.js') }}" type="module"></script>

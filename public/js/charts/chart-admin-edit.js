@@ -22,7 +22,7 @@ import { randomInt, randomRgb } from "./chart-utils.js";
 
 export function running() {
     let type = document.getElementById('chartCategory').value;
-    let config = JSON.parse(data.default_configuration);
+    let config = JSON.parse(default_conf);
     config.type = type;
     config.data = generateRandomData(7, type);
     config.options = {
