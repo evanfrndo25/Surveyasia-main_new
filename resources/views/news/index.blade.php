@@ -15,7 +15,7 @@
             @else
             <div class="container p-5">
                 @endif
-                <h1 class="text-center fw-bold">SurveyAsia News</h1>
+                <h1 class="text-center fw-bold">Berita SurveyAsia</h1>
                 <hr class="hr-vm-orange mx-auto">
                 {{-- News Category --}}
                 <ul class="nav mt-5 mb-3" id="myTab" role="tablist">
@@ -23,35 +23,35 @@
                         <a class="nav-link link-news-category link-secondary link-orange" aria-current="page" href="#"
                             id="all-tab" data-bs-toggle="tab" data-bs-target="#all" type="button" role="tab"
                             aria-controls="all" aria-selected="true">
-                            All Post
+                            Semua Postingan
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link link-news-category link-secondary" aria-current="page" href="#"
                             id="business-tab" data-bs-toggle="tab" data-bs-target="#business" type="button" role="tab"
                             aria-controls="business" aria-selected="true">
-                            Business
+                            Bisnis
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link link-news-category link-secondary" aria-current="page" href="#"
                             id="study-tab" data-bs-toggle="tab" data-bs-target="#study" type="button" role="tab"
                             aria-controls="study" aria-selected="true">
-                            Study
+                            Belajar
                         </a>
                     </li>
                     <li class="nav-item" role="presentation">
                         <a class="nav-link link-news-category link-secondary" aria-current="page" href="#"
                             id="hobby-tab" data-bs-toggle="tab" data-bs-target="#hobby" type="button" role="tab"
                             aria-controls="hobby" aria-selected="true">
-                            Hobby
+                            Hobi
                         </a>
                     </li>
                     <li class="nav-item" role="presentation">
                         <a class="nav-link link-news-category link-secondary" aria-current="page" href="#"
                             id="productivity-tab" data-bs-toggle="tab" data-bs-target="#productivity" type="button"
                             role="tab" aria-controls="productivity" aria-selected="true">
-                            Productivity
+                            Produktifitas
                         </a>
                     </li>
                     <li class="nav-item" role="presentation">
@@ -85,19 +85,19 @@
                                 </div>
                             </div>
                             @endforeach
-                        </div>
+                        </div><br><br><br><br><br><br><br>
                     </div>
                     <div class="tab-pane fade" id="business" role="tabpanel" aria-labelledby="business-tab">
-                        <h1>Business</h1>
+                        <h1>Bisnis</h1>
                     </div>
                     <div class="tab-pane fade" id="study" role="tabpanel" aria-labelledby="study-tab">
-                        <h1>Study</h1>
+                        <h1>Belajar</h1>
                     </div>
                     <div class="tab-pane fade" id="hobby" role="tabpanel" aria-labelledby="hobby-tab">
-                        <h1>Hobby</h1>
+                        <h1>Hobi</h1>
                     </div>
                     <div class="tab-pane fade" id="productivity" role="tabpanel" aria-labelledby="productivity-tab">
-                        <h1>Productivity</h1>
+                        <h1>Produktifitas</h1>
                     </div>
                     <div class="tab-pane fade" id="surveyasia" role="tabpanel" aria-labelledby="surveyasia-tab">
                         <h1>SurveyAsia</h1>
@@ -109,7 +109,7 @@
                 </div>
 
                 {{-- Surveyasia TV --}}
-                <div class="my-5">
+                <div class="my-5 ">
                     <h4 class="fw-bold text-orange">SurveyAsia TV</h4>
                     <hr>
                     <div class="row mt-3 pb-5">

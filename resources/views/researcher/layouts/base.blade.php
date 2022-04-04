@@ -72,7 +72,7 @@
                         <a class="nav-link {{ Request::is('news*') ? 's-active' : '' }}"
                             href="{{ route('news.index') }}">
                             <div class="sb-nav-link-icon"><i class="bi bi-newspaper fs-5"></i></div>
-                            News
+                            Berita
                         </a>
                         <a class="nav-link {{ Request::is('contact') ? 's-active' : '' }}"
                             href="{{ route('contact.index') }}">
