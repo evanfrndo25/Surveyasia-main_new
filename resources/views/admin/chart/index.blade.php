@@ -53,8 +53,8 @@
                                     @endif
                                 </div>
                             </div>
-                            <div id="chart-container{{ $num }}" style="max-height: 250px;">
-                                <canvas class="mx-3" id="chart{{ $num }}" style="max-height: 250px;"></canvas>
+                            <div id="chart-container{{ $num }}">
+                                <canvas id="chart{{ $num }}" style="max-height: 250px;"></canvas>
                             </div>
                             <div class="card-body">
                                 <div class="d-flex">

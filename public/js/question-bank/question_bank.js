@@ -14,14 +14,11 @@ var components = [];
 // question bank should only be fetched when dialog is opened
 async function _fetchQuestionBank() {
     const origin_url = window.location.origin;
-    const response = await fetch(
-        `${origin_url}/api/survey/question-bank`,
-        {
-            headers: {
-                Accept: "application/json",
-            },
-        }
-    );
+    const response = await fetch(`${origin_url}/api/survey/question-bank`, {
+        headers: {
+            Accept: "application/json",
+        },
+    });
 
     return await response.json();
 }
