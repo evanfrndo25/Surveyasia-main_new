@@ -43,9 +43,12 @@
                                         <label for="deskripsi" class="form-label">Libray From</label>
                                         <select
                                             class="form-select rounded-pill border-0 bg-light px-3  @error('library_from') is-invalid @enderror"
-                                            id="judul"  name="library_from">
-                                            <option selected value="Chart JS">Chart JS</option>
-                                            <option value="AnyChart">AnyChart</option>
+                                            id="library_from"  
+                                            name="library_from"
+                                            onchange="changeChartType()"
+                                        >
+                                            <option value="Chart JS">Chart JS</option>
+                                            <option selected value="AnyChart">AnyChart</option>
                                             <option value="DevExpress">DevExpress</option>
                                         </select>
                                         @error('library_from')
@@ -89,30 +92,8 @@
                                     <!--  Edit Baru Dropdown Type -->
                                     <div class="mb-4">
                                         <label for="deskripsi" class="form-label">Type</label>
-                                        <select class="form-select rounded-pill border-0 bg-light px-3  @error('type') is-invalid @enderror" id="judul" name="type">
-                                            <optgroup label="Chart JS">
-                                            <option selected value="cjs_line">line (Chart JS)</option>
-                                            <option value="cjs_bar">bar (Chart JS)</option>
-                                            <option value="cjs_pie">pie (Chart JS)</option>
-                                            <option value="cjs_doughnut">doughnut (Chart JS)</option>
-                                            <option value="cjs_polarArea">polarArea (Chart JS)</option>
-                                            <option value="cjs_scatter">scatter (Chart JS)</option>
-                                            <option value="cjs_bubble">bubble (Chart JS)</option>
-                                            <option value="cjs_radar">radar (Chart JS)</option>
-                                            <option value="cjs_wordCloud">wordCloud (Chart JS)</option>
-
-                                            <optgroup label="AnyChart">
-                                            <option value="any_line">line (AnyChart)</option>
-                                            <option value="any_bar">bar (AnyChart)</option>
-                                            <option value="any_pie">pie (AnyChart)</option>
-                                            <option value="any_doughnut">doughnut (AnyChart)</option>
-                                            <option value="any_tag_cloud">tagCloud (AnyChart)</option>
-
-                                            <optgroup label="DevExpress">
-                                            <option value="dev_line">line (DevExpress)</option>
-                                            <option value="dev_bar">bar (DevExpress)</option>
-                                            <option value="dev_pie">pie (DevExpress)</option>
-                                            <option value="dev_doughnut">doughnut (DevExpress)</option>
+                                        <select class="form-select rounded-pill border-0 bg-light px-3  @error('type') is-invalid @enderror" id="type" name="type">
+                                            <option value=""></option>
                                         </select>
                                     </div>
                                     <!--  Akhir Edit Baru Dropdown Type -->
@@ -192,4 +173,35 @@
         </div>
     </div>
 </div>
+
+<script>
+$(function () {
+    changeChartType();
+});
+
+const changeChartType = () => {
+    const library_f = document.getElementById('library_from').value;
+    const select_type_chart = document.getElementById('type');
+    if( library_f == 'AnyChart') {
+        let type_chart = ['pie', 'bar', 'line', 'doughnut', 'tag_cloud'];
+        $('#type option').remove();
+        type_chart.forEach(t => {
+            select_type_chart.innerHTML += `<option selected value="any_${t}">${t}</option>`;
+        });
+    } else if ( library_f == 'DevExpress' ) {
+        let type_chart = ['pie', 'bar', 'line', 'doughnut'];
+        $('#type option').remove();
+        type_chart.forEach(t => {
+            select_type_chart.innerHTML += `<option value="dev_${t}">${t}</option>`;
+        });
+    } else {
+        let type_chart = ['pie', 'bar', 'line', 'doughnut', 'wordCloud', 'scatter', 'polarArea'];
+        $('#type option').remove();
+        type_chart.forEach(t => {
+            select_type_chart.innerHTML += `<option value="cjs_${t}">${t}</option>`;
+        });
+    }
+};
+</script>
+
 @endsection
