@@ -72,7 +72,7 @@
                                     <a href="{{ route('news.show', $news->slug) }}"
                                         class="link-dark text-decoration-none">
                                         <img src="{{ url('storage/'.$news->img) }}" alt="News"
-                                            class="img-fluid mb-3 w-100">
+                                            class="img-fluid mb-3 w-100" style="height: 250px;">
                                         <p class="text-muted fw-light fs-14px mb-2">{{
                                             $news->created_at->diffForHumans() }}
                                         </p>
@@ -85,7 +85,7 @@
                                 </div>
                             </div>
                             @endforeach
-                        </div><br><br><br><br><br><br><br>
+                        </div>
                     </div>
                     <div class="tab-pane fade" id="business" role="tabpanel" aria-labelledby="business-tab">
                         <h1>Bisnis</h1>
