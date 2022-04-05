@@ -11,6 +11,7 @@ let btnSubmit = $("#submitBtn");
 let spinner = $("#spinner");
 let alert = $("#minQuestionAlert");
 let noQuestion = $("#noQuestionContainer");
+let questionsContainer = $("#questions_container");
 
 $(function () {
     _initQuestions();
@@ -282,10 +283,18 @@ function removeComponent(index) {
 
 function _saveForm(event) {
     // event.preventDefault();
-    const questions = form[0].querySelectorAll(".draggable");
+    const questions = questionsContainer.children(".draggable");
     for (let i = 0; i < questions.length; i++) {
-        const configuration = questions[i].setBlueprint();
+        // const configuration = questions[i].setBlueprint();
         // addComponent(configuration);
+        const hidden = document.createElement("input");
+        hidden.type = "hidden";
+        hidden.name = "questions[]";
+
+        questions[i].blueprint.questionNumber = i + 1;
+
+        hidden.value = JSON.stringify(questions[i].blueprint);
+        form.append(hidden);
     }
     if (configuration.deleted != null) {
         const deleted = document.createElement("input");

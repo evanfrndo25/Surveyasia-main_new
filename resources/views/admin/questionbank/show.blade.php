@@ -81,12 +81,12 @@
 
                 </div>
                 <div class="d-grid gap-2">
-                    <button type="button" id="btnAddQuestion" class="btn btn-primary">
-                        <i class="fa fa-plus-square" aria-hidden="true"></i> Add Question
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-plus-square" aria-hidden="true"></i> Simpan
                     </button>
                 </div>
                 <hr id="horizontalLine" style="display: none;">
-                <div class="row d-flex justify-content-between">
+                <!-- <div class="row d-flex justify-content-between">
                     <div class="col-8">
                         <div class="alert alert-info alert-dismissible fade" role="alert" id="minQuestionAlert">
                             Buat minimal 5 pertanyaan untuk disimpan
@@ -94,21 +94,22 @@
                         </div>
                     </div>
                     <div class="col-auto">
-                        <button type="submit" class="btn btn-primary disabled fade" id="submitBtn">Simpan</button>
+                        <button type="submit" class="btn btn-primary disabled fade">Simpan</button>
                     </div>
-                </div>
+                </div> -->
             </form>
 
-            <script>
+        </div>
+        <script>
                 var url = "{!! $url !!}";
-                console.log(url);
-
+            </script>
+            <script>
+                var questions = {!! $questionbank->questions !!};
             </script>
             <!-- Latest Sortable -->
             <script src="http://SortableJS.github.io/Sortable/Sortable.js"></script>
             <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
             <script type="module" src="{{ asset('js/subtemplate/formsQb.js') }}"></script>
-        </div>
     </div>
     @endsection
     @section('importLibraryArea')
