@@ -133,7 +133,7 @@ class CreateQuestionBankAction
             }
 
             // deleted options
-            foreach ($deleted->options as $deletedOption) {
+            foreach ($deleted->media as $deletedOption) {
                 # code...
                 $trash = QuestionsOption::find($deletedOption);
                 if ($trash != null) {
@@ -154,8 +154,8 @@ class CreateQuestionBankAction
                 [
                     'question_bank_id' => $questionbankId,
                     'question' => $questionObj->question,
-                    'type' => $questionObj->type,
-                    'question_type' => $questionObj->questionType
+                    // 'type' => $questionObj->type,
+                    'configuration' => $item
                 ]
             );
 
@@ -165,10 +165,10 @@ class CreateQuestionBankAction
                 foreach ($questionObj->options as $option) {
                     # create options or update if exists
                     QuestionsOption::updateOrCreate(
-                        ['id' => property_exists($option, 'id') ? $option->id : null],
+                        ['id' => property_exists(strval($option), 'id') ? $option->id : null],
                         [
                             'question_id' => $question->id,
-                            'value' => property_exists($option, 'value') ? $option->value : $option
+                            'value' => property_exists(strval($option), 'value') ? $option->value : $option
                         ]
                     );
                 }
