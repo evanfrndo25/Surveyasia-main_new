@@ -60,18 +60,6 @@
                 </div>
                 <h5 class="mt-3">Memuat konfigurasi....</h5>
             </div>
-            <div class="card mb-3 text-center fade" id="noQuestionContainer">
-                <div class="card-body">
-                    <img class="img-fluid" height="450" width="150" src="{{ asset('assets/img/nodata.png') }}"
-                        alt="No question available">
-                    <h4 class="card-title">Tidak ada pertanyaan</h4>
-                    <p class="card-text">silahkan buat pertanyaan terlebih dahulu
-                    </p>
-                    <button id="btnAddQuestion" data-bs-toggle="modal" data-bs-target="#questionComponentModal"
-                        class="btn btn-sm "><i class="bi bi-plus-square iconsfot"></i> Tambahkan Pertanyaan</button>
-                </div>
-            </div>
-
             <form action="{{ route('admin.storeQuestions', $questionbank->id) }}" method="post" id="formQuestionBank"
                 class="question-form mb-5 px-5">
                 @csrf
@@ -98,6 +86,13 @@
                     </div>
                 </div> -->
             </form>
+
+            <div class="card mb-3 text-center fade" id="noQuestionContainer">
+                <div class="card-body">
+                    <button id="btnAddQuestion" data-bs-toggle="modal" data-bs-target="#questionComponentModal"
+                        class="btn btn-sm "><i class="bi bi-plus-square iconsfot"></i> Tambahkan Pertanyaan</button>
+                </div>
+            </div>
 
         </div>
         <script>

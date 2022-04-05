@@ -7,7 +7,7 @@ export class TextBox extends Component {
         super(config);
         this.blueprint = config;
     }
-    
+
     content() {
         const wrapper = document.createElement("div");
         wrapper.className += "mb-3";
@@ -619,8 +619,7 @@ export class TextBox extends Component {
         const label = this._createInputLabel(
             "Minimum Length",
             "form-label",
-            "minLength",
-            
+            "minLength"
         );
 
         const input = document.createElement("input");

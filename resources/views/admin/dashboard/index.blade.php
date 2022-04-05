@@ -55,9 +55,9 @@
                                     <h1 class="fw-bold ms-4">{{ $users}}</h1>
                                     <div class="d-flex align-items-center justify-content-between">
                                         <i class="bi bi-people-fill fs-1"></i>
-                                        <div>
-                                            <span class="fw-bold fs-5">All User</span>
-                                            <span class="d-block text-mini">All user of Surveyasia</span>
+                                        <div class="text-end">
+                                            <span class="fw-bold fs-5">Pengguna</span>
+                                            <span class="d-block text-mini">Semua pengguna di Surveyasia</span>
                                         </div>
                                     </div>
                                 </div>
@@ -72,8 +72,8 @@
                                     <div class="d-flex align-items-center justify-content-between">
                                         <i class="bi bi-chat-left-text-fill fs-1"></i>
                                         <div>
-                                            <span class="fw-bold fs-5">Question Bank</span>
-                                            <span class="d-block text-mini">Since Stand</span>
+                                            <span class="fw-bold fs-5">Bank Soal</span>
+                                            <span class="d-block text-mini">Sejak Berdiri</span>
                                         </div>
                                     </div>
                                 </div>
@@ -88,8 +88,8 @@
                                     <div class="d-flex align-items-center justify-content-between">
                                         <i class="bi bi-newspaper fs-1"></i>
                                         <div>
-                                            <span class="fw-bold fs-5">News</span>
-                                            <span class="d-block text-mini">of Product</span>
+                                            <span class="fw-bold fs-5">Kabar Baru</span>
+                                            <span class="d-block text-mini">Dari Produk</span>
                                         </div>
                                     </div>
                                 </div>
