@@ -9,7 +9,7 @@
 
 @section('content')
 
-<h3 class="pt-5 ms-5 fw-bold">My Account</h3>
+<h3 class="pt-5 ms-5 fw-bold">Akun Saya</h3>
 
 {{-- User Dashboard --}}
 <section class="user-profile pt-4 pb-5 mx-5" id="user-profile">
@@ -19,12 +19,11 @@
             <div class="shadow p-4 me-4" style="border-radius: 16px;">
                 <h5>Personal</h5>
                 <a href="{{ route('user-profile') }}" class="link-dark text-decoration-none">
-                    <p class="mt-3 ms-3"><i class="fas fa-user fa-fw"></i> Profile</p>
+                    <p class="mt-3 ms-3"><i class="fas fa-user fa-fw"></i> profil</p>
                 </a>
                 @if(Auth::user()->role_id == 3)
                 <a href="{{ route('respondent.survey.history') }}" class="link-dark text-decoration-none">
-                    <p class="mt-3 ms-3"><i class="fas fa-ticket-alt fa-fw"></i> Reward
-                        Point</p>
+                    <p class="mt-3 ms-3"><i class="fas fa-ticket-alt fa-fw"></i> Point Hadiah</p>
                 </a>
                 @endif
                 @if (Auth::user()->role_id == 2)
@@ -138,7 +137,7 @@
                 </div>
             </div>
             <div class="d-flex justify-content-end mt-3">
-                <a href="{{ route('edit-profile') }}" class="btn btn-outline-orange radius-default">Edit Profile</a>
+                <a href="{{ route('edit-profile') }}" class="btn btn-outline-orange radius-default">Edit Profil</a>
             </div>
 
             <div class="row mt-4">
