@@ -13,7 +13,7 @@
                     <p>Tentang Kami</p>
                 </a>
                 <a href="{{ route('news.index') }}" class="link-dark text-decoration-none">
-                    <p>News</p>
+                    <p>Berita</p>
                 </a>
                 <a href="{{ route('pricing') }}" class="link-dark text-decoration-none">
                     <p>Harga</p>

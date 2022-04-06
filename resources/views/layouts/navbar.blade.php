@@ -13,7 +13,7 @@
           <a class="nav-link" href="{{ route('about') }}">Tentang Kami</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('news.index') }}">News</a>
+          <a class="nav-link" href="{{ route('news.index') }}">Berita</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{ route('contact.index') }}">Kontak</a>
