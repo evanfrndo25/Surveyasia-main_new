@@ -63,7 +63,7 @@
                             </div>
                             <div class="col-md-6 text-center border p-3">
                                 <a href="#" class="link-dark text-decoration-none">
-                                    <h6>Font</h6>
+                                    <h6>Huruf</h6>
                                     <h1>Aa</h1>
                                 </a>
                             </div>
