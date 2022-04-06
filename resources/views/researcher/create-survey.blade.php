@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="{{ asset('css/components/spinner.css') }}">
 <link rel="stylesheet" href="{{ asset('css/components/rating.css') }}">
 <link rel="stylesheet" href="{{ asset('css/components/scale.css') }}">
-<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+{{-- <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet"> --}}
 @section('content')
     {{-- Breadcrumb --}}
     <section class="breadcrumb-contact mt-3 ms-5" id="breadcrumb-contact">
@@ -48,7 +48,7 @@
     @include('layouts.alerts.delete-question')
     @include('researcher.layouts.sidebar')
     
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    {{-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
     <script src="{{ asset('js/bootstrap-paginator.min.js') }}"></script>
     
@@ -60,7 +60,7 @@
         }
 
         $('#questions_container').bootstrapPaginator(options);
-    </script>
+    </script> --}}
 
     <script>
         var url = "{!! $url !!}";
