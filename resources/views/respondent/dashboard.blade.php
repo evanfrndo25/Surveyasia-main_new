@@ -222,7 +222,7 @@
 {{-- Surveyasia News --}}
 <section class="surveyasia-news py-5" id="surveyasia-news">
     <div class="container">
-        <h5 class="fw-bold">SurveyAsia News</h5>
+        <h5 class="fw-bold">Berita SurveyAsia</h5>
         <div class="row">
             @foreach ($newsList as $news)
             <div class="col-12 col-sm-6 col-lg-3">

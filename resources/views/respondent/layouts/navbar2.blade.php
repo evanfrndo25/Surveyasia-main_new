@@ -17,7 +17,7 @@
                 <a class="nav-link" href="{{ route('contact.index') }}">Kontak</a>
             </li>
             <li class="nav-item me-3">
-                <a class="nav-link" href="{{ route('news.index') }}">News</a>
+                <a class="nav-link" href="{{ route('news.index') }}">Berita</a>
             </li>
             @auth
             @if (\Auth::user()->avatar == null)

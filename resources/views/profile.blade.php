@@ -36,7 +36,7 @@
                 </a>
                 @endif
                 <a href="{{ route('news.index') }}" class="link-dark text-decoration-none">
-                    <p class="mt-3 ms-3"><i class="fas fa-newspaper fa-fw"></i> News</p>
+                    <p class="mt-3 ms-3"><i class="fas fa-newspaper fa-fw"></i> Berita</p>
                 </a>
                 <a href="{{ route('contact.index') }}" class="link-dark text-decoration-none">
                     <p class="mt-3 ms-3"><i class="fas fa-phone-alt fa-fw"></i> Kontak</p>
@@ -44,7 +44,7 @@
                 <form action="{{ route('logout') }}" method="POST" class="m-0">
                     @csrf
                     <button type="submit" class="dropdown-item"><i class="fas fa-sign-out-alt fa-fw"></i>
-                        Logout</button>
+                        Keluar</button>
                 </form>
             </div>
         </div>
