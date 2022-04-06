@@ -45,11 +45,11 @@
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li>
                             <a class="dropdown-item" href="{{ route('user-profile') }}"><i
-                                    class="fas fa-user fa-fw"></i> Profile
+                                    class="fas fa-user fa-fw"></i> Profil
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="/"><i class="fas fa-tachometer-alt fa-fw"></i> Dashboard</a>
+                            <a class="dropdown-item" href="/"><i class="fas fa-tachometer-alt fa-fw"></i> Beranda</a>
                         </li>
                         <li>
                             <a class="dropdown-item" href="{{ route('change.notice') }}"><i
