@@ -1,7 +1,7 @@
 import { baseRules, maxSizeRule, requiredRule } from "./util.js";
 
 export const textBoxComponent = {
-    question: "Example Question",
+    question: "Tulis Pertanyaan Anda disini",
     componentName: "textBox",
     questionNumber: 0,
     // use this for dynamic container
@@ -11,8 +11,8 @@ export const textBoxComponent = {
     }, */
     configuration: {
         inputType: "text",
-        label: "text box question",
-        placeholder: "insert your answer",
+        label: "Masukkan Label Pertanyaan Anda ",
+        placeholder: "Masukkan Jawaban Anda",
         width: "long",
         style: "form-control",
         // position: 0,
@@ -35,7 +35,7 @@ export const textBoxComponent = {
 };
 
 export const multipleChoiceComponent = {
-    question: "Example Question",
+    question: "Tulis Pertanyaan Anda disini",
     componentName: "multipleChoice",
     questionNumber: 0,
     // use this for dynamic container
@@ -64,7 +64,7 @@ export const multipleChoiceComponent = {
 };
 
 export const multiOptionsComponent = {
-    question: "Example Question",
+    question: "Tulis Pertanyaan Anda disini",
     componentName: "multiOptions",
     questionNumber: 0,
     // use this for dynamic container
@@ -95,7 +95,7 @@ export const multiOptionsComponent = {
 
 
 export const scaleComponent = {
-    question: "Example Question",
+    question: "Tulis Pertanyaan Anda disini",
     componentName: "scale",
     questionNumber: 0,
     // use this for dynamic container
@@ -126,7 +126,7 @@ export const scaleComponent = {
 };
 
 export const ratingStarComponent = {
-    question: "Example Question",
+    question: "Tulis Pertanyaan Anda disini",
     componentName: "ratingStar",
     questionNumber: 0,
     // use this for dynamic container
@@ -158,7 +158,7 @@ export const ratingStarComponent = {
 };
 
 export const dropDownComponent = {
-    question: "Example Question",
+    question: "Tulis Pertanyaan Anda disini",
     questionNumber: 0,
     componentName: "dropdown",
     // use this for dynamic container
@@ -187,7 +187,7 @@ export const dropDownComponent = {
 };
 
 export const fileUploadComponent = {
-    question: "Example Question",
+    question: "Tulis Pertanyaan Anda disini",
     componentName: "fileUpload",
     questionNumber: 0,
     // use this for dynamic container

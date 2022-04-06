@@ -965,7 +965,7 @@ export class Component extends HTMLDivElement {
         wrapper.id = uniqid("wrapper");
         wrapper.className += "mb-3";
 
-        const label = this._createInputLabel("Question Label");
+        const label = this._createInputLabel("Label Pertanyaan");
 
         const input = document.createElement("input");
         input.className += "form-control";
@@ -1006,7 +1006,7 @@ export class Component extends HTMLDivElement {
         const wrapper = this._updatableWrapper();
 
         const label = document.createElement("label");
-        label.innerHTML = "Question";
+        label.innerHTML = "pertanyaan";
 
         const textArea = document.createElement("textarea");
         textArea.className += "form-control";
