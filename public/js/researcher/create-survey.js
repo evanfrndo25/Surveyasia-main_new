@@ -149,7 +149,7 @@ function _initCustomComponentClick(target) {
             title: configuration.title,
         };
         config.meta.user = configuration.user;
-        config.configuration.label = "Upload file section";
+        config.configuration.label = "Unggah bagian file";
         renderQuestion(config, target);
 
         customElementModal.modal("hide");
@@ -162,7 +162,7 @@ function _initCustomComponentClick(target) {
             title: configuration.title,
         };
         config.meta.user = configuration.user;
-        config.configuration.label = "Rate a product";
+        config.configuration.label = "Masukkan Label Pertanyaan Anda";
         renderQuestion(config, target);
 
         customElementModal.modal("hide");

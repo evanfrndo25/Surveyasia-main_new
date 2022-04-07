@@ -23,7 +23,7 @@
                 </a>
                 @if(Auth::user()->role_id == 3)
                 <a href="{{ route('respondent.survey.history') }}" class="link-dark text-decoration-none">
-                    <p class="mt-3 ms-3"><i class="fas fa-ticket-alt fa-fw"></i> Point Hadiah</p>
+                    <p class="mt-3 ms-3"><i class="fas fa-ticket-alt fa-fw"></i>Saldo Hadiah</p>
                 </a>
                 @endif
                 @if (Auth::user()->role_id == 2)

@@ -3,7 +3,7 @@
     class="modal-dialog modal-xl modal-fullscreen-lg-down modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="editModalTitle">Update Question</h5>
+        <h5 class="modal-title" id="editModalTitle">Edit Pertanyaan</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal"
           aria-label="Close" id="btnIconClose"></button>
       </div>
@@ -50,7 +50,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
-          id="btnCloseEdit">Save</button>
+          id="btnCloseEdit">Simpan</button>
       </div>
     </div>
   </div>

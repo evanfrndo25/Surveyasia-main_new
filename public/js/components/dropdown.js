@@ -29,7 +29,7 @@ add
 
         // label/first option
         const labelOption = document.createElement("option");
-        labelOption.innerHTML = "Select an option";
+        labelOption.innerHTML = "Opsi Pilihan";
         select.appendChild(labelOption);
 
         for (let i = 0; i < values.length; i++) {
@@ -258,11 +258,11 @@ add
 
         const addOptionButton = document.createElement("button");
         addOptionButton.className += "btn btn-sm btn-default text-white";
-        addOptionButton.innerHTML = "Add Option";
+        addOptionButton.innerHTML = "Tambah Opsi";
 
         const saveOptionButton = document.createElement("button");
         saveOptionButton.className += "btn btn-md btn-danger text-white";
-        saveOptionButton.innerHTML = "Save Option";
+        saveOptionButton.innerHTML = "Simpan";
 
         const instance = this;
         addOptionButton.onclick = function (event) {
@@ -288,7 +288,7 @@ add
 
         // label/first option
         const labelOption = document.createElement("option");
-        labelOption.innerHTML = "Select an option";
+        labelOption.innerHTML = "Opsi Pilihan";
         wrapper.appendChild(labelOption);
 
         for (let i = 0; i < values.length; i++) {

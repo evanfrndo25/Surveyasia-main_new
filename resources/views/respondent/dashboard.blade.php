@@ -104,7 +104,7 @@
     <div class="container">
         <div class="row justify-content-between">
             <div class="col-12 col-sm-6">
-                <h5 class="fw-bold">Survey Untukmu</h5>
+                <h5 class="fw-bold">Rekomendasi Untukmu</h5>
             </div>
             <div class="col-6 col-xl-3">
                 <form id="form_filter" action="{{ url('/respondent/dashboard/filter') }}" method="GET">
