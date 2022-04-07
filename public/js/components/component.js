@@ -467,7 +467,7 @@ export class Component extends HTMLDivElement {
 
         const mediaPreview = this._buildMediaOptionPreview();
 
-        const mediaLabel = this._createInputLabel("Image Source (File OR URL)");
+        const mediaLabel = this._createInputLabel("Sumber Gambar (File atau URL))");
         const sourceRow = document.createElement("div");
         sourceRow.id = "mediaInputRow_" + this.blueprint.componentId;
         sourceRow.className += "row mb-3";
@@ -491,7 +491,7 @@ export class Component extends HTMLDivElement {
         const imageContainer = document.createElement("div");
         imageContainer.className += "mb-3";
 
-        const label = this._createInputLabel("Image Preview");
+        const label = this._createInputLabel("Pratinjau Gambar");
         const image = document.createElement("img");
         image.id = "previewImage_" + this.blueprint.componentId;
         image.className += "img-fluid rounded mb-2";
@@ -543,7 +543,7 @@ export class Component extends HTMLDivElement {
             }
         } else {
             image.src =
-                "https://via.placeholder.com/550x280?text=550x280+Recommended+size";
+                "https://via.placeholder.com/550x280?text=Ukuran yang direkomendasikan+550x280";
         }
 
         // button action container
@@ -714,7 +714,7 @@ export class Component extends HTMLDivElement {
             // set input attributes for file
             input.accept = "image/*";
             input.type = "file";
-            helperText = buildHelperText("Image File max. 1 Mb size", "small");
+            helperText = buildHelperText("File Gambar maks. ukuran 1mb", "small");
 
             // validate input
             input.onchange = function () {
@@ -749,9 +749,9 @@ export class Component extends HTMLDivElement {
         } else {
             // set input attributes for url
             input.type = "url";
-            input.placeholder = "insert valid a valid URL";
+            input.placeholder = "Masukkan URL valid";
             helperText = buildHelperText(
-                "Accept image media from URL",
+                "Media gambar dari URL diterima",
                 "small"
             );
 
@@ -965,7 +965,7 @@ export class Component extends HTMLDivElement {
         wrapper.id = uniqid("wrapper");
         wrapper.className += "mb-3";
 
-        const label = this._createInputLabel("Question Label");
+        const label = this._createInputLabel("Label Pertanyaan");
 
         const input = document.createElement("input");
         input.className += "form-control";
@@ -1006,7 +1006,7 @@ export class Component extends HTMLDivElement {
         const wrapper = this._updatableWrapper();
 
         const label = document.createElement("label");
-        label.innerHTML = "Question";
+        label.innerHTML = "pertanyaan";
 
         const textArea = document.createElement("textarea");
         textArea.className += "form-control";

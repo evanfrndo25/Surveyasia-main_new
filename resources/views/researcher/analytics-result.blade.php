@@ -46,7 +46,7 @@
                 <div class="dropdown mt-3">
                     <button class="btn btn-default text-light w-100" type="button" id="dropdownMenuButton1"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        Download Result
+                        Unduh Hasil
                         <i class="fas fa-download ms-5"></i>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">

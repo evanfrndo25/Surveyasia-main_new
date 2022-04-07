@@ -13,7 +13,7 @@
                     <p>Tentang Kami</p>
                 </a>
                 <a href="{{ route('news.index') }}" class="link-dark text-decoration-none">
-                    <p>News</p>
+                    <p>Berita</p>
                 </a>
                 <a href="{{ route('pricing') }}" class="link-dark text-decoration-none">
                     <p>Harga</p>
@@ -38,7 +38,7 @@
                 </a>
             </div>
             <div class="col-md-4">
-                <p>Subscribe to our newsletter and be the first to know about our updates</p>
+                <p>Berlangganan dengan layanan kami dan jadilah orang pertama yang tahu tentang pembaharuan kami</p>
                 <form>
                     <div class="row">
                         <div class="col-7">

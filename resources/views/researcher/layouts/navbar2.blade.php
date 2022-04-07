@@ -28,10 +28,10 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="{{ route('user-profile') }}"><i class="fas fa-user fa-fw"></i>
-                            Profile</a></li>
+                            Profil</a></li>
                     <li><a class="dropdown-item" href="{{ route('researcher.surveys.index') }}"><i
                                 class="fas fa-tachometer-alt fa-fw"></i>
-                            Dashboard</a>
+                            Beranda</a>
                     </li>
                     <li><a class="dropdown-item" href="{{ route('change.notice') }}"><i
                                 class="fas fa-user-friends fa-fw"></i> Jadi

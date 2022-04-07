@@ -514,11 +514,11 @@ add
 
         const addOptionButton = document.createElement("button");
         addOptionButton.className += "btn btn-sm btn-default text-white";
-        addOptionButton.innerHTML = "Add Option";
+        addOptionButton.innerHTML = "Opsi Pilihan";
 
         const saveOptionButton = document.createElement("button");
         saveOptionButton.className += "btn btn-md btn-danger text-white";
-        saveOptionButton.innerHTML = "Save Option";
+        saveOptionButton.innerHTML = "Simpan";
 
         const instance = this;
         addOptionButton.onclick = function (event) {
@@ -891,7 +891,7 @@ add
             }
         });
 
-        const helperText = buildHelperText("Set 0 to remove rule");
+        const helperText = buildHelperText("Pilih 0 untuk mengatur kembali");
 
         container.appendChild(label);
         container.appendChild(input);
@@ -952,7 +952,7 @@ add
             }
         });
 
-        const helperText = buildHelperText("Set 0 to remove rule");
+        const helperText = buildHelperText("Pilih 0 untuk mengatur kembali");
 
         container.appendChild(label);
         container.appendChild(input);

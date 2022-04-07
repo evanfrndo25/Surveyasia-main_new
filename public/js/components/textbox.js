@@ -401,28 +401,28 @@ export class TextBox extends Component {
 
     _buildUpdatableInputType() {
         const wrapper = this._updatableWrapper();
-        const label = this._createInputLabel("Input Type");
+        const label = this._createInputLabel("Tipe Masukkan");
 
         // check https://www.w3schools.com/html/html_form_input_types.asp for input types
         const inputTypes = [
             {
                 value: "text",
-                name: "Text",
+                name: "Teks",
                 // description: "Input for generic text",
             },
             {
                 value: "number",
-                name: "Numeric",
+                name: "Numerik",
                 // description: "Input for generic text",
             },
             {
                 value: "date",
-                name: "Date",
+                name: "Tanggal",
                 // description: "Input for generic text",
             },
             {
                 value: "datetime-local",
-                name: "Datetime",
+                name: "Tanggal dan waktu",
                 // description: "Input for generic text",
             },
             {
@@ -432,7 +432,7 @@ export class TextBox extends Component {
             },
             {
                 value: "month",
-                name: "Month",
+                name: "Bulan",
                 // description: "Input for generic text",
             },
             {
@@ -442,7 +442,7 @@ export class TextBox extends Component {
             },
             {
                 value: "url",
-                name: "URL / Link",
+                name: "URL / Tautan",
                 // description: "Input for web address",
             },
         ];
@@ -458,19 +458,19 @@ export class TextBox extends Component {
 
     _buildAnswerLengthOption() {
         const wrapper = this._updatableWrapper();
-        const label = this._createInputLabel("Answer Length");
+        const label = this._createInputLabel("Panjang Jawaban ");
 
         const observableConfiguration = this.observer().configuration;
 
         const options = [
             {
                 value: "long",
-                name: "Long Answer",
+                name: "Jawaban Panjang",
                 // description: "Input for generic text",
             },
             {
                 value: "short",
-                name: "Short Answer",
+                name: "Jawaban Pendek",
                 // description: "Input for generic text",
             },
         ];
@@ -501,14 +501,14 @@ export class TextBox extends Component {
 
     _buildUpdatableQuestionType() {
         const wrapper = this._updatableWrapper();
-        const label = this._createInputLabel("Textbox type");
+        const label = this._createInputLabel("Tipe Kotak Teks");
         const types = [
             {
-                name: "Single Line Input",
+                name: "Baris tunggal",
                 value: "input",
             },
             {
-                name: "Text Area",
+                name: "Bidang Teks",
                 value: "textarea",
             },
         ];
@@ -532,24 +532,24 @@ export class TextBox extends Component {
         // option onkeyup
         const option1 = document.createElement("option");
         option1.value = "keyup";
-        option1.innerHTML = "On user input";
+        option1.innerHTML = "Pada Masukan Pengguna";
 
         // option onchange
         const option2 = document.createElement("option");
         option2.value = "change";
-        option2.innerHTML = "On value changed";
+        option2.innerHTML = "Pada Nilai Berubah";
 
         selectOption.appendChild(option1);
         selectOption.appendChild(option2);
 
         const label = this._createInputLabel(
-            "Validate When",
+            "Validasi ketika",
             "form-label",
             "selectOption"
         );
 
         const helperText = buildHelperText(
-            "Determine when the validations should be executed"
+            "Tentukan kapan validasi harus dijalankan"
         );
 
         container.appendChild(label);
@@ -617,7 +617,7 @@ export class TextBox extends Component {
         container.className += "mb-3";
 
         const label = this._createInputLabel(
-            "Minimum Length",
+            "Panjang Minimum",
             "form-label",
             "minLength"
         );
@@ -639,7 +639,7 @@ export class TextBox extends Component {
                 instance.validationObserver().splice(1, 1);
             }
         };
-        const helperText = buildHelperText("Set 0 to remove rule");
+        const helperText = buildHelperText("Pilih 0 untuk mengatur kembali");
 
         container.appendChild(label);
         container.appendChild(input);
@@ -668,7 +668,7 @@ export class TextBox extends Component {
         container.className += "mb-3";
 
         const label = this._createInputLabel(
-            "Maximum Length",
+            "Panjang Maksimum",
             "form-label",
             inputId
         );
@@ -691,7 +691,7 @@ export class TextBox extends Component {
             }
         };
 
-        const helperText = buildHelperText("Set 0 to remove rule");
+        const helperText = buildHelperText("Pilih 0 untuk mengatur kembali");
 
         container.appendChild(label);
         container.appendChild(input);

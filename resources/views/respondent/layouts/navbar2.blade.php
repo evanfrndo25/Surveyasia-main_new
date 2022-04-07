@@ -17,7 +17,7 @@
                 <a class="nav-link" href="{{ route('contact.index') }}">Kontak</a>
             </li>
             <li class="nav-item me-3">
-                <a class="nav-link" href="{{ route('news.index') }}">News</a>
+                <a class="nav-link" href="{{ route('news.index') }}">Berita</a>
             </li>
             @auth
             @if (\Auth::user()->avatar == null)
@@ -44,11 +44,11 @@
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li>
                         <a class="dropdown-item" href="{{ route('user-profile') }}"><i class="fas fa-user fa-fw"></i>
-                            Profile
+                            Profil
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="/"><i class="fas fa-tachometer-alt fa-fw"></i> Dashboard</a>
+                        <a class="dropdown-item" href="/"><i class="fas fa-tachometer-alt fa-fw"></i> Beranda</a>
                     </li>
                     <li>
                         <a class="dropdown-item" href="{{ route('change.notice') }}"><i

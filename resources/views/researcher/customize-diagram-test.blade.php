@@ -141,7 +141,7 @@
                 <h6>No question present</h6>
             @endforelse
             <div class="d-grid my-3">
-                <button type="submit" class="btn btn-orange">Save</button>
+                <button type="submit" class="btn btn-orange">Simpan</button>
             </div>
         </div>
     </form>
