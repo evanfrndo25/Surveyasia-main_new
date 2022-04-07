@@ -135,22 +135,6 @@
                                                     <label for="">Lanjutkan Ke</label>
                                                 </div>
                                                 <div class="col-md-5">
-<<<<<<< HEAD
-                                                    <select class="form-select form-select-sm" id="part" aria-label=".form-select-sm example" disabled="disabled">
-                                                    <option selected> -- Select Part  --</option>
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <select class="form-select form-select-sm" id="question" aria-label=".form-select-sm example" disabled="disabled">
-                                                    <option selected> -- Choose The Question  --</option>
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
-                                                    </select>
-=======
                                                 <select class="form-select form-select-sm" aria-label=".form-select-sm example">
                                                             <option selected> -- Pilih Bagian  --</option>
                                                             <option value="1">Bagian 1</option>
@@ -165,7 +149,6 @@
                                                             <option value="2">Two</option>
                                                             <option value="3">Three</option>
                                                             </select>
->>>>>>> 14c3406d7a06ea40540610f404b7dab478ec400b
                                                 </div>
                                                 <div class="col-1 p-0">
                                                     <a href="#" class="btn link-dark">
@@ -192,18 +175,6 @@
                                             <div class="col-md-8">
                                                 <div class="row align-items-center">
                                                     <div class="col-md-5">
-<<<<<<< HEAD
-                                                        <select class="form-select form-select-sm" id="part1" aria-label=".form-select-sm example" disabled="disabled">
-                                                            <option selected> -- Select Part  --</option>
-                                                            <option value="1">One</option>
-                                                            <option value="2">Two</option>
-                                                            <option value="3">Three</option>
-                                                            </select>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <select class="form-select form-select-sm" id="question1" aria-label=".form-select-sm example" disabled="disabled">
-                                                            <option selected> -- Choose The Question  --</option>
-=======
                                                     <select class="form-select form-select-sm" aria-label=".form-select-sm example">
                                                             <option selected> -- Pilih Bagian  --</option>
                                                             <option value="1">Bagian 1</option>
@@ -214,7 +185,6 @@
                                                     <div class="col-md-6">
                                                     <select class="form-select form-select-sm" aria-label=".form-select-sm example">
                                                             <option selected> -- Pilih Pertanyaan  --</option>
->>>>>>> 14c3406d7a06ea40540610f404b7dab478ec400b
                                                             <option value="1">One</option>
                                                             <option value="2">Two</option>
                                                             <option value="3">Three</option>
@@ -248,18 +218,6 @@
                                             <div class="col-md-8">
                                                 <div class="row align-items-center">
                                                     <div class="col-md-5">
-<<<<<<< HEAD
-                                                        <select class="form-select form-select-sm" id="part2" aria-label=".form-select-sm example" disabled="disabled">
-                                                            <option selected> -- Select Part  --</option>
-                                                            <option value="1">One</option>
-                                                            <option value="2">Two</option>
-                                                            <option value="3">Three</option>
-                                                            </select>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <select class="form-select form-select-sm" id="question2" aria-label=".form-select-sm example" disabled="disabled">
-                                                            <option selected> -- Choose The Question  --</option>
-=======
                                                         <select class="form-select form-select-sm" aria-label=".form-select-sm example">
                                                             <option selected> -- Pilih Bagian  --</option>
                                                             <option value="1">Bagian 1</option>
@@ -270,7 +228,6 @@
                                                     <div class="col-md-6">
                                                         <select class="form-select form-select-sm" aria-label=".form-select-sm example">
                                                             <option selected> -- Pilih Pertanyaan  --</option>
->>>>>>> 14c3406d7a06ea40540610f404b7dab478ec400b
                                                             <option value="1">One</option>
                                                             <option value="2">Two</option>
                                                             <option value="3">Three</option>
