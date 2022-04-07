@@ -119,23 +119,23 @@
                                     
                                     <!-- option 1 -->
                                     <div class="col-md-12">
-                                    <div class="row">
+                                    <div class="row align-items-center">
                                         <div class="col-md-4">
                                             <label for="" class="mb-3">Pilihan Opsi</label>
                                             <div class="input-group">
                                                 <div class="input-group-text" style="background: #F99E3F ">
-                                                  <input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input" disabled>
+                                                  <input class="form-check-input mt-0" type="radio" id="radio" value="" aria-label="Radio button for following text input" >
                                                 </div>
                                                 <input type="text" class="form-control" aria-label="Text input with radio button" placeholder="Opsi 1" disabled style="background-color: #ffffff">
-                                              </div>
+                                            </div>
                                         </div>
                                         <div class="col-md-8">
-                                            <div class="row">
+                                            <div class="row align-items-center">
                                                 <div class="col-md-12 mb-3">
                                                     <label for="">Lanjutkan Ke</label>
                                                 </div>
                                                 <div class="col-md-5">
-                                                    <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                                    <select class="form-select form-select-sm" id="part" aria-label=".form-select-sm example" disabled="disabled">
                                                     <option selected> -- Select Part  --</option>
                                                     <option value="1">One</option>
                                                     <option value="2">Two</option>
@@ -143,15 +143,17 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                                    <select class="form-select form-select-sm" id="question" aria-label=".form-select-sm example" disabled="disabled">
                                                     <option selected> -- Choose The Question  --</option>
                                                     <option value="1">One</option>
                                                     <option value="2">Two</option>
                                                     <option value="3">Three</option>
                                                     </select>
                                                 </div>
-                                                <div class="col-md-1">
-                                                    <i class="fa-solid fa-trash"></i>
+                                                <div class="col-1 p-0">
+                                                    <a href="#" class="btn link-dark">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>   
                                                 </div>
                                             </div>                      
                                         </div>
@@ -161,19 +163,19 @@
 
                                     <!-- option 2 -->
                                     <div class="col-md-12 mt-3">
-                                        <div class="row">
+                                        <div class="row align-items-center" >
                                             <div class="col-md-4">                       
                                                     <div class="input-group">
                                                         <div class="input-group-text" style="background: #F99E3F ">
-                                                          <input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input" disabled>
+                                                          <input class="form-check-input mt-0" type="radio" id="radio1" value="" aria-label="Radio button for following text input" disabled="disabled">
                                                         </div>
                                                         <input type="text" class="form-control" aria-label="Text input with radio button" placeholder="Opsi 2" disabled style="background-color: #ffffff">
                                                     </div>
                                             </div>
                                             <div class="col-md-8">
-                                                <div class="row">
+                                                <div class="row align-items-center">
                                                     <div class="col-md-5">
-                                                        <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                                        <select class="form-select form-select-sm" id="part1" aria-label=".form-select-sm example" disabled="disabled">
                                                             <option selected> -- Select Part  --</option>
                                                             <option value="1">One</option>
                                                             <option value="2">Two</option>
@@ -181,15 +183,20 @@
                                                             </select>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                                        <select class="form-select form-select-sm" id="question1" aria-label=".form-select-sm example" disabled="disabled">
                                                             <option selected> -- Choose The Question  --</option>
                                                             <option value="1">One</option>
                                                             <option value="2">Two</option>
                                                             <option value="3">Three</option>
                                                             </select>
                                                     </div>
-                                                    <div class="col-md-1">
-                                                        <h5><i class="icofont-trash"></i></h5>
+                                                    <div class="col-1 p-0">
+                                                        {{-- <button type="button" class="btn link-dark">
+                                                            <i class="fas fa-trash"></i>    
+                                                        </button> --}}
+                                                        <a href="#" class="btn link-dark">
+                                                            <i class="fas fa-trash"></i>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -198,20 +205,20 @@
                                     <!-- option 2 -->
 
                                     <!-- option 3 -->
-                                    <div class="col-md-12 mt-3">
-                                        <div class="row">
+                                    <div class="col-md-12 mt-3 align-items-center">
+                                        <div class="row align-items-center">
                                             <div class="col-md-4">                       
                                                     <div class="input-group">
                                                         <div class="input-group-text" style="background: #F99E3F "  >
-                                                          <input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input" disabled>
+                                                          <input class="form-check-input mt-0" type="radio" id="radio2" value="" aria-label="Radio button for following text input" disabled="disabled">
                                                         </div>
                                                         <input type="text" class="form-control" aria-label="Text input with radio button" placeholder="Opsi 3" disabled style="background-color: #ffffff">
                                                     </div>
                                             </div>
                                             <div class="col-md-8">
-                                                <div class="row">
+                                                <div class="row align-items-center">
                                                     <div class="col-md-5">
-                                                        <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                                        <select class="form-select form-select-sm" id="part2" aria-label=".form-select-sm example" disabled="disabled">
                                                             <option selected> -- Select Part  --</option>
                                                             <option value="1">One</option>
                                                             <option value="2">Two</option>
@@ -219,15 +226,17 @@
                                                             </select>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                                        <select class="form-select form-select-sm" id="question2" aria-label=".form-select-sm example" disabled="disabled">
                                                             <option selected> -- Choose The Question  --</option>
                                                             <option value="1">One</option>
                                                             <option value="2">Two</option>
                                                             <option value="3">Three</option>
                                                             </select>
                                                     </div>
-                                                    <div class="col-md-1">
-                                                        <i class="fa-solid fa-trash"></i>
+                                                    <div class="col-1 p-0">
+                                                        <a href="#" class="btn link-dark">
+                                                            <i class="fas fa-trash"></i>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -260,3 +269,67 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        // Manual tanpa funsi
+        // option1
+        $("#radio").change(function(){
+            var radio = $(this).val();
+            $("#part").removeAttr("disabled");
+        });
+        $("#part").change(function(){
+            var part = $(this).val();
+            $("#question").removeAttr("disabled");
+        });
+        $("#question").change(function(){
+            var question = $(this).val();
+            $("#radio1").removeAttr("disabled");
+        });
+        // option2
+        $("#radio1").change(function(){
+            var radio1 = $(this).val();
+            $("#part1").removeAttr("disabled");
+        });
+        $("#part1").change(function(){
+            var part1 = $(this).val();
+            $("#question1").removeAttr("disabled");
+        });
+        $("#question1").change(function(){
+            var question1 = $(this).val();
+            $("#radio2").removeAttr("disabled");
+        });
+        // option3
+        $("#radio2").change(function(){
+            var radio2 = $(this).val();
+            $("#part2").removeAttr("disabled");
+        });
+        $("#part2").change(function(){
+            var part2 = $(this).val();
+            $("#question2").removeAttr("disabled");
+        });
+        // $("#question2").change(function(){
+        //     var question1 = $(this).val();
+        //     $("#radio2").removeAttr("disabled");
+        // });
+    });
+
+</script>
+
+    {{-- <script type="text/javascript">
+		$(document).ready(function(){
+			//Otomatis pakai fungsi
+			function ubah(a, b){
+				nilai = $(a).on('change', function(event){
+					event.preventDefault();
+					$(b).removeAttr("disabled");
+				});
+				return nilai;
+			}
+			radio = ubah("#radio", "#part");
+			part = ubah("#part", "#question");
+			question = ubah("#question", "radio2");
+ 
+		});	
+ 
+	</script> --}}
