@@ -19,12 +19,12 @@
                     </p>
                 </div>
                 <div class="d-flex justify-content-center">
-                    <p class="fw-semibold">Bulanan</p>
+                    <p class="fw-semibold">Monthly</p>
                     <div class="form-check form-switch ms-2">
                         <input class="form-check-input form-check-input-orange" type="checkbox" id="pricingSwitch"
                             onchange="pricingSwitch()">
                     </div>
-                    <p class="fw-semibold">Tahunan</p>
+                    <p class="fw-semibold">Yearly</p>
                 </div>
             </div>
             <div class="monthly-pricing" id="monthlyPricing">

@@ -84,15 +84,15 @@ $respondent = 'respondent';
 <section class="pricing py-5" id="pricing">
     <div class="container">
         <div class="text-center">
-            <h2 class="fw-bold">Siap untuk memulai dengan SurveyAsia?</h2>
-            <p>Pilih paket yang cocok untuk Anda</p>
+            <h2 class="fw-bold">Ready to get started with SurveyAsia?</h2>
+            <p>Choose the package that suits you</p>
             <div class="d-flex justify-content-center">
-                <p class="fw-semibold">Bulanan</p>
+                <p class="fw-semibold">Monthly</p>
                 <div class="form-check form-switch ms-2">
                     <input class="form-check-input form-check-input-orange" type="checkbox" id="pricingSwitch"
                         onchange="pricingSwitch()">
                 </div>
-                <p class="fw-semibold">Tahunan</p>
+                <p class="fw-semibold">Yearly</p>
             </div>
         </div>
         <div class="monthly-pricing" id="monthlyPricing">
