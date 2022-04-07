@@ -532,24 +532,24 @@ export class TextBox extends Component {
         // option onkeyup
         const option1 = document.createElement("option");
         option1.value = "keyup";
-        option1.innerHTML = "On user input";
+        option1.innerHTML = "Pada Masukan Pengguna";
 
         // option onchange
         const option2 = document.createElement("option");
         option2.value = "change";
-        option2.innerHTML = "On value changed";
+        option2.innerHTML = "Pada Nilai Berubah";
 
         selectOption.appendChild(option1);
         selectOption.appendChild(option2);
 
         const label = this._createInputLabel(
-            "Validate When",
+            "Validasi ketika",
             "form-label",
             "selectOption"
         );
 
         const helperText = buildHelperText(
-            "Determine when the validations should be executed"
+            "Tentukan kapan validasi harus dijalankan"
         );
 
         container.appendChild(label);
@@ -617,7 +617,7 @@ export class TextBox extends Component {
         container.className += "mb-3";
 
         const label = this._createInputLabel(
-            "Minimum Length",
+            "Panjang Minimum",
             "form-label",
             "minLength"
         );
@@ -639,7 +639,7 @@ export class TextBox extends Component {
                 instance.validationObserver().splice(1, 1);
             }
         };
-        const helperText = buildHelperText("Set 0 to remove rule");
+        const helperText = buildHelperText("Pilih 0 untuk mengatur kembali");
 
         container.appendChild(label);
         container.appendChild(input);
@@ -668,7 +668,7 @@ export class TextBox extends Component {
         container.className += "mb-3";
 
         const label = this._createInputLabel(
-            "Maximum Length",
+            "Panjang Maksimum",
             "form-label",
             inputId
         );
@@ -691,7 +691,7 @@ export class TextBox extends Component {
             }
         };
 
-        const helperText = buildHelperText("Set 0 to remove rule");
+        const helperText = buildHelperText("Pilih 0 untuk mengatur kembali");
 
         container.appendChild(label);
         container.appendChild(input);

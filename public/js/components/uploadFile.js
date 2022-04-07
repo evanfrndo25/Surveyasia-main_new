@@ -312,7 +312,7 @@ export class UploadFile extends Component {
             }
         };
 
-        const helperText = buildHelperText("Set 0 to remove rule");
+        const helperText = buildHelperText("Pilih 0 untuk mengatur kembali");
 
         container.appendChild(label);
         container.appendChild(input);

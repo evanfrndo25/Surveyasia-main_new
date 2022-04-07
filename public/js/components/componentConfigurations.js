@@ -45,7 +45,7 @@ export const multipleChoiceComponent = {
     }, */
     configuration: {
         inputType: "radio",
-        label: "example label",
+        label: "Masukkan contoh label Anda disini",
         style: "form-check-input",
         // position: 0,
     },
@@ -74,7 +74,7 @@ export const multiOptionsComponent = {
     }, */
     configuration: {
         inputType: "checkbox",
-        label: "example label",
+        label: "Masukkan contoh label Anda disini",
         style: "form-check-input",
         // position: 0,
     },
@@ -105,7 +105,7 @@ export const scaleComponent = {
     }, */
     configuration: {
         inputType: "radio",
-        label: "example label",
+        label: "Masukkan contoh label Anda disini",
         style: "scale",
         minVal: 2,
         maxVal: 10,
@@ -136,7 +136,7 @@ export const ratingStarComponent = {
     }, */
     configuration: {
         inputType: "radio",
-        label: "example label",
+        label: "Masukkan contoh label Anda disini",
         style: "star-rating",
         minVal: 1,
         maxVal: 10,
@@ -168,7 +168,7 @@ export const dropDownComponent = {
     }, */
     configuration: {
         inputType: "select",
-        label: "example label",
+        label: "Masukkan contoh label Anda disini",
         style: "form-check-input",
         // position: 0,
     },

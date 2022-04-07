@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-xl modal-fullscreen-lg-down modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editModalTitle">Update Question</h5>
+                <h5 class="modal-title" id="editModalTitle">Edit Pertanyaan</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btnIconClose"></button>
             </div>
             <div class="modal-body">
@@ -135,6 +135,7 @@
                                                     <label for="">Lanjutkan Ke</label>
                                                 </div>
                                                 <div class="col-md-5">
+<<<<<<< HEAD
                                                     <select class="form-select form-select-sm" id="part" aria-label=".form-select-sm example" disabled="disabled">
                                                     <option selected> -- Select Part  --</option>
                                                     <option value="1">One</option>
@@ -149,6 +150,22 @@
                                                     <option value="2">Two</option>
                                                     <option value="3">Three</option>
                                                     </select>
+=======
+                                                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                                            <option selected> -- Pilih Bagian  --</option>
+                                                            <option value="1">Bagian 1</option>
+                                                            <option value="2">Bagian 2</option>
+                                                            <option value="3">Bagian 3</option>
+                                                            </select>
+                                                </div>
+                                                <div class="col-md-6">
+                                                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                                            <option selected> -- Pilih Pertanyaan  --</option>
+                                                            <option value="1">One</option>
+                                                            <option value="2">Two</option>
+                                                            <option value="3">Three</option>
+                                                            </select>
+>>>>>>> 14c3406d7a06ea40540610f404b7dab478ec400b
                                                 </div>
                                                 <div class="col-1 p-0">
                                                     <a href="#" class="btn link-dark">
@@ -175,6 +192,7 @@
                                             <div class="col-md-8">
                                                 <div class="row align-items-center">
                                                     <div class="col-md-5">
+<<<<<<< HEAD
                                                         <select class="form-select form-select-sm" id="part1" aria-label=".form-select-sm example" disabled="disabled">
                                                             <option selected> -- Select Part  --</option>
                                                             <option value="1">One</option>
@@ -185,6 +203,18 @@
                                                     <div class="col-md-6">
                                                         <select class="form-select form-select-sm" id="question1" aria-label=".form-select-sm example" disabled="disabled">
                                                             <option selected> -- Choose The Question  --</option>
+=======
+                                                    <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                                            <option selected> -- Pilih Bagian  --</option>
+                                                            <option value="1">Bagian 1</option>
+                                                            <option value="2">Bagian 2</option>
+                                                            <option value="3">Bagian 3</option>
+                                                            </select>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                    <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                                            <option selected> -- Pilih Pertanyaan  --</option>
+>>>>>>> 14c3406d7a06ea40540610f404b7dab478ec400b
                                                             <option value="1">One</option>
                                                             <option value="2">Two</option>
                                                             <option value="3">Three</option>
@@ -218,6 +248,7 @@
                                             <div class="col-md-8">
                                                 <div class="row align-items-center">
                                                     <div class="col-md-5">
+<<<<<<< HEAD
                                                         <select class="form-select form-select-sm" id="part2" aria-label=".form-select-sm example" disabled="disabled">
                                                             <option selected> -- Select Part  --</option>
                                                             <option value="1">One</option>
@@ -228,6 +259,18 @@
                                                     <div class="col-md-6">
                                                         <select class="form-select form-select-sm" id="question2" aria-label=".form-select-sm example" disabled="disabled">
                                                             <option selected> -- Choose The Question  --</option>
+=======
+                                                        <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                                            <option selected> -- Pilih Bagian  --</option>
+                                                            <option value="1">Bagian 1</option>
+                                                            <option value="2">Bagian 2</option>
+                                                            <option value="3">Bagian 3</option>
+                                                            </select>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                                            <option selected> -- Pilih Pertanyaan  --</option>
+>>>>>>> 14c3406d7a06ea40540610f404b7dab478ec400b
                                                             <option value="1">One</option>
                                                             <option value="2">Two</option>
                                                             <option value="3">Three</option>
@@ -263,8 +306,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnCloseEdit" style="background-color: #f2f2f2; color:black;">Cancel</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnCloseEdit" style="background-color: #ef4c29">Save</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnCloseEdit" style="background-color: #f2f2f2; color:black;">Batal</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnCloseEdit" style="background-color: #ef4c29">Simpan</button>
             </div>
         </div>
     </div>

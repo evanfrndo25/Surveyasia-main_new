@@ -63,10 +63,10 @@
                     </div>
                     <div class="dropdown mt-3">
                         {{-- <button class="btn btn-orange radius-default w-100" type="button"  data-bs-toggle="modal" data-bs-target="#downloadReportModal"
-                            aria-expanded="false">Download Result <i class="fas fa-download ms-5"></i>
+                            aria-expanded="false">Unduh Hasil <i class="fas fa-download ms-5"></i>
                         </button> --}}
                         <button class="btn btn-orange radius-default w-100" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
-                            aria-expanded="false">Download Result <i class="fas fa-download ms-5"></i>
+                            aria-expanded="false">Unduh Hasil <i class="fas fa-download ms-5"></i>
                         </button>
                         
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -81,7 +81,7 @@
                     
                     <div class="mt-3">
                         <a class="btn btn-secondary rounded-pill w-100 radius-default" href="https://analysis.surveyasia.id/" target="_blank"
-                            role="button">Advance Analysis
+                            role="button">Analisis Lanjut
                         </a>
                     </div>
                 </div>

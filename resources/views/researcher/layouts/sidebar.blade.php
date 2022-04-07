@@ -9,7 +9,7 @@
                 <div class="row border pt-3">
                     <div class="col">
                         <i class="fas fa-brush fa-fw"></i>
-                        <p>Style</p>
+                        <p>Tampilan</p>
                     </div>
                 </div>
             </a>
@@ -41,7 +41,7 @@
                     <div class="collapse show" id="collapseStyle">
                         <div class="row border bg-white pt-3 pb-2">
                             <div class="col-9">
-                                <h6 class="fw-bold">Style</h6>
+                                <h6 class="fw-bold">Tampilan</h6>
                             </div>
                             <div class="col text-end">
                                 <i class="fas fa-question-circle fa-fw text-secondary"></i>
@@ -119,7 +119,7 @@
                     <div class="collapse" id="collapsePaid">
                         <div class="row border bg-white pt-3 pb-2">
                             <div class="col-9">
-                                <h6 class="fw-bold">Paid Feature</h6>
+                                <h6 class="fw-bold">Fitur Berbayar</h6>
                             </div>
                             <div class="col text-end">
                                 <i class="fas fa-question-circle fa-fw text-secondary"></i>
