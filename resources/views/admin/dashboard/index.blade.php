@@ -71,8 +71,8 @@
                                     <h1 class="fw-bold ms-4">{{ $questionbank }}</h1>
                                     <div class="d-flex align-items-center justify-content-between">
                                         <i class="bi bi-chat-left-text-fill fs-1"></i>
-                                        <div>
-                                            <span class="fw-bold fs-5">Bank Soal</span>
+                                        <div class="text-end">
+                                            <span class="fw-bold fs-5">Bank Pertanyaan</span>
                                             <span class="d-block text-mini">Sejak Berdiri</span>
                                         </div>
                                     </div>
@@ -88,7 +88,7 @@
                                     <div class="d-flex align-items-center justify-content-between">
                                         <i class="bi bi-newspaper fs-1"></i>
                                         <div>
-                                            <span class="fw-bold fs-5">Kabar Baru</span>
+                                            <span class="fw-bold fs-5">Berita</span>
                                             <span class="d-block text-mini">Dari Produk</span>
                                         </div>
                                     </div>
@@ -105,7 +105,7 @@
                                     <div class="d-flex align-items-center justify-content-between">
                                         <i class="bi bi-file-bar-graph-fill fs-1"></i>
                                         <div>
-                                            <span class="fw-bold fs-5">Chart</span>
+                                            <span class="fw-bold fs-5">Diagram</span>
                                             <span class="d-block text-mini">All time</span>
                                         </div>
                                     </div>

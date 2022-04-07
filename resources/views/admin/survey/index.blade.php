@@ -30,52 +30,92 @@
                                 style="z-index: 999;"></i>
                         </a>
                     </div>
-
                 </div>
 
-                <table class="table table-no-border-head align-middle">
-                    <thead>
-                        <tr>
-                            <td scope="col">#</td>
-                            <td scope="col">Title</td>
-                            <td scope="col">Description</td>
-                            <td scope="col">Creator</td>
-                            <td scope="col">Status</td>
-                            <td scope="col">Date</td>
-                            <td scope="col">Actions</td>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <div class="row">
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <button class="nav-link active" id="menunggu-tab" data-bs-toggle="tab"
+                                data-bs-target="#menunggu" type="button" role="tab" aria-controls="menunggu"
+                                aria-selected="true">MENUNGGU</button>
+                            <button class="nav-link" id="tolak-tab" data-bs-toggle="tab"
+                                data-bs-target="#tolak" type="button" role="tab" aria-controls="tolak"
+                                aria-selected="false">DITOLAK</button>
+                            <button class="nav-link" id="terima-tab" data-bs-toggle="tab"
+                                data-bs-target="#terima" type="button" role="tab" aria-controls="terima"
+                                aria-selected="false">DITERIMA</button>
+                        </div>
+                    </nav>
+                </div>
 
-                        {{-- LOOPING DATA --}}
+                {{-- LOOPING DATA --}}
+                <div class="tab-content pt-4" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="menunggu" role="tabpanel" aria-labelledby="menunggu-tab">
                         @foreach ($surveys as $item)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ Str::limit($item->title, 20, '...') }}</td>
-                            <td>{{ $item->description }}</td>
-                            <td>{{ $item->user->nama_lengkap }}</td>
-                            <td>{{ $item->status }}</td>
-                            <td>{{ $item->created_at->diffForHumans() }}</td>
-                            <td>
-                                <a href="{{ $item->shareable_link }}" class="btn bg-special-blue text-white">
-                                    <i class="bi bi-vector-pen"></i>
-                                    Show
-                                </a>
-
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal{{ $item->id }}">
-                                    <i class="bi bi-trash"></i>
-                                    Hapus
-                                </button>
-                                <!-- <a href="{{ route('admin.survey.destroy', $item->id) }}"
-                                    class="btn bg-danger text-white"
-                                    onclick="return confirm('Apakah kamu yakin ingin menghapus?')">
-                                    <i class="bi bi-trash"></i>
-                                    Delete
-                                </a> -->
-                            </td>
-                        </tr>
-
+                        <div class="container survey-active">
+                            <div class="row shadow pt-4" style="border-radius: 17px 17px 0 0;">
+                                <div class="col-2 text-center">
+                                    <img src="{{ asset('assets/img/img-survey.svg') }}" class="img-fluid" alt="">
+                                </div>
+                                <div class="col my-auto">
+                                    <div class="row">
+                                        <div class="col">
+                                            <p class="card-title">{{ Str::limit($item->title, 20, '...') }}</p>
+                                        </div>
+                                        <div class="col-3 text-center">
+                                            <p>Status</p>
+                                        </div>
+                                        <div class="col-3 text-center">
+                                            <p>Tanggal Upload</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div>
+                                                <p class="small text-secondary">
+                                                    {{ Str::limit($item->description, 20, '...') }}</p>
+                                                <p class="pt-1 small">Kreator :<span>
+                                                        {{ $item->user->nama_lengkap }}</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 text-center">
+                                            <div>
+                                                <h5 class="text-success">{{ $item->status }}</h5>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 text-center">
+                                            <div>
+                                                <h5>{{ $item->created_at->diffForHumans() }}</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 text-center">
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <div class="border-start card border-0 d-grid gap-2">
+                                            <i class="bi bi-check-lg h1 m-0"></i>
+                                            <button type="button"
+                                                class="btn text-success stretched-link">Terima</button>
+                                        </div>
+                                        <div class="border-start card border-0 d-grid gap-2">
+                                            <i class="bi bi-x-lg h1 m-0 text-danger"></i>
+                                            <button type="button" class="btn text-danger stretched-link"
+                                                data-bs-toggle="modal" data-bs-target="#deleteModal{{ $item->id }}">
+                                                Tolak
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row bg-primary mb-3" style="border-radius: 0 0 17px 17px;">
+                                <div class="col">
+                                    <div class="d-grid">
+                                        <button class="btn btn-primary" type="button">Detail Survey</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <!-- Modal delete -->
                         <div class="modal fade" id="deleteModal{{ $item->id }}" tabindex="-1"
                             aria-labelledby="deleteModalLabel" aria-hidden="true">
@@ -133,7 +173,8 @@
                                     <div class="row px-4 pb-5">
                                         <div class="col d-grid gap-2">
                                             <a href="{{ route('admin.survey.destroy', $item->id) }}"
-                                                class="btn btn-danger">YA, HAPUS SURVEY</a>
+                                                class="btn btn-danger">YA,
+                                                HAPUS SURVEY</a>
                                         </div>
                                         <div class="col d-grid gap-2">
                                             <button type="button" class="btn btn-outline-secondary"
@@ -145,8 +186,16 @@
                             </div>
                         </div>
                         @endforeach
-                    </tbody>
-                </table>
+                    </div>
+                    <div class="tab-pane fade" id="tolak" role="tabpanel" aria-labelledby="tolak-tab">
+                        ...</div>
+                    <div class="tab-pane fade" id="terima" role="tabpanel" aria-labelledby="terima-tab">
+                        ...</div>
+                </div>
+                <!-- <a href="{{ $item->shareable_link }}" class="btn bg-special-blue text-white">
+                                    <i class="bi bi-vector-pen"></i>
+                                    Show
+                                </a> -->
             </div>
         </div>
     </div>

@@ -4,7 +4,7 @@
     <a href="{{ route('admin.dashboard') }}" class="text-decoration-none">
         <div class="d-flex align-items-center px-4 py-3 {{ Request::is('admin/dashboard') ? 'active' : '' }}">
             <img src="{{ asset('assets/img/vec-dashboard.svg') }}" alt="" width="16px" height="16px">
-            <span class="ms-3 text-sidebar" aria-current="page">Dasbor</span>
+            <span class="ms-3 text-sidebar" aria-current="page">Beranda</span>
         </div>
     </a>
     <a href="{{ route('admin.transaction.index') }}" class="text-decoration-none">
@@ -22,13 +22,13 @@
     <a href="{{ route('admin.questionbank.index') }}" class="text-decoration-none">
         <div class="d-flex align-items-center px-4 py-3 {{ Request::is('admin/questionbank*') ? 'active' : '' }}">
             <img src="{{ asset('assets/img/vec-question-bank.svg') }}" alt="" width="16px" height="16px">
-            <span class="ms-3 text-sidebar" aria-current="page">Bank Soal</span>
+            <span class="ms-3 text-sidebar" aria-current="page">Bank Pertanyaan</span>
         </div>
     </a>
     <a href="{{ route('admin.chart.index') }}" class="text-decoration-none">
         <div class="d-flex align-items-center px-4 py-3 {{ Request::is('admin/chart') ? 'active' : '' }}">
             <img src="{{ asset('assets/img/vec-template.svg') }}" alt="" width="16px" height="16px">
-            <span class="ms-3 text-sidebar" aria-current="page">Bagan</span>
+            <span class="ms-3 text-sidebar" aria-current="page">Diagram</span>
         </div>
     </a>
     <a href="{{ route('admin.users.index') }}" class="text-decoration-none">
@@ -40,13 +40,13 @@
     <a href="{{ route('admin.dataVerify') }}" class="text-decoration-none">
         <div class="d-flex align-items-center px-4 py-3 {{ Request::is('admin/data-verification*') ? 'active' : '' }}">
             <img src="{{ asset('assets/img/vec-data-ver.svg') }}" alt="" width="16px" height="16px">
-            <span class="ms-3 text-sidebar" aria-current="page">Sertifikasi Data</span>
+            <span class="ms-3 text-sidebar" aria-current="page">Vertifikasi</span>
         </div>
     </a>
     <a href="{{ route('admin.news.index') }}" class="text-decoration-none">
         <div class="d-flex align-items-center px-4 py-3 {{ Request::is('admin/news*') ? 'active' : '' }}">
             <img src="{{ asset('assets/img/vec-blog.svg') }}" alt="" width="16px" height="16px">
-            <span class="ms-3 text-sidebar" aria-current="page" href="#">Kabar Baru</span>
+            <span class="ms-3 text-sidebar" aria-current="page" href="#">Berita</span>
         </div>
     </a>
     
