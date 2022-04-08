@@ -80,7 +80,8 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
 
-                            <td class="text-center">ID
+                            <td class="text-center">
+                                {{ $item->status ? 'ID' : 'ENG' }}
                             </td>
 
                             @if (count($item->questions) == 0)
