@@ -12,7 +12,6 @@ export class DropDown extends Component {
     
     
 
-add
     content() {
         const wrapper = document.createElement("ul");
         wrapper.id = uniqid("options");
@@ -124,6 +123,15 @@ add
 
         form.appendChild(question);
         form.appendChild(label);
+        form.appendChild(choiceOptions);
+
+        return form;
+    }
+
+    LogicOptions() {
+        const form = document.createElement("form");
+        const choiceOptions = this._updateableOptions();
+
         form.appendChild(choiceOptions);
 
         return form;
@@ -267,7 +275,7 @@ add
         const instance = this;
         addOptionButton.onclick = function (event) {
             event.preventDefault();
-            instance._addUpdatableOption();
+            instance._addOption();
         };
 
         addOptionContainer.appendChild(addOptionButton);
@@ -362,7 +370,7 @@ add
                     options.push(this.value);
                 }
                 observable.options = options;
-                console.log(options);
+                // console.log(options);
             } else {
                 // get parent form and force to show error
                 this.parentElement.parentElement.parentElement.classList.add(
