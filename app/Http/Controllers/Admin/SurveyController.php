@@ -85,7 +85,7 @@ class SurveyController extends Controller
     public function showSurveyDetails(Survey $survey)
     {
         //
-        return view('researcher.preview', compact('survey'));
+        return view('admin.survey.show', compact('survey'));
     }
 
     public function surveyManagement(Survey $survey)
