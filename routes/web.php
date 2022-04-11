@@ -395,6 +395,7 @@ Route::middleware(['is_admin', 'role:admin'])->group(function () {
         // survey Admin
         // Route::resource('survey', SurveyInAdmin::class);
         Route::get('survey', [SurveyInAdmin::class, 'index'])->name('survey.index');
+        Route::get('survey/{survey}/preview', [SurveyInAdmin::class, 'showSurveyDetails'])->name('survey.show');
         Route::get('survey/{survey}/delete', [SurveyInAdmin::class, 'destroy'])->name('survey.destroy');
         Route::get('data-verification', [UserController::class, 'dataVerify'])->name('dataVerify');
     });

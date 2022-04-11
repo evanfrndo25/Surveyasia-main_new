@@ -109,7 +109,8 @@
                             <div class="row bg-primary mb-3" style="border-radius: 0 0 17px 17px;">
                                 <div class="col">
                                     <div class="d-grid">
-                                        <button class="btn btn-primary" type="button">Detail Survey</button>
+                                        <a href="{{ route('admin.survey.show', $item->id) }}" class="btn btn-primary">Detail Survey</a>
+                                        <!-- <button class="btn btn-primary" type="button">Detail Survey</button> -->
                                     </div>
                                 </div>
                             </div>
