@@ -38,12 +38,10 @@
                             <button class="nav-link active" id="menunggu-tab" data-bs-toggle="tab"
                                 data-bs-target="#menunggu" type="button" role="tab" aria-controls="menunggu"
                                 aria-selected="true">MENUNGGU</button>
-                            <button class="nav-link" id="tolak-tab" data-bs-toggle="tab"
-                                data-bs-target="#tolak" type="button" role="tab" aria-controls="tolak"
-                                aria-selected="false">DITOLAK</button>
-                            <button class="nav-link" id="terima-tab" data-bs-toggle="tab"
-                                data-bs-target="#terima" type="button" role="tab" aria-controls="terima"
-                                aria-selected="false">DITERIMA</button>
+                            <button class="nav-link" id="tolak-tab" data-bs-toggle="tab" data-bs-target="#tolak"
+                                type="button" role="tab" aria-controls="tolak" aria-selected="false">DITOLAK</button>
+                            <button class="nav-link" id="terima-tab" data-bs-toggle="tab" data-bs-target="#terima"
+                                type="button" role="tab" aria-controls="terima" aria-selected="false">DITERIMA</button>
                         </div>
                     </nav>
                 </div>
@@ -188,9 +186,379 @@
                         @endforeach
                     </div>
                     <div class="tab-pane fade" id="tolak" role="tabpanel" aria-labelledby="tolak-tab">
-                        ...</div>
+                        <div class="container survey-active">
+                            <div class="row shadow pt-4" style="border-radius: 17px 17px 0 0;">
+                                <div class="col-2 text-center">
+                                    <img src="{{ asset('assets/img/img-survey.svg') }}" class="img-fluid" alt="">
+                                </div>
+                                <div class="col my-auto">
+                                    <div class="row">
+                                        <div class="col">
+                                            <p class="card-title">Title</p>
+                                        </div>
+                                        <div class="col-3 text-center">
+                                            <p>Status</p>
+                                        </div>
+                                        <div class="col-3 text-center">
+                                            <p>Tanggal Upload</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div>
+                                                <p class="small text-secondary">
+                                                    Deskripsi</p>
+                                                <p class="pt-1 small">Kreator :<span>
+                                                        Kreator</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 text-center">
+                                            <div>
+                                                <h5 class="text-success">Status</h5>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 text-center">
+                                            <div>
+                                                <h5>Tanggal</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 bo d-flex">
+                                    <div>
+                                        <p class="text-center">Detail Penolakan</p>
+                                        <p class="text-danger small">Lorem ipsum dolor sit amet consectetur adipisicing
+                                            elit. Minus, ullam hic error molestiae!</p>
+                                    </div>
+                                    <div>
+                                        <a href="#" role="button" id="dropdown-manage-news text-end"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="bi bi-three-dots-vertical text-secondary h5"></i>
+                                        </a>
+                                        <ul class="dropdown-menu bg-dark" aria-labelledby="dropdown-manage-news">
+                                            <li><a class="dropdown-item text-white" href="#" data-bs-toggle="modal"
+                                                    data-bs-target="#ubahstts0"></i><i
+                                                        class="bi bi-gear-fill me-2"></i>Ubah Staus</a></li>
+                                            <li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row bg-primary mb-3" style="border-radius: 0 0 17px 17px;">
+                                <div class="col">
+                                    <div class="d-grid">
+                                        <button class="btn btn-primary" type="button">Detail Survey</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="ubahstts0" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Ubah Status</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h4>Detail Survey</h4>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Judul Survei</label>
+                                                    <input type="text"
+                                                        class="form-control border-0 rounded-pill px-3 py-2 bg-light"
+                                                        placeholder="Isi Disini...">
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Kreator</label>
+                                                    <input type="text"
+                                                        class="form-control border-0 rounded-pill px-3 py-2 bg-light"
+                                                        placeholder="Isi Disini...">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12 pt-4">
+                                                <h4>Status</h4>
+                                            </div>
+                                            <div class="col">
+                                                <div class="d-flex nav  nav-tabs" id="nav-tab" role="tablist">
+                                                    <div class="form-check pe-4">
+                                                        <input class="form-check-input nav-link" type="radio"
+                                                            name="tab-tunggu" id="tab-tunggu-tab" data-bs-toggle="tab"
+                                                            data-bs-target="#tab-tunggu" role="tab"
+                                                            aria-controls="tab-tunggu" aria-selected="true">
+                                                        <label class="form-check-label" for="tab-tunggu-tab">
+                                                            Menunggu
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check pe-4">
+                                                        <input class="form-check-input nav-link" type="radio"
+                                                            name="tab-tolak" id="tab-tolak-tab" data-bs-toggle="tab"
+                                                            data-bs-target="#tab-tolak" role="tab"
+                                                            aria-controls="tab-tolak" aria-selected="false">
+                                                        <label class="form-check-label" for="tab-tolak-tab">
+                                                            Ditolak
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check pe-4">
+                                                        <input class="form-check-input nav-link" type="radio"
+                                                            name="tab-terima" id="tab-terima-tab" data-bs-toggle="tab"
+                                                            data-bs-target="#tab-terima" role="tab"
+                                                            aria-controls="tab-terima" aria-selected="false">
+                                                        <label class="form-check-label" for="tab-terima-tab">
+                                                            Ditolak
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-content" id="nav-tabContent">
+                                                    <div class="tab-pane fade" id="tab-tunggu" role="tabpanel"
+                                                        aria-labelledby="tab-tunggu-tab"></div>
+                                                    <div class="tab-pane fade" id="tab-tolak" role="tabpanel"
+                                                        aria-labelledby="tab-tolak-tab">
+                                                        <h4 class="pt-4 pb-2">Detail Penolakan</h4>
+                                                        <div>
+                                                            <div class="form-check py-1">
+                                                                <input class="form-check-input" type="checkbox" value=""
+                                                                    id="chek1">
+                                                                <label class="form-check-label small" for="chek1">
+                                                                    Lorem ipsum dolor sit amet.
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check py-1">
+                                                                <input class="form-check-input" type="checkbox" value=""
+                                                                    id="chek2" checked>
+                                                                <label class="form-check-label small" for="chek2">
+                                                                    Lorem ipsum dolor sit amet.
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check py-1">
+                                                                <input class="form-check-input" type="checkbox" value=""
+                                                                    id="chek3" checked>
+                                                                <label class="form-check-label small" for="chek3">
+                                                                    Lorem ipsum dolor sit amet.
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check py-1">
+                                                                <input class="form-check-input" type="checkbox" value=""
+                                                                    id="chek4" checked>
+                                                                <label class="form-check-label small" for="chek4">
+                                                                    Lorem ipsum dolor sit amet.
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tab-pane fade" id="tab-terima" role="tabpanel"
+                                                        aria-labelledby="tab-terima-tab"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer me-auto">
+                                        <button type="button" class="btn bg-special-blue text-white px-5 py-2 rounded-3">Simpan</button>
+                                        <button type="button" class="btn btn-secondary px-5 py-2 rounded-3"
+                                            data-bs-dismiss="modal">Batal</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="tab-pane fade" id="terima" role="tabpanel" aria-labelledby="terima-tab">
-                        ...</div>
+                        <div class="container survey-active">
+                            <div class="row shadow pt-4" style="border-radius: 17px 17px 0 0;">
+                                <div class="col-2 text-center">
+                                    <img src="{{ asset('assets/img/img-survey.svg') }}" class="img-fluid" alt="">
+                                </div>
+                                <div class="col my-auto">
+                                    <div class="row">
+                                        <div class="col">
+                                            <p class="card-title">Title</p>
+                                        </div>
+                                        <div class="col-3 text-center">
+                                            <p>Status</p>
+                                        </div>
+                                        <div class="col-3 text-center">
+                                            <p>Tanggal Upload</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div>
+                                                <p class="small text-secondary">
+                                                    Deskripsi</p>
+                                                <p class="pt-1 small">Kreator :<span>
+                                                        Kreator</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 text-center">
+                                            <div>
+                                                <h5 class="text-success">Status</h5>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 text-center">
+                                            <div>
+                                                <h5>Tanggal</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3 d-flex">
+                                    <div class="mx-auto">
+                                        <p class="text-center">Detail Penolakan</p>
+                                    </div>
+                                    <div class="ms-auto">
+                                        <a href="#" role="button" id="dropdown-manage-news text-end"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="bi bi-three-dots-vertical text-secondary h5"></i>
+                                        </a>
+                                        <ul class="dropdown-menu bg-dark" aria-labelledby="dropdown-manage-news">
+                                            <li><a class="dropdown-item text-white" href="#" data-bs-toggle="modal"
+                                                    data-bs-target="#ubahstts"></i><i
+                                                        class="bi bi-gear-fill me-2"></i>Ubah Staus</a></li>
+                                            <li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row bg-primary mb-3" style="border-radius: 0 0 17px 17px;">
+                                <div class="col">
+                                    <div class="d-grid">
+                                        <button class="btn btn-primary" type="button">Detail Survey</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="ubahstts" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Ubah Status</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <h4>Detail Survey</h4>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Judul Survei</label>
+                                                    <input type="text"
+                                                        class="form-control border-0 rounded-pill px-3 py-2 bg-light"
+                                                        placeholder="Isi Disini...">
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Kreator</label>
+                                                    <input type="text"
+                                                        class="form-control border-0 rounded-pill px-3 py-2 bg-light"
+                                                        placeholder="Isi Disini...">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12 pt-4">
+                                                <h4>Status</h4>
+                                            </div>
+                                            <div class="col">
+                                                <div class="d-flex nav  nav-tabs" id="nav-tab" role="tablist">
+                                                    <div class="form-check pe-4">
+                                                        <input class="form-check-input nav-link" type="radio"
+                                                            name="tab-tunggu-terima" id="tab-tunggu-terima-tab" data-bs-toggle="tab"
+                                                            data-bs-target="#tab-tunggu-terima" role="tab"
+                                                            aria-controls="tab-tunggu-terima" aria-selected="true">
+                                                        <label class="form-check-label" for="tab-tunggu-terima-tab">
+                                                            Menunggu
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check pe-4">
+                                                        <input class="form-check-input nav-link" type="radio"
+                                                            name="tab-tolak-terima" id="tab-tolak-terima-tab" data-bs-toggle="tab"
+                                                            data-bs-target="#tab-tolak-terima" role="tab"
+                                                            aria-controls="tab-tolak-terima" aria-selected="false">
+                                                        <label class="form-check-label" for="tab-tolak-terima-tab">
+                                                            Ditolak
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check pe-4">
+                                                        <input class="form-check-input nav-link" type="radio"
+                                                            name="tab-terima-terima" id="tab-terima-terima-tab" data-bs-toggle="tab"
+                                                            data-bs-target="#tab-terima-terima" role="tab"
+                                                            aria-controls="tab-terima-terima" aria-selected="false">
+                                                        <label class="form-check-label" for="tab-terima-terima-tab">
+                                                            Ditolak
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-content" id="nav-tabContent">
+                                                    <div class="tab-pane fade" id="tab-tunggu-terima" role="tabpanel"
+                                                        aria-labelledby="tab-tunggu-terima-tab"></div>
+                                                    <div class="tab-pane fade" id="tab-tolak-terima" role="tabpanel"
+                                                        aria-labelledby="tab-tolak-terima-tab">
+                                                        <h4 class="pt-4 pb-2">Detail Penolakan</h4>
+                                                        <div>
+                                                            <div class="form-check py-1">
+                                                                <input class="form-check-input" type="checkbox" value=""
+                                                                    id="chek1">
+                                                                <label class="form-check-label small" for="chek1">
+                                                                    Lorem ipsum dolor sit amet.
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check py-1">
+                                                                <input class="form-check-input" type="checkbox" value=""
+                                                                    id="chek2" checked>
+                                                                <label class="form-check-label small" for="chek2">
+                                                                    Lorem ipsum dolor sit amet.
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check py-1">
+                                                                <input class="form-check-input" type="checkbox" value=""
+                                                                    id="chek3" checked>
+                                                                <label class="form-check-label small" for="chek3">
+                                                                    Lorem ipsum dolor sit amet.
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check py-1">
+                                                                <input class="form-check-input" type="checkbox" value=""
+                                                                    id="chek4" checked>
+                                                                <label class="form-check-label small" for="chek4">
+                                                                    Lorem ipsum dolor sit amet.
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tab-pane fade" id="tab-terima-terima" role="tabpanel"
+                                                        aria-labelledby="tab-terima-terima-tab"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer me-auto">
+                                        <button type="button" class="btn bg-special-blue text-white px-5 py-2 rounded-3">Simpan</button>
+                                        <button type="button" class="btn btn-secondary px-5 py-2 rounded-3"
+                                            data-bs-dismiss="modal">Batal</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- <a href="{{ $item->shareable_link }}" class="btn bg-special-blue text-white">
                                     <i class="bi bi-vector-pen"></i>

@@ -67,7 +67,7 @@
                     <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
                         <div class="row g-3">
                             @foreach ($newsList as $news)
-                            <div class="col-12 col-md-6 col-xl-4">
+                            <div class="col-4">
                                 <div>
                                     <a href="{{ route('news.show', $news->slug) }}"
                                         class="link-dark text-decoration-none">
