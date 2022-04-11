@@ -125,11 +125,13 @@ Route::middleware(['auth', 'role:researcher', 'verified'])->group(function () {
                         'storeSurvey',
                     ])->name('store');
 
+                    
+
                     //delete survey
                     Route::delete('/{id}', [SurveyController::class, 'destroy'])->name('delete');
 
                     //update survey
-                    // Route::put('/{id}', [SurveyController::class, 'update'])->name('update');
+                    Route::post('/{survey}/manage', [SurveyController::class, 'update'])->name('update');
 
 
                     //create questions

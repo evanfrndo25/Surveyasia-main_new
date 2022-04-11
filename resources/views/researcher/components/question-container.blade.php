@@ -33,14 +33,16 @@
 
 
             <div class="container mt-4">
+                @include('researcher.modals.edit-judul-deskripsi-modal')
                 <form>
                     <label for="" style="font-size:18px; color: #00000099;">Deskripsi</label>
                     <div class="mb-3 mt-3">
                         <textarea type="text" value="{{ $survey->description }}" class="form-control"
-                            style="width: 100%; height:111px;"> {{ $survey->description }}</textarea>
+                            style="width: 100%; height:111px;" readonly> {{ $survey->description }}</textarea>
                     </div>
                     <div class="text-end">
-                        <button type="submit" class="btn btn-primary ms-auto"><i class="bi bi-pencil"
+                        <button type="button" class="btn btn-primary ms-auto" data-bs-toggle="modal"
+                                data-bs-target="#editJudulModal"><i class="bi bi-pencil"
                                 style="font-size: 12px; weight:500;"></i>
                             Edit
                         </button>
