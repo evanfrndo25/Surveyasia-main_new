@@ -115,110 +115,27 @@
                             <div class="tab-pane fade" id="nav-logic" role="tabpanel" aria-labelledby="nav-logic-tab">
                                 <div id="questionLogicContainer" class="container mt-3 mb-3">
 
-                                    <div class="row">
+                                    <!-- <div class="row"> -->
                                     
-                                    <!-- option 1 -->
-                                    <div class="col-md-12">
-                                    <div class="row align-items-center">
-                                        <div class="col-md-4">
-                                            <label for="" class="mb-3">Pilihan Opsi</label>
-                                            <div class="input-group">
-                                                <div class="input-group-text" style="background: #F99E3F ">
-                                                  <input class="form-check-input mt-0" type="radio" id="radio" value="" aria-label="Radio button for following text input" >
-                                                </div>
-                                                <input type="text" class="form-control" aria-label="Text input with radio button" placeholder="Opsi 1" disabled style="background-color: #ffffff">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="row align-items-center">
-                                                <div class="col-md-12 mb-3">
-                                                    <label for="">Lanjutkan Ke</label>
-                                                </div>
-                                                <div class="col-md-5">
-                                                    <select class="form-select form-select-sm" id="part" aria-label=".form-select-sm example" disabled="disabled">
-                                                        <option selected> -- Pilih Bagian  --</option>
-                                                        <option value="1">Bagian 1</option>
-                                                        <option value="2">Bagian 2</option>
-                                                        <option value="3">Bagian 3</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <select class="form-select form-select-sm" id="question" aria-label=".form-select-sm example" disabled="disabled">
-                                                        <option selected> -- Pilih Pertanyaan  --</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-1 p-0">
-                                                    <a href="#" class="btn link-dark">
-                                                        <i class="fas fa-trash"></i>
-                                                    </a>   
-                                                </div>
-                                            </div>                      
-                                        </div>
-                                        
-                                    </div>
-                                    <!-- option 1 -->
-
-                                    <!-- option 2 -->
-                                    <div class="col-md-12 mt-3">
-                                        <div class="row align-items-center" >
-                                            <div class="col-md-4">                       
-                                                    <div class="input-group">
-                                                        <div class="input-group-text" style="background: #F99E3F ">
-                                                          <input class="form-check-input mt-0" type="radio" id="radio1" value="" aria-label="Radio button for following text input" disabled="disabled">
-                                                        </div>
-                                                        <input type="text" class="form-control" aria-label="Text input with radio button" placeholder="Opsi 2" disabled style="background-color: #ffffff">
-                                                    </div>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <div class="row align-items-center">
-                                                    <div class="col-md-5">
-                                                    <select class="form-select form-select-sm" id="part1" aria-label=".form-select-sm example" disabled="disabled">
-                                                            <option selected> -- Pilih Bagian  --</option>
-                                                            <option value="1">Bagian 1</option>
-                                                            <option value="2">Bagian 2</option>
-                                                            <option value="3">Bagian 3</option>
-                                                            </select>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                    <select class="form-select form-select-sm" id="question1" aria-label=".form-select-sm example" disabled="disabled">
-                                                            <option selected> -- Pilih Pertanyaan  --</option>
-                                                            <option value="1">One</option>
-                                                            <option value="2">Two</option>
-                                                            <option value="3">Three</option>
-                                                            </select>
-                                                    </div>
-                                                    <div class="col-1 p-0">
-                                                        {{-- <button type="button" class="btn link-dark">
-                                                            <i class="fas fa-trash"></i>    
-                                                        </button> --}}
-                                                        <a href="#" class="btn link-dark">
-                                                            <i class="fas fa-trash"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- option 2 -->
-
-                                    <!-- option 3 -->
-                                    <div class="col-md-12 mt-3 align-items-center">
+                                        <!-- option 1 -->
+                                        <!-- <div class="col-md-12">
                                         <div class="row align-items-center">
-                                            <div class="col-md-4">                       
-                                                    <div class="input-group">
-                                                        <div class="input-group-text" style="background: #F99E3F "  >
-                                                          <input class="form-check-input mt-0" type="radio" id="radio2" value="" aria-label="Radio button for following text input" disabled="disabled">
-                                                        </div>
-                                                        <input type="text" class="form-control" aria-label="Text input with radio button" placeholder="Opsi 3" disabled style="background-color: #ffffff">
+                                            <div class="col-md-4">
+                                                <label for="" class="mb-3">Pilihan Opsi</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-text" style="background: #F99E3F ">
+                                                    <input class="form-check-input mt-0" type="radio" id="radio" value="" aria-label="Radio button for following text input" >
                                                     </div>
+                                                    <input type="text" class="form-control" aria-label="Text input with radio button" placeholder="Opsi 1" disabled style="background-color: #ffffff">
+                                                </div>
                                             </div>
                                             <div class="col-md-8">
                                                 <div class="row align-items-center">
+                                                    <div class="col-md-12 mb-3">
+                                                        <label for="">Lanjutkan Ke</label>
+                                                    </div>
                                                     <div class="col-md-5">
-                                                        <select class="form-select form-select-sm" id="part2" aria-label=".form-select-sm example" disabled="disabled">
+                                                        <select class="form-select form-select-sm" id="part" aria-label=".form-select-sm example" disabled="disabled">
                                                             <option selected> -- Pilih Bagian  --</option>
                                                             <option value="1">Bagian 1</option>
                                                             <option value="2">Bagian 2</option>
@@ -226,7 +143,7 @@
                                                         </select>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <select class="form-select form-select-sm" id="question2" aria-label=".form-select-sm example" disabled="disabled">
+                                                        <select class="form-select form-select-sm" id="question" aria-label=".form-select-sm example" disabled="disabled">
                                                             <option selected> -- Pilih Pertanyaan  --</option>
                                                             <option value="1">One</option>
                                                             <option value="2">Two</option>
@@ -236,16 +153,97 @@
                                                     <div class="col-1 p-0">
                                                         <a href="#" class="btn link-dark">
                                                             <i class="fas fa-trash"></i>
-                                                        </a>
+                                                        </a>   
+                                                    </div>
+                                                </div>                      
+                                            </div>
+                                            
+                                        </div> -->
+                                        <!-- option 1 -->
+
+                                        <!-- option 2 -->
+                                        <!-- <div class="col-md-12 mt-3">
+                                            <div class="row align-items-center" >
+                                                <div class="col-md-4">                       
+                                                        <div class="input-group">
+                                                            <div class="input-group-text" style="background: #F99E3F ">
+                                                            <input class="form-check-input mt-0" type="radio" id="radio1" value="" aria-label="Radio button for following text input" disabled="disabled">
+                                                            </div>
+                                                            <input type="text" class="form-control" aria-label="Text input with radio button" placeholder="Opsi 2" disabled style="background-color: #ffffff">
+                                                        </div>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-md-5">
+                                                        <select class="form-select form-select-sm" id="part1" aria-label=".form-select-sm example" disabled="disabled">
+                                                                <option selected> -- Pilih Bagian  --</option>
+                                                                <option value="1">Bagian 1</option>
+                                                                <option value="2">Bagian 2</option>
+                                                                <option value="3">Bagian 3</option>
+                                                                </select>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                        <select class="form-select form-select-sm" id="question1" aria-label=".form-select-sm example" disabled="disabled">
+                                                                <option selected> -- Pilih Pertanyaan  --</option>
+                                                                <option value="1">One</option>
+                                                                <option value="2">Two</option>
+                                                                <option value="3">Three</option>
+                                                                </select>
+                                                        </div>
+                                                        <div class="col-1 p-0">
+                                                            {{-- <button type="button" class="btn link-dark">
+                                                                <i class="fas fa-trash"></i>    
+                                                            </button> --}}
+                                                            <a href="#" class="btn link-dark">
+                                                                <i class="fas fa-trash"></i>
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <!-- option 3 -->
-                                </div>
+                                        </div> -->
+                                        <!-- option 2 -->
 
-                                </div>
+                                        <!-- option 3 -->
+                                        <!-- <div class="col-md-12 mt-3 align-items-center">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-4">                       
+                                                        <div class="input-group">
+                                                            <div class="input-group-text" style="background: #F99E3F "  >
+                                                            <input class="form-check-input mt-0" type="radio" id="radio2" value="" aria-label="Radio button for following text input" disabled="disabled">
+                                                            </div>
+                                                            <input type="text" class="form-control" aria-label="Text input with radio button" placeholder="Opsi 3" disabled style="background-color: #ffffff">
+                                                        </div>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-md-5">
+                                                            <select class="form-select form-select-sm" id="part2" aria-label=".form-select-sm example" disabled="disabled">
+                                                                <option selected> -- Pilih Bagian  --</option>
+                                                                <option value="1">Bagian 1</option>
+                                                                <option value="2">Bagian 2</option>
+                                                                <option value="3">Bagian 3</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <select class="form-select form-select-sm" id="question2" aria-label=".form-select-sm example" disabled="disabled">
+                                                                <option selected> -- Pilih Pertanyaan  --</option>
+                                                                <option value="1">One</option>
+                                                                <option value="2">Two</option>
+                                                                <option value="3">Three</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-1 p-0">
+                                                            <a href="#" class="btn link-dark">
+                                                                <i class="fas fa-trash"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                        <!-- option 3 -->
+                                    <!-- </div> -->
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="nav-validation" role="tabpanel" aria-labelledby="nav-validation-tab">

@@ -461,6 +461,12 @@ export class Component extends HTMLDivElement {
         return form;
     }
 
+    LogicOptions() {
+        const form = this._buildOptionsContainer();
+        
+        return form;
+    }
+
     MediaOptions() {
         const wrapper = document.createElement("form");
         wrapper.className += "needs-validation";

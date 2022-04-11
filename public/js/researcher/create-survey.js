@@ -42,11 +42,13 @@ $(function () {
         let questionOptionContainer = $("#questionOptionContainer");
         let questionValidationContainer = $("#questionValidationContainer");
         let questionMediaContainer = $("#questionMediaContainer");
+        let questionLogicContainer = $("#questionLogicContainer");
 
         // empty options first
         questionOptionContainer.empty();
         questionValidationContainer.empty();
         questionMediaContainer.empty();
+        questionLogicContainer.empty();
 
         const componentId = event.relatedTarget.getAttribute("data-target-id");
         const question = $("#" + componentId).get(0);
@@ -54,7 +56,7 @@ $(function () {
         questionOptionContainer.append(question.Options());
         questionValidationContainer.append(question.ValidationOptions());
         questionMediaContainer.append(question.MediaOptions());
-
+        questionLogicContainer.append(question.LogicOptions());
         // console.log(question);
     });
 
