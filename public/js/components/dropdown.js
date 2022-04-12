@@ -130,7 +130,7 @@ export class DropDown extends Component {
 
     LogicOptions() {
         const form = document.createElement("form");
-        const choiceOptions = this._updateableOptions();
+        const choiceOptions = this._updateableLogicOptions();
 
         form.appendChild(choiceOptions);
 
@@ -285,6 +285,123 @@ export class DropDown extends Component {
         wrapper.appendChild(addOptionContainer);
 
         wrapper.appendChild(saveOptionContainer);
+
+        return wrapper;
+    }
+
+    _updateableLogicOptions() {
+        const observable = this.observer();
+         const wrapper = document.createElement("div");
+         wrapper.id = uniqid("wrapper");
+         wrapper.className += "row mb-3";
+
+        for (let i = 0; i < observable.options.length; i++) {
+            console.log(this.blueprint.options[i]);     // Value option ada disini
+        }
+
+        const divLabel = document.createElement('div');
+        divLabel.className = "col-md-4";
+
+        const divLabel2 = document.createElement('div');
+        divLabel2.className = "col-md-8";
+        
+        const label = document.createElement("label");
+        label.innerHTML = "Pilihan Opsi";
+        label.className += "form-input-label";
+        divLabel.appendChild(label);
+
+        const label2 = document.createElement("label");
+        label2.innerHTML = "Lanjutkan Ke";
+        label2.className += "form-input-label";
+        divLabel2.appendChild(label2);
+
+        const rowPilihan = document.createElement('div');
+        rowPilihan.className = 'row mt-4';
+
+        const rowLanjutkan = document.createElement('div');
+        rowLanjutkan.className = 'row mt-4 ';
+
+        const inputPilihan = document.createElement('input');
+        inputPilihan.className = "form-control bg-light";
+        inputPilihan.placeholder = "OPSI";
+        inputPilihan.readOnly = true;
+
+        const colLanjut1 = document.createElement('div');
+        colLanjut1.className = 'col-md-5';
+
+        const colLanjut2 = document.createElement('div');
+        colLanjut2.className = 'col-md-5';
+
+        const colLanjut3 = document.createElement('div');
+        colLanjut3.className = 'col-md-2';
+
+        const select1 = document.createElement('select');
+        select1.className = 'form-select ';
+
+        const select2 = document.createElement('select');
+        select2.className = 'form-select ';
+
+        const btnDelete = document.createElement('button');
+        btnDelete.className = 'btn btn-white';
+        btnDelete.innerHTML = '<i class="bi bi-trash"></i>';
+
+        colLanjut1.appendChild(select1);
+        colLanjut2.appendChild(select2);
+        colLanjut3.appendChild(btnDelete);
+
+        rowLanjutkan.appendChild(colLanjut1);
+        rowLanjutkan.appendChild(colLanjut2);
+        rowLanjutkan.appendChild(colLanjut3);
+        rowPilihan.appendChild(inputPilihan);
+        divLabel.appendChild(rowPilihan);
+        divLabel2.appendChild(rowLanjutkan);
+        wrapper.appendChild(divLabel);
+        wrapper.appendChild(divLabel2);
+
+
+        // const divInput = document.createElement('div');
+        // divInput.className = "row"
+
+        // const input = document.createElement("input");
+        // input.className = "input-group-text col-md-12 mt-2";
+        // input.placeholder += "kiw";
+
+        // const label2 = document.createElement("label");
+        // label2.innerHTML = "Lanjutkan Ke";
+        // label2.className += "form-input-label col-md-8";
+        // wrapper.appendChild(label2);
+
+       
+
+        // const divInput2 = document.createElement('div');
+        // divInput2.className = "col-md-12"
+
+        // const divInput3 = document.createElement('div');
+        // divInput3.className = "row";
+
+       
+        // divInput.appendChild(input);
+        // divInput2.appendChild(divInput);
+        // divInput3.appendChild(divInput2);
+
+        // const input2 = document.createElement("input");
+        // input2.type = "text";
+        // input2.className = "input-group-text col-md-3 mt-2 disabled ml-2";
+        // input2.placeholder = "asdasda";
+        // input2.readOnly = true;
+
+        // divInput.appendChild(input2);
+
+
+        // wrapper.appendChild(divInput);
+        // wrapper.appendChild(divInput2);
+        // wrapper.appendChild(divInput3);
+
+
+        // for (let i = 0; i < observable.options.length; i++) {
+        //     const editableOption = this._createEditableOption(i);
+        //     wrapper.appendChild(editableOption);
+        // }
 
         return wrapper;
     }
