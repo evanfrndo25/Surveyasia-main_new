@@ -289,122 +289,111 @@ export class DropDown extends Component {
         return wrapper;
     }
 
+    // tab Logic
     _updateableLogicOptions() {
-        const observable = this.observer();
-         const wrapper = document.createElement("div");
-         wrapper.id = uniqid("wrapper");
-         wrapper.className += "row mb-3";
+        const wrapper = document.createElement("div");
+        wrapper.id = uniqid("wrapper");
+        wrapper.className += "row mb-3";
 
-        for (let i = 0; i < observable.options.length; i++) {
-            console.log(this.blueprint.options[i]);     // Value option ada disini
-        }
-
-        const divLabel = document.createElement('div');
-        divLabel.className = "col-md-4";
-
-        const divLabel2 = document.createElement('div');
-        divLabel2.className = "col-md-8";
+        const divPilihan = document.createElement('div');
+        divPilihan.className = "col-md-4";
         
-        const label = document.createElement("label");
-        label.innerHTML = "Pilihan Opsi";
-        label.className += "form-input-label";
-        divLabel.appendChild(label);
-
-        const label2 = document.createElement("label");
-        label2.innerHTML = "Lanjutkan Ke";
-        label2.className += "form-input-label";
-        divLabel2.appendChild(label2);
+        const labelPilihan = document.createElement("label");
+        labelPilihan.innerHTML = "Pilihan Opsi";
+        labelPilihan.className += "form-input-label";
 
         const rowPilihan = document.createElement('div');
-        rowPilihan.className = 'row mt-4';
+        rowPilihan.className = "row";
 
-        const rowLanjutkan = document.createElement('div');
-        rowLanjutkan.className = 'row mt-4 ';
+        const divLanjutkan = document.createElement('div');
+        divLanjutkan.className = "col-md-8";
+        
+        const labelLanjutkan = document.createElement("label");
+        labelLanjutkan.innerHTML = "Lanjutkan Ke";
+        labelLanjutkan.className += "form-input-label";
 
-        const inputPilihan = document.createElement('input');
-        inputPilihan.className = "form-control bg-light";
-        inputPilihan.placeholder = "OPSI";
-        inputPilihan.readOnly = true;
+        const createInputPilihan = this._createInputPilihan();
 
-        const colLanjut1 = document.createElement('div');
-        colLanjut1.className = 'col-md-5';
+        const createSelectLanjutkan = this._createInputLanjutkan();
+        console.log(createSelectLanjutkan);
 
-        const colLanjut2 = document.createElement('div');
-        colLanjut2.className = 'col-md-5';
+        rowPilihan.appendChild(createInputPilihan);
+        divPilihan.appendChild(labelPilihan);
+        divPilihan.appendChild(rowPilihan);
+        
 
-        const colLanjut3 = document.createElement('div');
-        colLanjut3.className = 'col-md-2';
-
-        const select1 = document.createElement('select');
-        select1.className = 'form-select ';
-
-        const select2 = document.createElement('select');
-        select2.className = 'form-select ';
-
-        const btnDelete = document.createElement('button');
-        btnDelete.className = 'btn btn-white';
-        btnDelete.innerHTML = '<i class="bi bi-trash"></i>';
-
-        colLanjut1.appendChild(select1);
-        colLanjut2.appendChild(select2);
-        colLanjut3.appendChild(btnDelete);
-
-        rowLanjutkan.appendChild(colLanjut1);
-        rowLanjutkan.appendChild(colLanjut2);
-        rowLanjutkan.appendChild(colLanjut3);
-        rowPilihan.appendChild(inputPilihan);
-        divLabel.appendChild(rowPilihan);
-        divLabel2.appendChild(rowLanjutkan);
-        wrapper.appendChild(divLabel);
-        wrapper.appendChild(divLabel2);
-
-
-        // const divInput = document.createElement('div');
-        // divInput.className = "row"
-
-        // const input = document.createElement("input");
-        // input.className = "input-group-text col-md-12 mt-2";
-        // input.placeholder += "kiw";
-
-        // const label2 = document.createElement("label");
-        // label2.innerHTML = "Lanjutkan Ke";
-        // label2.className += "form-input-label col-md-8";
-        // wrapper.appendChild(label2);
-
-       
-
-        // const divInput2 = document.createElement('div');
-        // divInput2.className = "col-md-12"
-
-        // const divInput3 = document.createElement('div');
-        // divInput3.className = "row";
-
-       
-        // divInput.appendChild(input);
-        // divInput2.appendChild(divInput);
-        // divInput3.appendChild(divInput2);
-
-        // const input2 = document.createElement("input");
-        // input2.type = "text";
-        // input2.className = "input-group-text col-md-3 mt-2 disabled ml-2";
-        // input2.placeholder = "asdasda";
-        // input2.readOnly = true;
-
-        // divInput.appendChild(input2);
-
-
-        // wrapper.appendChild(divInput);
-        // wrapper.appendChild(divInput2);
-        // wrapper.appendChild(divInput3);
-
-
-        // for (let i = 0; i < observable.options.length; i++) {
-        //     const editableOption = this._createEditableOption(i);
-        //     wrapper.appendChild(editableOption);
-        // }
+        divLanjutkan.appendChild(labelLanjutkan);
+        divLanjutkan.appendChild(createSelectLanjutkan);
+        
+        wrapper.appendChild(divPilihan);
+        wrapper.appendChild(divLanjutkan);
 
         return wrapper;
     }
+
+    _createInputPilihan() {
+        const observable = this.observer();
+        const div = document.createElement('div');
+        div.className = "col-md-12";
+
+        for(let i = 0; i < observable.options.length; i++) {
+            const divInputGroup = document.createElement('div');
+            divInputGroup.className = "input-group mb-3 mt-3";
+
+            const divInputGroupText = document.createElement('div');
+            divInputGroupText.className = 'input-group-text';
+            
+            const input = document.createElement('input');
+            input.className = 'form-control';
+            input.readOnly = true;
+            input.placeholder = observable.options[i];
+
+            divInputGroupText.appendChild(input);
+            divInputGroup.appendChild(divInputGroupText);
+            div.appendChild(divInputGroup);
+        }
+
+        return div;
+    }
+
+    _createInputLanjutkan() {
+        const observable = this.observer();
+        const div = document.createElement('div');
+        div.className = "row";
+
+        for(let i = 0; i < observable.options.length; i++) {
+            const divBagian = document.createElement('div');
+            divBagian.className = "col-md-5 mb-3 mt-3";
+
+            const divPertanyaan = document.createElement('div');
+            divPertanyaan.className = "col-md-5 mb-3 mt-3";
+
+            const divTrash = document.createElement('div');
+            divTrash.className = "col-md-2 mb-3 mt-3";
+
+            const selectBagian = document.createElement('select');
+            selectBagian.className = "form-select";
+            
+            const selectPertanyaan = document.createElement('select');
+            selectPertanyaan.className = "form-select";
+
+            const iconTrash = document.createElement('a');
+            iconTrash.href = '#';
+            iconTrash.className = "btn link-dark";
+            iconTrash.innerHTML = '<i class="fas fa-trash"></i>';
+
+            divBagian.appendChild(selectBagian);
+            divPertanyaan.appendChild(selectPertanyaan);
+            divTrash.appendChild(iconTrash);
+
+            div.appendChild(divBagian);
+            div.appendChild(divPertanyaan);
+            div.appendChild(divTrash);
+        }
+
+        return div;
+    }
+// end tab Logic
 
     _updateOptions() {
         const wrapper = this._getInput().get(0);
