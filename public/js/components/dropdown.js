@@ -295,6 +295,7 @@ export class DropDown extends Component {
         wrapper.id = uniqid("wrapper");
         wrapper.className += "row mb-3";
 
+        // membuat div untuk logic bagian Pilihan
         const divPilihan = document.createElement('div');
         divPilihan.className = "col-md-4";
         
@@ -305,6 +306,7 @@ export class DropDown extends Component {
         const rowPilihan = document.createElement('div');
         rowPilihan.className = "row";
 
+        // membuat div untuk logic bagian Lanjutkan Ke
         const divLanjutkan = document.createElement('div');
         divLanjutkan.className = "col-md-8";
         
@@ -312,10 +314,11 @@ export class DropDown extends Component {
         labelLanjutkan.innerHTML = "Lanjutkan Ke";
         labelLanjutkan.className += "form-input-label";
 
+        // membuat tag input melalui function createInputPilihan
         const createInputPilihan = this._createInputPilihan();
 
+        // membuat tag select melalui function createInputLanjutkan
         const createSelectLanjutkan = this._createInputLanjutkan();
-        console.log(createSelectLanjutkan);
 
         rowPilihan.appendChild(createInputPilihan);
         divPilihan.appendChild(labelPilihan);
@@ -336,6 +339,7 @@ export class DropDown extends Component {
         const div = document.createElement('div');
         div.className = "col-md-12";
 
+        // observable.options.length = berisi value options
         for(let i = 0; i < observable.options.length; i++) {
             const divInputGroup = document.createElement('div');
             divInputGroup.className = "input-group mb-3 mt-3";
@@ -362,9 +366,11 @@ export class DropDown extends Component {
         div.className = "row";
 
         for(let i = 0; i < observable.options.length; i++) {
+            // membuat elemen div pertama di dalam "Lanjutkan Ke" (Bagian)
             const divBagian = document.createElement('div');
             divBagian.className = "col-md-5 mb-3 mt-3";
 
+            // membuat elemen div ke dua di dalam "Lanjutkan Ke" (Pertanyaan)
             const divPertanyaan = document.createElement('div');
             divPertanyaan.className = "col-md-5 mb-3 mt-3";
 
@@ -377,10 +383,29 @@ export class DropDown extends Component {
             const selectPertanyaan = document.createElement('select');
             selectPertanyaan.className = "form-select";
 
+            // elemen trash untuk menghapus
             const iconTrash = document.createElement('a');
             iconTrash.href = '#';
             iconTrash.className = "btn link-dark";
             iconTrash.innerHTML = '<i class="fas fa-trash"></i>';
+
+            // membuat default option Select untuk tiap-tiap Options
+            const optionDefault = document.createElement('option');
+            optionDefault.innerHTML = 'Select';
+            optionDefault.selected = true;
+            optionDefault.disabled = true;
+            selectPertanyaan.appendChild(optionDefault);
+
+            // mendapatkan id dan value dari tiap-tiap pertanyaan
+            const getContainerQuestion = document.getElementById('questions_container');
+            const getQuestion = getContainerQuestion.children;
+            for (let index = 0; index < getQuestion.length; index++) {
+                // membuat tag option melalui function createOptionLanjutkan dengan dua argumen
+                selectPertanyaan.appendChild(this._createOptionLanjutkan(
+                    getQuestion[index].childNodes[1].innerText.split('\n')[1],  //argumen 1 text
+                    getQuestion[index].id   //argumen 2 value
+                ));
+            }
 
             divBagian.appendChild(selectBagian);
             divPertanyaan.appendChild(selectPertanyaan);
@@ -392,6 +417,14 @@ export class DropDown extends Component {
         }
 
         return div;
+    }
+
+    _createOptionLanjutkan(text, value) {
+        const option = document.createElement('option');
+        option.innerHTML = text;
+        option.value = value;
+
+        return option;
     }
 // end tab Logic
 
