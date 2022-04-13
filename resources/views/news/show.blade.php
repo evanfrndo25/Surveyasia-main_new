@@ -1,6 +1,8 @@
 @extends('layouts.footer')
-@extends('layouts.base')
-@extends('layouts.navbar')
+@extends(Auth::guest() ? 'layouts.base' : (Auth::user()->role_id == 2 ? 'researcher.layouts.base' :
+'layouts.base'))
+@extends(Auth::guest() ? 'layouts.navbar' : (Auth::user()->role_id == 2 ? 'researcher.layouts.navbar' :
+'respondent.layouts.navbar'))
 
 @section('content')
 
