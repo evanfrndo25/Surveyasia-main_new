@@ -102,7 +102,8 @@ class SurveyController extends Controller
             'title' => $request->title,
             'description' => $request->description
         ]);
-        return redirect('/{survey}/manage');
+
+        return redirect()->back();
 
         // $data           = Survey::find($id);
         // $data->title    = $request->title;

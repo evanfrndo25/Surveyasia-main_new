@@ -460,6 +460,25 @@ add
         return form;
     }
 
+    LogicOptions() {
+        const form = this._buildOptionsContainer();
+        
+        let choiceOptions;
+
+        if (
+            this.blueprint.componentName === "scale" ||
+            this.blueprint.componentName === "ratingStar"
+        ) {
+            choiceOptions = this._updateableScale();
+        } else {
+            choiceOptions = this._updateableOptions();
+        }
+        
+        form.appendChild(choiceOptions);
+
+        return form;
+    }
+
     ValidationOptions() {
         const wrapper = document.createElement("div");
         wrapper.className += "row";

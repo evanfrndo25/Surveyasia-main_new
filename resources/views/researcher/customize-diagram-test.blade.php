@@ -138,7 +138,7 @@
                     $i++;
                 @endphp
             @empty
-                <h6>No question present</h6>
+                <h6>Tidak ada pertanyaan</h6>
             @endforelse
             <div class="d-grid my-3">
                 <button type="submit" class="btn btn-orange">Simpan</button>

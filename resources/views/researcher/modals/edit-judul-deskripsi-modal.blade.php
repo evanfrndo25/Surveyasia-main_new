@@ -6,7 +6,8 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="" method="POST">
+        <form action="{{ route('researcher.surveys.update', $survey->id) }}" method="POST">
+            @csrf
             <div class="row mb-3">
                 <div class="col">
                     <div class="card">

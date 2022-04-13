@@ -77,7 +77,7 @@
         </div>
     @endsection
     @push('scripts')
-        <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+    <script src="//cdn.ckeditor.com/4.18.0/full/ckeditor.js"></script>
         <script>
             var options = {
                 filebrowserImageBrowseUrl: '/filemanager?type=Images',

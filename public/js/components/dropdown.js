@@ -130,7 +130,7 @@ export class DropDown extends Component {
 
     LogicOptions() {
         const form = document.createElement("form");
-        const choiceOptions = this._updateableOptions();
+        const choiceOptions = this._updateableLogicOptions();
 
         form.appendChild(choiceOptions);
 
@@ -288,6 +288,145 @@ export class DropDown extends Component {
 
         return wrapper;
     }
+
+    // tab Logic
+    _updateableLogicOptions() {
+        const wrapper = document.createElement("div");
+        wrapper.id = uniqid("wrapper");
+        wrapper.className += "row mb-3";
+
+        // membuat div untuk logic bagian Pilihan
+        const divPilihan = document.createElement('div');
+        divPilihan.className = "col-md-4";
+        
+        const labelPilihan = document.createElement("label");
+        labelPilihan.innerHTML = "Pilihan Opsi";
+        labelPilihan.className += "form-input-label";
+
+        const rowPilihan = document.createElement('div');
+        rowPilihan.className = "row";
+
+        // membuat div untuk logic bagian Lanjutkan Ke
+        const divLanjutkan = document.createElement('div');
+        divLanjutkan.className = "col-md-8";
+        
+        const labelLanjutkan = document.createElement("label");
+        labelLanjutkan.innerHTML = "Lanjutkan Ke";
+        labelLanjutkan.className += "form-input-label";
+
+        // membuat tag input melalui function createInputPilihan
+        const createInputPilihan = this._createInputPilihan();
+
+        // membuat tag select melalui function createInputLanjutkan
+        const createSelectLanjutkan = this._createInputLanjutkan();
+
+        rowPilihan.appendChild(createInputPilihan);
+        divPilihan.appendChild(labelPilihan);
+        divPilihan.appendChild(rowPilihan);
+        
+
+        divLanjutkan.appendChild(labelLanjutkan);
+        divLanjutkan.appendChild(createSelectLanjutkan);
+        
+        wrapper.appendChild(divPilihan);
+        wrapper.appendChild(divLanjutkan);
+
+        return wrapper;
+    }
+
+    _createInputPilihan() {
+        const observable = this.observer();
+        const div = document.createElement('div');
+        div.className = "col-md-12";
+
+        // observable.options.length = berisi value options
+        for(let i = 0; i < observable.options.length; i++) {
+            const divInputGroup = document.createElement('div');
+            divInputGroup.className = "input-group mb-3 mt-3";
+
+            const divInputGroupText = document.createElement('div');
+            divInputGroupText.className = 'input-group-text';
+            
+            const input = document.createElement('input');
+            input.className = 'form-control';
+            input.readOnly = true;
+            input.placeholder = observable.options[i];
+
+            divInputGroupText.appendChild(input);
+            divInputGroup.appendChild(divInputGroupText);
+            div.appendChild(divInputGroup);
+        }
+
+        return div;
+    }
+
+    _createInputLanjutkan() {
+        const observable = this.observer();
+        const div = document.createElement('div');
+        div.className = "row";
+
+        for(let i = 0; i < observable.options.length; i++) {
+            // membuat elemen div pertama di dalam "Lanjutkan Ke" (Bagian)
+            const divBagian = document.createElement('div');
+            divBagian.className = "col-md-5 mb-3 mt-3";
+
+            // membuat elemen div ke dua di dalam "Lanjutkan Ke" (Pertanyaan)
+            const divPertanyaan = document.createElement('div');
+            divPertanyaan.className = "col-md-5 mb-3 mt-3";
+
+            const divTrash = document.createElement('div');
+            divTrash.className = "col-md-2 mb-3 mt-3";
+
+            const selectBagian = document.createElement('select');
+            selectBagian.className = "form-select";
+            
+            const selectPertanyaan = document.createElement('select');
+            selectPertanyaan.className = "form-select";
+
+            // elemen trash untuk menghapus
+            const iconTrash = document.createElement('a');
+            iconTrash.href = '#';
+            iconTrash.className = "btn link-dark";
+            iconTrash.innerHTML = '<i class="fas fa-trash"></i>';
+
+            // membuat default option Select untuk tiap-tiap Options
+            const optionDefault = document.createElement('option');
+            optionDefault.innerHTML = 'Select';
+            optionDefault.selected = true;
+            optionDefault.disabled = true;
+            selectPertanyaan.appendChild(optionDefault);
+
+            // mendapatkan id dan value dari tiap-tiap pertanyaan
+            const getContainerQuestion = document.getElementById('questions_container');
+            const getQuestion = getContainerQuestion.children;
+            for (let index = 0; index < getQuestion.length; index++) {
+                // membuat tag option melalui function createOptionLanjutkan dengan dua argumen
+                selectPertanyaan.appendChild(this._createOptionLanjutkan(
+                    getQuestion[index].childNodes[1].innerText.split('\n')[1],  //argumen 1 text
+                    getQuestion[index].id   //argumen 2 value
+                ));
+            }
+
+            divBagian.appendChild(selectBagian);
+            divPertanyaan.appendChild(selectPertanyaan);
+            divTrash.appendChild(iconTrash);
+
+            div.appendChild(divBagian);
+            div.appendChild(divPertanyaan);
+            div.appendChild(divTrash);
+        }
+
+        return div;
+    }
+
+    _createOptionLanjutkan(text, value) {
+        const option = document.createElement('option');
+        option.innerHTML = text;
+        option.value = value;
+
+        return option;
+    }
+// end tab Logic
 
     _updateOptions() {
         const wrapper = this._getInput().get(0);
