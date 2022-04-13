@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="row">
-                    <nav>
+                    <nav class="survey-tabs">
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
                             <button class="nav-link active" id="menunggu-tab" data-bs-toggle="tab"
                                 data-bs-target="#menunggu" type="button" role="tab" aria-controls="menunggu"
@@ -109,7 +109,8 @@
                             <div class="row bg-primary mb-3" style="border-radius: 0 0 17px 17px;">
                                 <div class="col">
                                     <div class="d-grid">
-                                        <a href="{{ route('admin.survey.show', $item->id) }}" class="btn btn-primary">Detail Survey</a>
+                                        <a href="{{ route('admin.survey.show', $item->id) }}"
+                                            class="btn btn-primary">Detail Survey</a>
                                         <!-- <button class="btn btn-primary" type="button">Detail Survey</button> -->
                                     </div>
                                 </div>
@@ -249,7 +250,8 @@
                             <div class="row bg-primary mb-3" style="border-radius: 0 0 17px 17px;">
                                 <div class="col">
                                     <div class="d-grid">
-                                        <button class="btn btn-primary" type="button">Detail Survey</button>
+                                        <a href="{{ route('admin.survey.deny', $item->id) }}"
+                                            class="btn btn-primary">Detail Surve sy</a>
                                     </div>
                                 </div>
                             </div>
@@ -366,7 +368,8 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer me-auto">
-                                        <button type="button" class="btn bg-special-blue text-white px-5 py-2 rounded-3">Simpan</button>
+                                        <button type="button"
+                                            class="btn bg-special-blue text-white px-5 py-2 rounded-3">Simpan</button>
                                         <button type="button" class="btn btn-secondary px-5 py-2 rounded-3"
                                             data-bs-dismiss="modal">Batal</button>
                                     </div>
@@ -435,7 +438,8 @@
                             <div class="row bg-primary mb-3" style="border-radius: 0 0 17px 17px;">
                                 <div class="col">
                                     <div class="d-grid">
-                                        <button class="btn btn-primary" type="button">Detail Survey</button>
+                                        <a href="{{ route('admin.survey.acc', $item->id) }}"
+                                            class="btn btn-primary">Detail Survey</a>
                                     </div>
                                 </div>
                             </div>
@@ -482,27 +486,30 @@
                                                 <div class="d-flex nav  nav-tabs" id="nav-tab" role="tablist">
                                                     <div class="form-check pe-4">
                                                         <input class="form-check-input nav-link" type="radio"
-                                                            name="tab-tunggu-terima" id="tab-tunggu-terima-tab" data-bs-toggle="tab"
-                                                            data-bs-target="#tab-tunggu-terima" role="tab"
-                                                            aria-controls="tab-tunggu-terima" aria-selected="true">
+                                                            name="tab-tunggu-terima" id="tab-tunggu-terima-tab"
+                                                            data-bs-toggle="tab" data-bs-target="#tab-tunggu-terima"
+                                                            role="tab" aria-controls="tab-tunggu-terima"
+                                                            aria-selected="true">
                                                         <label class="form-check-label" for="tab-tunggu-terima-tab">
                                                             Menunggu
                                                         </label>
                                                     </div>
                                                     <div class="form-check pe-4">
                                                         <input class="form-check-input nav-link" type="radio"
-                                                            name="tab-tolak-terima" id="tab-tolak-terima-tab" data-bs-toggle="tab"
-                                                            data-bs-target="#tab-tolak-terima" role="tab"
-                                                            aria-controls="tab-tolak-terima" aria-selected="false">
+                                                            name="tab-tolak-terima" id="tab-tolak-terima-tab"
+                                                            data-bs-toggle="tab" data-bs-target="#tab-tolak-terima"
+                                                            role="tab" aria-controls="tab-tolak-terima"
+                                                            aria-selected="false">
                                                         <label class="form-check-label" for="tab-tolak-terima-tab">
                                                             Ditolak
                                                         </label>
                                                     </div>
                                                     <div class="form-check pe-4">
                                                         <input class="form-check-input nav-link" type="radio"
-                                                            name="tab-terima-terima" id="tab-terima-terima-tab" data-bs-toggle="tab"
-                                                            data-bs-target="#tab-terima-terima" role="tab"
-                                                            aria-controls="tab-terima-terima" aria-selected="false">
+                                                            name="tab-terima-terima" id="tab-terima-terima-tab"
+                                                            data-bs-toggle="tab" data-bs-target="#tab-terima-terima"
+                                                            role="tab" aria-controls="tab-terima-terima"
+                                                            aria-selected="false">
                                                         <label class="form-check-label" for="tab-terima-terima-tab">
                                                             Ditolak
                                                         </label>
@@ -552,7 +559,8 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer me-auto">
-                                        <button type="button" class="btn bg-special-blue text-white px-5 py-2 rounded-3">Simpan</button>
+                                        <button type="button"
+                                            class="btn bg-special-blue text-white px-5 py-2 rounded-3">Simpan</button>
                                         <button type="button" class="btn btn-secondary px-5 py-2 rounded-3"
                                             data-bs-dismiss="modal">Batal</button>
                                     </div>
