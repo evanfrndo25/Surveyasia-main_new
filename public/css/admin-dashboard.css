@@ -15,11 +15,14 @@ body {
     min-height: 100%;
 }
 
-.survey-active .nav-tabs .nav-item.show .nav-link,
-.nav-tabs .nav-link.active {
+.survey-tabs .nav-tabs .nav-link.active {
     background-color: transparent;
     border: none;
     border-bottom: 3px solid #007dca;
+}
+
+.bg-light {
+    background-color: #eff0f6 !important;
 }
 
 .nopadding {

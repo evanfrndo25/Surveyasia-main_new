@@ -85,7 +85,25 @@ class SurveyController extends Controller
     public function showSurveyDetails(Survey $survey)
     {
         //
-        return view('admin.survey.show', compact('survey'));
+        return view('admin.survey.show', compact('survey'), [
+            'title' => $this->title,
+        ]);
+    }
+
+    public function showSurveyDetailsDeny(Survey $survey)
+    {
+        //
+        return view('admin.survey.deny', compact('survey'), [
+            'title' => $this->title,
+        ]);
+    }
+
+    public function showSurveyDetailsAcc(Survey $survey)
+    {
+        //
+        return view('admin.survey.acc', compact('survey'), [
+            'title' => $this->title,
+        ]);
     }
 
     public function surveyManagement(Survey $survey)

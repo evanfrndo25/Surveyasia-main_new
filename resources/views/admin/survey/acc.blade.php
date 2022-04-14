@@ -33,6 +33,12 @@
                                 <button class="nav-link me-5" id="pertanyaan-tab" data-bs-toggle="tab"
                                     data-bs-target="#pertanyaan" type="button" role="tab" aria-controls="pertanyaan"
                                     aria-selected="false">Pertanyaan</button>
+                                <button class="nav-link me-5" id="kumpulan-tab" data-bs-toggle="tab"
+                                    data-bs-target="#kumpulan" type="button" role="tab" aria-controls="kumpulan"
+                                    aria-selected="false">Kumpulan Responden</button>
+                                <button class="nav-link me-5" id="hasil-tab" data-bs-toggle="tab"
+                                    data-bs-target="#hasil" type="button" role="tab" aria-controls="hasil"
+                                    aria-selected="false">Hasil Analisis</button>
                             </div>
                         </nav>
                         <div class="tab-content" id="nav-tabContent">
@@ -171,6 +177,48 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <p class="text-decoration-underline fw-bold">Pertanyaan</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="kumpulan" role="tabpanel" aria-labelledby="kumpulan-tab">
+                                <div class="row border p-5 mt-3">
+                                    <div class="col-5">
+                                        <h4>Share Link</h4>
+                                        <p class="small">Share this link with your respondent to collect their respons
+                                        </p>
+                                        <input type="text" class="form-control bg-light py-2"
+                                            placeholder="https://surveiasia.com" disabled>
+                                    </div>
+                                    <div class="col-3 ms-auto">
+                                        <h5 class="text-secondary text-center">QR Code</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="hasil" role="tabpanel" aria-labelledby="hasil-tab">
+                                <div class="row pt-3">
+                                    <div class="col-4">
+                                        <div class="card p-4">
+                                            <div class="border-bottom">
+                                                <p class="small text-secondary">Title Survey</p>
+                                                <p>Survey Terhadap Belanja Online</p>
+                                            </div>
+                                            <div class="border-bottom">
+                                                <p class="small text-secondary">Tipe Survey</p>
+                                                <p>Member Anual Personal</p>
+                                            </div>
+                                            <div class="border-bottom">
+                                                <p class="small text-secondary">Total Responden</p>
+                                                <p>20/100 Responden</p>
+                                            </div>
+                                        </div>
+                                        <div class="d-grid gap-2 pt-3">
+                                            <button class="btn btn-secondary rounded-pill py-2" type="button">Advance Analisis</button>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="card p-5">
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>

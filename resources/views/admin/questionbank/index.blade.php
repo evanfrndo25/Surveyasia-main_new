@@ -4,9 +4,7 @@
 <link rel="stylesheet" href="{{ asset('css/admin-dashboard.css') }}">
 @endsection
 
-
 @section('content')
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-2 nopadding">
