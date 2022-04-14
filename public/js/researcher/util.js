@@ -1,6 +1,7 @@
 import { configuration } from "../components/configuration.js";
 import { DropDown } from "../components/dropdown.js";
 import { MultipleChoice } from "../components/multipleChoice.js";
+import { MultiOption } from "../components/multiOption.js"
 import { TextBox } from "../components/textbox.js";
 import { UploadFile } from "../components/uploadFile.js";
 import uniqid from "../components/util.js";
@@ -38,7 +39,7 @@ export function renderQuestion(config, after = null) {
             questionElement = new MultipleChoice(config);
             break;
         case "multiOptions":
-            questionElement = new MultipleChoice(config);
+            questionElement = new MultiOption(config);
             break;
         case "dropdown":
             questionElement = new DropDown(config);
