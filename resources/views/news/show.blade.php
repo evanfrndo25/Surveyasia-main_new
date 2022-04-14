@@ -19,22 +19,25 @@
             <h6>Tulisan Lainnya</h6>
             <hr>
             <div class="row">
-                @for ($i = 3; $i < 6; $i++)
-                    <div class="col-md-4">
-                        <img src="/assets/img/detail_blog_{{ $i }}.png" alt="Detail Blog {{ $i }}" class="img-fluid w-100 mb-3">
-                        <p class="fw-light m-0">1{{ $i }} Agustus 2021</p>
-                        <h5>Grid membatasi kreatifitas seorang UI Designer?</h5>
-                        <div class="row mt-3">
-                            <div class="col-md-2">
-                                <img src="/assets/img/prof_pic.png" alt="Profile Picture" width="60">
-                            </div>
-                            <div class="col-md-10">
-                                <p class="fw-bold m-0">Jessie Yeung</p>
-                                <p class="fw-light m-0">22 September 2021</p>
-                            </div>
+                @foreach ($newsList as $news)
+                    <div class="col-4">
+                        <div>
+                            <a href="{{ route('news.show', $news->slug) }}"
+                                class="link-dark text-decoration-none">
+                                <img src="{{ url('storage/'.$news->img) }}" alt="News"
+                                class="img-fluid mb-3 w-100" style="height: 250px;">
+                                <p class="text-muted fw-light fs-14px mb-2">{{
+                                $news->created_at->diffForHumans() }}
+                                </p>
+                                <h5>{{ $news->title }}</h5>
+                                <p class="text-secondary fw-light fs-14px mt-2">{!!
+                                Str::limit($news->description,
+                                0) !!}
+                                </p>
+                            </a>
                         </div>
                     </div>
-                @endfor
+                @endforeach
             </div>
         </div>
     </section>

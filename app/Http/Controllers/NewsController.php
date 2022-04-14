@@ -20,7 +20,11 @@ class NewsController extends Controller
 
     public function show(News $news)
     {
-        return view('news.show', compact('news'));
+        $data = [
+            'newsList' => News::where('status', 1)->latest()->paginate(3),
+        ];
+
+        return view('news.show', $data, compact('news'));
     }
 
     protected function _videoList()

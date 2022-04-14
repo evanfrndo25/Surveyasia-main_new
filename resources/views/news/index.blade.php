@@ -56,6 +56,13 @@
                     </li>
                     <li class="nav-item" role="presentation">
                         <a class="nav-link link-news-category link-secondary" aria-current="page" href="#"
+                            id="lainnya-tab" data-bs-toggle="tab" data-bs-target="#lainnya" type="button"
+                            role="tab" aria-controls="lainnya" aria-selected="true">
+                            Lainnya
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link link-news-category link-secondary" aria-current="page" href="#"
                             id="surveyasia-tab" data-bs-toggle="tab" data-bs-target="#surveyasia" type="button"
                             role="tab" aria-controls="surveyasia" aria-selected="true">
                             SurveyAsia
@@ -79,7 +86,7 @@
                                         <h5>{{ $news->title }}</h5>
                                         <p class="text-secondary fw-light fs-14px mt-2">{!!
                                             Str::limit($news->description,
-                                            100) !!}
+                                            0) !!}
                                         </p>
                                     </a>
                                 </div>
@@ -98,6 +105,9 @@
                     </div>
                     <div class="tab-pane fade" id="productivity" role="tabpanel" aria-labelledby="productivity-tab">
                         <h1>Produktifitas</h1>
+                    </div>
+                    <div class="tab-pane fade" id="lainnya" role="tabpanel" aria-labelledby="lainnya-tab">
+                        <h1>Lainnya</h1>
                     </div>
                     <div class="tab-pane fade" id="surveyasia" role="tabpanel" aria-labelledby="surveyasia-tab">
                         <h1>SurveyAsia</h1>
