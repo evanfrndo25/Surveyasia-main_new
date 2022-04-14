@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 class SocialShareController extends Controller
 {
     public function index (){
-        $socialShare = \Share::page('http://demo.surveyasia.id/news/detail-news')
+        $socialShare = \Share::page('http://percobaan.demo.surveyasia.id/news/detail-news')
                 // ->facebook()
                 // ->twitter()->GetRawLinks();
 
