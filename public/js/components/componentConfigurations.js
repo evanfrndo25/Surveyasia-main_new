@@ -107,7 +107,7 @@ export const scaleComponent = {
         inputType: "radio",
         label: "Masukkan Label Pertanyaan Anda",
         style: "scale",
-        minVal: 2,
+        minVal: 1,
         maxVal: 10,
         // position: 0,
     },

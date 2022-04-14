@@ -462,9 +462,7 @@ export class Component extends HTMLDivElement {
     }
 
     LogicOptions() {
-        const form = this._buildOptionsContainer();
-        
-        return form;
+        return "<p class='badge bg-danger'>Maaf, logic tidak didukung untuk tipe pertanyaan ini.</p>"
     }
 
     MediaOptions() {
