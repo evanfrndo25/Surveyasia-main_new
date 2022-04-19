@@ -301,6 +301,10 @@ Route::get('survey/{code}', [RespondenSurveyController::class, 'sharedSurvey'])
     ->name('survey.share')
     ->middleware(['auth', 'verified', 'verify_profile']);
 
+Route::post('survey/{code}', [RespondenSurveyController::class, 'updateSharedSurvey'])
+    ->name('survey.share.update')
+    ->middleware(['auth', 'verified', 'verify_profile']);
+
 //editprofile
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::group(['prefix' => 'user'], function () {

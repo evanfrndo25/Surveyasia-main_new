@@ -129,6 +129,15 @@ class SurveyController extends Controller
         return view('respondent.survey.details', ['survey' => $survey]);
     }
 
+    public function updateSharedSurvey(Request $request, $id)
+    {
+        Survey::find($id)->update([
+            'signature' => $request->signature,
+        ]);
+
+        return redirect()->back();
+    }
+
     public function filter()
     {
         if (isset($_GET['select_filter'])) {
