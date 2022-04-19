@@ -129,12 +129,14 @@ class SurveyController extends Controller
         return view('respondent.survey.details', ['survey' => $survey]);
     }
 
-    public function updateSharedSurvey(Request $request, $id)
+    public function updateSharedSurvey(Request $request, $code)
     {
-        Survey::find($id)->update([
-            'signature' => $request->signature,
-        ]);
-
+        $url = $request->title;
+        $checkUrl = Survey::where('shareable_link', $url)->first();
+        if( $checkUrl ) {   // Jika url telah digunakan
+            return redirect()->back();
+        }
+        Survey::where('id', $code)->update(['shareable_link' => $url]);
         return redirect()->back();
     }
 

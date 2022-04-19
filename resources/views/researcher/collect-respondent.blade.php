@@ -86,7 +86,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('updateSharedSurvey', $code->survey) }}" method="POST">
+                    <form action="{{ route('survey.update', $survey->id) }}" method="POST">
                         @csrf
                         <div class="row mb-3">
                             <div class="col">

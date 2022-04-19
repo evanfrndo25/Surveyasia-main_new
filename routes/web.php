@@ -297,13 +297,14 @@ Route::middleware(['auth', 'role:respondent', 'verified'])->group(function () {
 
 // share survey
 // shareable link
-Route::get('survey/{code}', [RespondenSurveyController::class, 'sharedSurvey'])
-    ->name('survey.share')
-    ->middleware(['auth', 'verified', 'verify_profile']);
-
-Route::post('survey/{code}', [RespondenSurveyController::class, 'updateSharedSurvey'])
-    ->name('survey.share.update')
-    ->middleware(['auth', 'verified', 'verify_profile']);
+Route::middleware(['auth', 'verified', 'verify_profile'])->group(function () {
+    Route::prefix('survey')
+    ->name('survey.')
+    ->group(function() {
+        Route::get('{code}', [RespondenSurveyController::class, 'sharedSurvey'])->name('share');
+        Route::post('{code}', [RespondenSurveyController::class, 'updateSharedSurvey'])->name('update');
+    });
+});
 
 //editprofile
 Route::middleware(['auth', 'verified'])->group(function () {
