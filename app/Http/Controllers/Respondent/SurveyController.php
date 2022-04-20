@@ -134,9 +134,11 @@ class SurveyController extends Controller
         $url = $request->title;
         $checkUrl = Survey::where('shareable_link', $url)->first();
         if( $checkUrl ) {   // Jika url telah digunakan
-            return redirect()->back();
+            return redirect()->back();  // Tampilkan peringatan link telah digunakan
         }
-        Survey::where('id', $code)->update(['shareable_link' => $url]);
+
+        $sign = explode('/', $url);
+        Survey::where('id', $code)->update(['shareable_link' => $url, 'signature' => end($sign)]);
         return redirect()->back();
     }
 
