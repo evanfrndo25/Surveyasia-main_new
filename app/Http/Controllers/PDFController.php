@@ -15,11 +15,15 @@ class PDFController extends Controller
      */
     public function __invoke($name)
     {
-        $nameOfFile = "$name.pdf";
-        $file = public_path().DIRECTORY_SEPARATOR.'pdf'.DIRECTORY_SEPARATOR.$nameOfFile;
-        $file = File::get($file);
-        $response = Response::make($file,200);
-        $response->header('Content-Type', 'application/pdf');
-        return $response;
+        try {
+            $nameOfFile = "$name.pdf";
+            $file = public_path().DIRECTORY_SEPARATOR.'pdf'.DIRECTORY_SEPARATOR.$nameOfFile;
+            $file = File::get($file);
+            $response = Response::make($file,200);
+            $response->header('Content-Type', 'application/pdf');
+            return $response;
+        } catch (\Throwable $th) {
+            return abort(404);
+        }
     }
 }
