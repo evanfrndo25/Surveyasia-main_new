@@ -23,6 +23,7 @@ use App\Http\Controllers\SubcriptionController;
 use App\Http\Controllers\TutorialController;
 use App\Http\Controllers\Admin\SurveyController as SurveyInAdmin;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PDFController;
 
 /*
 |--------------------------------------------------------------------------
@@ -502,3 +503,6 @@ Route::get('midtrans/error', [MidtransController::class, 'errorRedirect'])->name
 Route::get('{user}/failed', [
     ValidationController::class, 'failed'
 ])->name('failed');
+
+// for publish file PDF
+Route::get('pdf/{name}', PDFController::class);
