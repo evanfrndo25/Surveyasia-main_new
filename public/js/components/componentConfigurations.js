@@ -59,6 +59,11 @@ export const multipleChoiceComponent = {
             change: function () {},
         }, */
     },
+    logic: {
+        "Agree": null,
+        "Disagree": null,
+        "Other": null
+    },
     validations: [JSON.parse(JSON.stringify(requiredRule))],
     meta: {},
 };
