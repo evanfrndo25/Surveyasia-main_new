@@ -1010,7 +1010,7 @@ export class Component extends HTMLDivElement {
         const wrapper = this._updatableWrapper();
 
         const label = document.createElement("label");
-        label.innerHTML = "pertanyaan";
+        label.innerHTML = "Pertanyaan";
 
         const textArea = document.createElement("textarea");
         textArea.className += "form-control";

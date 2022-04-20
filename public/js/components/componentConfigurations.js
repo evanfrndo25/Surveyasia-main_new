@@ -181,6 +181,12 @@ export const dropDownComponent = {
             change: function () {},
         }, */
     },
+    logic: {
+        "Option 1": null,
+        "Option 2": null,
+        "Option 3": null,
+        "Option 4": null
+    },
     validations: [JSON.parse(JSON.stringify(requiredRule))],
     media: {},
     meta: {},

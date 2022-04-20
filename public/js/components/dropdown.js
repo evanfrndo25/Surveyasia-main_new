@@ -6,7 +6,7 @@ export class DropDown extends Component {
     constructor(config) {
         // init parent
         super(config);
-        this.blueprint = config;
+        this.blueprint = config;    // Config berasal dari -> componentConfiguration.js
     }
 
     
@@ -103,6 +103,10 @@ export class DropDown extends Component {
 
                     if (key === "label") {
                         instance._updateLabel();
+                    }
+
+                    if (key === "logic") {
+                        console.log('logic berubah');
                     }
 
                     return true;
@@ -289,134 +293,133 @@ export class DropDown extends Component {
         return wrapper;
     }
 
-    // tab Logic
+// tab Logic
     _updateableLogicOptions() {
+        const observeable = this.observer();
         const wrapper = document.createElement("div");
         wrapper.id = uniqid("wrapper");
-        wrapper.className += "row mb-3";
+        wrapper.className += "row";
 
         // membuat div untuk logic bagian Pilihan
         const divPilihan = document.createElement('div');
         divPilihan.className = "col-md-4";
-        
-        const labelPilihan = document.createElement("label");
-        labelPilihan.innerHTML = "Pilihan Opsi";
-        labelPilihan.className += "form-input-label";
-
-        const rowPilihan = document.createElement('div');
-        rowPilihan.className = "row";
 
         // membuat div untuk logic bagian Lanjutkan Ke
         const divLanjutkan = document.createElement('div');
         divLanjutkan.className = "col-md-8";
         
+        const labelPilihan = document.createElement("label");
+        labelPilihan.innerHTML = "Pilihan Opsi";
+        labelPilihan.className += "form-input-label";
+
         const labelLanjutkan = document.createElement("label");
         labelLanjutkan.innerHTML = "Lanjutkan Ke";
         labelLanjutkan.className += "form-input-label";
 
-        // membuat tag input melalui function createInputPilihan
-        const createInputPilihan = this._createInputPilihan();
-
-        // membuat tag select melalui function createInputLanjutkan
-        const createSelectLanjutkan = this._createInputLanjutkan();
-
-        rowPilihan.appendChild(createInputPilihan);
         divPilihan.appendChild(labelPilihan);
-        divPilihan.appendChild(rowPilihan);
-        
-
         divLanjutkan.appendChild(labelLanjutkan);
-        divLanjutkan.appendChild(createSelectLanjutkan);
-        
-        wrapper.appendChild(divPilihan);
-        wrapper.appendChild(divLanjutkan);
 
-        return wrapper;
-    }
+        const options = observeable.options;
+        const logic = observeable.logic;
 
-    _createInputPilihan() {
-        const observable = this.observer();
-        const div = document.createElement('div');
-        div.className = "col-md-12";
+        for(let i = 0; i < options.length; i++) {
+            const rowLanjutkan = document.createElement('div');
+            rowLanjutkan.className = 'row mb-3 mt-3';
 
-        // observable.options.length = berisi value options
-        for(let i = 0; i < observable.options.length; i++) {
-            const divInputGroup = document.createElement('div');
-            divInputGroup.className = "input-group mb-3 mt-3";
+            const col1 = document.createElement('div');
+            col1.className = "col-md-5";
 
-            const divInputGroupText = document.createElement('div');
-            divInputGroupText.className = 'input-group-text';
-            
-            const input = document.createElement('input');
-            input.className = 'form-control';
-            input.readOnly = true;
-            input.placeholder = observable.options[i];
+            const col2 = document.createElement('div');
+            col2.className = "col-md-5";
 
-            divInputGroupText.appendChild(input);
-            divInputGroup.appendChild(divInputGroupText);
-            div.appendChild(divInputGroup);
-        }
+            const col3 = document.createElement('div');
+            col3.className = "col-md-2";
 
-        return div;
-    }
+            const select1 = document.createElement('select');
+            select1.className = "form-select";
+            select1.id = `row-${i}`;
 
-    _createInputLanjutkan() {
-        const observable = this.observer();
-        const div = document.createElement('div');
-        div.className = "row";
+            const select2 = document.createElement('select');
+            select2.className = "form-select";
+            select2.id = `row-${i}`;
 
-        for(let i = 0; i < observable.options.length; i++) {
-            // membuat elemen div pertama di dalam "Lanjutkan Ke" (Bagian)
-            const divBagian = document.createElement('div');
-            divBagian.className = "col-md-5 mb-3 mt-3";
-
-            // membuat elemen div ke dua di dalam "Lanjutkan Ke" (Pertanyaan)
-            const divPertanyaan = document.createElement('div');
-            divPertanyaan.className = "col-md-5 mb-3 mt-3";
-
-            const divTrash = document.createElement('div');
-            divTrash.className = "col-md-2 mb-3 mt-3";
-
-            const selectBagian = document.createElement('select');
-            selectBagian.className = "form-select";
-            
-            const selectPertanyaan = document.createElement('select');
-            selectPertanyaan.className = "form-select";
-
-            // elemen trash untuk menghapus
             const iconTrash = document.createElement('a');
             iconTrash.href = '#';
             iconTrash.className = "btn link-dark";
             iconTrash.innerHTML = '<i class="fas fa-trash"></i>';
+            iconTrash.id = `row-${i}`;
 
-            // membuat default option Select untuk tiap-tiap Options
-            const optionDefault = document.createElement('option');
-            optionDefault.innerHTML = 'Select';
-            optionDefault.selected = true;
-            optionDefault.disabled = true;
-            selectPertanyaan.appendChild(optionDefault);
+            const input = document.createElement('input');
+            input.className = "form-control mb-3 mt-3";
+            input.value = options[i];
+            input.readOnly = true;
+            input.id = `row-${i}`;
 
             // mendapatkan id dan value dari tiap-tiap pertanyaan
             const getContainerQuestion = document.getElementById('questions_container');
             const getQuestion = getContainerQuestion.children;
+            
+            // Untuk menampung text dan id dari masing-masing pertanyaan
+            const objectQuestion = [];
+
+            for(let x = 0; x < getQuestion.length; x++) {
+                objectQuestion.push({
+                    id: getQuestion[x].id, 
+                    text: getQuestion[x].childNodes[1].innerText.split('\n')[1]
+                });
+            }
+            
+            // fungsi untuk mencari text pertanyaan berdasarkan value/id pertanyaan
+            // example: getTextByValue(component_c747)
+            const getTextByValue = (value) => {
+                return objectQuestion.find(obj => {
+                    return obj.id === value;
+                })  // Akan me-return object yang berisi text dan id dari pertanyaan
+            }
+
+            // Default option
+            const defaultOption = document.createElement('option');
+            defaultOption.value = logic[options[i]] || null;
+            defaultOption.innerHTML = getTextByValue(logic[options[i]])?.text || '-- Select --';
+            //-- defaultOption.innerHTML melakukan pengecekan 
+            //-- apabila getTextByValue null maka akan ditampilkan '-- Select --'
+
+            select2.appendChild(defaultOption);
+
             for (let index = 0; index < getQuestion.length; index++) {
                 // membuat tag option melalui function createOptionLanjutkan dengan dua argumen
-                selectPertanyaan.appendChild(this._createOptionLanjutkan(
+                select2.appendChild(this._createOptionLanjutkan(
                     getQuestion[index].childNodes[1].innerText.split('\n')[1],  //argumen 1 text
                     getQuestion[index].id   //argumen 2 value
                 ));
+
+                // untuk memantau apabila tag select berubah/onChange
+                select2.onchange = (event) => {
+                    const selectElement = event.target;
+                    const value = selectElement.value;
+                    logic[options[i]] = value;
+                }
             }
 
-            divBagian.appendChild(selectBagian);
-            divPertanyaan.appendChild(selectPertanyaan);
-            divTrash.appendChild(iconTrash);
+            col1.appendChild(select1);
+            col2.appendChild(select2);
+            col3.appendChild(iconTrash);
+            rowLanjutkan.appendChild(col1);
+            rowLanjutkan.appendChild(col2);
+            rowLanjutkan.appendChild(col3);
+            divLanjutkan.appendChild(rowLanjutkan);
 
-            div.appendChild(divBagian);
-            div.appendChild(divPertanyaan);
-            div.appendChild(divTrash);
+            divPilihan.appendChild(input);
+
+            // select2.onchange = () => {
+            //     logic[options[i]] = "test";
+            // }
         }
 
-        return div;
+        wrapper.appendChild(divPilihan);
+        wrapper.appendChild(divLanjutkan);
+
+        return wrapper;
     }
 
     _createOptionLanjutkan(text, value) {
