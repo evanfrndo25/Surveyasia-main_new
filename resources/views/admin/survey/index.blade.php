@@ -417,10 +417,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-3 d-flex">
-                                    <div class="mx-auto">
-                                        <p class="text-center">Detail Penolakan</p>
-                                    </div>
+                                <div class="col-1 d-flex">
                                     <div class="ms-auto">
                                         <a href="#" role="button" id="dropdown-manage-news text-end"
                                             data-bs-toggle="dropdown" aria-expanded="false">
