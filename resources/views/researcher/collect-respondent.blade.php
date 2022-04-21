@@ -52,22 +52,23 @@
                         <input type="text" class="form-control me-3" id="link-input"
                             value="{{ $survey->shareable_link }}" readonly>
                         
-                        <div class="col-auto " id="button-hide" style="display: none;">
+                        {{-- <div class="col-auto " id="button-hide" style="display: none;">
                             <div class="d-flex">
                                 <a href="" class="btn fs-4 me-2 px-2 float-left" style="background-color: #EF4C29; color:white;"><i class="bi bi-check2"></i></a>
                                 <a href="" class="btn fs-4 me-2 px-2 float-left" style="background-color: #85848B; color:white;"><i class="bi bi-x-lg"></i></a>
                             </div>
-                        </div>   
+                        </div>    --}}
                         
                         
-                        <button style="background-color: #F2F2F2;" class="btn link-secondary fs-4 me-2" id="btn-edit" onclick="show()"><i class="fal fa-pen"></i></button>
+                        <button style="background-color: #F2F2F2;" class="btn link-secondary fs-4 me-2" id="btn-edit" onclick="show()" data-bs-toggle="modal"
+                                data-bs-target="#editLinkModal"><i class="fal fa-pen"></i></button>
                         <a href="#" style="background-color: #F2F2F2;" class="btn link-secondary fs-4" data-bs-toggle="tooltip" title="Copy link"
                             onclick="clickToCopy()"><i class="far fa-copy"></i></a>
                     </div>
                     <p class="fs-12px" style="opacity: 80%;">Edit tautan terlebih dahulu untuk mendapatkan QR Code</p>
                 </div>
                 <div class="col-md-5">
-                    <h5 class="text-center qrcode"> QR CODE</h5>
+                    <h5 class="text-center qrcode" > QR CODE</h5>
                     <div class="text-center">
                         {!! QrCode::size(250)->generate( $survey->shareable_link ); !!}
                     </div>
@@ -75,6 +76,49 @@
             </div>
         </div>
         {{-- End Share Link --}}
+
+        {{-- Modal Edit Link --}}
+        <div class="modal fade" id="editLinkModal"  aria-labelledby="editLinkModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-fullscreen-xl-down modal-dialog-scrollable">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editLinkLabel">Edit link</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('survey.update', $survey->id) }}" method="POST">
+                        @csrf
+                        <div class="row mb-3">
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="container">
+                                            <input type="text" name="title" class="form-control" value="{{ $survey->shareable_link }}" style="color: #00000099; font-size:24px;"></input>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col">
+                                <div class="container mt-4">
+                                    <div class="text-end">
+                                        <button type="submit" class="btn btn-primary ms-auto"><i class="bi bi-save"
+                                                style="font-size: 12px; weight:500;"></i>
+                                            Simpan
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+        </div>
+        {{-- End Modal Edit Link --}}
+
         {{-- <div class="border rounded p-5 mt-4">
             <div class="row">
                 <h5 class="mb-5">Step ke-1: Siapa yang ingin kamu survei?</h5>
@@ -276,6 +320,15 @@ if (x.style.display === "none") {
     x.style.display = "none";
     y.style.display = "block";
   }
+}
+
+function showQr(){
+    var q = document.getElementById("qr");
+    var b = document.getElementById("btn-check");
+    if (q.style.display === "none") {
+        b.style.display = "block";
+        q.style.display = "block";
+    }
 }
 </script>
 @endsection

@@ -59,6 +59,11 @@ export const multipleChoiceComponent = {
             change: function () {},
         }, */
     },
+    logic: {
+        "Agree": null,
+        "Disagree": null,
+        "Other": null
+    },
     validations: [JSON.parse(JSON.stringify(requiredRule))],
     meta: {},
 };
@@ -120,6 +125,9 @@ export const scaleComponent = {
             change: function () {},
         }, */
     },
+    logic: {
+        "1-3": null,
+    },
     validations: [JSON.parse(JSON.stringify(requiredRule))],
     media: {},
     meta: {},
@@ -180,6 +188,12 @@ export const dropDownComponent = {
         /* listeners: {
             change: function () {},
         }, */
+    },
+    logic: {
+        "Option 1": null,
+        "Option 2": null,
+        "Option 3": null,
+        "Option 4": null
     },
     validations: [JSON.parse(JSON.stringify(requiredRule))],
     media: {},

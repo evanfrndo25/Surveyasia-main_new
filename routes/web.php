@@ -23,6 +23,7 @@ use App\Http\Controllers\SubcriptionController;
 use App\Http\Controllers\TutorialController;
 use App\Http\Controllers\Admin\SurveyController as SurveyInAdmin;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PDFController;
 
 /*
 |--------------------------------------------------------------------------
@@ -297,9 +298,14 @@ Route::middleware(['auth', 'role:respondent', 'verified'])->group(function () {
 
 // share survey
 // shareable link
-Route::get('survey/{code}', [RespondenSurveyController::class, 'sharedSurvey'])
-    ->name('survey.share')
-    ->middleware(['auth', 'verified', 'verify_profile']);
+Route::middleware(['auth', 'verified', 'verify_profile'])->group(function () {
+    Route::prefix('survey')
+    ->name('survey.')
+    ->group(function() {
+        Route::get('{code}', [RespondenSurveyController::class, 'sharedSurvey'])->name('share');
+        Route::post('{code}', [RespondenSurveyController::class, 'updateSharedSurvey'])->name('update');
+    });
+});
 
 //editprofile
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -497,3 +503,6 @@ Route::get('midtrans/error', [MidtransController::class, 'errorRedirect'])->name
 Route::get('{user}/failed', [
     ValidationController::class, 'failed'
 ])->name('failed');
+
+// for publish file PDF
+Route::get('pdf/{name}', PDFController::class);
