@@ -125,6 +125,9 @@ export const scaleComponent = {
             change: function () {},
         }, */
     },
+    logic: {
+        "1-3": null,
+    },
     validations: [JSON.parse(JSON.stringify(requiredRule))],
     media: {},
     meta: {},
