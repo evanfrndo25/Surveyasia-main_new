@@ -401,6 +401,11 @@ export class DropDown extends Component {
                 }
             }
 
+            iconTrash.onclick = () => {
+                logic[options[i]] = null;
+                defaultOption.innerHTML = '-- Select --';
+            };
+
             col1.appendChild(select1);
             col2.appendChild(select2);
             col3.appendChild(iconTrash);
