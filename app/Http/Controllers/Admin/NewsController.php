@@ -20,9 +20,12 @@ class NewsController extends Controller
 
     public function index()
     {
+        $news = News::latest()->paginate(10);
+        // dd($news);
+
         return view('admin.news.index', [
             'title' => $this->title,
-            'news' => News::latest()->paginate(10)
+            'news' => $news
         ]);
     }
     public function search(Request $request)

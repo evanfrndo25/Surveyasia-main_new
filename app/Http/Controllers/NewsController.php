@@ -11,10 +11,50 @@ class NewsController extends Controller
     public function index()
     {
         $videoList = $this->_videoList();
-        $data = [
-            'newsList' => News::where('status', 1)->latest()->paginate(6),
-        ];
+        $allNews = News::where('status', 1)->latest()->paginate(6);
+        $belajarNews = News::where('status', 1)
+                            ->where('category', '=', 'belajar')
+                            ->latest()
+                            ->paginate(6);
 
+        
+        $hobiNews = News::where('status', 1)
+                        ->where('category', '=', 'hobi')
+                        ->latest()
+                        ->paginate(6);
+        
+        $bisnisNews = News::where('status', 1)
+                        ->where('category', '=', 'bisnis')
+                        ->latest()
+                        ->paginate(6);
+
+
+        $ProduktifitasNews= News::where('status', 1)
+                        ->where('category', '=', 'Produktifitas')
+                        ->latest()
+                        ->paginate(6);
+                        
+        $lainnyaNews = News::where('status', 1)
+                        ->where('category', '=', 'lainnya')
+                        ->latest()
+                        ->paginate(6);
+                        
+        $surveyasiaNews = News::where('status', 1)
+                        ->where('category', '=', 'surveyasia')
+                        ->latest()
+                        ->paginate(6);
+        
+       
+        $data = [
+                "all_news" => $allNews,
+                "belajar_news" => $belajarNews,
+                "hobi_news" => $hobiNews,
+                "bisnis_news" => $bisnisNews,
+                "Produktifitas_news" => $ProduktifitasNews,
+                "lainnya_news" => $lainnyaNews,
+                "surveyasia_news" => $surveyasiaNews
+                ];
+        
         return view('news.index', $data, compact('videoList'));
     }
 

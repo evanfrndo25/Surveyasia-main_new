@@ -163,6 +163,7 @@ class SurveyController extends Controller
                 $data = [
                     'surveys' => $surveys,
                     'selected' => $_GET['select_filter'],
+                    'newsList' => News::latest()->paginate(4),
                     'count' => $surveys->count()
                 ];
 

@@ -60,15 +60,22 @@
                                 </div>
                                 @enderror
                             </div>
-                            <div class="mb-3">
-                                <label for="category" class="form-label">Kategori</label>
-                                <input type="text" class="form-control border-r-besar border-0 bg-light py-2  @error('category') is-invalid @enderror" id="category" name="category" value="{{ old('category', $news->category) }}" required>
-                                @error('category')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
+                            <div class="form-group">
+                                    <label for="category" class="form-label">Kategori</label>
+                                    <!-- membuat form dropdown kategori dengan id = category -->
+                                    <form action="" method="GET" id="category">
+                                    <select class="form-control" name="category" onChange="document.getElementById('category').submit();">
+                                        <option value="">Pilih Kategori</option>
+                                        <option <?php if(!empty($news)){ echo $category == 'Bisnis' ? 'selected':''; } ?> value="Bisnis">Bisnis</option>
+                                        <option <?php if(!empty($belajar_news)){ echo $category == 'Belajar' ? 'selected':''; } ?> value="Belajar">Belajar</option>
+                                        <option <?php if(!empty($hobi_news)){ echo $category == 'Hobi' ? 'selected':''; } ?> value="Hobi">Hobi</option>
+                                        <option <?php if(!empty($ProduktifitasNews)){ echo $category== 'Produktifitas' ? 'selected':''; } ?> value="Produktifitas">Produktifitas</option>
+                                        <option <?php if(!empty($lainnyaNews)){ echo $category == 'Lainnya' ? 'selected':''; } ?> value="Lainnya">Lainnya</option>
+                                        <option <?php if(!empty($surveyasiaNews)){ echo $category == 'SurveyAsia' ? 'selected':''; } ?> value="SurveyAsia">SurveyAsia</option>
+                                     </select>
                                     </div>
-                                @enderror
-                            </div>
+                                </div>
+                                <br>
                             <div class="mb-3">
                                 <label for="foto" class="form-label border-r-besar">Upload Foto</label>
                                 <input type="file" class="form-control" id="foto" name="img">
