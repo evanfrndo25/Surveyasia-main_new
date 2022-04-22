@@ -137,35 +137,40 @@
                                                 <input class="form-check-input" type="radio" name="flexRadioDefault"
                                                     id="flexRadioDefault1">
                                                 <label class="form-check-label" for="flexRadioDefault1">
-                                                    Lorem ipsum dolor sit amet.
+                                                    Survei terindikasi mengandung SARA.
                                                 </label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="flexRadioDefault"
                                                     id="flexRadioDefault2" checked>
                                                 <label class="form-check-label" for="flexRadioDefault2">
-                                                    Lorem ipsum dolor sit amet.
+                                                    Survei terindikasi mengandung unsur
+kekerasan.
                                                 </label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="flexRadioDefault"
                                                     id="flexRadioDefault3" checked>
                                                 <label class="form-check-label" for="flexRadioDefault3">
-                                                    Lorem ipsum dolor sit amet.
+                                                    Survei tidak relevan (logo/judul survei
+tidak cocok dengan isi survei).
+
                                                 </label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="flexRadioDefault"
                                                     id="flexRadioDefault4" checked>
                                                 <label class="form-check-label" for="flexRadioDefault4">
-                                                    Lorem ipsum dolor sit amet.
+                                                    Survei terindikasi bukan merupakan karya
+orisinil.
                                                 </label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="flexRadioDefault"
                                                     id="flexRadioDefault5" checked>
                                                 <label class="form-check-label" for="flexRadioDefault5">
-                                                    Lorem ipsum dolor sit amet.
+                                                    Survei terindikasi melanggar hak privasi
+individu (terlalu vulgar, mengandung pelecehan seksual).
                                                 </label>
                                             </div>
                                         </div>

@@ -49,8 +49,14 @@
                     <h5>Bagikan Tautan</h5>
                     <p style="opacity: 80%;">Bagikan tautan ini dengan responden Anda untuk mengumpulkan tanggapan mereka</p>
                     <div class="d-flex align-items-center mb-2">
-                        <input type="text" class="form-control me-3" id="link-input"
+                        <input type="text" class="form-control @error('link-input') is-invalid @enderror me-3" id="link-input" name="link-input"
                             value="{{ $survey->shareable_link }}" readonly>
+                        
+                        @error('link-input')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                         
                         {{-- <div class="col-auto " id="button-hide" style="display: none;">
                             <div class="d-flex">

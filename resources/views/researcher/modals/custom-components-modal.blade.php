@@ -16,8 +16,11 @@
                                         <div class="card-body">
                                             <img class="card-img-top" src="{{ asset('assets/img/textboxprot.png') }}" alt="Coming Soon">
                                             <p class="card-title fs-6 mt-4">Kotak Teks</p>
-                                            <small class="card-text">Lorem ipsum dolor sit amet
-                                                consectetur.
+                                            <small class="card-text">Tambahkan kolom teks ketika anda ingin
+                                            responden menuliskan jawaban yang mereka
+                                            inginkan dalam bentuk kalimat pendek atau
+                                            panjang.
+
                                             </small>
                                         </div>
                                     </div>
@@ -27,8 +30,10 @@
                                         <div class="card-body">
                                             <img class="card-img-top" src="{{ asset('assets/img/dropdownprot.png') }}" alt="Coming Soon">
                                             <p class="card-title fs-6 mt-4">Drop-down</p>
-                                            <small class="card-text">Lorem ipsum dolor sit amet
-                                                consectetur.</small>
+                                            <small class="card-text">Tambahkan dropdown ketika anda ingin
+                                            memunculkan daftar menu dimana responden
+                                            dapat memilih dari salah satu menu yang anda
+                                            sediakan.</small>
                                         </div>
                                     </div>
                                 </div>
@@ -37,8 +42,9 @@
                                         <div class="card-body">
                                             <img class="card-img-top" src="{{ asset('assets/img/fileuploadprot.png') }}" alt="Coming Soon">
                                             <p class="card-title mt-4">Upload File</p>
-                                            <small class="card-text">Lorem ipsum dolor sit amet
-                                                consectetur.</small>
+                                            <small class="card-text">Responden dapat mengupload file dengan
+                                            format (pdf, docx, xls, jpg, png, webp) untuk
+                                            dibagikan kepada anda.</small>
                                         </div>
                                     </div>
                                 </div>
@@ -47,8 +53,11 @@
                                         <div class="card-body">
                                             <img class="card-img-top" src="{{ asset('assets/img/scaleprot.png') }}" alt="Coming Soon">
                                             <p class="card-title mt-4">Skala</p>
-                                            <small class="card-text">Lorem ipsum dolor sit amet
-                                                consectetur.</small>
+                                            <small class="card-text">Gunakan skala untuk mengetahui tingkat
+                                            persetujuan atau tidak dari responden atas
+                                            suatu hal dengan tingkatan yang bebas anda
+                                            tentukan.
+                                            </small>
                                         </div>
                                     </div>
                                 </div>
@@ -57,8 +66,10 @@
                                         <div class="card-body">
                                             <img class="card-img-top" src="{{ asset('assets/img/multipleprot.png') }}" alt="Coming Soon">
                                             <p class="card-title mt-4">Pilihan Ganda</p>
-                                            <small class="card-text">Lorem ipsum dolor sit amet
-                                                consectetur. </small>
+                                            <small class="card-text">Opsi untuk mengajukan pertanyaan dengan
+                                            jawaban benar yang telah anda tentukan
+                                            sebelumnya dari beberapa pilihan yang ada
+                                            (biasanya A, B, C, D, E). </small>
                                         </div>
                                     </div>
                                 </div>
@@ -67,8 +78,10 @@
                                         <div class="card-body">
                                             <img class="card-img-top" src="{{ asset('assets/img/checkboxprot.png') }}" alt="Coming Soon">
                                             <p class="card-title mt-4">Kotak Centang</p>
-                                            <small class="card-text">Lorem ipsum dolor sit amet
-                                                consectetur.</small>
+                                            <small class="card-text">Gunakan fitur ini ketika anda ingin responden
+                                            bisa mencentang lebih dari satu pilihan dari
+                                            beberapa pilihan yang anda sediakan.
+                                            </small>
                                         </div>
                                     </div>
                                 </div>
@@ -106,8 +119,10 @@
                                         <div class="card-body">
                                             <img class="card-img-top" src="{{ asset('assets/img/textboxprot.png') }}" alt="Coming Soon">
                                             <p class="card-title fs-6 mt-4">Textbox</p>
-                                            <small class="card-text">Lorem ipsum dolor sit amet
-                                                consectetur.
+                                            <small class="card-text">Tambahkan kolom teks ketika anda ingin
+responden menuliskan jawaban yang mereka
+inginkan dalam bentuk kalimat pendek atau
+panjang.
                                             </small>
                                         </div>
                                     </div>
@@ -117,8 +132,10 @@
                                         <div class="card-body">
                                             <img class="card-img-top" src="{{ asset('assets/img/dropdownprot.png') }}" alt="Coming Soon">
                                             <p class="card-title fs-6 mt-4">Drop-down</p>
-                                            <small class="card-text">Lorem ipsum dolor sit amet
-                                                consectetur.</small>
+                                            <small class="card-text">Tambahkan dropdown ketika anda ingin
+                                            memunculkan daftar menu dimana responden
+                                            dapat memilih dari salah satu menu yang anda
+                                            sediakan.</small>
                                         </div>
                                     </div>
                                 </div>
@@ -127,8 +144,9 @@
                                         <div class="card-body">
                                             <img class="card-img-top" src="{{ asset('assets/img/fileuploadprot.png') }}" alt="Coming Soon">
                                             <p class="card-title mt-4">Upload File</p>
-                                            <small class="card-text">Lorem ipsum dolor sit amet
-                                                consectetur.</small>
+                                            <small class="card-text">Responden dapat mengupload file dengan
+                                            format (pdf, docx, xls, jpg, png, webp) untuk
+                                            dibagikan kepada anda.</small>
                                         </div>
                                     </div>
                                 </div>
@@ -137,8 +155,10 @@
                                         <div class="card-body">
                                             <img class="card-img-top" src="{{ asset('assets/img/scaleprot.png') }}" alt="Coming Soon">
                                             <p class="card-title mt-4">Skala</p>
-                                            <small class="card-text">Lorem ipsum dolor sit amet
-                                                consectetur.</small>
+                                            <small class="card-text">Gunakan skala untuk mengetahui tingkat
+                                            persetujuan atau tidak dari responden atas
+                                            suatu hal dengan tingkatan yang bebas anda
+                                            tentukan.</small>
                                         </div>
                                     </div>
                                 </div>
@@ -147,8 +167,10 @@
                                         <div class="card-body">
                                             <img class="card-img-top" src="{{ asset('assets/img/multipleprot.png') }}" alt="Coming Soon">
                                             <p class="card-title mt-4">Pilihan Ganda</p>
-                                            <small class="card-text">Lorem ipsum dolor sit amet
-                                                consectetur. </small>
+                                            <small class="card-text">Opsi untuk mengajukan pertanyaan dengan
+                                            jawaban benar yang telah anda tentukan
+                                            sebelumnya dari beberapa pilihan yang ada
+                                            (biasanya A, B, C, D, E).</small>
                                         </div>
                                     </div>
                                 </div>
@@ -157,8 +179,9 @@
                                         <div class="card-body">
                                             <img class="card-img-top" src="{{ asset('assets/img/checkboxprot.png') }}" alt="Coming Soon">
                                             <p class="card-title mt-4">Kotak Centak</p>
-                                            <small class="card-text">Lorem ipsum dolor sit amet
-                                                consectetur.</small>
+                                            <small class="card-text">Gunakan fitur ini ketika anda ingin responden
+                                            bisa mencentang lebih dari satu pilihan dari
+                                            beberapa pilihan yang anda sediakan.</small>
                                         </div>
                                     </div>
                                 </div>

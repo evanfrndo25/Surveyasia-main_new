@@ -147,11 +147,12 @@
                                     </div>
                                     <div class="modal-body">
                                         <img src="{{ asset('assets/img/delete.png') }}" class="img-fluid" alt="">
-                                        <h2 class="text-center">Hapus Question Bank?</h2>
-                                        <p class="px-5 small text-secondary text-center">Apakah kamu yakin ingin
-                                            menghapus question bank <span class="fw-bold">{{ $item->sub_template_name }}</span> ? Jika dihapus, 
-                                            maka question bank pada researcher dan admin akan terhapus
-                                            secara <span class="fw-bold">permanen</span> .</p>
+                                        <h2 class="text-center">Hapus Sub Template?</h2>
+                                        <p class="px-5 small text-secondary text-center">
+                                            Jika Anda menghapus sub template ini, maka semua pertanyaan di dalam sub template akan terhapus secara <span class="fw-bold">permanen</span> .
+                                            <br><br>
+                                            Apakah anda yakin ingin menghapus <span class="fw-bold">{{ $item->sub_template_name }}</span> ?
+                                        </p>
                                     </div>
                                     <div class="row px-4 pb-5">
                                         <form action="{{ route('admin.questionbank.destroy', $item->id)}}"
