@@ -36,6 +36,9 @@
                                 <button class="nav-link me-5" id="kumpulan-tab" data-bs-toggle="tab"
                                     data-bs-target="#kumpulan" type="button" role="tab" aria-controls="kumpulan"
                                     aria-selected="false">Kumpulan Responden</button>
+                                <button class="nav-link me-5" id="status-tab" data-bs-toggle="tab"
+                                    data-bs-target="#status" type="button" role="tab" aria-controls="status"
+                                    aria-selected="false">Status Survey</button>
                                 <button class="nav-link me-5" id="hasil-tab" data-bs-toggle="tab"
                                     data-bs-target="#hasil" type="button" role="tab" aria-controls="hasil"
                                     aria-selected="false">Hasil Analisis</button>
@@ -180,19 +183,68 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="tab-pane fade" id="status" role="tabpanel" aria-labelledby="status-tab">
+                                <section class="data-respondent py-5" id="data-respondent" style="margin-bottom: 250px">
+                                    <div class="container">
+                                        <h4>Data Responden</h4>
+                                        <table class="table table-hover">
+                                            <thead class="table border text-white" style="background-color: coral;">
+                                                <tr>
+                                                    <th scope="col"></th>
+                                                    <th scope="col">Metode</th>
+                                                    <th scope="col">Status</th>
+                                                    <th scope="col">Responden</th>
+                                                    <th scope="col">Tanggal Modifikasi</th>
+                                                    <th scope="col"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="border">
+                                                    <td><i class="fas fa-share-alt fa-fw"></i></td>
+                                                    <td>Berbagi Tautan</td>
+                                                    <td>Active</td>
+                                                    <td>0</td>
+                                                    <td>Kamis, 30 September 2021, 8:56 PM</td>
+                                                    <td><i class="fas fa-ellipsis-h fa-fw"></i></td>
+                                                </tr>
+                                                <tr class="border">
+                                                    <td><i class="fas fa-user-check fa-fw"></i></td>
+                                                    <td>Target Responden</td>
+                                                    <td>Active</td>
+                                                    <td>0</td>
+                                                    <td>Kamis, 30 September 2021, 8:56 PM</td>
+                                                    <td><i class="fas fa-ellipsis-h fa-fw"></i></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </section>
+                            </div>
                             <div class="tab-pane fade" id="kumpulan" role="tabpanel" aria-labelledby="kumpulan-tab">
-                                <div class="row border p-5 mt-3">
-                                    <div class="col-5">
-                                        <h4>Share Link</h4>
-                                        <p class="small">Share this link with your respondent to collect their respons
-                                        </p>
-                                        <input type="text" class="form-control bg-light py-2"
-                                            placeholder="https://surveiasia.com" disabled>
+                                <section class="collect-respondent py-5" id="collect-respondent">
+                                    <div class="border rounded p-5">
+                                        <div class="row">
+                                            <div class="col-md-7">
+                                                <h5>Bagikan Tautan</h5>
+                                                <p style="opacity: 80%;">Bagikan tautan ini dengan responden Anda untuk
+                                                    mengumpulkan tanggapan mereka</p>
+                                                <div class="d-flex align-items-center mb-2">
+                                                    <input type="text" class="form-control me-3" id="link-input"
+                                                        value="{{ $survey->shareable_link }}" readonly>     
+                                                                                                     
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <h5 class="text-center qrcode">QR CODE</h5>
+                                                <div class="text-center">
+                                                    @if ($survey->shareable_link)
+                                                    {!! QrCode::size(250)->generate($survey->shareable_link) !!}
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-3 ms-auto">
-                                        <h5 class="text-secondary text-center">QR Code</h5>
-                                    </div>
-                                </div>
+                                </section>
                             </div>
                             <div class="tab-pane fade" id="hasil" role="tabpanel" aria-labelledby="hasil-tab">
                                 <div class="row pt-3">
@@ -212,7 +264,8 @@
                                             </div>
                                         </div>
                                         <div class="d-grid gap-2 pt-3">
-                                            <button class="btn btn-secondary rounded-pill py-2" type="button">Advance Analisis</button>
+                                            <button class="btn btn-secondary rounded-pill py-2" type="button">Advance
+                                                Analisis</button>
                                         </div>
                                     </div>
                                     <div class="col">

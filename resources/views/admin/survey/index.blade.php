@@ -23,7 +23,7 @@
                 <div class="d-flex align-items-center justify-content-between mb-3">
                     <div class="position-relative input-group align-items-center" style="width: 15%">
                         <input type="text" class="form-control rounded-pill py-2 text-center"
-                            placeholder="Search everything" aria-label="search" aria-describedby="basic-addon1"
+                            placeholder="Cari disini..." aria-label="search" aria-describedby="basic-addon1"
                             style="font-size: 12px">
                         <a href="#">
                             <i class="position-absolute top-50 start-0 translate-middle-y bi bi-search p-2 ms-1 text-secondary"
@@ -51,67 +51,76 @@
                     <div class="tab-pane fade show active" id="menunggu" role="tabpanel" aria-labelledby="menunggu-tab">
                         @foreach ($surveys as $item)
                         <div class="container survey-active">
-                            <div class="row shadow pt-4" style="border-radius: 17px 17px 0 0;">
-                                <div class="col-2 text-center">
-                                    <img src="{{ asset('assets/img/img-survey.svg') }}" class="img-fluid" alt="">
-                                </div>
-                                <div class="col my-auto">
-                                    <div class="row">
-                                        <div class="col">
-                                            <p class="card-title">{{ Str::limit($item->title, 20, '...') }}</p>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="row shadow pt-4" style="border-radius: 17px 17px 0 0;">
+                                        <div class="col-2 text-center">
+                                            <img src="{{ asset('assets/img/img-survey.svg') }}" class="img-fluid"
+                                                alt="">
                                         </div>
-                                        <div class="col-3 text-center">
-                                            <p>Status</p>
-                                        </div>
-                                        <div class="col-3 text-center">
-                                            <p>Tanggal Upload</p>
+                                        <div class="col my-auto">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <p class="card-title">{{ Str::limit($item->title, 20, '...') }}</p>
+                                                </div>
+                                                <div class="col-3 text-center">
+                                                    <p>Status</p>
+                                                </div>
+                                                <div class="col-3 text-center">
+                                                    <p>Tanggal Upload</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div>
+                                                        <p class="small text-secondary">
+                                                            {{ Str::limit($item->description, 20, '...') }}</p>
+                                                        <p class="pt-1 small">Kreator :<span>
+                                                                {{ $item->user->nama_lengkap }}</span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-3 text-center">
+                                                    <div>
+                                                        <h5 class="text-success">{{ $item->status }}</h5>
+                                                    </div>
+                                                </div>
+                                                <div class="col-3 text-center">
+                                                    <div>
+                                                        <h5>{{ $item->created_at->diffForHumans() }}</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <div>
-                                                <p class="small text-secondary">
-                                                    {{ Str::limit($item->description, 20, '...') }}</p>
-                                                <p class="pt-1 small">Kreator :<span>
-                                                        {{ $item->user->nama_lengkap }}</span>
-                                                </p>
+                                    <div class="row bg-primary justify-content-center mb-3" style="border-radius: 0 0 17px 17px;">
+                                        <div class="col text-end">
+                                            <div class="btn bg-warning my-2 px-4 rounded-pill">
+                                                <i class="bi bi-clock text-white"> 30:02:48</i>
                                             </div>
                                         </div>
-                                        <div class="col-3 text-center">
-                                            <div>
-                                                <h5 class="text-success">{{ $item->status }}</h5>
-                                            </div>
-                                        </div>
-                                        <div class="col-3 text-center">
-                                            <div>
-                                                <h5>{{ $item->created_at->diffForHumans() }}</h5>
-                                            </div>
+                                        <div class="col border-start text-start my-auto">
+                                                <a href="{{ route('admin.survey.show', $item->id) }}"
+                                                    class="btn btn-outline-light">Survei Detail</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-3 text-center">
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                        <div class="border-start card border-0 d-grid gap-2">
-                                            <i class="bi bi-check-lg h1 m-0"></i>
-                                            <button type="button"
-                                                class="btn text-success stretched-link">Terima</button>
-                                        </div>
-                                        <div class="border-start card border-0 d-grid gap-2">
-                                            <i class="bi bi-x-lg h1 m-0 text-danger"></i>
-                                            <button type="button" class="btn text-danger stretched-link"
+                                        <div class=" bg-danger card border-0 d-grid gap-2"
+                                            style="border-radius: 5px; width: 120px; height: 200px;">
+                                            <i class="bi bi-x-lg h1 m-0 text-white fw-bold mt-auto fw-bold"></i>
+                                            <button type="button" class="btn mb-auto stretched-link text-white fw-bold"
                                                 data-bs-toggle="modal" data-bs-target="#deleteModal{{ $item->id }}">
                                                 Tolak
                                             </button>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row bg-primary mb-3" style="border-radius: 0 0 17px 17px;">
-                                <div class="col">
-                                    <div class="d-grid">
-                                        <a href="{{ route('admin.survey.show', $item->id) }}"
-                                            class="btn btn-primary">Detail Survey</a>
-                                        <!-- <button class="btn btn-primary" type="button">Detail Survey</button> -->
+                                        <div class=" ms-2 bg-success card border-0 d-grid gap-2"
+                                            style="border-radius: 5px; width: 120px; height: 200px;">
+                                            <i class="bi bi-check-lg h1 m-0 text-white fw-bold mt-auto fw-bold"></i>
+                                            <button type="button"
+                                                class="btn mb-auto stretched-link text-white fw-bold">Terima</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -137,35 +146,40 @@
                                                 <input class="form-check-input" type="radio" name="flexRadioDefault"
                                                     id="flexRadioDefault1">
                                                 <label class="form-check-label" for="flexRadioDefault1">
-                                                    Lorem ipsum dolor sit amet.
+                                                    Survei terindikasi mengandung SARA.
                                                 </label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="flexRadioDefault"
                                                     id="flexRadioDefault2" checked>
                                                 <label class="form-check-label" for="flexRadioDefault2">
-                                                    Lorem ipsum dolor sit amet.
+                                                    Survei terindikasi mengandung unsur
+kekerasan.
                                                 </label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="flexRadioDefault"
                                                     id="flexRadioDefault3" checked>
                                                 <label class="form-check-label" for="flexRadioDefault3">
-                                                    Lorem ipsum dolor sit amet.
+                                                    Survei tidak relevan (logo/judul survei
+tidak cocok dengan isi survei).
+
                                                 </label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="flexRadioDefault"
                                                     id="flexRadioDefault4" checked>
                                                 <label class="form-check-label" for="flexRadioDefault4">
-                                                    Lorem ipsum dolor sit amet.
+                                                    Survei terindikasi bukan merupakan karya
+orisinil.
                                                 </label>
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="flexRadioDefault"
                                                     id="flexRadioDefault5" checked>
                                                 <label class="form-check-label" for="flexRadioDefault5">
-                                                    Lorem ipsum dolor sit amet.
+                                                    Survei terindikasi melanggar hak privasi
+individu (terlalu vulgar, mengandung pelecehan seksual).
                                                 </label>
                                             </div>
                                         </div>
@@ -251,7 +265,7 @@
                                 <div class="col">
                                     <div class="d-grid">
                                         <a href="{{ route('admin.survey.deny', $item->id) }}"
-                                            class="btn btn-primary">Detail Surve sy</a>
+                                            class="btn btn-primary">Survei Detail</a>
                                     </div>
                                 </div>
                             </div>
@@ -417,10 +431,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-3 d-flex">
-                                    <div class="mx-auto">
-                                        <p class="text-center">Detail Penolakan</p>
-                                    </div>
+                                <div class="col-1 d-flex">
                                     <div class="ms-auto">
                                         <a href="#" role="button" id="dropdown-manage-news text-end"
                                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -439,7 +450,7 @@
                                 <div class="col">
                                     <div class="d-grid">
                                         <a href="{{ route('admin.survey.acc', $item->id) }}"
-                                            class="btn btn-primary">Detail Survey</a>
+                                            class="btn btn-primary">Survei Detail</a>
                                     </div>
                                 </div>
                             </div>
@@ -569,10 +580,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- <a href="{{ $item->shareable_link }}" class="btn bg-special-blue text-white">
-                                    <i class="bi bi-vector-pen"></i>
-                                    Show
-                                </a> -->
             </div>
         </div>
     </div>
