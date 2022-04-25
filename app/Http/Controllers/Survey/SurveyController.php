@@ -311,9 +311,10 @@ class SurveyController extends Controller
     public function showReport(Survey $survey)
     {
         $this->current = "report";
-
+        $questions = $survey->questions;
         $data = [
             'survey' => $survey,
+            'questions' => $questions,
             'url' => route('api.analytics.show', $survey->id),
             'current' => $this->current,
         ];
