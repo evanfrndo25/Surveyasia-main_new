@@ -6,11 +6,8 @@ export class DropDown extends Component {
     constructor(config) {
         // init parent
         super(config);
-        this.blueprint = config;    // Config berasal dari -> componentConfiguration.js
+        this.blueprint = config; // Config berasal dari -> componentConfiguration.js
     }
-
-    
-    
 
     content() {
         const wrapper = document.createElement("ul");
@@ -106,7 +103,7 @@ export class DropDown extends Component {
                     }
 
                     if (key === "logic") {
-                        console.log('logic berubah');
+                        console.log("logic berubah");
                     }
 
                     return true;
@@ -272,9 +269,9 @@ export class DropDown extends Component {
         addOptionButton.className += "btn btn-sm btn-default text-white";
         addOptionButton.innerHTML = "Tambah Opsi";
 
-        const saveOptionButton = document.createElement("button");
-        saveOptionButton.className += "btn btn-md btn-danger text-white";
-        saveOptionButton.innerHTML = "Simpan";
+        // const saveOptionButton = document.createElement("button");
+        // saveOptionButton.className += "btn btn-md btn-danger text-white";
+        // saveOptionButton.innerHTML = "Simpan";
 
         const instance = this;
         addOptionButton.onclick = function (event) {
@@ -284,7 +281,7 @@ export class DropDown extends Component {
 
         addOptionContainer.appendChild(addOptionButton);
 
-        saveOptionContainer.appendChild(saveOptionButton);
+        // saveOptionContainer.appendChild(saveOptionButton);
 
         wrapper.appendChild(addOptionContainer);
 
@@ -293,7 +290,7 @@ export class DropDown extends Component {
         return wrapper;
     }
 
-// tab Logic
+    // tab Logic
     _updateableLogicOptions() {
         const observeable = this.observer();
         const wrapper = document.createElement("div");
@@ -301,13 +298,13 @@ export class DropDown extends Component {
         wrapper.className += "row";
 
         // membuat div untuk logic bagian Pilihan
-        const divPilihan = document.createElement('div');
+        const divPilihan = document.createElement("div");
         divPilihan.className = "col-md-4";
 
         // membuat div untuk logic bagian Lanjutkan Ke
-        const divLanjutkan = document.createElement('div');
+        const divLanjutkan = document.createElement("div");
         divLanjutkan.className = "col-md-8";
-        
+
         const labelPilihan = document.createElement("label");
         labelPilihan.innerHTML = "Pilihan Opsi";
         labelPilihan.className += "form-input-label";
@@ -322,88 +319,95 @@ export class DropDown extends Component {
         const options = observeable.options;
         const logic = observeable.logic;
 
-        for(let i = 0; i < options.length; i++) {
-            const rowLanjutkan = document.createElement('div');
-            rowLanjutkan.className = 'row mb-3 mt-3';
+        for (let i = 0; i < options.length; i++) {
+            const rowLanjutkan = document.createElement("div");
+            rowLanjutkan.className = "row mb-3 mt-3";
 
-            const col1 = document.createElement('div');
+            const col1 = document.createElement("div");
             col1.className = "col-md-5";
 
-            const col2 = document.createElement('div');
+            const col2 = document.createElement("div");
             col2.className = "col-md-5";
 
-            const col3 = document.createElement('div');
+            const col3 = document.createElement("div");
             col3.className = "col-md-2";
 
-            const select1 = document.createElement('select');
+            const select1 = document.createElement("select");
             select1.className = "form-select";
             select1.id = `row-${i}`;
 
-            const select2 = document.createElement('select');
+            const select2 = document.createElement("select");
             select2.className = "form-select";
             select2.id = `row-${i}`;
 
-            const iconTrash = document.createElement('a');
-            iconTrash.href = '#';
+            const iconTrash = document.createElement("a");
+            iconTrash.href = "#";
             iconTrash.className = "btn link-dark";
             iconTrash.innerHTML = '<i class="fas fa-trash"></i>';
             iconTrash.id = `row-${i}`;
 
-            const input = document.createElement('input');
+            const input = document.createElement("input");
             input.className = "form-control mb-3 mt-3";
             input.value = options[i];
             input.readOnly = true;
             input.id = `row-${i}`;
 
             // mendapatkan id dan value dari tiap-tiap pertanyaan
-            const getContainerQuestion = document.getElementById('questions_container');
+            const getContainerQuestion = document.getElementById(
+                "questions_container"
+            );
             const getQuestion = getContainerQuestion.children;
-            
+
             // Untuk menampung text dan id dari masing-masing pertanyaan
             const objectQuestion = [];
 
-            for(let x = 0; x < getQuestion.length; x++) {
+            for (let x = 0; x < getQuestion.length; x++) {
                 objectQuestion.push({
-                    id: getQuestion[x].id, 
-                    text: getQuestion[x].childNodes[1].innerText.split('\n')[1]
+                    id: getQuestion[x].id,
+                    text: getQuestion[x].childNodes[1].innerText.split("\n")[1],
                 });
             }
-            
+
             // fungsi untuk mencari text pertanyaan berdasarkan value/id pertanyaan
             // example: getTextByValue(component_c747)
             const getTextByValue = (value) => {
-                return objectQuestion.find(obj => {
+                return objectQuestion.find((obj) => {
                     return obj.id === value;
-                })  // Akan me-return object yang berisi text dan id dari pertanyaan
-            }
+                }); // Akan me-return object yang berisi text dan id dari pertanyaan
+            };
 
             // Default option
-            const defaultOption = document.createElement('option');
+            const defaultOption = document.createElement("option");
             defaultOption.value = logic[options[i]] || null;
-            defaultOption.innerHTML = getTextByValue(logic[options[i]])?.text || '-- Select --';
-            //-- defaultOption.innerHTML melakukan pengecekan 
+            defaultOption.innerHTML =
+                getTextByValue(logic[options[i]])?.text || "-- Select --";
+            //-- defaultOption.innerHTML melakukan pengecekan
             //-- apabila getTextByValue null maka akan ditampilkan '-- Select --'
 
             select2.appendChild(defaultOption);
 
             for (let index = 0; index < getQuestion.length; index++) {
                 // membuat tag option melalui function createOptionLanjutkan dengan dua argumen
-                select2.appendChild(this._createOptionLanjutkan(
-                    getQuestion[index].childNodes[1].innerText.split('\n')[1],  //argumen 1 text
-                    getQuestion[index].id   //argumen 2 value
-                ));
+                select2.appendChild(
+                    this._createOptionLanjutkan(
+                        getQuestion[index].childNodes[1].innerText.split(
+                            "\n"
+                        )[1], //argumen 1 text
+                        getQuestion[index].id //argumen 2 value
+                    )
+                );
 
                 // untuk memantau apabila tag select berubah/onChange
                 select2.onchange = (event) => {
                     const selectElement = event.target;
                     const value = selectElement.value;
                     logic[options[i]] = value;
-                }
+                };
             }
 
             iconTrash.onclick = () => {
                 logic[options[i]] = null;
-                defaultOption.innerHTML = '-- Select --';
+                defaultOption.innerHTML = "-- Select --";
             };
 
             col1.appendChild(select1);
@@ -428,13 +432,13 @@ export class DropDown extends Component {
     }
 
     _createOptionLanjutkan(text, value) {
-        const option = document.createElement('option');
+        const option = document.createElement("option");
         option.innerHTML = text;
         option.value = value;
 
         return option;
     }
-// end tab Logic
+    // end tab Logic
 
     _updateOptions() {
         const wrapper = this._getInput().get(0);
