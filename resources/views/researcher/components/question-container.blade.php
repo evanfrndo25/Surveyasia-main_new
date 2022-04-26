@@ -94,7 +94,7 @@
 {{-- End Question Form --}}
 
 {{-- Page footer nomer Halaman --}}
-<div class="row">
+<!-- <div class="row">
     <div class="col-md-7">
         <div class="row align-items-center">
             <div class="col-auto">
@@ -134,7 +134,7 @@
 
         </div>
     </div>
-</div>
+</div> -->
 
 {{-- End Page halaman --}}
 
