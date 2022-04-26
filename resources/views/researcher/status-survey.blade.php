@@ -55,20 +55,20 @@
             <tbody>
                 <tr>
                     <td><i class="fas fa-share-alt fa-fw"></i></td>
-                    <td>Berbagi Tautan</td>
-                    <td>Active</td>
-                    <td>0</td>
-                    <td>Kamis, 30 September 2021, 8:56 PM</td>
+                    <td>{{ $survey->shareable_link }}</td>
+                    <td>{{ $survey->status }}</td>
+                    <td>{{ $survey->attempted }}</td>
+                    <td>{{ $survey->updated_at->format('l, d M Y H:i') }}</td>
                     <td><i class="fas fa-ellipsis-h fa-fw"></i></td>
                 </tr>
-                <tr>
+                {{-- <tr>
                     <td><i class="fas fa-user-check fa-fw"></i></td>
                     <td>Target Responden</td>
                     <td>Active</td>
                     <td>0</td>
                     <td>Kamis, 30 September 2021, 8:56 PM</td>
                     <td><i class="fas fa-ellipsis-h fa-fw"></i></td>
-                </tr>
+                </tr> --}}
             </tbody>
         </table>
     </div>
