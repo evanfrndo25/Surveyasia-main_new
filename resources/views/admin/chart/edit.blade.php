@@ -116,26 +116,7 @@
                             <i class="bi bi-trash"></i>
                             Hapus
                         </button>
-                        <!-- <a href="{{ route('admin.chart.destroy', $chart->id) }}"
-                            class="btn text-danger mx-auto px-5 py-2"
-                            onclick="confirm('Apakah anda yakin ingin menghapus chart ini?')">
-                            <i class="bi bi-trash"></i>
-                            Hapus Chart
-                        </a> -->
                     </div>
-
-                    <!-- Codingan Batch 1 Uploa Foto -->
-                    <!-- <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Preview</label><br>
-                        @if ($chart->id == 1||$chart->id == 2||$chart->id == 3||$chart->id == 4)
-                        <img width="200" src="{{ asset("assets/img/{$chart->img}") }}" alt="">
-                        @else
-                        <img width="200" src="{{ url('storage/'.$chart->img) }}">
-                        @endif
-                        <input type="file" class="form-control rounded-pill border-0 bg-light px-3" id="foto" name="img">
-                        <input type="hidden" class="form-control" name="oldImg" value="{{ $chart->img }}">
-                    </div> -->
-                    <!-- Akhir Codingan Batch 1 Uploa Foto -->
                     <div class="text-center mt-3">
                         <button type="submit" class="btn bg-special-blue text-white mx-auto px-5 py-2">Update
                             Chart</button>

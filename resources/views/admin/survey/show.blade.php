@@ -60,22 +60,30 @@
                                             <div class="row mb-3">
                                                 <label class="form-label">Researcher</label>
                                                 <div class="col-3">
+                                                    @foreach ($surveytemp as $dataitem)
                                                     <input type="text"
                                                         class="form-control me-3 border-r-besar border-0 bg-light py-2"
-                                                        placeholder="Nama Researcher">
+                                                        id="Nama Panjang" name="user_id"
+                                                        value="{{ $dataitem->user->nama_lengkap }}" disabled>
+                                                    @endforeach
                                                 </div>
                                                 <div class="col-2">
+                                                    @foreach ($surveytemp as $dataitem)
                                                     <input type="text"
-                                                        class="form-control border-r-besar border-0 bg-light py-2"
-                                                        placeholder="ID 3127" disabled>
+                                                        class="form-control border-r-besar text-secondary border-0 bg-light py-2"
+                                                        id="ID" name="id" disabled value="{{ $dataitem->user_id }}">
+                                                    @endforeach
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
                                                 <label class="form-label">Email</label>
                                                 <div class="col-3">
+                                                    @foreach ($surveytemp as $dataitem)
                                                     <input type="email"
-                                                        class="form-control border-r-besar border-0 bg-light py-2"
-                                                        placeholder="Email Researcher">
+                                                        class="form-control me-3 border-r-besar border-0 bg-light py-2"
+                                                        id="Email" name="email" value="{{ $dataitem->user->email }}"
+                                                        disabled>
+                                                    @endforeach
                                                 </div>
                                             </div>
                                         </form>
@@ -88,21 +96,29 @@
                                             <div class="row mb-3">
                                                 <label class="form-label">Judul</label>
                                                 <div class="col-3">
+                                                    @foreach ($surveytemp as $dataitem)
                                                     <input type="text"
                                                         class="form-control border-r-besar border-0 bg-light py-2"
-                                                        placeholder="Nama Researcher">
+                                                        id="Judul" name="title" value="{{ $dataitem->title }}" disabled>
+                                                    @endforeach
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
                                                 <label class="form-label">Deskripsi</label>
+                                                @foreach ($surveytemp as $dataitem)
                                                 <textarea class="form-control border-r-besar border-0 bg-light py-2"
-                                                    placeholder="Leave a comment here" rows="3"></textarea>
+                                                    id="description" name="description" rows="3"
+                                                    disabled>{{ $dataitem->description }}</textarea>
+                                                @endforeach
                                             </div>
                                             <div class="row mb-3">
                                                 <label for="deskripsi" class="form-label">Kategori Survei</label>
                                                 <div class="col-2">
-                                                    <select class="form-select border-r-besar border-0 bg-light px-3 ">
-                                                        <option value="Chart JS">Pelanggan</option>
+                                                    <select class="form-select border-r-besar border-0 bg-light px-3"
+                                                        disabled>
+                                                        @foreach ($surveytemp as $dataitem)
+                                                            <option>{{ $dataitem->category->name }}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                             </div>
@@ -110,9 +126,11 @@
                                                 <label for="deskripsi" class="form-label">Estimasi
                                                     Penyelesaian</label>
                                                 <div class="col-1">
+                                                    @foreach ($surveytemp as $dataitem)
                                                     <input type="number"
                                                         class="form-control border-r-besar border-0 bg-light py-2"
-                                                        placeholder="40">
+                                                        placeholder="40" disabled>
+                                                    @endforeach
                                                 </div>
                                                 <div class="col-4 my-auto">
                                                     <p class="my-auto">Menit</p>
@@ -123,31 +141,41 @@
                                                 <div class="col-1">
                                                     <input type="number"
                                                         class="form-control border-r-besar border-0 bg-light py-2"
-                                                        placeholder="50">
+                                                        id="Waktu" name="max_attempt"
+                                                        value="{{ $dataitem->max_attempt }}" disabled>
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
                                                 <label class="form-label">Jumlah Reward</label>
                                                 <div class="col-2">
+                                                    @foreach ($surveytemp as $dataitem)
                                                     <input type="text"
                                                         class="form-control border-r-besar border-0 bg-light py-2"
-                                                        placeholder="Rp. 4000">
+                                                        id="Point" name="reward_point"
+                                                        value="{{ $dataitem->reward_point }}" disabled>
+                                                    @endforeach
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
                                                 <label for="deskripsi" class="form-label">Status</label>
                                                 <div class="col-2">
-                                                    <select class="form-select border-r-besar border-0 bg-light px-3 ">
-                                                        <option value="Chart JS">Active</option>
+                                                    <select class="form-select border-r-besar border-0 bg-light px-3"
+                                                        disabled>
+                                                        @foreach ($surveytemp as $dataitem)
+                                                        <option>{{ $dataitem->status }}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
                                                 <label class="form-label">Waktu Upload Survey</label>
                                                 <div class="col-2">
+                                                    @foreach ($surveytemp as $dataitem)
                                                     <input type="text"
                                                         class="form-control border-r-besar border-0 bg-light py-2"
-                                                        placeholder="24 Maret 2022" disabled>
+                                                        disabled id="Waktu" name="created_at"
+                                                        value="{{ $dataitem->created_at }}" disabled>
+                                                    @endforeach
                                                 </div>
                                             </div>
                                         </form>

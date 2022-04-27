@@ -109,10 +109,10 @@
                                     <select class="form-select border-r-besar border-0 bg-light"
                                         aria-label="Default select example" name="status">
                                         @if ($item->status == '0')
-                                        <option selected value="0">Not Active</option>
+                                        <option selected value="0">Unpublished</option>
                                         <option value="1">Active</option>
                                         @else
-                                        <option value="0"> Not Active</option>
+                                        <option value="0">Unpublished</option>
                                         <option selected value="1">Active</option>
                                         @endif
                                     </select>
@@ -121,9 +121,9 @@
                                     class="btn bg-special-blue text-white me-3 px-5 py-2">Simpan</button>
                                 <a href="{{ route('admin.questionbank.index') }}"
                                     class="btn btn-dark px-4 py-2">Batal</a>
+                            </form>
                         </div>
                     </div>
-                    </form>
                 </div>
             </div>
         </div>

@@ -82,12 +82,13 @@ class SurveyController extends Controller
      * @param  \App\Models\Survey  $survey
      * @return \Illuminate\Http\Response
      */
-    public function showSurveyDetails(Survey $survey)
+    public function showSurveyDetails(Request $request, $id)
     {
-        //
-        return view('admin.survey.show', compact('survey'), [
-            'title' => $this->title,
-        ]);
+        $survey = SurveyCategory::get();
+        $data = SurveyCategory::find($id);
+        $surveytemp = Survey::where('id', $id)->get();
+        $title = $this->title;
+        return view('admin.survey.show', compact('title', 'id', 'data', 'survey', 'surveytemp'));
     }
 
     public function showSurveyDetailsDeny(Survey $survey)
