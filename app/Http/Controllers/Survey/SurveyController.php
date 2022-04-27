@@ -297,9 +297,11 @@ class SurveyController extends Controller
 
     public function statusSurvey(Survey $survey)
     {
+        $questions = $survey->questions;
         $this->current = "status";
         $data = [
             'survey' => $survey,
+            'questions' => $questions,
             'current' => $this->current,
         ];
 
@@ -308,9 +310,8 @@ class SurveyController extends Controller
 
     public function showReport(Survey $survey)
     {
-        $questions = $survey->questions;
         $this->current = "report";
-
+        $questions = $survey->questions;
         $data = [
             'survey' => $survey,
             'questions' => $questions,

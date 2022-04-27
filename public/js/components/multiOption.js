@@ -263,7 +263,7 @@ export class MultiOption extends Component {
                 }
             });
 
-            minimum
+            minimum;
 
             const validations = instance.blueprint.validations;
 
@@ -496,7 +496,6 @@ export class MultiOption extends Component {
         }
 
         // add option button
-        
 
         const addOptionContainer = document.createElement("div");
         addOptionContainer.id = "addOptionContainer";
@@ -510,9 +509,9 @@ export class MultiOption extends Component {
         addOptionButton.className += "btn btn-sm btn-default text-white";
         addOptionButton.innerHTML = "Opsi Pilihan";
 
-        const saveOptionButton = document.createElement("button");
-        saveOptionButton.className += "btn btn-md btn-danger text-white";
-        saveOptionButton.innerHTML = "Simpan";
+        // const saveOptionButton = document.createElement("button");
+        // saveOptionButton.className += "btn btn-md btn-danger text-white";
+        // saveOptionButton.innerHTML = "Simpan";
 
         const instance = this;
         addOptionButton.onclick = function (event) {
@@ -522,7 +521,7 @@ export class MultiOption extends Component {
 
         addOptionContainer.appendChild(addOptionButton);
 
-        saveOptionContainer.appendChild(saveOptionButton);
+        // saveOptionContainer.appendChild(saveOptionButton);
 
         wrapper.appendChild(addOptionContainer);
 

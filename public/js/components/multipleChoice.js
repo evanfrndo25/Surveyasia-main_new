@@ -263,7 +263,7 @@ export class MultipleChoice extends Component {
                 }
             });
 
-            minimum
+            minimum;
 
             const validations = instance.blueprint.validations;
 
@@ -456,7 +456,7 @@ export class MultipleChoice extends Component {
 
     LogicOptions() {
         const form = this._buildOptionsContainer();
-        
+
         let choiceOptions;
 
         if (
@@ -467,7 +467,7 @@ export class MultipleChoice extends Component {
         } else {
             choiceOptions = this._updateableLogicOptions();
         }
-        
+
         form.appendChild(choiceOptions);
 
         return form;
@@ -515,7 +515,6 @@ export class MultipleChoice extends Component {
         }
 
         // add option button
-        
 
         const addOptionContainer = document.createElement("div");
         addOptionContainer.id = "addOptionContainer";
@@ -529,9 +528,9 @@ export class MultipleChoice extends Component {
         addOptionButton.className += "btn btn-sm btn-default text-white";
         addOptionButton.innerHTML = "Opsi Pilihan";
 
-        const saveOptionButton = document.createElement("button");
-        saveOptionButton.className += "btn btn-md btn-danger text-white";
-        saveOptionButton.innerHTML = "Simpan";
+        // const saveOptionButton = document.createElement("button");
+        // saveOptionButton.className += "btn btn-md btn-danger text-white";
+        // saveOptionButton.innerHTML = "Simpan";
 
         const instance = this;
         addOptionButton.onclick = function (event) {
@@ -541,7 +540,7 @@ export class MultipleChoice extends Component {
 
         addOptionContainer.appendChild(addOptionButton);
 
-        saveOptionContainer.appendChild(saveOptionButton);
+        // saveOptionContainer.appendChild(saveOptionButton);
 
         wrapper.appendChild(addOptionContainer);
 
@@ -549,7 +548,7 @@ export class MultipleChoice extends Component {
 
         return wrapper;
     }
-// logic multiple-choice
+    // logic multiple-choice
     _updateableLogicOptions() {
         const observeable = this.observer();
         const wrapper = document.createElement("div");
@@ -557,13 +556,13 @@ export class MultipleChoice extends Component {
         wrapper.className += "row";
 
         // membuat div untuk logic bagian Pilihan
-        const divPilihan = document.createElement('div');
+        const divPilihan = document.createElement("div");
         divPilihan.className = "col-md-4";
 
         // membuat div untuk logic bagian Lanjutkan Ke
-        const divLanjutkan = document.createElement('div');
+        const divLanjutkan = document.createElement("div");
         divLanjutkan.className = "col-md-8";
-        
+
         const labelPilihan = document.createElement("label");
         labelPilihan.innerHTML = "Pilihan Opsi";
         labelPilihan.className += "form-input-label";
@@ -577,89 +576,96 @@ export class MultipleChoice extends Component {
 
         const options = observeable.options;
         const logic = observeable.logic;
-        
-        for(let i = 0; i < options.length; i++) {
-            const rowLanjutkan = document.createElement('div');
-            rowLanjutkan.className = 'row mb-3 mt-3';
 
-            const col1 = document.createElement('div');
+        for (let i = 0; i < options.length; i++) {
+            const rowLanjutkan = document.createElement("div");
+            rowLanjutkan.className = "row mb-3 mt-3";
+
+            const col1 = document.createElement("div");
             col1.className = "col-md-5";
 
-            const col2 = document.createElement('div');
+            const col2 = document.createElement("div");
             col2.className = "col-md-5";
 
-            const col3 = document.createElement('div');
+            const col3 = document.createElement("div");
             col3.className = "col-md-2";
 
-            const select1 = document.createElement('select');
+            const select1 = document.createElement("select");
             select1.className = "form-select";
             select1.id = `row-${i}`;
 
-            const select2 = document.createElement('select');
+            const select2 = document.createElement("select");
             select2.className = "form-select";
             select2.id = `row-${i}`;
 
-            const iconTrash = document.createElement('a');
-            iconTrash.href = '#';
+            const iconTrash = document.createElement("a");
+            iconTrash.href = "#";
             iconTrash.className = "btn link-dark";
             iconTrash.innerHTML = '<i class="fas fa-trash"></i>';
             iconTrash.id = `row-${i}`;
 
-            const input = document.createElement('input');
+            const input = document.createElement("input");
             input.className = "form-control mb-3 mt-3";
             input.value = options[i];
             input.readOnly = true;
             input.id = `row-${i}`;
 
             // mendapatkan id dan value dari tiap-tiap pertanyaan
-            const getContainerQuestion = document.getElementById('questions_container');
+            const getContainerQuestion = document.getElementById(
+                "questions_container"
+            );
             const getQuestion = getContainerQuestion.children;
-            
+
             // Untuk menampung text dan id dari masing-masing pertanyaan
             const objectQuestion = [];
 
-            for(let x = 0; x < getQuestion.length; x++) {
+            for (let x = 0; x < getQuestion.length; x++) {
                 objectQuestion.push({
-                    id: getQuestion[x].id, 
-                    text: getQuestion[x].childNodes[1].innerText.split('\n')[1]
+                    id: getQuestion[x].id,
+                    text: getQuestion[x].childNodes[1].innerText.split("\n")[1],
                 });
             }
-            
+
             // fungsi untuk mencari text pertanyaan berdasarkan value/id pertanyaan
             // example: getTextByValue(component_c747)
             const getTextByValue = (value) => {
-                return objectQuestion.find(obj => {
+                return objectQuestion.find((obj) => {
                     return obj.id === value;
-                })  // Akan me-return object yang berisi text dan id dari pertanyaan
-            }
+                }); // Akan me-return object yang berisi text dan id dari pertanyaan
+            };
 
             // Default option
-            const defaultOption = document.createElement('option');
+            const defaultOption = document.createElement("option");
             defaultOption.value = logic[options[i]] || null;
-            defaultOption.innerHTML = getTextByValue(logic[options[i]])?.text || '-- Select --';
-            //-- defaultOption.innerHTML melakukan pengecekan 
+            defaultOption.innerHTML =
+                getTextByValue(logic[options[i]])?.text || "-- Select --";
+            //-- defaultOption.innerHTML melakukan pengecekan
             //-- apabila getTextByValue null maka akan ditampilkan '-- Select --'
 
             select2.appendChild(defaultOption);
 
             for (let index = 0; index < getQuestion.length; index++) {
                 // membuat tag option melalui function createOptionLanjutkan dengan dua argumen
-                select2.appendChild(this._createOptionLanjutkan(
-                    getQuestion[index].childNodes[1].innerText.split('\n')[1],  //argumen 1 text
-                    getQuestion[index].id   //argumen 2 value
-                ));
+                select2.appendChild(
+                    this._createOptionLanjutkan(
+                        getQuestion[index].childNodes[1].innerText.split(
+                            "\n"
+                        )[1], //argumen 1 text
+                        getQuestion[index].id //argumen 2 value
+                    )
+                );
 
                 // untuk memantau apabila tag select berubah/onChange
                 select2.onchange = (event) => {
                     const selectElement = event.target;
                     const value = selectElement.value;
                     logic[options[i]] = value;
-                }
+                };
             }
 
             iconTrash.onclick = () => {
                 logic[options[i]] = null;
-                defaultOption.innerHTML = '-- Select --';
+                defaultOption.innerHTML = "-- Select --";
             };
 
             col1.appendChild(select1);
@@ -680,15 +686,15 @@ export class MultipleChoice extends Component {
     }
 
     _createOptionLanjutkan(text, value) {
-        const option = document.createElement('option');
+        const option = document.createElement("option");
         option.innerHTML = text;
         option.value = value;
 
         return option;
     }
-// end Logic multiple-choice
+    // end Logic multiple-choice
 
-// logic scale
+    // logic scale
     _updateableLogicScaleOptions() {
         const observeable = this.observer();
         const wrapper = document.createElement("div");
@@ -696,13 +702,13 @@ export class MultipleChoice extends Component {
         wrapper.className += "row";
 
         // membuat div untuk logic bagian Pilihan
-        const divPilihan = document.createElement('div');
+        const divPilihan = document.createElement("div");
         divPilihan.className = "col-md-4";
 
         // membuat div untuk logic bagian Lanjutkan Ke
-        const divLanjutkan = document.createElement('div');
+        const divLanjutkan = document.createElement("div");
         divLanjutkan.className = "col-md-8";
-        
+
         const labelPilihan = document.createElement("label");
         labelPilihan.innerHTML = "Pilihan Opsi";
         labelPilihan.className += "form-input-label";
@@ -717,96 +723,103 @@ export class MultipleChoice extends Component {
         const logic = observeable.logic;
         const keysInLogic = Object.keys(logic);
 
-        for(let i = 0; i < keysInLogic.length; i++) {
-            const rowLanjutkan = document.createElement('div');
-            rowLanjutkan.className = 'row mb-3 mt-3';
+        for (let i = 0; i < keysInLogic.length; i++) {
+            const rowLanjutkan = document.createElement("div");
+            rowLanjutkan.className = "row mb-3 mt-3";
 
-            const col1 = document.createElement('div');
+            const col1 = document.createElement("div");
             col1.className = "col-md-5";
 
-            const col2 = document.createElement('div');
+            const col2 = document.createElement("div");
             col2.className = "col-md-5";
 
-            const col3 = document.createElement('div');
+            const col3 = document.createElement("div");
             col3.className = "col-md-2";
 
-            const select1 = document.createElement('select');
+            const select1 = document.createElement("select");
             select1.className = "form-select";
             select1.id = `row-${i}`;
 
-            const select2 = document.createElement('select');
+            const select2 = document.createElement("select");
             select2.className = "form-select";
             select2.id = `row-${i}`;
 
-            const iconTrash = document.createElement('a');
-            iconTrash.href = '#';
+            const iconTrash = document.createElement("a");
+            iconTrash.href = "#";
             iconTrash.className = "btn link-dark";
             iconTrash.innerHTML = '<i class="fas fa-trash"></i>';
             iconTrash.id = `row-${i}`;
 
-            const input = document.createElement('input');
+            const input = document.createElement("input");
             input.className = "form-control mb-3 mt-3";
 
             input.value = keysInLogic[i];
             input.id = `row-${i}`;
 
             // mendapatkan id dan value dari tiap-tiap pertanyaan
-            const getContainerQuestion = document.getElementById('questions_container');
+            const getContainerQuestion = document.getElementById(
+                "questions_container"
+            );
             const getQuestion = getContainerQuestion.children;
-            
+
             // Untuk menampung text dan id dari masing-masing pertanyaan
             const objectQuestion = [];
 
-            for(let x = 0; x < getQuestion.length; x++) {
+            for (let x = 0; x < getQuestion.length; x++) {
                 objectQuestion.push({
-                    id: getQuestion[x].id, 
-                    text: getQuestion[x].childNodes[1].innerText.split('\n')[1]
+                    id: getQuestion[x].id,
+                    text: getQuestion[x].childNodes[1].innerText.split("\n")[1],
                 });
             }
-            
+
             // fungsi untuk mencari text pertanyaan berdasarkan value/id pertanyaan
             // example: getTextByValue(component_c747)
             const getTextByValue = (value) => {
-                return objectQuestion.find(obj => {
+                return objectQuestion.find((obj) => {
                     return obj.id === value;
-                })  // Akan me-return object yang berisi text dan id dari pertanyaan
-            }
+                }); // Akan me-return object yang berisi text dan id dari pertanyaan
+            };
 
             // Default option
-            const defaultOption = document.createElement('option');
+            const defaultOption = document.createElement("option");
             defaultOption.value = logic[keysInLogic[i]] || null;
-            defaultOption.innerHTML = getTextByValue(logic[keysInLogic[i]])?.text || '-- Select --';
-            //-- defaultOption.innerHTML melakukan pengecekan 
+            defaultOption.innerHTML =
+                getTextByValue(logic[keysInLogic[i]])?.text || "-- Select --";
+            //-- defaultOption.innerHTML melakukan pengecekan
             //-- apabila getTextByValue null maka akan ditampilkan '-- Select --'
 
             select2.appendChild(defaultOption);
 
             for (let index = 0; index < getQuestion.length; index++) {
                 // membuat tag option melalui function createOptionLanjutkan dengan dua argumen
-                select2.appendChild(this._createOptionLanjutkan(
-                    getQuestion[index].childNodes[1].innerText.split('\n')[1],  //argumen 1 text
-                    getQuestion[index].id   //argumen 2 value
-                ));
+                select2.appendChild(
+                    this._createOptionLanjutkan(
+                        getQuestion[index].childNodes[1].innerText.split(
+                            "\n"
+                        )[1], //argumen 1 text
+                        getQuestion[index].id //argumen 2 value
+                    )
+                );
 
                 // untuk memantau apabila tag select berubah/onChange
                 select2.onchange = (event) => {
                     const selectElement = event.target;
                     const value = selectElement.value;
                     logic[keysInLogic[i]] = value;
-                }
+                };
             }
 
             input.onchange = (event) => {
                 // bug
-            }
+            };
 
             // jika icon hapus diklik, maka akan menghapus elemen beserta array observenya
             iconTrash.onclick = () => {
                 delete logic[keysInLogic[i]];
-                
+
                 const selectRow = document.querySelectorAll(`[id=row-${i}]`);
                 for (let e of selectRow) {
-                    e.style.display = 'none';
+                    e.style.display = "none";
                 }
             };
 
@@ -833,7 +846,7 @@ export class MultipleChoice extends Component {
         addOptionButton.onclick = (event) => {
             event.preventDefault();
             this._addUpdatableOption();
-        }
+        };
 
         addOptionContainer.appendChild(addOptionButton);
         divPilihan.appendChild(addOptionContainer);
@@ -919,7 +932,7 @@ export class MultipleChoice extends Component {
 
         return col;
     }
-// end logic scale
+    // end logic scale
 
     _updateScale() {
         const wrapper = $(this).find("#mainInput");

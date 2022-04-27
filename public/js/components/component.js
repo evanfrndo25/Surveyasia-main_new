@@ -247,7 +247,7 @@ export class Component extends HTMLDivElement {
         option.id = "addQuestionButton";
         option.label = "Tambahkan Pertanyaan ";
         option.target = this.blueprint.componentId;
-        option.className = "btn btn-warning text-white m-1";
+        option.className = "btn text-orange m-1";
         option.icon = this._buildIcon("fas fa-plus-square");
         return this._buildButton(option);
     }
@@ -256,7 +256,7 @@ export class Component extends HTMLDivElement {
         let option = new Object();
         option.id = "deleteQuestionButton";
         option.label = "Remove ";
-        option.className = "btn btn-danger text-white m-1";
+        option.className = "btn text-danger m-1";
         option.icon = this._buildIcon("fas fa-minus-square");
         option.target = this.blueprint.componentId;
         option.onclick = this.onNegativeButtonClickListener();
@@ -267,7 +267,7 @@ export class Component extends HTMLDivElement {
         let option = new Object();
         option.id = "editQuestionButton";
         option.label = "Edit ";
-        option.className = "btn btn-primary m-1";
+        option.className = "btn text-primary m-1";
         option.icon = this._buildIcon("fas fa-pen-square");
         option.target = this.blueprint.componentId;
         return this._buildButton(option);
@@ -297,7 +297,6 @@ export class Component extends HTMLDivElement {
         if (option.icon != null) {
             button.append(option.icon);
         }
-
         return button;
     }
 
@@ -462,7 +461,7 @@ export class Component extends HTMLDivElement {
     }
 
     LogicOptions() {
-        return "<p class='badge bg-danger'>Maaf, logic tidak didukung untuk tipe pertanyaan ini.</p>"
+        return "<p class='badge bg-danger'>Maaf, logic tidak didukung untuk tipe pertanyaan ini.</p>";
     }
 
     MediaOptions() {
@@ -471,7 +470,9 @@ export class Component extends HTMLDivElement {
 
         const mediaPreview = this._buildMediaOptionPreview();
 
-        const mediaLabel = this._createInputLabel("Sumber Gambar (File atau URL))");
+        const mediaLabel = this._createInputLabel(
+            "Sumber Gambar (File atau URL))"
+        );
         const sourceRow = document.createElement("div");
         sourceRow.id = "mediaInputRow_" + this.blueprint.componentId;
         sourceRow.className += "row mb-3";
@@ -718,7 +719,10 @@ export class Component extends HTMLDivElement {
             // set input attributes for file
             input.accept = "image/*";
             input.type = "file";
-            helperText = buildHelperText("File Gambar maks. ukuran 1mb", "small");
+            helperText = buildHelperText(
+                "File Gambar maks. ukuran 1mb",
+                "small"
+            );
 
             // validate input
             input.onchange = function () {
