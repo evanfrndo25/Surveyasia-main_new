@@ -13,9 +13,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\Eloquent\Builder;
 use App\Http\Requests\Survey\AnswerQuestionsRequest;
-
 
 class SurveyController extends Controller
 {
@@ -134,21 +134,24 @@ class SurveyController extends Controller
     {
         $url = $request->title;
         $checkUrl = Survey::where('shareable_link', $url)->first();
-        if( $checkUrl ) {   // Jika url telah digunakan
-            $data = [
-                'link-input' => 'unique:users,shareable_link,' . $code
-            ];
-            $request->validate($data);
 
-            return redirect()->back()->with('message', 'Link telah digunakan');  // Tampilkan peringatan link telah digunakan
-        }
+
+        if( $checkUrl ) {   // Jika url telah digunakan
+            // $data = [
+            //     'link-input' => ''
+            //     // 'link-input' => 'unique:users,shareable_link,' . $code
+            // ];
+            // $request->validate($data);
+        
+            return back()->with(session()->flash('error', 'Url telah digunakan')); // Tampilkan peringatan link telah digunakan
+        } 
         // $request->validate([
         //     'link-input' => 'unique'
         // ]);
 
         $sign = explode('/', $url);
         Survey::where('id', $code)->update(['shareable_link' => $url, 'signature' => end($sign)]);
-        return redirect()->back();
+        return back()->with(session()->flash('success', 'Url berhasil diubah'));
     }
 
     public function filter()

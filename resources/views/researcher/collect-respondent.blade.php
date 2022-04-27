@@ -45,6 +45,18 @@
         {{-- Share Link --}}
         <div class="border rounded p-5" style="margin-bottom: 200px">
             <div class="row">
+                @if (session('success'))
+                <div class="alert alert-success alert-dismissible show fade">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                @endif
+                @if (session('error'))
+                <div class="alert alert-danger alert-dismissible show fade">
+                    {{ session('error') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                @endif
                 <div class="col-md-7">
                     <h5>Bagikan Tautan</h5>
                     <p style="opacity: 80%;">Bagikan tautan ini dengan responden Anda untuk mengumpulkan tanggapan mereka</p>
