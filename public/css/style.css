@@ -4,6 +4,10 @@ body {
     overflow-x: hidden;
 }
 
+.border-orange {
+    border: 1px solid #ef4c29;
+}
+
 /* Breadcrumb */
 .breadcrumb > .active > a {
     font-weight: 600;

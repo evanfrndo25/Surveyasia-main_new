@@ -247,17 +247,18 @@ export class Component extends HTMLDivElement {
         option.id = "addQuestionButton";
         option.label = "Tambahkan Pertanyaan ";
         option.target = this.blueprint.componentId;
-        option.className = "btn text-orange m-1";
-        option.icon = this._buildIcon("fas fa-plus-square");
+        option.className = "btn border rounded-end-0 text-orange";
+        option.icon = this._buildIcon("fas fa-plus");
         return this._buildButton(option);
     }
 
     _removeButton() {
         let option = new Object();
         option.id = "deleteQuestionButton";
-        option.label = "Remove ";
-        option.className = "btn text-danger m-1";
-        option.icon = this._buildIcon("fas fa-minus-square");
+        option.icon = this._buildIcon("fal fa-trash");
+        option.label = " Hapus";
+        option.className =
+            "btn border border-start-0 rounded-start text-orange";
         option.target = this.blueprint.componentId;
         option.onclick = this.onNegativeButtonClickListener();
         return this._buildButton(option);
@@ -267,8 +268,8 @@ export class Component extends HTMLDivElement {
         let option = new Object();
         option.id = "editQuestionButton";
         option.label = "Edit ";
-        option.className = "btn text-primary m-1";
-        option.icon = this._buildIcon("fas fa-pen-square");
+        option.className = "btn border rounded-0 text-orange";
+        option.icon = this._buildIcon("fal fa-pen");
         option.target = this.blueprint.componentId;
         return this._buildButton(option);
     }

@@ -41,9 +41,8 @@
                             style="width: 100%; height:111px;" readonly> {{ $survey->description }}</textarea>
                     </div>
                     <div class="text-end">
-                        <button type="button" class="btn btn-primary ms-auto" data-bs-toggle="modal"
-                            data-bs-target="#editJudulModal"><i class="bi bi-pencil"
-                                style="font-size: 12px; weight:500;"></i>
+                        <button type="button" class="btn border-orange text-orange ms-auto" data-bs-toggle="modal"
+                            data-bs-target="#editJudulModal"><i class="fal fa-pen"></i>
                             Edit
                         </button>
                     </div>
