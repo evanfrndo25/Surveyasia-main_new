@@ -3,6 +3,7 @@ import {
     nextButton,
     nextQuestion,
     previousButton,
+    jumpToQuestion,
     previousQuestion,
     questionContainer,
     questionObserver,
@@ -17,6 +18,26 @@ let creator;
 $(function () {
     showQuestions();
 
+    // mendapatkan element berdasarkan class "show active"
+    // -> mednapatkan semua option
+    // -> melakukan looping dan memvalidasi pada setiap option, ada tidaknya logic
+    //    DONE
+
+    
+
+    // disini tempat untuk logika jika option pada question X terdapat logic
+    // maka akan memanggil fungsi jumpToQuestion()
+    // selain itu akan memanggil fungsi nextQuestion()
+
+    // akan muncul masalah yaitu jika sudah masuk di jumpToQuestion
+    // maka previousQuestion harus menyesuaikan hasil dari jumpToQuestion
+    /**
+     *  jika jumping ke question 3 kemudian maju lagi satu question (posisi di question 4)
+     *  maka ketika menekan previous sekali maka harus mundur 1 question
+     *  dan ketika menekan previous sekali lagi maka harus mundur 3 question
+     */
+
+    // nextButton.on("click", jumpToQuestion);
     nextButton.on("click", nextQuestion);
     previousButton.on("click", previousQuestion);
 
