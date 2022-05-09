@@ -263,8 +263,6 @@ export class MultiOption extends Component {
                 }
             });
 
-            minimum;
-
             const validations = instance.blueprint.validations;
 
             validations.forEach((validation) => {

@@ -2,7 +2,8 @@ import { TextBox } from "../components/textbox.js";
 import { MultipleChoice } from "../components/multipleChoice.js";
 import { DropDown } from "../components/dropdown.js";
 import { UploadFile } from "../components/uploadFile.js";
-import { Rating } from "../components/rating.js";
+import { MultiOption } from "../components/multiOption.js";
+// import { Rating } from "../components/rating.js";
 
 export var questionUtils = {
     currentQuestion: 0,
@@ -31,7 +32,7 @@ export function CreateQuestion(config) {
             question = new MultipleChoice(config);
             break;
         case "multiOptions":
-            question = new MultipleChoice(config);
+            question = new MultiOption(config);
             break;
         case "dropdown":
             question = new DropDown(config);
@@ -58,11 +59,57 @@ export function CreateQuestion(config) {
 export function nextQuestion(event) {
     event.preventDefault();
 
+    // logic untuk mendapatkan componentID dari option yang dipilih
+    // hanya berlaku untuk dropdown (multiplechoice dan scale menyusul)
+    const getElements = document.getElementsByClassName('show active');
+    for (let i = 0; i < getElements.length; i++) {
+        const ele = getElements[i].querySelectorAll('#mainInput');
+        for (let j = 0; j < ele.length; j++) {
+            if( ele[j].tagName == 'SELECT' ) {  // Apabila tagNamenya SELECT, maka akan diolah di fungsi dropdown
+                _checkForDropdown(ele[j]);
+            } else if( ele[j].tagName == 'UL' ) {    // Apabila tagNamenya UL, maka akan diolah di fungsi multipleChoice
+                _checkForMultiplechoice(ele[j]);
+            } else if( ele[j].tagName == 'DIV' ) {
+                console.log('_checkScale');
+            } else {
+                continue;
+            }
+        }
+    }
+
     // hide current question first
     _hideQuestion(questionUtils.currentQuestion);
 
     const observable = questionObserver();
     observable.currentQuestion += 1;
+}
+
+function _checkForDropdown(ele) {
+    const options = ele.querySelectorAll('option');
+    for (let k = 0; k < options.length; k++) {
+        if( options[k].getAttribute('value') === ele.value) {
+            _redirectTo({
+                text: ele.value, componentId: options[k].getAttribute('logic')
+            });
+        }
+        continue;
+    }
+}
+
+function _checkForMultiplechoice(ele) {
+    const inputs = ele.querySelectorAll('input');
+    for (let k = 0; k < inputs.length; k++) {
+        if( inputs[k].checked ) {
+            _redirectTo({
+                text: inputs[k].value, componentId: inputs[k].getAttribute('logic')
+            });
+        }
+        continue;
+    }
+}
+
+function _redirectTo(target) {
+    console.log(`kamu akan dialihkan ke ${target.text} -> ${target.componentId}`);
 }
 
 export function previousQuestion(event) {
