@@ -34,20 +34,6 @@
                 @endforeach --}}
                 <hr>
                 <p class="fw-bold">Semua Question</p>
-                <!-- @php
-                                $no = 1;
-                            @endphp
-                          @foreach ($questions as $question)
-                          <p>{{ $no }}. {{ $question->question }}</p>
-                          <ul>
-                            @foreach ($question->options as $item)
-                              <li>{{ $item->value }}</li>
-                            @endforeach
-                          </ul>
-                          @php
-                              $no++;
-                          @endphp
-                          @endforeach -->
             </div>
             {{-- add question code from levi --}}
             @include('admin.questionbank.layouts.form-modal')
@@ -74,17 +60,6 @@
                     </button>
                 </div>
                 <hr id="horizontalLine" style="display: none;">
-                <!-- <div class="row d-flex justify-content-between">
-                    <div class="col-8">
-                        <div class="alert alert-info alert-dismissible fade" role="alert" id="minQuestionAlert">
-                            Buat minimal 5 pertanyaan untuk disimpan
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    </div>
-                    <div class="col-auto">
-                        <button type="submit" class="btn btn-primary disabled fade">Simpan</button>
-                    </div>
-                </div> -->
             </form>
 
             <div class="card mb-3 text-center fade" id="noQuestionContainer">
@@ -96,16 +71,19 @@
 
         </div>
         <script>
-                var url = "{!! $url !!}";
-            </script>
-            <script>
-                var questions = {!! $questionbank->questions !!};
-            </script>
-            <!-- Latest Sortable -->
-            <script src="http://SortableJS.github.io/Sortable/Sortable.js"></script>
-            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-            <script type="module" src="{{ asset('js/subtemplate/formsQb.js') }}"></script>
+            var url = "{!! $url !!}";
+
+        </script>
+        <script>
+        var questions = {!! $questionbank->questions !!};
+
+        </script>
+        <!-- Latest Sortable -->
+        <script src="http://SortableJS.github.io/Sortable/Sortable.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script type="module" src="{{ asset('js/subtemplate/formsQb.js') }}"></script>
     </div>
+</div>
     @endsection
     @section('importLibraryArea')
     <script src="/js/index.js"></script>

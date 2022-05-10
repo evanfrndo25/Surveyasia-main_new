@@ -117,7 +117,7 @@
                                                     <select class="form-select border-r-besar border-0 bg-light px-3"
                                                         disabled>
                                                         @foreach ($surveytemp as $dataitem)
-                                                            <option>{{ $dataitem->category->name }}</option>
+                                                        <option>{{ $dataitem->category->name }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -189,7 +189,8 @@
                                     </div>
                                     <div class="col-2 text-center">
                                         <p>Total Pertanyaan</p>
-                                        <p class="bg-light px-4 py-3 btn text-center" style="cursor: auto;">2</p>
+                                        <p class="bg-light px-4 py-3 btn text-center" style="cursor: auto;">
+                                            {{ count($question) }}</p>
                                     </div>
                                     <div class="col-2 text-center">
                                         <p>Total Bagian</p>
@@ -199,6 +200,23 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <p class="text-decoration-underline fw-bold">Pertanyaan</p>
+                                        <!-- Codingan tadi siang -->
+                                        @foreach ($question as $dataitem)
+                                        <ol>
+                                            <li>{{ $dataitem->question }}</li>
+                                        </ol>
+                                        @endforeach
+                                         <!-- Codingan tadi siang -->
+
+                                         <!-- Hardcode untuk pertanyaan -->
+                                         <form>
+                                             <div class="card p-4">
+                                                 <p class="fw-bold pb-2">Jenis Pertanyaan</p>
+                                                 <p>Judul Pertanyaan</p>
+                                                 <div>Tampilan Pertanyaan</div>
+                                             </div>
+                                         </form>
+                                         <!-- Hardcode untuk pertanyaan -->
                                     </div>
                                 </div>
                             </div>

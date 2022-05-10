@@ -92,50 +92,6 @@
 </form>
 {{-- End Question Form --}}
 
-{{-- Page footer nomer Halaman --}}
-<!-- <div class="row">
-    <div class="col-md-7">
-        <div class="row align-items-center">
-            <div class="col-auto">
-                <p class="fs-14px fw-semibold mb-0">Tampilkan :</p>
-            </div>
-            <div class="col-auto">
-                <select class="form-select" aria-label="Default select example">
-                    {{-- <option selected>Open this</option> --}}
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                </select>
-            </div>
-            <div class="col-auto">
-                <p class="fs-14px text-muted fw-semibold mb-0">Hasil : 1-3 dari 10</p>
-
-            </div>
-            <div class="col-auto">
-                <button class="btn btn-outline-secondary text-muted"><i class="fas fa-angle-left"></i></button>
-                <button class="btn btn-outline-secondary text-muted"><i class="fas fa-angle-right"></i></button>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-5">
-        <div class="row justify-content-end align-items-center">
-            <div class="col-auto">
-                <p class="fs-14px fw-semibold mb-0">Halaman :</p>
-            </div>
-            <div class="col-auto">
-                <select class="form-select" aria-label="Default select example">
-                    {{-- <option selected>Open this</option> --}}
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                </select>
-            </div>
-
-        </div>
-    </div>
-</div> -->
-
-{{-- End Page halaman --}}
 
 <style>
     .btn1:hover {
