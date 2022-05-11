@@ -16,7 +16,7 @@ class ChartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public $title = "Chart";
+    public $title = "Diagram";
 
     public function index()
     {
@@ -105,7 +105,7 @@ class ChartController extends Controller
     {
         $typeChart = Chart::select('type')->distinct()->get();
         return view('admin.chart.edit', [
-            'title' => 'edit Chart',
+            'title' => 'Diagram',
             'chart' => $chart,
             'submit' => 'Update',
             'typeChart' => $typeChart,

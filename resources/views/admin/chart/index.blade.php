@@ -17,12 +17,11 @@
             <div class="container pt-4">
                 <div class="row pb-5 pt-3">
                     <div class="col-3">
-                        <input class="form-control rounded-pill" type="search" placeholder="Search" aria-label="Search">
+                        <input class="form-control rounded-pill" type="search" placeholder="Cari disini" aria-label="Search">
                     </div>
                     <div class="col text-end">
                         <a href="{{ route('admin.chart.create') }}"
-                            class="btn bg-special-blue text-white shadow small"><i class="bi bi-plus-lg me-2"></i> Add
-                            Chart</a>
+                            class="btn btn-orange text-white shadow small"><i class="bi bi-plus-lg me-2"></i> Tambah Diagram</a>
                     </div>
                 </div>
                 @if (session()->has('status'))
@@ -37,23 +36,25 @@
                     @forelse ($charts as $chart)
                     <!-- Chart Card Baru -->
                     <div class="col-6 py-2">
-                        <div class="card">
-                            <div class="row card-header">
-                                <div class="col text-end">
-                                    <p class="my-auto fw-bold">{{ $chart->chart_type }} </p>
-                                </div>
-                                <div class="col-1">
-                                    <p class="my-auto">-</p>
-                                </div>
-                                <div class="my-auto col">
-                                    @if ($chart->status == 0)
-                                    <p class="text-danger my-auto fw-bold">Off</p>
-                                    @else
-                                    <p class="text-success my-auto fw-bold">On</p>
-                                    @endif
+                        <div class="card" style="border: 1px solid rgba(0, 0, 0, 0.3); box-shadow: 0px 4px 12px rgba(17, 17, 17, 0.1); border-radius: 10px;">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col text-end">
+                                        <p class="my-auto fw-bold">{{ $chart->chart_type }} </p>
+                                    </div>
+                                    <div class="col-1">
+                                        <p class="my-auto">-</p>
+                                    </div>
+                                    <div class="my-auto col">
+                                        @if ($chart->status == 0)
+                                        <p class="text-danger my-auto fw-bold">OFF</p>
+                                        @else
+                                        <p class="text-success my-auto fw-bold">ON</p>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
-                            <div id="chart-container{{ $num }}">
+                            <div id="chart-container{{ $num }}" style="padding:10px;">
                                 <canvas id="chart{{ $num }}" style="max-height: 250px;"></canvas>
                             </div>
                             <div class="card-body">
@@ -63,11 +64,11 @@
                                     <h5 class="card-title">{{ $chart->name }}</h5>
                                 </div>
                                 <p class="card-text">{{ Str::limit($chart->description, 100, '...') }}</p>
-                                <div class="d-grid gap-2">
+                                <div class="d-flex justify-content-end">
                                     <a href="{{ route('admin.chart.edit', $chart->id) }}"
-                                        class="btn bg-special-blue text-white px-4 py-2">
-                                        <i class="bi bi-vector-pen"></i>
-                                        Edit Chart
+                                        class="btn btn-orange text-white px-4 py-2">
+                                        <i class="bi bi-pencil-square"></i>
+                                        Edit
                                     </a>
                                 </div>
                             </div>
