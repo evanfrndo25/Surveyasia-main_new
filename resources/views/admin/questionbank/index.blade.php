@@ -213,15 +213,9 @@
                                 <form method="post" enctype="multipart/form-data" id="form-add">
                                     @csrf
                                     <div class="mb-3">
-<<<<<<< HEAD
-                                        <label for="title" class="form-label">Template</label>
-                                        <select class="form-select border-r-5 border-0 bg-light"
-                                            aria-label="Default select example" name="question_bank_template_id">
-=======
                                         <label for="title" class="form-label">Riset Pelanggan</label>
                                         <select class="form-select" aria-label="Default select example"
                                             name="question_bank_template_id">
->>>>>>> a9827f1980c1c25328a04577f6003367c4c52717
                                             {{-- <option selected>Choose Templates</option> --}}
                                             @foreach ($questionbank_templates as $item)
                                             <option value="{{ $item->id }}">
@@ -231,21 +225,6 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="title" class="form-label">Nama Sub Template</label>
-<<<<<<< HEAD
-                                        {{-- <input type="hidden" class="form-control border-r-5 border-0 bg-light" id="id" name="id"> --}}
-                                        <input type="text" class="form-control border-r-5 border-0 bg-light"
-                                            placeholder="Masukan Nama Template" id="Sub Template"
-                                            name="sub_template_name">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="deskripsi" class="form-label">Tujuan Tamplate</label>
-                                        <input type="text" placeholder="Masukan Tujuan Tamplate" class="form-control border-r-5 border-0 bg-light" id="description" name="goals">
-                                    </div>
-                                    <div class="mb-3 w-25">
-                                        <label for="aktivitas" class="form-label">Aktifitas</label>
-                                        <select class="form-select border-r-5 border-0 bg-light" id="aktivitas"
-                                            rows="3" name="aktivitas">
-=======
                                         {{-- <input type="hidden" class="form-control" id="id" name="id"> --}}
                                         <input type="text" class="form-control" placeholder="Masukan Nama Template"
                                             id="Sub Template" name="sub_template_name">
@@ -258,7 +237,6 @@
                                     <div class="mb-3 w-25">
                                         <label for="aktivitas" class="form-label">Aktifitas</label>
                                         <select class="form-select" id="aktivitas" rows="3" name="aktivitas">
->>>>>>> a9827f1980c1c25328a04577f6003367c4c52717
                                             <option>--Choose--</option>
                                             <option value="Free">Free</option>
                                             <option value="Premium">Premium</option>
@@ -266,12 +244,7 @@
                                     </div>
                                     <div class="mb-3 w-25">
                                         <label for="language_id" class="form-label">Bahasa</label>
-<<<<<<< HEAD
-                                        <select class="form-select border-r-5 border-0 bg-light" id="language_id"
-                                            rows="3" name="language_id">
-=======
                                         <select class="form-select" id="language_id" rows="3" name="language_id">
->>>>>>> a9827f1980c1c25328a04577f6003367c4c52717
                                             <option>--Choose--</option>
                                             <option value="1">IND</option>
                                             <option value="0">ENG</option>
