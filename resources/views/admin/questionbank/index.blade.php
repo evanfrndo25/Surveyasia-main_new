@@ -2,6 +2,11 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/admin-dashboard.css') }}">
+<style>
+    .form-select, .form-control {
+        background-color: #fafafa;
+    }
+</style>
 @endsection
 
 @section('content')
@@ -193,8 +198,8 @@
                                 <form method="post" enctype="multipart/form-data" id="form-add">
                                     @csrf
                                     <div class="mb-3">
-                                        <label for="title" class="form-label">Template</label>
-                                        <select class="form-select border-r-besar w-50 border-0 bg-light"
+                                        <label for="title" class="form-label">Riset Pelanggan</label>
+                                        <select class="form-select"
                                             aria-label="Default select example" name="question_bank_template_id">
                                             {{-- <option selected>Choose Templates</option> --}}
                                             @foreach ($questionbank_templates as $item)
@@ -205,27 +210,27 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="title" class="form-label">Nama Sub Template</label>
-                                        {{-- <input type="hidden" class="form-control border-r-besar border-0 bg-light" id="id" name="id"> --}}
-                                        <input type="text" class="form-control border-r-besar border-0 bg-light"
+                                        {{-- <input type="hidden" class="form-control" id="id" name="id"> --}}
+                                        <input type="text" class="form-control"
                                             placeholder="Masukan Nama Template" id="Sub Template"
                                             name="sub_template_name">
                                     </div>
                                     <div class="mb-3">
                                         <label for="deskripsi" class="form-label">Tujuan Tamplate</label>
-                                        <input type="text" placeholder="Masukan Tujuan Tamplate" class="form-control border-r-besar border-0 bg-light" id="description" name="goals">
+                                        <input type="text" placeholder="Masukan Tujuan Tamplate" class="form-control" id="description" name="goals">
                                     </div>
-                                    <div class="mb-3">
+                                    <div class="mb-3 w-25">
                                         <label for="aktivitas" class="form-label">Aktifitas</label>
-                                        <select class="form-select border-r-besar border-0 bg-light" id="aktivitas"
+                                        <select class="form-select" id="aktivitas"
                                             rows="3" name="aktivitas">
                                             <option>--Choose--</option>
                                             <option value="Free">Free</option>
                                             <option value="Premium">Premium</option>
                                         </select>
                                     </div>
-                                    <div class="mb-3">
+                                    <div class="mb-3 w-25">
                                         <label for="language_id" class="form-label">Bahasa</label>
-                                        <select class="form-select border-r-besar border-0 bg-light" id="language_id"
+                                        <select class="form-select" id="language_id"
                                             rows="3" name="language_id">
                                             <option>--Choose--</option>
                                             <option value="1">IND</option>

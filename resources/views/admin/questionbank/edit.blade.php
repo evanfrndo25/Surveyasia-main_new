@@ -17,7 +17,7 @@
                 <div class="container ">
                     <div class="row">
                         <div class="col">
-                            <a href="{{ route('admin.questionbank.index') }}" class="mb-2 text-dark h5">
+                            <a href="{{ route('admin.questionbank.index') }}" class="mb-2 text-dark h5 text-decoration-none">
                                 <i class="bi bi-arrow-left pe-2"></i>
                                 Kembali
                             </a>

@@ -24,7 +24,7 @@
                     {{ session()->get('status') }}
                 </div>
                 @endif
-                <a href="{{ route('admin.questionbank.index') }}" class="mb-2 text-dark h6">
+                <a href="{{ route('admin.questionbank.index') }}" class="mb-2 text-dark text-decoration-none h6">
                     <i class="bi bi-chevron-left pe-2"></i>Kembali </a>
                     <h1 class="text-center fw-bold" style="font-size: 20px">Pratinjau Pertanyaan</h1>
                 <div class="card">
@@ -42,24 +42,7 @@
                     <div class="card-body">
                 <h5 class="py-4 fw-bold">Semua Pertanyaan</h5>
                 <hr>
-<<<<<<< HEAD
-                <!-- @php
-                                $no = 1;
-                            @endphp
-                          @foreach ($questions as $question)
-                          <p>{{ $no }}. {{ $question->question }}</p>
-                          <ul>
-                            @foreach ($question->options as $item)
-                              <li>{{ $item->value }}</li>
-                            @endforeach
-                          </ul>
-                          @php
-                              $no++;
-                          @endphp
-                          @endforeach -->
-=======
                 <p class="fw-bold">Semua Question</p>
->>>>>>> bd2886c10272fd53c25d460ccc12001a545ecc5a
             </div>
             {{-- add question code from levi --}}
             @include('admin.questionbank.layouts.form-modal')
@@ -109,12 +92,7 @@
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script type="module" src="{{ asset('js/subtemplate/formsQb.js') }}"></script>
     </div>
-<<<<<<< HEAD
-    </div>
-                </div>
-=======
 </div>
->>>>>>> bd2886c10272fd53c25d460ccc12001a545ecc5a
     @endsection
     @section('importLibraryArea')
     <script src="/js/index.js"></script>
