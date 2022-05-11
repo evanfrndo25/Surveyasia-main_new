@@ -3,8 +3,8 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/admin-dashboard.css') }}">
 <style>
-    .form-select,
-    .form-control {
+    .form-abu .form-select,
+    .form-abu .form-control {
         background-color: #fafafa;
     }
 
@@ -196,7 +196,7 @@
     </div>
 
     <!-- Modal Add Tamplate -->
-    <div class="modal fade" id="modal-add-sub-template" tabindex="-1" aria-labelledby="modal-edit-newsLabel"
+    <div class="modal fade form-abu" id="modal-add-sub-template" tabindex="-1" aria-labelledby="modal-edit-newsLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
