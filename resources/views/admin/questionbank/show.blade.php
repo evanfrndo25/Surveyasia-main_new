@@ -42,7 +42,6 @@
                     <div class="card-body">
                 <h5 class="py-4 fw-bold">Semua Pertanyaan</h5>
                 <hr>
-<<<<<<< HEAD
                 <!-- @php
                                 $no = 1;
                             @endphp
@@ -57,9 +56,6 @@
                               $no++;
                           @endphp
                           @endforeach -->
-=======
-                <p class="fw-bold">Semua Question</p>
->>>>>>> bd2886c10272fd53c25d460ccc12001a545ecc5a
             </div>
             {{-- add question code from levi --}}
             @include('admin.questionbank.layouts.form-modal')
@@ -81,7 +77,7 @@
 
                 </div>
                 <div class="d-grid gap-2">
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn btnx-orange text-white">
                         <i class="fa fa-plus-square" aria-hidden="true"></i> Simpan
                     </button>
                 </div>
@@ -109,12 +105,8 @@
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script type="module" src="{{ asset('js/subtemplate/formsQb.js') }}"></script>
     </div>
-<<<<<<< HEAD
     </div>
-                </div>
-=======
-</div>
->>>>>>> bd2886c10272fd53c25d460ccc12001a545ecc5a
+    </div>
     @endsection
     @section('importLibraryArea')
     <script src="/js/index.js"></script>
