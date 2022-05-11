@@ -42,9 +42,6 @@
                     <div class="card-body">
                 <h5 class="py-4 fw-bold">Semua Pertanyaan</h5>
                 <hr>
-<<<<<<< HEAD
-                <p class="fw-bold">Semua Question</p>
-=======
                 <!-- @php
                                 $no = 1;
                             @endphp
@@ -59,7 +56,6 @@
                               $no++;
                           @endphp
                           @endforeach -->
->>>>>>> 193e27ca2e58b894cb8c6dba8ad4ba25f094c417
             </div>
             {{-- add question code from levi --}}
             @include('admin.questionbank.layouts.form-modal')
@@ -109,12 +105,8 @@
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script type="module" src="{{ asset('js/subtemplate/formsQb.js') }}"></script>
     </div>
-<<<<<<< HEAD
-</div>
-=======
     </div>
     </div>
->>>>>>> 193e27ca2e58b894cb8c6dba8ad4ba25f094c417
     @endsection
     @section('importLibraryArea')
     <script src="/js/index.js"></script>

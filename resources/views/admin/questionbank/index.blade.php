@@ -202,13 +202,8 @@
                                 <form method="post" enctype="multipart/form-data" id="form-add">
                                     @csrf
                                     <div class="mb-3">
-<<<<<<< HEAD
-                                        <label for="title" class="form-label">Riset Pelanggan</label>
-                                        <select class="form-select"
-=======
                                         <label for="title" class="form-label">Template</label>
                                         <select class="form-select border-r-5 border-0 bg-light"
->>>>>>> 193e27ca2e58b894cb8c6dba8ad4ba25f094c417
                                             aria-label="Default select example" name="question_bank_template_id">
                                             {{-- <option selected>Choose Templates</option> --}}
                                             @foreach ($questionbank_templates as $item)
@@ -219,31 +214,18 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="title" class="form-label">Nama Sub Template</label>
-<<<<<<< HEAD
-                                        {{-- <input type="hidden" class="form-control" id="id" name="id"> --}}
-                                        <input type="text" class="form-control"
-=======
                                         {{-- <input type="hidden" class="form-control border-r-5 border-0 bg-light" id="id" name="id"> --}}
                                         <input type="text" class="form-control border-r-5 border-0 bg-light"
->>>>>>> 193e27ca2e58b894cb8c6dba8ad4ba25f094c417
                                             placeholder="Masukan Nama Template" id="Sub Template"
                                             name="sub_template_name">
                                     </div>
                                     <div class="mb-3">
                                         <label for="deskripsi" class="form-label">Tujuan Tamplate</label>
-<<<<<<< HEAD
-                                        <input type="text" placeholder="Masukan Tujuan Tamplate" class="form-control" id="description" name="goals">
-=======
                                         <input type="text" placeholder="Masukan Tujuan Tamplate" class="form-control border-r-5 border-0 bg-light" id="description" name="goals">
->>>>>>> 193e27ca2e58b894cb8c6dba8ad4ba25f094c417
                                     </div>
                                     <div class="mb-3 w-25">
                                         <label for="aktivitas" class="form-label">Aktifitas</label>
-<<<<<<< HEAD
-                                        <select class="form-select" id="aktivitas"
-=======
                                         <select class="form-select border-r-5 border-0 bg-light" id="aktivitas"
->>>>>>> 193e27ca2e58b894cb8c6dba8ad4ba25f094c417
                                             rows="3" name="aktivitas">
                                             <option>--Choose--</option>
                                             <option value="Free">Free</option>
@@ -252,11 +234,7 @@
                                     </div>
                                     <div class="mb-3 w-25">
                                         <label for="language_id" class="form-label">Bahasa</label>
-<<<<<<< HEAD
-                                        <select class="form-select" id="language_id"
-=======
                                         <select class="form-select border-r-5 border-0 bg-light" id="language_id"
->>>>>>> 193e27ca2e58b894cb8c6dba8ad4ba25f094c417
                                             rows="3" name="language_id">
                                             <option>--Choose--</option>
                                             <option value="1">IND</option>
