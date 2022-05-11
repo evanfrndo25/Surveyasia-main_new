@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid" style="background-color: #F7F8FC;">
     <div class="row">
         <div class="col-2 nopadding">
             @include('admin.component.sidebar')
@@ -58,6 +58,8 @@
                         @endif
                     </form> -->
                 </div>
+                <div class="card border-r-15 border-15">
+                    <div class="card-body">
                 <table class="table table-no-border-head align-middle">
                     <thead>
                         <tr class="fw-bold">
@@ -179,6 +181,8 @@
             </div>
         </div>
     </div>
+    </div>
+    </div>
 
     <!-- Modal Add Tamplate -->
     <div class="modal fade" id="modal-add-sub-template" tabindex="-1" aria-labelledby="modal-edit-newsLabel"
@@ -198,8 +202,13 @@
                                 <form method="post" enctype="multipart/form-data" id="form-add">
                                     @csrf
                                     <div class="mb-3">
+<<<<<<< HEAD
                                         <label for="title" class="form-label">Riset Pelanggan</label>
                                         <select class="form-select"
+=======
+                                        <label for="title" class="form-label">Template</label>
+                                        <select class="form-select border-r-5 border-0 bg-light"
+>>>>>>> 193e27ca2e58b894cb8c6dba8ad4ba25f094c417
                                             aria-label="Default select example" name="question_bank_template_id">
                                             {{-- <option selected>Choose Templates</option> --}}
                                             @foreach ($questionbank_templates as $item)
@@ -210,18 +219,31 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="title" class="form-label">Nama Sub Template</label>
+<<<<<<< HEAD
                                         {{-- <input type="hidden" class="form-control" id="id" name="id"> --}}
                                         <input type="text" class="form-control"
+=======
+                                        {{-- <input type="hidden" class="form-control border-r-5 border-0 bg-light" id="id" name="id"> --}}
+                                        <input type="text" class="form-control border-r-5 border-0 bg-light"
+>>>>>>> 193e27ca2e58b894cb8c6dba8ad4ba25f094c417
                                             placeholder="Masukan Nama Template" id="Sub Template"
                                             name="sub_template_name">
                                     </div>
                                     <div class="mb-3">
                                         <label for="deskripsi" class="form-label">Tujuan Tamplate</label>
+<<<<<<< HEAD
                                         <input type="text" placeholder="Masukan Tujuan Tamplate" class="form-control" id="description" name="goals">
+=======
+                                        <input type="text" placeholder="Masukan Tujuan Tamplate" class="form-control border-r-5 border-0 bg-light" id="description" name="goals">
+>>>>>>> 193e27ca2e58b894cb8c6dba8ad4ba25f094c417
                                     </div>
                                     <div class="mb-3 w-25">
                                         <label for="aktivitas" class="form-label">Aktifitas</label>
+<<<<<<< HEAD
                                         <select class="form-select" id="aktivitas"
+=======
+                                        <select class="form-select border-r-5 border-0 bg-light" id="aktivitas"
+>>>>>>> 193e27ca2e58b894cb8c6dba8ad4ba25f094c417
                                             rows="3" name="aktivitas">
                                             <option>--Choose--</option>
                                             <option value="Free">Free</option>
@@ -230,7 +252,11 @@
                                     </div>
                                     <div class="mb-3 w-25">
                                         <label for="language_id" class="form-label">Bahasa</label>
+<<<<<<< HEAD
                                         <select class="form-select" id="language_id"
+=======
+                                        <select class="form-select border-r-5 border-0 bg-light" id="language_id"
+>>>>>>> 193e27ca2e58b894cb8c6dba8ad4ba25f094c417
                                             rows="3" name="language_id">
                                             <option>--Choose--</option>
                                             <option value="1">IND</option>
@@ -240,9 +266,13 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn text-white mx-auto px-lg-3 mt-5"
-                        style="background-color: #4C6FFF">Add
-                    </button>
+                    <div class="col text-end">
+                                   <a href="{{ route('admin.questionbank.index') }}"
+                                   class="btn btn-light text-black me-3 px-5 py-2">Batal</a>
+                                    <button type="submit"
+                                    class="btn btnx-orange text-white me-3 px-5 py-2">Simpan</button>
+</div>
+                   
                 </div>
             </div>
         </div>
