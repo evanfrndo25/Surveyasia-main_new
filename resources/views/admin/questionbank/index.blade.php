@@ -33,10 +33,10 @@
                         </div>
                     </div>
                     <div class="col text-end">
-                        <a href="" class="btn bg-special-blue text-white" data-bs-toggle="modal"
+                        <a href="" class="btn btnx-orange text-white" data-bs-toggle="modal"
                             data-bs-target="#modal-add-sub-template">
-                            <i class="bi bi-vector-pen me-"></i>
-                            Add Sub Template
+                            <i class="bi bi-plus-lg"></i>
+                            Tambah Sub Template
                         </a>
                     </div>
                     <!-- <form action="{{ url('/admin/set-language') }}" method="get" id="form-language">
@@ -65,7 +65,7 @@
                             <td scope="col" class="text-center">Aktivitas</td>
                             <td scope="col" class="text-center">Status</td>
                             <td scope="col" class="text-center">
-                                Action
+                                Aksi
                             </td>
                         </tr>
                     </thead>
@@ -73,10 +73,10 @@
 
                         {{-- LOOPING DATA --}}
 
-                        @foreach ($questionbank_sub_templates_act as $item)
+                        @foreach ($questionbank_sub_templates_act as $key => $item)
 
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $questionbank_sub_templates_act->firstItem() + $key }}</td>
 
                             <td class="text-center">
                                 {{ $item->status ? 'ID' : 'ENG' }}
@@ -97,38 +97,23 @@
                             {{-- <td>{{ $item->goals }}</td> --}}
                             <td class="text-center">{{ $item->questions->count() }}</td>
                             <td class="text-center">{{ $item->aktivitas }}</td>
+                            <td scope="col" class="text-center">
                             @if ($item->status == 0)
-                            <td class="text-center">Not Active</td>
+                            <div class="text-rejected p-2 text-center rounded-pill text-center">Not Active</div>
                             @else
-                            <td class="text-center">Active</td>
+                            <div class="text-complete p-2 text-center rounded-pill text-center">Active</div>
                             @endif
                             <td scope="col" class="text-end">
-                                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Edit
-                                </button>
-                                <ul class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton1">
-                                    <li>
-                                        <a class="dropdown-item text-white"
-                                            href="{{ route('admin.questionbank.show', $item->id) }}"><i
-                                                class="bi bi-zoom-in pe-3"></i>Pratinjau Pertanyaan</a>
-                                    </li>
-                                    <li>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item text-white"
-                                            href="{{route('admin.questionbank.edit',['questionbank' => $item->id])}}"><i
-                                                class="bi bi-gear-fill pe-3"></i>Edit Tamplate
+                                        
+                                        <a class="btn btn-outline" href="{{ route('admin.questionbank.show', $item->id) }}">
+                                            <i class="bi bi-search"></i>
                                         </a>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="btn dropdown-item text-white"
-                                            data-bs-toggle="modal" data-bs-target="#deleteModal{{ $item->id }}">
-                                            <i class="bi bi-trash pe-2"></i>
-                                            Hapus
-                                        </button>
-                                    </li>
-                                </ul>
+                                        <a class="btn btn-outline" href="{{ route('admin.questionbank.edit', ['questionbank' => $item->id])}}">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </a>
+                                        <a class="btn btn-outline" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $item->id }}">
+                                            <i class="bi bi-trash"></i>
+                                        </a>
                             </td>
                             {{-- <td class="text-end"><a href="{{ route('admin.questionbank.show', $item->id) }}"
                             class="btn bg-special-blue text-white">
@@ -174,6 +159,18 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div class="left">
+                    Menampilkan
+                    {{ $questionbank_sub_templates_act->firstItem() }}
+                    sampai
+                    {{ $questionbank_sub_templates_act ->lastItem() }}
+                    dari
+                    {{ $questionbank_sub_templates_act->total() }}
+                    item
+                </div>
+                <ul class="pagination justify-content-end">
+                <div class="right">{{ $questionbank_sub_templates_act->links() }}</div>
+            </ul>
             </div>
         </div>
     </div>

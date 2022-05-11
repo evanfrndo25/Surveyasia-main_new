@@ -176,6 +176,10 @@ body {
     max-width: 150px;
 }
 
+.btnx-orange{
+  background: var(--bs-orange); border: 2px solid var(--bs-orange);         
+}
+
 /* template */
 #table-template > tbody > tr > td,
 #table-template > thead > tr > th {

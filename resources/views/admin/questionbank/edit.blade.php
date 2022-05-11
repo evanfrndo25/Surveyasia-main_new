@@ -109,10 +109,10 @@
                                     <select class="form-select border-r-besar border-0 bg-light"
                                         aria-label="Default select example" name="status">
                                         @if ($item->status == '0')
-                                        <option selected value="0">Unpublished</option>
+                                        <option selected value="0">Non Active</option>
                                         <option value="1">Active</option>
                                         @else
-                                        <option value="0">Unpublished</option>
+                                        <option value="0">Non Active</option>
                                         <option selected value="1">Active</option>
                                         @endif
                                     </select>

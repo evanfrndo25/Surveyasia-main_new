@@ -10,7 +10,7 @@
 
 @section('content')
 
-<div class="container-fluid">
+<div class="container-fluid"  style="background-color: #F7F8FC;">
     <div class="row">
         <div class="col-2 nopadding">
             @include('admin.component.sidebar')
@@ -24,16 +24,24 @@
                     {{ session()->get('status') }}
                 </div>
                 @endif
-                <a href="{{ route('admin.questionbank.index') }}" class="mb-2 text-dark h5">
-                    <i class="bi bi-arrow-left pe-2"></i>Kembali </a>
-                <h3 class="py-4">{{ $questionbank->sub_template_name }}</h3>
+                <a href="{{ route('admin.questionbank.index') }}" class="mb-2 text-dark h6">
+                    <i class="bi bi-chevron-left pe-2"></i>Kembali </a>
+                    <h1 class="text-center fw-bold" style="font-size: 20px">Pratinjau Pertanyaan</h1>
+                <div class="card">
+                    <div class="card-body">
+                <h5 class="py-4 fw-bold">{{ $questionbank->sub_template_name }}</h5>
                 <p>{{ $questionbank->goals }}</p>
                 {{-- @foreach ($questionbank_sub_templates as $item)
             <h4>{{ $item->sub_template_name }}</h4>
                 <p>Goals : {{ $item->goals }}</p>
                 @endforeach --}}
+                </div>
+                </div>
+                <br>
+                <div class="card">
+                    <div class="card-body">
+                <h5 class="py-4 fw-bold">Semua Pertanyaan</h5>
                 <hr>
-                <p class="fw-bold">Semua Question</p>
                 <!-- @php
                                 $no = 1;
                             @endphp
@@ -106,6 +114,8 @@
             <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
             <script type="module" src="{{ asset('js/subtemplate/formsQb.js') }}"></script>
     </div>
+    </div>
+                </div>
     @endsection
     @section('importLibraryArea')
     <script src="/js/index.js"></script>
