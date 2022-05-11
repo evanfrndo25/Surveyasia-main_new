@@ -2,6 +2,13 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/admin-dashboard.css') }}">
+
+<style>
+    body {
+        background-color: #F7FAFC;
+    }
+
+</style>
 @endsection
 
 
@@ -20,108 +27,112 @@
                     {{ session()->get('status') }}
                 </div>
                 @endif
-                <h3 class="text-center py-3">Edit Chart</h3>
-                <div class="row justify-content-center text-center">
-                    <div class="col-6 mb-4" id="chart-target">
-                        <canvas class="mx-3" id="chartPreview" style="max-height: 250px;"></canvas>
-                    </div>
-                </div>
-                <form action="{{ route('admin.chart.update', $chart->id) }}" method="post"
-                    enctype="multipart/form-data">
-                    @method('put')
-                    @csrf
+                <h3 class="text-center py-3">Edit Diagram</h3>
+                <div class="card" style="background-color: #FFFFFF; border: 1px solid rgba(0, 0, 0, 0.3); border-radius: 15px; padding:30px;">
                     <div class="row justify-content-center text-center">
-                        <div class="col-6">
-                            <div class="mb-4">
-                                <label for="deskripsi" class="form-label">Libray From</label>
-                                @php
-                                    $library = ['Chart JS', 'AnyChart', 'DevExpress'];
-                                @endphp
-                                <select class="form-select rounded-pill border-0 bg-light px-3" name="library_from" id="library_from" onchange="changeChartType()">
-                                    @foreach ($library as $lib)
-                                        @if ($chart->library_from == $lib)
-                                            <option selected value="{{ $chart->library_from }}">{{ $chart->library_from }}</option>
+                        <div class="col-6 mb-4" id="Diagram-target">
+                            <canvas class="mx-3" id="chartPreview" style="max-height: 250px;"></canvas>
+                        </div>
+                    </div>
+                    <form action="{{ route('admin.chart.update', $chart->id) }}" method="post"
+                        enctype="multipart/form-data">
+                        @method('put')
+                        @csrf
+                        <div class="row justify-content-center text-center">
+                            <div class="col-6">
+                                <div class="mb-4">
+                                    <label for="deskripsi" class="form-label title-form">Libray From</label>
+                                    @php
+                                        $library = ['Chart JS', 'AnyChart', 'DevExpress'];
+                                    @endphp
+                                    <select class="form-select py-3 px-3" name="library_from" id="library_from" onchange="changeChartType()">
+                                        @foreach ($library as $lib)
+                                            @if ($chart->library_from == $lib)
+                                                <option selected value="{{ $chart->library_from }}">{{ $chart->library_from }}</option>
+                                            @else
+                                                <option value="{{ $lib }}">{{ $lib }}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label title-form">Nama Diagram</label>
+                                    <input type="text" name="name" class="form-control py-3 px-3"
+                                        placeholder="Masukan Nama Chart" id="exampleFormControlInput1"
+                                        value="{{ $chart->name }}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label title-form">Kategori Diagram</label>
+                                    <select class="form-select py-3 px-3" id="chartCategory"
+                                        aria-label="Default select example" name="type">
+                                        {{--@foreach ($typeChart as $tchart)
+                                        @if ($tchart->type == $chart->type)
+                                        <option selected value="{{ $chart->type }}">{{ $chart->type }}</option>
                                         @else
-                                            <option value="{{ $lib }}">{{ $lib }}</option>
+                                        <option value="{{ $tchart->type }}">{{ $tchart->type }}</option>
                                         @endif
-                                    @endforeach
-                                </select>
+                                        @endforeach--}}
+                                        <option value="{{ $chart->type }}">{{ $chart->type }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label title-form">Status</label>
+                                    <select class="form-select py-3 px-3"
+                                        aria-label="Default select example" name="status">
+                                        @if ($chart->status == 0)
+                                        <option selected value="0">Off</option>
+                                        <option value="1">On</option>
+                                        @else
+                                        <option value="0">Off</option>
+                                        <option selected value="1">On</option>
+                                        @endif
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label title-form">Aktivitas</label>
+                                    <select class="form-select py-3 px-3"
+                                        aria-label="Default select example" name="chart_type">
+                                        @if ($chart->chart_type == 'free')
+                                        <option selected value="free">free</option>
+                                        <option value="premium">premium</option>
+                                        @else
+                                        <option value="free">free</option>
+                                        <option selected value="premium">premium</option>
+                                        @endif
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">Nama Chart</label>
-                                <input type="text" name="name" class="form-control rounded-pill border-0 bg-light px-3"
-                                    placeholder="Masukan Nama Chart" id="exampleFormControlInput1"
-                                    value="{{ $chart->name }}">
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">Kategori Chart</label>
-                                <select class="form-select rounded-pill border-0 bg-light px-3" id="chartCategory"
-                                    aria-label="Default select example" name="type">
-                                    {{--@foreach ($typeChart as $tchart)
-                                    @if ($tchart->type == $chart->type)
-                                    <option selected value="{{ $chart->type }}">{{ $chart->type }}</option>
-                                    @else
-                                    <option value="{{ $tchart->type }}">{{ $tchart->type }}</option>
-                                    @endif
-                                    @endforeach--}}
-                                    <option value="{{ $chart->type }}">{{ $chart->type }}</option>
-                                </select>
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-4">
+                                    <label for="deskripsi" class="form-label title-form">Deskripsi</label>
+                                    <textarea class="form-control " rows="3" name="description"
+                                        placeholder="Tulis disini...">{{ $chart->description }}</textarea>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-6">
-                            <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">Status</label>
-                                <select class="form-select rounded-pill border-0 bg-light px-3"
-                                    aria-label="Default select example" name="status">
-                                    @if ($chart->status == 0)
-                                    <option selected value="0">Off</option>
-                                    <option value="1">On</option>
-                                    @else
-                                    <option value="0">Off</option>
-                                    <option selected value="1">On</option>
-                                    @endif
-                                </select>
+                        <hr style="border: 1px solid #D9DBE9; transform: matrix(1, 0, 0, 1, 0, 0);">
+                        <div class="row ">
+                            <div class="col text-end mt-3">
+                                <button type="button" class="btn btn-outline-orange  px-5 " data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+                                    {{-- <i class="bi bi-trash"></i> --}}
+                                    Hapus
+                                </button>
                             </div>
-                            <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">Aktivitas</label>
-                                <select class="form-select rounded-pill border-0 bg-light px-3"
-                                    aria-label="Default select example" name="chart_type">
-                                    @if ($chart->chart_type == 'free')
-                                    <option selected value="free">free</option>
-                                    <option value="premium">premium</option>
-                                    @else
-                                    <option value="free">free</option>
-                                    <option selected value="premium">premium</option>
-                                    @endif
-                                </select>
+                            <div class="col  mt-3">
+                                <button type="submit" class="btn btn-orange text-white  px-5">Simpan</button>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="mb-4">
-                                <label for="deskripsi" class="form-label">Description</label>
-                                <textarea class="form-control rounded-3 border-0 bg-light" rows="3" name="description"
-                                    placeholder="Tulis disini...">{{ $chart->description }}</textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-end mt-3 pt-3">
-                        <button type="button" class="btn text-danger mx-auto px-5 py-2r" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">
-                            <i class="bi bi-trash"></i>
-                            Hapus
-                        </button>
-                    </div>
-                    <div class="text-center mt-3">
-                        <button type="submit" class="btn bg-special-blue text-white mx-auto px-5 py-2">Update
-                            Chart</button>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -145,11 +156,11 @@
             </div>
             <div class="row px-4 pb-5">
                 <div class="col d-grid gap-2">
-                    <a href="{{ route('admin.chart.destroy', $chart->id) }}" class="btn btn-danger">YA, HAPUS CHART</a>
+                    <a href="{{ route('admin.chart.destroy', $chart->id) }}" class="btn btn-orange">Ya, Hapus</a>
                 </div>
                 <div class="col d-grid gap-2">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">TIDAK, 
-                        SIMPAN CHART</button>
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tidak, 
+                        tetap simpan</button>
                 </div>
             </div>
         </div>
