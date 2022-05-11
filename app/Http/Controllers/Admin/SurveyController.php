@@ -88,7 +88,9 @@ class SurveyController extends Controller
         $data = SurveyCategory::find($id);
         $surveytemp = Survey::where('id', $id)->get();
         $title = $this->title;
-        return view('admin.survey.show', compact('title', 'id', 'data', 'survey', 'surveytemp'));
+        $question = Question::where('survey_id', $id)->get();
+
+        return view('admin.survey.show', compact('title', 'id', 'data', 'survey', 'surveytemp', 'question'));
     }
 
     public function showSurveyDetailsDeny(Survey $survey)

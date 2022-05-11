@@ -10,7 +10,7 @@
 
 @section('content')
 
-<div class="container-fluid">
+<div class="container-fluid"  style="background-color: #F7F8FC;">
     <div class="row">
         <div class="col-2 nopadding">
             @include('admin.component.sidebar')
@@ -24,16 +24,27 @@
                     {{ session()->get('status') }}
                 </div>
                 @endif
-                <a href="{{ route('admin.questionbank.index') }}" class="mb-2 text-dark h5">
-                    <i class="bi bi-arrow-left pe-2"></i>Kembali </a>
-                <h3 class="py-4">{{ $questionbank->sub_template_name }}</h3>
+                <a href="{{ route('admin.questionbank.index') }}" class="mb-2 text-dark text-decoration-none h6">
+                    <i class="bi bi-chevron-left pe-2"></i>Kembali </a>
+                    <h1 class="text-center fw-bold" style="font-size: 20px">Pratinjau Pertanyaan</h1>
+                <div class="card">
+                    <div class="card-body">
+                <h5 class="py-4 fw-bold">{{ $questionbank->sub_template_name }}</h5>
                 <p>{{ $questionbank->goals }}</p>
                 {{-- @foreach ($questionbank_sub_templates as $item)
             <h4>{{ $item->sub_template_name }}</h4>
                 <p>Goals : {{ $item->goals }}</p>
                 @endforeach --}}
+                </div>
+                </div>
+                <br>
+                <div class="card">
+                    <div class="card-body">
+                <h5 class="py-4 fw-bold">Semua Pertanyaan</h5>
                 <hr>
+<<<<<<< HEAD
                 <p class="fw-bold">Semua Question</p>
+=======
                 <!-- @php
                                 $no = 1;
                             @endphp
@@ -48,6 +59,7 @@
                               $no++;
                           @endphp
                           @endforeach -->
+>>>>>>> 193e27ca2e58b894cb8c6dba8ad4ba25f094c417
             </div>
             {{-- add question code from levi --}}
             @include('admin.questionbank.layouts.form-modal')
@@ -69,22 +81,11 @@
 
                 </div>
                 <div class="d-grid gap-2">
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn btnx-orange text-white">
                         <i class="fa fa-plus-square" aria-hidden="true"></i> Simpan
                     </button>
                 </div>
                 <hr id="horizontalLine" style="display: none;">
-                <!-- <div class="row d-flex justify-content-between">
-                    <div class="col-8">
-                        <div class="alert alert-info alert-dismissible fade" role="alert" id="minQuestionAlert">
-                            Buat minimal 5 pertanyaan untuk disimpan
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    </div>
-                    <div class="col-auto">
-                        <button type="submit" class="btn btn-primary disabled fade">Simpan</button>
-                    </div>
-                </div> -->
             </form>
 
             <div class="card mb-3 text-center fade" id="noQuestionContainer">
@@ -96,16 +97,24 @@
 
         </div>
         <script>
-                var url = "{!! $url !!}";
-            </script>
-            <script>
-                var questions = {!! $questionbank->questions !!};
-            </script>
-            <!-- Latest Sortable -->
-            <script src="http://SortableJS.github.io/Sortable/Sortable.js"></script>
-            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-            <script type="module" src="{{ asset('js/subtemplate/formsQb.js') }}"></script>
+            var url = "{!! $url !!}";
+
+        </script>
+        <script>
+        var questions = {!! $questionbank->questions !!};
+
+        </script>
+        <!-- Latest Sortable -->
+        <script src="http://SortableJS.github.io/Sortable/Sortable.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script type="module" src="{{ asset('js/subtemplate/formsQb.js') }}"></script>
     </div>
+<<<<<<< HEAD
+</div>
+=======
+    </div>
+    </div>
+>>>>>>> 193e27ca2e58b894cb8c6dba8ad4ba25f094c417
     @endsection
     @section('importLibraryArea')
     <script src="/js/index.js"></script>

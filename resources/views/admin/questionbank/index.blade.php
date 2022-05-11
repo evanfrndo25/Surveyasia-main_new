@@ -2,10 +2,15 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/admin-dashboard.css') }}">
+<style>
+    .form-select, .form-control {
+        background-color: #fafafa;
+    }
+</style>
 @endsection
 
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid" style="background-color: #F7F8FC;">
     <div class="row">
         <div class="col-2 nopadding">
             @include('admin.component.sidebar')
@@ -33,10 +38,10 @@
                         </div>
                     </div>
                     <div class="col text-end">
-                        <a href="" class="btn bg-special-blue text-white" data-bs-toggle="modal"
+                        <a href="" class="btn btnx-orange text-white" data-bs-toggle="modal"
                             data-bs-target="#modal-add-sub-template">
-                            <i class="bi bi-vector-pen me-"></i>
-                            Add Sub Template
+                            <i class="bi bi-plus-lg"></i>
+                            Tambah Sub Template
                         </a>
                     </div>
                     <!-- <form action="{{ url('/admin/set-language') }}" method="get" id="form-language">
@@ -53,6 +58,8 @@
                         @endif
                     </form> -->
                 </div>
+                <div class="card border-r-15 border-15">
+                    <div class="card-body">
                 <table class="table table-no-border-head align-middle">
                     <thead>
                         <tr class="fw-bold">
@@ -65,7 +72,7 @@
                             <td scope="col" class="text-center">Aktivitas</td>
                             <td scope="col" class="text-center">Status</td>
                             <td scope="col" class="text-center">
-                                Action
+                                Aksi
                             </td>
                         </tr>
                     </thead>
@@ -73,10 +80,10 @@
 
                         {{-- LOOPING DATA --}}
 
-                        @foreach ($questionbank_sub_templates_act as $item)
+                        @foreach ($questionbank_sub_templates_act as $key => $item)
 
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $questionbank_sub_templates_act->firstItem() + $key }}</td>
 
                             <td class="text-center">
                                 {{ $item->status ? 'ID' : 'ENG' }}
@@ -97,38 +104,23 @@
                             {{-- <td>{{ $item->goals }}</td> --}}
                             <td class="text-center">{{ $item->questions->count() }}</td>
                             <td class="text-center">{{ $item->aktivitas }}</td>
+                            <td scope="col" class="text-center">
                             @if ($item->status == 0)
-                            <td class="text-center">Not Active</td>
+                            <div class="text-rejected p-2 text-center rounded-pill text-center">Not Active</div>
                             @else
-                            <td class="text-center">Active</td>
+                            <div class="text-complete p-2 text-center rounded-pill text-center">Active</div>
                             @endif
                             <td scope="col" class="text-end">
-                                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Edit
-                                </button>
-                                <ul class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton1">
-                                    <li>
-                                        <a class="dropdown-item text-white"
-                                            href="{{ route('admin.questionbank.show', $item->id) }}"><i
-                                                class="bi bi-zoom-in pe-3"></i>Pratinjau Pertanyaan</a>
-                                    </li>
-                                    <li>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item text-white"
-                                            href="{{route('admin.questionbank.edit',['questionbank' => $item->id])}}"><i
-                                                class="bi bi-gear-fill pe-3"></i>Edit Tamplate
+                                        
+                                        <a class="btn btn-outline" href="{{ route('admin.questionbank.show', $item->id) }}">
+                                            <i class="bi bi-search"></i>
                                         </a>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="btn dropdown-item text-white"
-                                            data-bs-toggle="modal" data-bs-target="#deleteModal{{ $item->id }}">
-                                            <i class="bi bi-trash pe-2"></i>
-                                            Hapus
-                                        </button>
-                                    </li>
-                                </ul>
+                                        <a class="btn btn-outline" href="{{ route('admin.questionbank.edit', ['questionbank' => $item->id])}}">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </a>
+                                        <a class="btn btn-outline" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $item->id }}">
+                                            <i class="bi bi-trash"></i>
+                                        </a>
                             </td>
                             {{-- <td class="text-end"><a href="{{ route('admin.questionbank.show', $item->id) }}"
                             class="btn bg-special-blue text-white">
@@ -174,8 +166,22 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div class="left">
+                    Menampilkan
+                    {{ $questionbank_sub_templates_act->firstItem() }}
+                    sampai
+                    {{ $questionbank_sub_templates_act ->lastItem() }}
+                    dari
+                    {{ $questionbank_sub_templates_act->total() }}
+                    item
+                </div>
+                <ul class="pagination justify-content-end">
+                <div class="right">{{ $questionbank_sub_templates_act->links() }}</div>
+            </ul>
             </div>
         </div>
+    </div>
+    </div>
     </div>
 
     <!-- Modal Add Tamplate -->
@@ -196,8 +202,13 @@
                                 <form method="post" enctype="multipart/form-data" id="form-add">
                                     @csrf
                                     <div class="mb-3">
+<<<<<<< HEAD
+                                        <label for="title" class="form-label">Riset Pelanggan</label>
+                                        <select class="form-select"
+=======
                                         <label for="title" class="form-label">Template</label>
-                                        <select class="form-select border-r-besar w-50 border-0 bg-light"
+                                        <select class="form-select border-r-5 border-0 bg-light"
+>>>>>>> 193e27ca2e58b894cb8c6dba8ad4ba25f094c417
                                             aria-label="Default select example" name="question_bank_template_id">
                                             {{-- <option selected>Choose Templates</option> --}}
                                             @foreach ($questionbank_templates as $item)
@@ -208,27 +219,44 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="title" class="form-label">Nama Sub Template</label>
-                                        {{-- <input type="hidden" class="form-control border-r-besar border-0 bg-light" id="id" name="id"> --}}
-                                        <input type="text" class="form-control border-r-besar border-0 bg-light"
+<<<<<<< HEAD
+                                        {{-- <input type="hidden" class="form-control" id="id" name="id"> --}}
+                                        <input type="text" class="form-control"
+=======
+                                        {{-- <input type="hidden" class="form-control border-r-5 border-0 bg-light" id="id" name="id"> --}}
+                                        <input type="text" class="form-control border-r-5 border-0 bg-light"
+>>>>>>> 193e27ca2e58b894cb8c6dba8ad4ba25f094c417
                                             placeholder="Masukan Nama Template" id="Sub Template"
                                             name="sub_template_name">
                                     </div>
                                     <div class="mb-3">
                                         <label for="deskripsi" class="form-label">Tujuan Tamplate</label>
-                                        <input type="text" placeholder="Masukan Tujuan Tamplate" class="form-control border-r-besar border-0 bg-light" id="description" name="goals">
+<<<<<<< HEAD
+                                        <input type="text" placeholder="Masukan Tujuan Tamplate" class="form-control" id="description" name="goals">
+=======
+                                        <input type="text" placeholder="Masukan Tujuan Tamplate" class="form-control border-r-5 border-0 bg-light" id="description" name="goals">
+>>>>>>> 193e27ca2e58b894cb8c6dba8ad4ba25f094c417
                                     </div>
-                                    <div class="mb-3">
+                                    <div class="mb-3 w-25">
                                         <label for="aktivitas" class="form-label">Aktifitas</label>
-                                        <select class="form-select border-r-besar border-0 bg-light" id="aktivitas"
+<<<<<<< HEAD
+                                        <select class="form-select" id="aktivitas"
+=======
+                                        <select class="form-select border-r-5 border-0 bg-light" id="aktivitas"
+>>>>>>> 193e27ca2e58b894cb8c6dba8ad4ba25f094c417
                                             rows="3" name="aktivitas">
                                             <option>--Choose--</option>
                                             <option value="Free">Free</option>
                                             <option value="Premium">Premium</option>
                                         </select>
                                     </div>
-                                    <div class="mb-3">
+                                    <div class="mb-3 w-25">
                                         <label for="language_id" class="form-label">Bahasa</label>
-                                        <select class="form-select border-r-besar border-0 bg-light" id="language_id"
+<<<<<<< HEAD
+                                        <select class="form-select" id="language_id"
+=======
+                                        <select class="form-select border-r-5 border-0 bg-light" id="language_id"
+>>>>>>> 193e27ca2e58b894cb8c6dba8ad4ba25f094c417
                                             rows="3" name="language_id">
                                             <option>--Choose--</option>
                                             <option value="1">IND</option>
@@ -238,9 +266,13 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn text-white mx-auto px-lg-3 mt-5"
-                        style="background-color: #4C6FFF">Add
-                    </button>
+                    <div class="col text-end">
+                                   <a href="{{ route('admin.questionbank.index') }}"
+                                   class="btn btn-light text-black me-3 px-5 py-2">Batal</a>
+                                    <button type="submit"
+                                    class="btn btnx-orange text-white me-3 px-5 py-2">Simpan</button>
+</div>
+                   
                 </div>
             </div>
         </div>

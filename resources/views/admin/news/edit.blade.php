@@ -60,8 +60,10 @@
                                 </div>
                                 @enderror
                             </div>
-                            <div class="form-group">
-                                    <label for="category" class="form-label">Kategori</label>
+                            <label for="category" class="form-label">Kategori</label>
+                                <input type="text" class="form-control border-r-besar border-0 bg-light py-2  @error('category') is-invalid @enderror" id="category" name="category" value="{{ old('category', $news->category) }}" required>
+                                @error('category')
+                                    <div class="invalid-feedback">
                                     <!-- membuat form dropdown kategori dengan id = category -->
                                     <form action="" method="GET" id="category">
                                     <select class="form-control" name="category" onChange="document.getElementById('category').submit();">
@@ -74,7 +76,8 @@
                                         <option <?php if(!empty($surveyasiaNews)){ echo $category == 'SurveyAsia' ? 'selected':''; } ?> value="SurveyAsia">SurveyAsia</option>
                                      </select>
                                     </div>
-                                </div>
+                                 @enderror
+                            </div>
                                 <br>
                             <div class="mb-3">
                                 <label for="foto" class="form-label border-r-besar">Upload Foto</label>
