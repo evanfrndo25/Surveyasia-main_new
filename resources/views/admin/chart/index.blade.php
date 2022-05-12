@@ -16,8 +16,11 @@
             @include('admin.component.header')
             <div class="container pt-4">
                 <div class="row pb-5 pt-3">
-                    <div class="col-3">
-                        <input class="form-control rounded-pill" type="search" placeholder="Cari disini" aria-label="Search">
+                    <div class="col">
+                        <div class="input-group align-items-center w-50">
+                            <input class="form-control rounded-pill px-5" type="search" placeholder="Cari disini" aria-label="Search">
+                            <i class="position-absolute top-50 start-0 translate-middle-y bi bi-search p-2 ms-1 text-secondary"></i>
+                        </div>
                     </div>
                     <div class="col text-end">
                         <a href="{{ route('admin.chart.create') }}"

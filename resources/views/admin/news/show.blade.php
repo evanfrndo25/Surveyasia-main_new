@@ -22,12 +22,22 @@
             @include('admin.component.header')
 
             <div class="container mt-2" style="height: 650px;">
-                <div class="row bg-white px-4 py-5">
-                    <div class="col-6">
-                        <div class="card p-4">
-                            <h5 class="px-3">{{ $news->title }}</h5>
-                            <img src="{{ url('storage/'.$news->img) }}">
-                            <div class="card-body">
+                <div class="row px-4 py-5">
+                    <div class="col">
+                        <div class="card p-4" style="background-color: #FFFFFF; border-radius: 20px;">
+                            <h4 class="px-3 text-center">{{ $news->title }}</h3>
+                            <div class="justify-content-center desc-news d-flex">
+                                <p>{{ $news->category }}</p>
+                                <p class="px-1">-</p>
+                                <p>{{ $news->created_at->format('d M Y H:i') }}</p>
+                                {{-- <p>{{ $news->created_at->diffForHumans() }}</p> --}}
+                            </div>
+                            
+                            <div class="text-center">
+                                <img src="{{ url('storage/'.$news->img) }}" class="w-50">
+                            </div>
+                            
+                            <div class="card-body desc-news">
                                 <p>{!! $news->description !!}</p>
                             </div>
                         </div>

@@ -22,8 +22,8 @@
             @include('admin.component.header')
 
             <div class="container mt-2" style="height: 650px;">
-                <div class="row bg-white px-4 py-5">
-                    <h3>Edit News</h3>
+                <div class="row px-4 py-5">
+                    <h3 class="text-center">Edit Berita</h3>
                     <div class="col">
                         <form action="{{ route('admin.news.update', $news->id) }}" method="post"
                             enctype="multipart/form-data">
@@ -50,6 +50,27 @@
                                 </div>
                                 @enderror
                             </div>
+                            
+                            <div class="mb-3">
+                                <label for="category" class="form-label">Kategori</label>
+                                <input type="text" class="form-control border-r-besar border-0 bg-light py-2  @error('category') is-invalid @enderror" id="category" name="category" value="{{ old('category', $news->category) }}" required>
+                                    @error('category')
+                                        <div class="invalid-feedback">
+                                            <!-- membuat form dropdown kategori dengan id = category -->
+                                            <form action="" method="GET" id="category">
+                                            <select class="form-control" name="category" onChange="document.getElementById('category').submit();">
+                                                <option value="">Pilih Kategori</option>
+                                                <option <?php if(!empty($news)){ echo $category == 'Bisnis' ? 'selected':''; } ?> value="Bisnis">Bisnis</option>
+                                                <option <?php if(!empty($belajar_news)){ echo $category == 'Belajar' ? 'selected':''; } ?> value="Belajar">Belajar</option>
+                                                <option <?php if(!empty($hobi_news)){ echo $category == 'Hobi' ? 'selected':''; } ?> value="Hobi">Hobi</option>
+                                                <option <?php if(!empty($ProduktifitasNews)){ echo $category== 'Produktifitas' ? 'selected':''; } ?> value="Produktifitas">Produktifitas</option>
+                                                <option <?php if(!empty($lainnyaNews)){ echo $category == 'Lainnya' ? 'selected':''; } ?> value="Lainnya">Lainnya</option>
+                                                <option <?php if(!empty($surveyasiaNews)){ echo $category == 'SurveyAsia' ? 'selected':''; } ?> value="SurveyAsia">SurveyAsia</option>
+                                            </select>
+                                        </div>
+                                    @enderror
+                            </div>
+                            
                             <div class="mb-3">
                                 <label for="judul" class="form-label">Judul</label>
                                 <input type="text" class="form-control border-r-besar border-0 bg-light py-2  @error('title') is-invalid @enderror" id="judul"
@@ -60,24 +81,9 @@
                                 </div>
                                 @enderror
                             </div>
-                            <label for="category" class="form-label">Kategori</label>
-                                <input type="text" class="form-control border-r-besar border-0 bg-light py-2  @error('category') is-invalid @enderror" id="category" name="category" value="{{ old('category', $news->category) }}" required>
-                                @error('category')
-                                    <div class="invalid-feedback">
-                                    <!-- membuat form dropdown kategori dengan id = category -->
-                                    <form action="" method="GET" id="category">
-                                    <select class="form-control" name="category" onChange="document.getElementById('category').submit();">
-                                        <option value="">Pilih Kategori</option>
-                                        <option <?php if(!empty($news)){ echo $category == 'Bisnis' ? 'selected':''; } ?> value="Bisnis">Bisnis</option>
-                                        <option <?php if(!empty($belajar_news)){ echo $category == 'Belajar' ? 'selected':''; } ?> value="Belajar">Belajar</option>
-                                        <option <?php if(!empty($hobi_news)){ echo $category == 'Hobi' ? 'selected':''; } ?> value="Hobi">Hobi</option>
-                                        <option <?php if(!empty($ProduktifitasNews)){ echo $category== 'Produktifitas' ? 'selected':''; } ?> value="Produktifitas">Produktifitas</option>
-                                        <option <?php if(!empty($lainnyaNews)){ echo $category == 'Lainnya' ? 'selected':''; } ?> value="Lainnya">Lainnya</option>
-                                        <option <?php if(!empty($surveyasiaNews)){ echo $category == 'SurveyAsia' ? 'selected':''; } ?> value="SurveyAsia">SurveyAsia</option>
-                                     </select>
-                                    </div>
-                                 @enderror
-                            </div>
+                            
+                            
+                    </div>
                                 <br>
                             <div class="mb-3">
                                 <label for="foto" class="form-label border-r-besar">Upload Foto</label>
@@ -93,12 +99,12 @@
                                 </div>
                                 @enderror
                             </div>
-
+                        <div class="mt-5 pt-3 text-center">
+                            <button type="submit" class="btn btn-outline-orange mx-auto px-lg-5">Batal</button>
+                            <button type="submit" class="btn btn-orange mx-auto px-lg-5">Simpan</button>
+                        </div>
                     </div>
-                    <div class="mt-5 pt-3">
-                        <button type="submit" class="btn bg-special-blue text-white mx-auto px-lg-5">Ubah</button>
-                        <button type="submit" class="btn bg-danger text-white mx-auto px-lg-5">Tidak</button>
-                    </div>
+                    
                     </form>
                 </div>
             </div>
