@@ -83,9 +83,11 @@
                         <div class="col">
                             <p class="fs-14px">Status</p>
                             @if ($survey->status == 'active')
-                            <h6 class="text-capitalize text-success fw-semibold">{{ $survey->status }}</h6>
+                                <h6 class="text-capitalize text-success fw-semibold">Active</h6>
+                            @elseif ($survey->status == 'closed')
+                                <h6 class="text-capitalize text-danger fw-semibold">Unpublished</h6>
                             @else
-                            <h6 class="text-capitalize text-danger fw-semibold">{{ $survey->status }}</h6>
+                                <h6 class="text-capitalize text-warning fw-semibold">Pending</h6>
                             @endif
                         </div>
                     </div>
@@ -126,7 +128,7 @@
                         <div class="col">
                             <p class="fs-14px mb-1">Hapus</p>
                             <button type="button" class="btn link-dark" data-bs-toggle="modal"
-                                data-bs-target="#deleteSurveyModal">
+                                data-bs-target="#deleteSurveyModal{{ $survey->id }}">
                                 <i class="fal fa-trash fs-4 pt-1"></i>
                             </button>
                             {{-- <a href="{{ route('researcher.surveys.delete', $survey->id) }}" class="link-dark">

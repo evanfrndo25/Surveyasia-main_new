@@ -200,23 +200,13 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <p class="text-decoration-underline fw-bold">Pertanyaan</p>
-                                        <!-- Codingan tadi siang -->
-                                        @foreach ($question as $dataitem)
-                                        <ol>
-                                            <li>{{ $dataitem->question }}</li>
-                                        </ol>
-                                        @endforeach
-                                         <!-- Codingan tadi siang -->
 
-                                         <!-- Hardcode untuk pertanyaan -->
-                                         <form>
-                                             <div class="card p-4">
-                                                 <p class="fw-bold pb-2">Jenis Pertanyaan</p>
-                                                 <p>Judul Pertanyaan</p>
-                                                 <div>Tampilan Pertanyaan</div>
-                                             </div>
-                                         </form>
-                                         <!-- Hardcode untuk pertanyaan -->
+                                        @foreach ($question as $dataitem)
+                                        <div class="card p-4 mb-3">
+                                            <p class="fw-bold">{{ $dataitem->question }}</p>
+                                            <p>tipe : {{ json_decode(stripslashes($dataitem->configuration))->componentName }}</p>
+                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -228,4 +218,9 @@
         </div>
     </div>
 </div>
+<script>
+    var quest = {!! $question !!};
+</script>
+<script type="module" src="{{ asset('js/admin/buildQuestion.js') }}"></script>
+
 @endsection

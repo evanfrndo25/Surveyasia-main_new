@@ -406,6 +406,9 @@ Route::middleware(['is_admin', 'role:admin'])->group(function () {
         Route::get('survey/{survey}/preview-acc', [SurveyInAdmin::class, 'showSurveyDetailsAcc'])->name('survey.acc');
         Route::get('survey/{survey}/delete', [SurveyInAdmin::class, 'destroy'])->name('survey.destroy');
         Route::get('data-verification', [UserController::class, 'dataVerify'])->name('dataVerify');
+
+        Route::get('survey/acc/{survey}', [SurveyInAdmin::class, 'surveyAcc'])->name('survey.acc');
+        Route::post('survey/deny/{survey}', [SurveyInAdmin::class, 'surveyDeny'])->name('survey.deny');
     });
 });
 

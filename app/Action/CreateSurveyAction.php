@@ -27,6 +27,7 @@ class CreateSurveyAction
             'signature' => Str::random(4).$request->title,
             'slug' => Str::slug($request->title, '-'),
             'max_attempt' => $maxAttempt,
+            'reason_deny' => null,
             'estimate_completion' => $estimateCompletion,
             'reward_point' => $reward
         ]);

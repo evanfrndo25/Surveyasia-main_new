@@ -1,5 +1,5 @@
 <!-- Modal Delete Survey-->
-<div class="modal fade" id="deleteSurveyModal" role="dialog">
+<div class="modal fade" id="deleteSurveyModal{{ $survey->id }}" role="dialog">
     <div class="modal-dialog modal-lg modal-dialog-centered">
 
         <!-- Modal content-->
