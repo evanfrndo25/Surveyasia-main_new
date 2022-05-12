@@ -16,11 +16,11 @@ class NewsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public $title = "News";
+    public $title = "Berita";
 
     public function index()
     {
-        $news = News::latest()->paginate(10);
+        $news = News::latest()->paginate(5);
         // dd($news);
 
         return view('admin.news.index', [

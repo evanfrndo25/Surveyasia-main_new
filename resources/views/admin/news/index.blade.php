@@ -26,58 +26,78 @@
                 <div class="row py-4">
                     <div class="col">
                         <div class=" input-group align-items-center w-50">
-                            <input type="text" class="form-control rounded-pill py-2 text-center"
-                                placeholder="Search everything" aria-label="search" aria-describedby="basic-addon1"
-                                style="font-size: 12px">
+                            <input type="text" class="form-control rounded-pill py-2 px-5 " 
+                                
+                                placeholder="Cari disini" aria-label="search" aria-describedby="basic-addon1"
+                                style="font-size: 14px">
+                                
                             <a href="#">
-                                <i
-                                    class="position-absolute top-50 start-0 translate-middle-y bi bi-search p-2 ms-1 text-secondary"></i>
+                                
+                                <i class="position-absolute top-50 start-0 translate-middle-y bi bi-search p-2 ms-1 text-secondary"></i>
                             </a>
                         </div>
                     </div>
                     <div class="col">
                         <div class="text-end">
-                            <a href="{{ route('admin.news.create') }}" class="btn bg-special-blue text-white">
-                                <i class="bi bi-vector-pen"></i>
-                                Add News
+                            <a href="{{ route('admin.news.create') }}" class="btn btn-orange text-white">
+                                <i class="bi bi-plus-lg me-2"></i>
+                                Tambah Berita
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <table class="table align-middle" id="table-news">
+                <table class="table table-no-border-head align-middle" id="" >
                     <thead>
-                        <tr class="fw-bold">
-                            <td scope="col" class="w-50 text-center">Title</td>
+                        <tr class="fw-bold" style="background: rgba(246, 190, 178, 0.15); border-radius: 15px 15px 0px 0px;" >
+                            <td scope="col" class="w-50">Judul</td>
                             <td scope="col" class="text-center">Status</td>
-                            <td scope="col" class="text-center">Category</td>
+                            <td scope="col" class="text-center">Kategori</td>
+                            <td></td>
                         </tr>
                     </thead>
                     <tbody>
 
                         {{-- LOOPING NEWS --}}
                         @foreach ($news as $item)
-                        <tr style="background-color: #F7FAFC;">
+                        <tr >
                             <td scope="col" class="py-4">
                                 <h6 class="fw-bold" style="color: #2A4365"> {{ $item->title }}</h6>
-                                <span class="d-block text-secondary" style="font-size: 13px">Posted
-                                    {{ $item->created_at->diffForHumans() }}</span>
+                                <span class="d-block text-secondary" style="font-size: 13px">
+                                    {{ $item->created_at->format('d M Y H:i') }}</span>
                             </td>
                             <td scope="col" class="text-center">
                                 @if ($item->status == 0)
-                                <div class="bg-danger text-white rounded-pill py-1 text-center ">
-                                    Tidak di publis
+                                <div class=" rounded-pill py-1 text-center" style="background-color: #FBE7E8; color: #A30D11;">
+                                    Unpublished
                                 </div>
                                 @else
-                                <div class="bg-success text-white rounded-pill py-1 text-center ">
-                                    Publis
+                                <div class=" rounded-pill py-1 text-center" style="background-color: #EBF9F1;color: #1F9254;">
+                                    Published
                                 </div>
                                 @endif
                             </td>
                             <td scope="col" class="text-center">
                                 {{ $item->category }}
                             </td>
-                            <td scope="col" class="text-center" class="text-end pe-3">
+
+                            <td scope="col" class="text-end">
+                                <a class="btn btn-outline text-muted"
+                                    href="{{ route('admin.news.show',$item->slug) }}">
+                                    <i class="bi bi-search"></i>
+                                </a>
+                                <a class="btn btn-outline text-muted"
+                                    href="{{ route('admin.news.edit',$item->slug) }}">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
+                                <a class="btn btn-outline text-muted" data-bs-toggle="modal"
+                                    data-bs-target="#deleteModal{{ $item->id }}">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </td>
+
+                            {{-- dropdown action --}}
+                            {{-- <td scope="col" class="text-center" class="text-end pe-3">
                                 <a href="#" role="button" id="dropdown-manage-news" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     <i class="bi bi-three-dots fs-3 text-secondary"></i>
@@ -109,7 +129,7 @@
                                         </form>
                                     </li> -->
                                 </ul>
-                            </td>
+                            </td> --}}
                         </tr>
 
                         <!-- Modal delete -->
@@ -154,32 +174,35 @@
 
                 {{-- PAGINATION --}}
                 {{-- <nav aria-label="Page navigation example">
-            <ul class="pagination align-items-center">
-              <li class="me-3">Rows per page:</li>
-              <li class="me-5 opacity-75">
-                <select class="form-select" aria-label="size 3 select example">
-                  <option selected value="1">10</option>
-                  <option value="2">25</option>
-                  <option value="3">50</option>
-                  <option value="4">100</option>
-                </select>
-              </li>
-              <li class="me-3">
-                <span>1-8</span>
-                <span class="mx-1">of</span>
-                <span>1240</span>
-              </li>
+                    <ul class="pagination align-items-center">
+                    <li class="me-3">Rows per page:</li>
+                    <li class="me-5 opacity-75">
+                        <select class="form-select" aria-label="size 3 select example">
+                        <option selected value="1">10</option>
+                        <option value="2">25</option>
+                        <option value="3">50</option>
+                        <option value="4">100</option>
+                        </select>
+                    </li>
+                    <li class="me-3">
+                        <span>1-8</span>
+                        <span class="mx-1">of</span>
+                        <span>1240</span>
+                    </li>
 
-              <li class="page-item fs-2 me-2"> <a href="#"
-                  class="text-semi-light text-decoration-none"> &#60; </a> </li>
-              <li class="page-item fs-2 me-2"> <a href="#"
-                  class="text-semi-light text-decoration-none"> &#62; </a> </li>
-            </ul>
-          </nav> --}}
+                    <li class="page-item fs-2 me-2"> <a href="#"
+                        class="text-semi-light text-decoration-none"> &#60; </a> </li>
+                    <li class="page-item fs-2 me-2"> <a href="#"
+                        class="text-semi-light text-decoration-none"> &#62; </a> </li>
+                    </ul>
+                </nav> --}}
                 {{-- END OF PAGINATION --}}
                 {{-- Current Page: {{ $news->currentPage() }}<br>
                 Jumlah Data: {{ $news->total() }}<br>
                 Data perhalaman: {{ $news->perPage() }}<br> --}}
+                {{-- <ul class="pagination justify-content-end">
+                    <div class="right">{{ $news->links() }}</div>
+                </ul> --}}
                 <br>
                 {{ $news->links() }}
             </div>
