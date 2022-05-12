@@ -8,6 +8,11 @@
         background-color: #fafafa;
     }
 
+    .table-striped>tbody>tr:nth-child(odd)>td,
+    .table-striped>tbody>tr:nth-child(odd)>th {
+        background-color: rgba(255, 242, 239, 0.2);
+    }
+
 </style>
 @endsection
 
@@ -61,19 +66,19 @@
                     </form> -->
                 </div>
                 <div class="card border-r-15 border-15">
-                    <div class="card-body">
-                        <table class="table table-no-border-head align-middle">
+                    <div class="card-body p-0">
+                        <table class="table table-striped table-no-border-head align-middle">
                             <thead>
                                 <tr class="fw-bold">
-                                    <td scope="col" class="text-center">No</td>
-                                    <td scope="col" class="text-center">Bahasa</td>
-                                    <td scope="col" class="text-center">Sub Template</td>
-                                    <td scope="col" class="text-center">Template</td>
-                                    {{-- <td scope="col" class="text-center">Goals</td> --}}
-                                    <td scope="col" class="text-center">Jumlah Pertanyaan</td>
-                                    <td scope="col" class="text-center">Aktivitas</td>
-                                    <td scope="col" class="text-center">Status</td>
-                                    <td scope="col" class="text-center">
+                                    <td scope="col" class="text-center py-4">No</td>
+                                    <td scope="col" class="text-center py-4">Bahasa</td>
+                                    <td scope="col" class="text-center py-4">Sub Template</td>
+                                    <td scope="col" class="text-center py-4">Template</td>
+                                    {{-- <td scope="col" class="text-center py-4">Goals</td> --}}
+                                    <td scope="col" class="text-center py-4">Jumlah Pertanyaan</td>
+                                    <td scope="col" class="text-center py-4">Aktivitas</td>
+                                    <td scope="col" class="text-center py-4">Status</td>
+                                    <td scope="col" class="text-center py-4">
                                         Aksi
                                     </td>
                                 </tr>
