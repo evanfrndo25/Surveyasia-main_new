@@ -41,6 +41,15 @@
 {{-- Collect Respondent --}}
 <section class="collect-respondent py-5" id="collect-respondent">
     <div class="container">
+        <!-- Untuk logic status survey -->
+        @if ($survey->status == 'active')
+            <span class="badge bg-success mb-3">Aktif</span>
+        @elseif ($survey->status == 'closed')
+            <span class="badge bg-danger mb-3">Ditolak</span>
+        @else
+            <span class="badge bg-warning mb-3">Pending</span>
+        @endif
+
         {{-- <h4>Collect Responses</h4> --}}
         {{-- Share Link --}}
         <div class="border rounded p-5" style="margin-bottom: 200px">

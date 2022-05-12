@@ -33,15 +33,19 @@ class SurveyController extends Controller
         // $surveys = Survey::where(['creator_id' => $user->id])->get();
 
         // Relational
-        $surveys = Survey::with('user')->latest()->paginate(10);
-        // dd($surveys);
+        $surveysPending = Survey::where('status', 'unpublished')->with('user')->latest()->paginate(10);
+        $surveysDeny = Survey::where('status', 'closed')->with('user')->latest()->paginate(10);
+        $surveysAcc = Survey::where('status', 'active')->with('user')->latest()->paginate(10);
+
         // $surveys = Auth::user()->surveys;
 
         // $user = Auth::user();
 
         $data = [
             'title' => $this->title,
-            'surveys' => $surveys,
+            'surveysPending' => $surveysPending,
+            'surveysAcc' => $surveysAcc,
+            'surveysDeny' => $surveysDeny,
             // 'user' => $user,
             'categories' => SurveyCategory::select(['id', 'name'])->get()
         ];
@@ -95,18 +99,35 @@ class SurveyController extends Controller
 
     public function showSurveyDetailsDeny(Survey $survey)
     {
-        //
-        return view('admin.survey.deny', compact('survey'), [
+        $surveys = Survey::where('status', 'closed')->with('user')->latest()->paginate(10);
+        
+        return view('admin.survey.deny', compact('surveys'), [
             'title' => $this->title,
         ]);
     }
 
+    public function surveyDeny(Request $request, $survey) {
+        Survey::where('id', $survey)->update(
+            ['status' => 'closed', 'reason_deny' => $request->reason]
+        );
+
+        return redirect('/admin/survey');
+    }
+
+
     public function showSurveyDetailsAcc(Survey $survey)
     {
-        //
-        return view('admin.survey.acc', compact('survey'), [
+        $surveys = Survey::where('status', 'active')->with('user')->latest()->paginate(10);
+        
+        return view('admin.survey.acc', compact('surveys'), [
             'title' => $this->title,
         ]);
+    }
+    
+    public function surveyAcc(Survey $survey) {
+        Survey::where('id', $survey->id)->update(['status' => 'active']);
+
+        return redirect('admin.survey.index');
     }
 
     public function surveyManagement(Survey $survey)

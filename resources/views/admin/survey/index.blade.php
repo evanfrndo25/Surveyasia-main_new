@@ -49,7 +49,10 @@
                 {{-- LOOPING DATA --}}
                 <div class="tab-content pt-4" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="menunggu" role="tabpanel" aria-labelledby="menunggu-tab">
-                        @foreach ($surveys as $item)
+                        @if (count($surveysPending) == 0)
+                            <p>Tidak ada survey</p>
+                        @endif
+                        @foreach ($surveysPending as $item)
                         <div class="container survey-active">
                             <div class="row">
                                 <div class="col">
@@ -82,7 +85,7 @@
                                                 </div>
                                                 <div class="col-3 text-center">
                                                     <div>
-                                                        <h5 class="text-success">{{ $item->status }}</h5>
+                                                        <h6 class="text-capitalize text-warning fw-semibold">Pending</h6>
                                                     </div>
                                                 </div>
                                                 <div class="col-3 text-center">
@@ -111,97 +114,100 @@
                                             style="border-radius: 5px; width: 120px; height: 200px;">
                                             <i class="bi bi-x-lg h1 m-0 text-white fw-bold mt-auto fw-bold"></i>
                                             <button type="button" class="btn mb-auto stretched-link text-white fw-bold"
-                                                data-bs-toggle="modal" data-bs-target="#deleteModal{{ $item->id }}">
+                                                data-bs-toggle="modal" data-bs-target="#denyModal{{ $item->id }}">
                                                 Tolak
                                             </button>
                                         </div>
                                         <div class=" ms-2 bg-success card border-0 d-grid gap-2"
                                             style="border-radius: 5px; width: 120px; height: 200px;">
                                             <i class="bi bi-check-lg h1 m-0 text-white fw-bold mt-auto fw-bold"></i>
-                                            <button type="button"
-                                                class="btn mb-auto stretched-link text-white fw-bold">Terima</button>
+                                            <a href="{{ route('admin.survey.acc', $item->id) }}" class="btn mb-auto stretched-link text-white fw-bold">Terima</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- Modal delete -->
-                        <div class="modal fade" id="deleteModal{{ $item->id }}" tabindex="-1"
-                            aria-labelledby="deleteModalLabel" aria-hidden="true">
+                        <!-- Modal deny -->
+                        <div class="modal fade" id="denyModal{{ $item->id }}" tabindex="-1"
+                            aria-labelledby="denyModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="btn ms-auto">
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="bg-white">
-                                        <h1 class="text-center"><i class="bi bi-trash display-1 text-danger"></i></h1>
-                                        <h4 class="text-center text-danger">Hapus Survey Researcher?</h4>
-                                    </div>
-                                    <div class="modal-body bg-light px-4">
-                                        <p class="small text-secondary text-center">Apakah kamu ingin menghapus
-                                            {{ $item->title }} Survey</p>
-                                        <div>
+                                <form action="{{ route('admin.survey.deny', $item->id) }}" method="POST">
+                                    @csrf
+                                    <div class="modal-content">
+                                        <div class="btn ms-auto">
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="bg-white">
+                                            <h1 class="text-center"><i class="bi bi-trash display-1 text-danger"></i></h1>
+                                            <h4 class="text-center text-danger">Tolak Survey?</h4>
+                                        </div>
+                                        <div class="modal-body bg-light px-4">
+                                            <div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                                    id="flexRadioDefault1">
-                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                <input 
+                                                    class="form-check-input" 
+                                                    type="radio" 
+                                                    name="reason" 
+                                                    value="Survei terindikasi mengandung SARA."
+                                                >
                                                     Survei terindikasi mengandung SARA.
-                                                </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                                    id="flexRadioDefault2" checked>
-                                                <label class="form-check-label" for="flexRadioDefault2">
-                                                    Survei terindikasi mengandung unsur
-kekerasan.
-                                                </label>
+                                                <input 
+                                                    class="form-check-input" 
+                                                    type="radio" 
+                                                    name="reason" 
+                                                    value="Survei terindikasi mengandung unsur kekerasan."
+                                                >
+                                                    Survei terindikasi mengandung unsur kekerasan.
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                                    id="flexRadioDefault3" checked>
-                                                <label class="form-check-label" for="flexRadioDefault3">
-                                                    Survei tidak relevan (logo/judul survei
-tidak cocok dengan isi survei).
-
-                                                </label>
+                                                <input 
+                                                    class="form-check-input" 
+                                                    type="radio" 
+                                                    name="reason" 
+                                                    value="Survei tidak relevan (logo/judul survei tidak cocok dengan isi survei)."
+                                                >
+                                                    Survei tidak relevan (logo/judul survei tidak cocok dengan isi survei).
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                                    id="flexRadioDefault4" checked>
-                                                <label class="form-check-label" for="flexRadioDefault4">
-                                                    Survei terindikasi bukan merupakan karya
-orisinil.
-                                                </label>
+                                                <input 
+                                                    class="form-check-input" 
+                                                    type="radio" 
+                                                    name="reason" 
+                                                    value="Survei terindikasi bukan merupakan karya orisinil."
+                                                >
+                                                    Survei terindikasi bukan merupakan karya orisinil.
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                                    id="flexRadioDefault5" checked>
-                                                <label class="form-check-label" for="flexRadioDefault5">
-                                                    Survei terindikasi melanggar hak privasi
-individu (terlalu vulgar, mengandung pelecehan seksual).
-                                                </label>
+                                                <input 
+                                                    class="form-check-input" 
+                                                    type="radio" 
+                                                    name="reason" 
+                                                    value="Survei terindikasi melanggar hak privasi individu (terlalu vulgar, mengandung pelecehan seksual)."
+                                                >
+                                                    Survei terindikasi melanggar hak privasi individu (terlalu vulgar, mengandung pelecehan seksual).
+                                            </div>
+                                            </div>
+                                        </div>
+                                        <div class="row px-4 mt-3 mb-3">
+                                            <div class="col d-grid gap-2">
+                                                <button type="submit" class="btn btn-danger">TOLAK</button>
+                                            </div>
+                                            <div class="col d-grid gap-2">
+                                                <button type="button" class="btn btn-outline-secondary"
+                                                    data-bs-dismiss="modal">KEMBALI</button>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row px-4 pb-5">
-                                        <div class="col d-grid gap-2">
-                                            <a href="{{ route('admin.survey.destroy', $item->id) }}"
-                                                class="btn btn-danger">YA,
-                                                HAPUS SURVEY</a>
-                                        </div>
-                                        <div class="col d-grid gap-2">
-                                            <button type="button" class="btn btn-outline-secondary"
-                                                data-bs-dismiss="modal">TIDAK, SIMPAN SURVEY</button>
-                                        </div>
-
-                                    </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
                         @endforeach
                     </div>
                     <div class="tab-pane fade" id="tolak" role="tabpanel" aria-labelledby="tolak-tab">
+                        @foreach ($surveysDeny as $survey)
                         <div class="container survey-active">
                             <div class="row shadow pt-4" style="border-radius: 17px 17px 0 0;">
                                 <div class="col-2 text-center">
@@ -210,7 +216,7 @@ individu (terlalu vulgar, mengandung pelecehan seksual).
                                 <div class="col my-auto">
                                     <div class="row">
                                         <div class="col">
-                                            <p class="card-title">Title</p>
+                                            <p class="card-title">{{ $survey->title }}</p>
                                         </div>
                                         <div class="col-3 text-center">
                                             <p>Status</p>
@@ -222,21 +228,19 @@ individu (terlalu vulgar, mengandung pelecehan seksual).
                                     <div class="row">
                                         <div class="col">
                                             <div>
-                                                <p class="small text-secondary">
-                                                    Deskripsi</p>
-                                                <p class="pt-1 small">Kreator :<span>
-                                                        Kreator</span>
+                                                <p class="small text-secondary">{{ $survey->description }}</p>
+                                                <p class="pt-1 small">Kreator : <span>{{ $survey->user->nama_lengkap }}</span>
                                                 </p>
                                             </div>
                                         </div>
                                         <div class="col-3 text-center">
                                             <div>
-                                                <h5 class="text-success">Status</h5>
+                                                <h6 class="text-capitalize text-danger fw-semibold">Ditolak</h6>
                                             </div>
                                         </div>
                                         <div class="col-3 text-center">
                                             <div>
-                                                <h5>Tanggal</h5>
+                                                <h5>{{ $survey->created_at }}</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -244,8 +248,7 @@ individu (terlalu vulgar, mengandung pelecehan seksual).
                                 <div class="col-3 bo d-flex">
                                     <div>
                                         <p class="text-center">Detail Penolakan</p>
-                                        <p class="text-danger small">Lorem ipsum dolor sit amet consectetur adipisicing
-                                            elit. Minus, ullam hic error molestiae!</p>
+                                        <p class="text-danger small">{{ $survey->reason_deny ? $survey->reason_deny : 'Detail kosong' }}</p>
                                     </div>
                                     <div>
                                         <a href="#" role="button" id="dropdown-manage-news text-end"
@@ -264,12 +267,12 @@ individu (terlalu vulgar, mengandung pelecehan seksual).
                             <div class="row bg-primary mb-3" style="border-radius: 0 0 17px 17px;">
                                 <div class="col">
                                     <div class="d-grid">
-                                        <a href="{{ route('admin.survey.deny', $item->id) }}"
-                                            class="btn btn-primary">Survei Detail</a>
+                                        <a href="{{ route('admin.survey.show', $survey->id) }}" class="btn btn-outline-light">Survei Detail</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                         <!-- Modal -->
                         <div class="modal fade" id="ubahstts0" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
@@ -354,21 +357,21 @@ individu (terlalu vulgar, mengandung pelecehan seksual).
                                                             </div>
                                                             <div class="form-check py-1">
                                                                 <input class="form-check-input" type="checkbox" value=""
-                                                                    id="chek2" checked>
+                                                                    id="chek2">
                                                                 <label class="form-check-label small" for="chek2">
                                                                     Lorem ipsum dolor sit amet.
                                                                 </label>
                                                             </div>
                                                             <div class="form-check py-1">
                                                                 <input class="form-check-input" type="checkbox" value=""
-                                                                    id="chek3" checked>
+                                                                    id="chek3">
                                                                 <label class="form-check-label small" for="chek3">
                                                                     Lorem ipsum dolor sit amet.
                                                                 </label>
                                                             </div>
                                                             <div class="form-check py-1">
                                                                 <input class="form-check-input" type="checkbox" value=""
-                                                                    id="chek4" checked>
+                                                                    id="chek4">
                                                                 <label class="form-check-label small" for="chek4">
                                                                     Lorem ipsum dolor sit amet.
                                                                 </label>
@@ -392,6 +395,7 @@ individu (terlalu vulgar, mengandung pelecehan seksual).
                         </div>
                     </div>
                     <div class="tab-pane fade" id="terima" role="tabpanel" aria-labelledby="terima-tab">
+                        @foreach ($surveysAcc as $survey)
                         <div class="container survey-active">
                             <div class="row shadow pt-4" style="border-radius: 17px 17px 0 0;">
                                 <div class="col-2 text-center">
@@ -400,7 +404,7 @@ individu (terlalu vulgar, mengandung pelecehan seksual).
                                 <div class="col my-auto">
                                     <div class="row">
                                         <div class="col">
-                                            <p class="card-title">Title</p>
+                                            <p class="card-title">{{ $survey->title }}</p>
                                         </div>
                                         <div class="col-3 text-center">
                                             <p>Status</p>
@@ -412,21 +416,19 @@ individu (terlalu vulgar, mengandung pelecehan seksual).
                                     <div class="row">
                                         <div class="col">
                                             <div>
-                                                <p class="small text-secondary">
-                                                    Deskripsi</p>
-                                                <p class="pt-1 small">Kreator :<span>
-                                                        Kreator</span>
+                                                <p class="small text-secondary">{{ $survey->description }}</p>
+                                                <p class="pt-1 small">Kreator : <span>{{ $survey->user->nama_lengkap }}</span>
                                                 </p>
                                             </div>
                                         </div>
                                         <div class="col-3 text-center">
                                             <div>
-                                                <h5 class="text-success">Status</h5>
+                                                <h6 class="text-capitalize text-success fw-semibold">Diterima</h6>
                                             </div>
                                         </div>
                                         <div class="col-3 text-center">
                                             <div>
-                                                <h5>Tanggal</h5>
+                                                <h5>{{ $survey->created_at }}</h5>
                                             </div>
                                         </div>
                                     </div>
@@ -449,12 +451,12 @@ individu (terlalu vulgar, mengandung pelecehan seksual).
                             <div class="row bg-primary mb-3" style="border-radius: 0 0 17px 17px;">
                                 <div class="col">
                                     <div class="d-grid">
-                                        <a href="{{ route('admin.survey.acc', $item->id) }}"
-                                            class="btn btn-primary">Survei Detail</a>
+                                        <a href="{{ route('admin.survey.show', $survey->id) }}" class="btn btn-outline-light">Survei Detail</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                         <!-- Modal -->
                         <div class="modal fade" id="ubahstts" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">

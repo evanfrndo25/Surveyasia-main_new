@@ -286,7 +286,7 @@ class SurveyController extends Controller
         // create shareable link if not exists or expired
         if ($survey->link_expired_at == null || $survey->isLinkExpired() || $survey->shareable_link == null) {
             // generate temporary signed URL (expirable) 40 minutes of expiration
-            $survey->createShareableLink(40, Survey::STATUS_ACTIVE, true);
+            $survey->createShareableLink(40, Survey::STATUS_ACTIVE, true);  //  Survey::STATUS_ACTIVE tidak berarti apa-apa
         }
 
         return view('researcher.collect-respondent', [

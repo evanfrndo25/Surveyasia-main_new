@@ -36,6 +36,7 @@ class Survey extends Model
         'reward_point',
         'key',
         'type',
+        'reason_deny',
         'link_expired_at'
     ];
 
@@ -69,14 +70,14 @@ class Survey extends Model
         ]);
 
         $this->link_expired_at = now()->addMinutes($expired_at); // 40 minutes of expiration
-        $this->status = $status; // set status
+        // $this->status = $status; // set status
 
         if ($shouldSave) {
             $this->save();
         }
 
         return $this->shareable_link;
-    }
+    }   
 
     /**
      * Check if the shareable link is expired
