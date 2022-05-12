@@ -409,6 +409,7 @@ Route::middleware(['is_admin', 'role:admin'])->group(function () {
 
         Route::get('survey/acc/{survey}', [SurveyInAdmin::class, 'surveyAcc'])->name('survey.acc');
         Route::post('survey/deny/{survey}', [SurveyInAdmin::class, 'surveyDeny'])->name('survey.deny');
+        Route::get('survey/change-status/{survey}', [SurveyInAdmin::class, 'surveyChangeStatus'])->name('survey.change-status');
     });
 });
 

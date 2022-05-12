@@ -260,6 +260,9 @@
                                                     data-bs-target="#ubahstts0"></i><i
                                                         class="bi bi-gear-fill me-2"></i>Ubah Staus</a></li>
                                             <li>
+                                            <li>
+                                                <a href="{{ route('admin.survey.change-status', $survey->id) }}" class="dropdown-item text-white">Batal tolak</a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
