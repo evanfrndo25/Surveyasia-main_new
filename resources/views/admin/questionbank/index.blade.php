@@ -10,7 +10,7 @@
 
     .table-striped>tbody>tr:nth-child(odd)>td,
     .table-striped>tbody>tr:nth-child(odd)>th {
-        background-color: rgba(255, 242, 239, 0.2);
+        background-color: #fff2ef33;
     }
 
 </style>
@@ -69,7 +69,7 @@
                     <div class="card-body p-0">
                         <table class="table table-striped table-no-border-head align-middle">
                             <thead>
-                                <tr class="fw-bold">
+                                <tr class="fw-bold" style="background-color: #f6beb226; ">
                                     <td scope="col" class="text-center py-4">No</td>
                                     <td scope="col" class="text-center py-4">Bahasa</td>
                                     <td scope="col" class="text-center py-4">Sub Template</td>
