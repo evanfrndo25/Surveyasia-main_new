@@ -74,6 +74,14 @@ body {
     text-align: justify;
     color: #414141;
 }
+.page-link {
+    color: #4e575c;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+.page-item.active .page-link {
+    background-color: #ef4c29;
+    border-color: #ef4c29;
+}
 .dp-admin {
     border-radius: 50%;
     padding: 2px;

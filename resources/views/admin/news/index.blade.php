@@ -204,7 +204,11 @@
                     <div class="right">{{ $news->links() }}</div>
                 </ul> --}}
                 <br>
-                {{ $news->links() }}
+                
+                <ul class="pagination justify-content-end">
+                    <div class="right">{{ $news->links() }}</div>
+                </ul>
+                
             </div>
         </div>
     </div>

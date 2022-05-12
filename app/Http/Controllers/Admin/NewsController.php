@@ -68,10 +68,11 @@ class NewsController extends Controller
     public function store(Request $request)
     {
         $news = $request->validate([
+            'category' => 'required',
             'title' => 'required',
             'description' => 'required',
             'img' => 'image|file|max:1024',
-            'category' => 'required'
+            
         ]);
         // status :
         // 0 = draft, 1 = publish, 
