@@ -162,7 +162,15 @@
                                                     <select class="form-select border-r-besar border-0 bg-light px-3"
                                                         disabled>
                                                         @foreach ($surveytemp as $dataitem)
-                                                        <option>{{ $dataitem->status }}</option>
+                                                        <option>
+                                                            @if ($dataitem->status == 'active')
+                                                                Diterima
+                                                            @elseif ($dataitem->status == 'closed')
+                                                                Ditolak
+                                                            @else
+                                                                Menunggu
+                                                            @endif
+                                                        </option>
                                                         @endforeach
                                                     </select>
                                                 </div>

@@ -69,22 +69,31 @@
                                             <div class="row mb-3">
                                                 <label class="form-label">Researcher</label>
                                                 <div class="col-3">
-                                                    <input type="text"
+                                                    <input 
+                                                        type="text"
                                                         class="form-control me-3 border-r-besar border-0 bg-light py-2"
-                                                        placeholder="Nama Researcher">
+                                                        value="{{ $survey->user->nama_lengkap }}"
+                                                        disabled
+                                                    >
                                                 </div>
                                                 <div class="col-2">
-                                                    <input type="text"
+                                                    <input 
+                                                        type="text"
                                                         class="form-control border-r-besar border-0 bg-light py-2"
-                                                        placeholder="ID 3127" disabled>
+                                                        value="ID {{ $survey->user->id }}"
+                                                        disabled
+                                                    >
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
                                                 <label class="form-label">Email</label>
                                                 <div class="col-3">
-                                                    <input type="email"
+                                                    <input 
+                                                        type="email"
                                                         class="form-control border-r-besar border-0 bg-light py-2"
-                                                        placeholder="Email Researcher">
+                                                        value="{{ $survey->user->email }}"
+                                                        disabled
+                                                    >
                                                 </div>
                                             </div>
                                         </form>
@@ -97,31 +106,39 @@
                                             <div class="row mb-3">
                                                 <label class="form-label">Judul</label>
                                                 <div class="col-3">
-                                                    <input type="text"
+                                                    <input 
+                                                        type="text"
                                                         class="form-control border-r-besar border-0 bg-light py-2"
-                                                        placeholder="Nama Researcher">
+                                                        value="{{ $survey->title }}"
+                                                        disabled
+                                                    >
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
                                                 <label class="form-label">Deskripsi</label>
-                                                <textarea class="form-control border-r-besar border-0 bg-light py-2"
-                                                    placeholder="Leave a comment here" rows="3"></textarea>
+                                                <textarea 
+                                                    class="form-control border-r-besar border-0 bg-light py-2" 
+                                                    rows="3"
+                                                    disabled
+                                                >{{ $survey->description }}</textarea>
                                             </div>
                                             <div class="row mb-3">
                                                 <label for="deskripsi" class="form-label">Kategori Survei</label>
                                                 <div class="col-2">
-                                                    <select class="form-select border-r-besar border-0 bg-light px-3 ">
-                                                        <option value="Chart JS">Pelanggan</option>
+                                                    <select class="form-select border-r-besar border-0 bg-light px-3 " disabled>
+                                                    <option>{{ $category_survey }}</option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
-                                                <label for="deskripsi" class="form-label">Estimasi
-                                                    Penyelesaian</label>
+                                                <label for="deskripsi" class="form-label">Estimasi Penyelesaian</label>
                                                 <div class="col-1">
-                                                    <input type="number"
+                                                    <input 
+                                                        type="number"
                                                         class="form-control border-r-besar border-0 bg-light py-2"
-                                                        placeholder="40">
+                                                        value="{{ $survey->estimate_completion }}"
+                                                        disabled
+                                                    >
                                                 </div>
                                                 <div class="col-4 my-auto">
                                                     <p class="my-auto">Menit</p>
@@ -130,33 +147,50 @@
                                             <div class="row mb-3">
                                                 <label for="deskripsi" class="form-label">Maximum Responden</label>
                                                 <div class="col-1">
-                                                    <input type="number"
+                                                    <input 
+                                                        type="number"
                                                         class="form-control border-r-besar border-0 bg-light py-2"
-                                                        placeholder="50">
+                                                        value="{{ $survey->max_attempt }}"
+                                                        disabled
+                                                    >
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
                                                 <label class="form-label">Jumlah Reward</label>
                                                 <div class="col-2">
-                                                    <input type="text"
+                                                    <input 
+                                                        type="text"
                                                         class="form-control border-r-besar border-0 bg-light py-2"
-                                                        placeholder="Rp. 4000">
+                                                        value="Rp. {{ $survey->reward_point }}"
+                                                        disabled
+                                                    >
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
                                                 <label for="deskripsi" class="form-label">Status</label>
                                                 <div class="col-2">
-                                                    <select class="form-select border-r-besar border-0 bg-light px-3 ">
-                                                        <option value="Chart JS">Active</option>
+                                                    <select class="form-select border-r-besar border-0 bg-light px-3" disabled>
+                                                        <option>
+                                                            @if ($survey->status == 'active')
+                                                                Diterima
+                                                            @elseif ($survey->status == 'closed')
+                                                                Ditolak
+                                                            @else
+                                                                Menunggu
+                                                            @endif
+                                                        </option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
                                                 <label class="form-label">Waktu Upload Survey</label>
                                                 <div class="col-2">
-                                                    <input type="text"
+                                                    <input 
+                                                        type="text"
                                                         class="form-control border-r-besar border-0 bg-light py-2"
-                                                        placeholder="24 Maret 2022" disabled>
+                                                        value="{{ $survey->created_at }}" 
+                                                        disabled
+                                                    >
                                                 </div>
                                             </div>
                                         </form>
@@ -170,7 +204,7 @@
                                     </div>
                                     <div class="col-2 text-center">
                                         <p>Total Pertanyaan</p>
-                                        <p class="bg-light px-4 py-3 btn text-center" style="cursor: auto;">2</p>
+                                        <p class="bg-light px-4 py-3 btn text-center" style="cursor: auto;">{{ count($survey->questions) }}</p>
                                     </div>
                                     <div class="col-2 text-center">
                                         <p>Total Bagian</p>
@@ -180,6 +214,13 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <p class="text-decoration-underline fw-bold">Pertanyaan</p>
+                                        
+                                        @foreach ($survey->questions as $dataitem)
+                                        <div class="card p-4 mb-3">
+                                            <p class="fw-bold">{{ $dataitem->question }}</p>
+                                            <p>tipe : {{ json_decode(stripslashes($dataitem->configuration))->componentName }}</p>
+                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -229,9 +270,13 @@
                                                 <p style="opacity: 80%;">Bagikan tautan ini dengan responden Anda untuk
                                                     mengumpulkan tanggapan mereka</p>
                                                 <div class="d-flex align-items-center mb-2">
-                                                    <input type="text" class="form-control me-3" id="link-input"
-                                                        value="{{ $survey->shareable_link }}" readonly>     
-                                                                                                     
+                                                    <input 
+                                                        type="text" 
+                                                        class="form-control me-3" 
+                                                        id="link-input"
+                                                        value="{{ $survey->shareable_link }}" 
+                                                        disabled
+                                                    >
                                                 </div>
                                             </div>
                                             <div class="col-md-5">
@@ -252,15 +297,15 @@
                                         <div class="card p-4">
                                             <div class="border-bottom">
                                                 <p class="small text-secondary">Title Survey</p>
-                                                <p>Survey Terhadap Belanja Online</p>
+                                                <p>{{ $survey->title }}</p>
                                             </div>
                                             <div class="border-bottom">
                                                 <p class="small text-secondary">Tipe Survey</p>
-                                                <p>Member Anual Personal</p>
+                                                <p>{{ $category_subs }}</p>
                                             </div>
                                             <div class="border-bottom">
                                                 <p class="small text-secondary">Total Responden</p>
-                                                <p>20/100 Responden</p>
+                                                <p>{{ $total_filled_in }}/{{ $survey->max_attempt }} Responden</p>
                                             </div>
                                         </div>
                                         <div class="d-grid gap-2 pt-3">

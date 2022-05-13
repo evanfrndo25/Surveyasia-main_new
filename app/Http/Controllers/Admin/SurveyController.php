@@ -14,6 +14,9 @@ use App\Models\QuestionBankSubTemplate;
 use App\Action\CreateSurveyQuestionAction;
 use App\Http\Requests\CreateSurveyRequest;
 use App\Http\Requests\CreateSurveyQuestionRequest;
+use App\Models\CategorySubcriptions;
+use App\Models\UsersSubscriptions;
+use App\Models\UsersSurvey;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
@@ -96,12 +99,16 @@ class SurveyController extends Controller
         return view('admin.survey.show', compact('title', 'id', 'data', 'survey', 'surveytemp', 'question'));
     }
 
-    public function showSurveyDetailsDeny(Survey $survey)
+    public function showSurveyDetailsDeny($survey)
     {
-        $surveys = Survey::where('status', 'closed')->with('user')->latest()->paginate(10);
-        
-        return view('admin.survey.deny', compact('surveys'), [
+        $surveySelect = Survey::where('id', $survey)->with('user', 'questions')->first();
+
+        $categoryName = SurveyCategory::where('id', $surveySelect->category_id)->first();
+
+        return view('admin.survey.deny', [
             'title' => $this->title,
+            'survey' => $surveySelect,
+            'category_survey' => $categoryName->name
         ]);
     }
 
@@ -114,12 +121,27 @@ class SurveyController extends Controller
     }
 
 
-    public function showSurveyDetailsAcc(Survey $survey)
+    public function showSurveyDetailsAcc($survey)
     {
-        $surveys = Survey::where('status', 'active')->with('user')->latest()->paginate(10);
-        
-        return view('admin.survey.acc', compact('surveys'), [
+        $surveySelect = Survey::where('id', $survey)->with('user', 'questions')->first();
+
+        // get category survey name
+        $categoryName = SurveyCategory::where('id', $surveySelect->category_id)->first();
+
+        // get name of type subscription
+        $subscriptionSelect = UsersSubscriptions::where('user_id', $surveySelect->user->id)->first();
+        $categorySubsName = $subscriptionSelect ? CategorySubcriptions::where('id', $subscriptionSelect->category_id)->first()->title : 'Tidak Berlangganan';
+
+        // get total of respondent
+        $getIdSurvey = $surveySelect->id;
+        $getTotalofRespondent = UsersSurvey::where('survey_id', $getIdSurvey)->get();
+
+        return view('admin.survey.acc', [
             'title' => $this->title,
+            'survey' => $surveySelect,
+            'category_survey' => $categoryName->name,
+            'category_subs' => $categorySubsName,
+            'total_filled_in' => count($getTotalofRespondent)
         ]);
     }
     
