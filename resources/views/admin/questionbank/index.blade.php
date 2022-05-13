@@ -36,7 +36,7 @@
                     <div class="col">
                         <div class=" input-group align-items-center w-50">
                             <input type="text" class="form-control rounded-pill py-2 text-center"
-                                placeholder="Cari Disini" aria-label="search" aria-describedby="basic-addon1"
+                                placeholder="Cari disini" aria-label="search" aria-describedby="basic-addon1"
                                 style="font-size: 12px">
                             <a href="#">
                                 <i
@@ -120,19 +120,22 @@
                                         <div class="text-complete p-2 text-left rounded-pill text-center">Active</div>
                                         @endif
                                     <td scope="col" class="text-left">
-
-                                        <a class="btn btn-outline" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Pratinjau Pertanyaan"
+                                    <div class="aksi-menu">
+                                        <ul>
+                                        <li><a class="btn btn-outline" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Pratinjau Pertanyaan"
                                             href="{{ route('admin.questionbank.show', $item->id) }}">
                                             <i class="bi bi-search"></i>
-                                        </a>
-                                        <a class="btn btn-outline" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit Template"
+                                        </a></li>
+                                        <li><a class="btn btn-outline" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit Template"
                                             href="{{ route('admin.questionbank.edit', ['questionbank' => $item->id])}}">
                                             <i class="bi bi-pencil-square"></i>
-                                        </a>
-                                        <a class="btn btn-outline" data-bs-toggle="modal" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Hapus"
+                                        </a></li>
+                                        <li><a class="btn btn-outline" data-bs-toggle="modal" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Hapus"
                                             data-bs-target="#deleteModal{{ $item->id }}">
                                             <i class="bi bi-trash"></i>
-                                        </a>
+                                        </a></li>
+                                        </ul>
+                                    </div>
                                     </td>
                                     {{-- <td class="text-end"><a href="{{ route('admin.questionbank.show', $item->id) }}"
                                     class="btn bg-special-blue text-white">
@@ -218,7 +221,7 @@
                                 <form method="post" enctype="multipart/form-data" id="form-add">
                                     @csrf
                                     <div class="mb-3">
-                                        <label for="title" class="form-label">Riset Pelanggan</label>
+                                        <label for="title" class="form-label fw-bold">Riset Pelanggan</label>
                                         <select class="form-select" aria-label="Default select example"
                                             name="question_bank_template_id">
                                             {{-- <option selected>Choose Templates</option> --}}
@@ -229,18 +232,18 @@
                                         </select>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="title" class="form-label">Nama Sub Template</label>
+                                        <label for="title" class="form-label fw-bold">Nama Sub Template</label>
                                         {{-- <input type="hidden" class="form-control" id="id" name="id"> --}}
                                         <input type="text" class="form-control" placeholder="Masukan Nama Template"
                                             id="Sub Template" name="sub_template_name">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="deskripsi" class="form-label">Tujuan Tamplate</label>
+                                        <label for="deskripsi" class="form-label fw-bold">Tujuan Tamplate</label>
                                         <input type="text" placeholder="Masukan Tujuan Tamplate" class="form-control"
                                             id="description" name="goals">
                                     </div>
                                     <div class="mb-3 w-25">
-                                        <label for="aktivitas" class="form-label">Aktifitas</label>
+                                        <label for="aktivitas" class="form-label fw-bold">Aktifitas</label>
                                         <select class="form-select" id="aktivitas" rows="3" name="aktivitas">
                                             <option>--Choose--</option>
                                             <option value="Free">Free</option>
@@ -248,7 +251,7 @@
                                         </select>
                                     </div>
                                     <div class="mb-3 w-25">
-                                        <label for="language_id" class="form-label">Bahasa</label>
+                                        <label for="language_id" class="form-label fw-bold">Bahasa</label>
                                         <select class="form-select" id="language_id" rows="3" name="language_id">
                                             <option>--Choose--</option>
                                             <option value="1">IND</option>
@@ -261,9 +264,8 @@
                     <div class="col text-end">
                         <a href="{{ route('admin.questionbank.index') }}"
                             class="btn btn-light text-black me-3 px-5 py-2">Batal</a>
-                        <button type="submit" class="btn btnx-orange text-white me-3 px-5 py-2">Simpan</button>
+                        <button type="submit" class="btn btn-orange text-white me-3 px-5 py-2">Simpan</button>
                     </div>
-
                 </div>
             </div>
         </div>

@@ -28,7 +28,7 @@
                                 <i class="bi bi-chevron-left pe-2"></i>
                                 Kembali
                             </a>
-                            <h1 class=" text-center py-3" style="font-size: 30px">Edit Template</h1>
+                            <h4 class=" text-center py-3" style="fw-bold">Edit Template</h4>
                             <form action="{{ route('admin.questionbank.update',  ['questionbank' => $id])}}"
                                 method="post">
                                 @method('put')
@@ -36,7 +36,7 @@
                                 <div class="card" style="border-radius: 20px;">
                                 <div class="card-body">
                                 <div class="mb-3">
-                                    <label for="title" class="form-label">Template</label>
+                                    <label for="title" class="form-label fw-bold">Template</label>
                                     <input id="questionbank_templates_hidden" type="hidden"
                                         value="{{ $questionbanktemp[0]->question_bank_template_id }}">
                                     <select id="questionbank_templates_id"
@@ -56,7 +56,7 @@
 
                                 </script>
                                 <div class="mb-3">
-                                    <label for="title" class="form-label">Nama Sub Template</label>
+                                    <label for="title" class="form-label fw-bold">Nama Sub Template</label>
                                     {{-- <input type="hidden" class="form-control border-r-5"
                             id="id" name="id"> --}}
                                     @foreach ($questionbanktemp as $dataitem)
@@ -69,7 +69,7 @@
 
                                 </div>
                                 <div class="mb-3">
-                                    <label for="deskripsi" class="form-label">Tujuan Tamplate</label>
+                                    <label for="deskripsi" class="form-label fw-bold">Tujuan Tamplate</label>
                                     @foreach ($questionbanktemp as $dataitem)
                                     <textarea class="form-control" id="description"
                                         rows="3" name="goals">{{ $dataitem->goals }}</textarea>
@@ -78,7 +78,7 @@
                                     @endforeach
                                 </div>
                                 <div class="mb-3 w-25">
-                                    <label for="aktivitas" class="form-label">Activity</label>
+                                    <label for="aktivitas" class="form-label fw-bold">Aktifitas</label>
                                     @if($questionbanktemp[0]->aktivitas == "Free")
                                     <select class="form-select" id="aktivitas" 
                                         name="aktivitas">
@@ -96,7 +96,7 @@
                                     @endif
                                 </div>
                                 <div class="mb-3 w-25">
-                                    <label for="language_id" class="form-label">Activity</label>
+                                    <label for="language_id" class="form-label fw-bold">Bahasa</label>
                                     @if($questionbanktemp[0]->language_id == 0)
                                     <select class="form-select" id="language_id"
                                         rows="3" name="language_id">
@@ -114,7 +114,7 @@
                                     @endif
                                 </div>
                                 <div class="mb-3 w-25">
-                                    <label for="exampleFormControlInput1" class="form-label">Status</label>
+                                    <label for="exampleFormControlInput1" class="form-label fw-bold">Status</label>
                                     <select class="form-select"
                                         aria-label="Default select example" name="status">
                                         @if ($item->status == '0')
@@ -126,16 +126,17 @@
                                         @endif
                                     </select>
                                 </div>
-                                <div class="col text-end">
+                                <hr />
+                                <div class="col text-center">
                                 <a href="{{ route('admin.questionbank.index') }}"
                                     class="btn btn-light text-black me-3 px-5 py-2">Batal</a>
                                     <button type="submit"
-                                    class="btn btnx-orange text-white me-3 px-5 py-2">Simpan</button>
+                                    class="btn btn-orange text-white me-3 px-5 py-2">Simpan</button>
                             </form>
+                                </div>
+                                </div>
                             </div>
                         </div>
-                                    </div>
-                                    </div>
                     </div>
                 </div>
             </div>

@@ -77,7 +77,7 @@
 
                         </div>
                         <div class="d-grid gap-2">
-                            <button type="submit" class="btn btnx-orange text-white">
+                            <button type="submit" class="btn btn-orange text-white">
                                 <i class="fa fa-plus-square" aria-hidden="true"></i> Simpan
                             </button>
                         </div>
