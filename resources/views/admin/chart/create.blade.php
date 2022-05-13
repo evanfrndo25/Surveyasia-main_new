@@ -22,6 +22,8 @@
             @include('admin.component.header')
 
             <div class="container mt-2">
+                <a href="{{ route('admin.chart.index') }}" class="mb-2 text-dark text-decoration-none" style="font-weight: 600;font-size: 16px;">
+                    <i class="bi bi-chevron-left pe-2"></i>Kembali </a>
                 <div class="row bg-white px-4 py-5">
                     <h3 class="text-center pb-5">Tambah Diagram Baru</h3>
                     @if ($errors->any())

@@ -22,6 +22,8 @@
             @include('admin.component.header')
 
             <div class="container mt-2" style="height: 650px;">
+                <a href="{{ route('admin.news.index') }}" class="mb-2 text-dark text-decoration-none" style="font-weight: 600;font-size: 16px;">
+                    <i class="bi bi-chevron-left pe-2"></i>Kembali </a>
                 <div class="row px-4 py-5">
                     <div class="col">
                         <div class="card p-4" style="background-color: #FFFFFF; border-radius: 20px;">

@@ -22,9 +22,12 @@
                 @include('admin.component.header')
 
                 <div class="container mt-2" style="height: 650px;">
+                    <a href="{{ route('admin.news.index') }}" class="mb-2 text-dark text-decoration-none" style="font-weight: 600;font-size: 16px;">
+                    <i class="bi bi-chevron-left pe-2"></i>Kembali </a>
                     <div class="row px-4 py-5">
                         <h3 class="text-center">Tambah Berita</h3>
-                        <div class="col">
+                        <div class="card p-4" style="background-color: #FFFFFF; border-radius: 20px;">
+                            <div class="col">
                             <form action="{{ route('admin.news.store') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                 
@@ -69,8 +72,12 @@
                                 <br>
                                 <div class="mb-3">
                                     <label for="foto" class="form-label">Upload Foto</label>
-                                    <input type="file" class="form-control w-50" id="foto" name="img">
-                                    <p class="text-danger">Max 1MB</p>
+                                    <div class="mb-3">
+                                        <img src="" class="w-25" id="prev">
+                                    </div>
+                                    
+                                    <input type="file" class="form-control w-50" id="foto" name="img" onChange="loadFile(event)">
+                                    <p class="text-danger text-sm">Max 1MB</p>
                                 </div>
                                 <div class="mb-3">
                                     <label for="deskripsi" class="form-label">Deskripsi</label>
@@ -86,6 +93,8 @@
                                     <button type="submit" class="btn btn-orange text-white mx-auto px-lg-5">Buat Berita</button>
                                 </div>
                         </div>
+                        
+                        </div>
                         </form>
 
 
@@ -96,6 +105,19 @@
     @endsection
     @push('scripts')
     <script src="//cdn.ckeditor.com/4.18.0/full/ckeditor.js"></script>
+
+    {{-- preview upload foto --}}
+    <script>
+        var loadFile = function (event) {
+        var output = document.getElementById('prev');
+            output.src = URL.createObjectURL(event.target.files[0]);
+            output.onload = function () {
+                URL.revokeObjectURL(output.src)
+                // free memory
+            }
+        };
+    </script>
+    {{-- end preview upload foto --}}
         <script>
             var options = {
                 filebrowserImageBrowseUrl: '/filemanager?type=Images',

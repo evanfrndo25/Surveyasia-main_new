@@ -27,6 +27,8 @@
                     {{ session()->get('status') }}
                 </div>
                 @endif
+                <a href="{{ route('admin.chart.index') }}" class="mb-2 text-dark text-decoration-none" style="font-weight: 600;font-size: 16px;">
+                    <i class="bi bi-chevron-left pe-2"></i>Kembali </a>
                 <h3 class="text-center py-3">Edit Diagram</h3>
                 <div class="card" style="background-color: #FFFFFF; border: 1px solid rgba(0, 0, 0, 0.3); border-radius: 15px; padding:30px;">
                     <div class="row justify-content-center text-center">
@@ -120,14 +122,14 @@
                         </div>
                         <hr style="border: 1px solid #D9DBE9; transform: matrix(1, 0, 0, 1, 0, 0);">
                         <div class="row ">
-                            <div class="col text-end mt-3">
+                            <div class="col mt-3">
                                 <button type="button" class="btn btn-outline-orange  px-5 " data-bs-toggle="modal"
                                     data-bs-target="#exampleModal">
                                     {{-- <i class="bi bi-trash"></i> --}}
                                     Hapus
                                 </button>
                             </div>
-                            <div class="col  mt-3">
+                            <div class="col text-end mt-3">
                                 <button type="submit" class="btn btn-orange text-white  px-5">Simpan</button>
                             </div>
                         </div>
