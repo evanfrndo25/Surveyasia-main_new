@@ -36,7 +36,7 @@
                     <div class="col">
                         <div class=" input-group align-items-center w-50">
                             <input type="text" class="form-control rounded-pill py-2 text-center"
-                                placeholder="Search everything" aria-label="search" aria-describedby="basic-addon1"
+                                placeholder="Cari Disini" aria-label="search" aria-describedby="basic-addon1"
                                 style="font-size: 12px">
                             <a href="#">
                                 <i
@@ -45,7 +45,7 @@
                         </div>
                     </div>
                     <div class="col text-end">
-                        <a href="" class="btn btnx-orange text-white" data-bs-toggle="modal"
+                        <a href="" class="btn btn-orange text-white" data-bs-toggle="modal"
                             data-bs-target="#modal-add-sub-template">
                             <i class="bi bi-plus-lg"></i>
                             Tambah Sub Template
@@ -65,20 +65,20 @@
                         @endif
                     </form> -->
                 </div>
-                <div class="card border-r-15 border-15">
+                <div class="card"  style="border-radius: 20px; overflow: hidden;">
                     <div class="card-body p-0">
                         <table class="table table-striped table-no-border-head align-middle">
                             <thead>
-                                <tr class="fw-bold" style="background-color: #f6beb226; ">
-                                    <td scope="col" class="text-center py-4">No</td>
-                                    <td scope="col" class="text-center py-4">Bahasa</td>
-                                    <td scope="col" class="text-center py-4">Sub Template</td>
-                                    <td scope="col" class="text-center py-4">Template</td>
-                                    {{-- <td scope="col" class="text-center py-4">Goals</td> --}}
-                                    <td scope="col" class="text-center py-4">Jumlah Pertanyaan</td>
-                                    <td scope="col" class="text-center py-4">Aktivitas</td>
-                                    <td scope="col" class="text-center py-4">Status</td>
-                                    <td scope="col" class="text-center py-4">
+                                <tr class="fw-bold" style="background-color:#f6beb226;">
+                                    <td scope="col" class="text-left py-3 align-middle">No</td>
+                                    <td scope="col" class="text-left py-3 align-middle">Bahasa</td>
+                                    <td scope="col" class="text-left py-3 align-middle">Sub Template</td>
+                                    <td scope="col" class="text-left py-3 align-middle">Template</td>
+                                    {{-- <td scope="col" class="text-left py-3 align-middle">Goals</td> --}}
+                                    <td scope="col" class="text-left py-3 align-middle">Jumlah </br> Pertanyaan</td>
+                                    <td scope="col" class="text-left py-3 align-middle">Aktivitas</td>
+                                    <td scope="col" class="text-left py-3 align-middle">Status</td>
+                                    <td scope="col" class="text-center py-3 align-middle">
                                         Aksi
                                     </td>
                                 </tr>
@@ -92,44 +92,44 @@
                                 <tr>
                                     <td>{{ $questionbank_sub_templates_act->firstItem() + $key }}</td>
 
-                                    <td class="text-center">
+                                    <td class="text-left">
                                         {{ $item->status ? 'ID' : 'ENG' }}
                                     </td>
 
                                     @if (count($item->questions) == 0)
 
-                                    <td class="text-center"><a href="#" class="sub">{{ $item->sub_template_name }}</a>
+                                    <td class="text-left"><a href="#" class="sub">{{ $item->sub_template_name }}</a>
                                     </td>
 
                                     @else
-                                    <td class="text-center"><a href="{{url('/admin/questionbank', ['id'=>$item])}}"
+                                    <td class="text-left"><a href="{{url('/admin/questionbank', ['id'=>$item])}}"
                                             class="sub">{{ $item->sub_template_name }}</a></td>
 
                                     @endif
-                                    <td class="text-center">{{ $item->template->template_name }}</td>
+                                    <td class="text-left">{{ $item->template->template_name }}</td>
 
 
                                     {{-- <td>{{ $item->goals }}</td> --}}
-                                    <td class="text-center">{{ $item->questions->count() }}</td>
-                                    <td class="text-center">{{ $item->aktivitas }}</td>
-                                    <td scope="col" class="text-center">
+                                    <td class="text-left">{{ $item->questions->count() }}</td>
+                                    <td class="text-left">{{ $item->aktivitas }}</td>
+                                    <td scope="col" class="text-left">
                                         @if ($item->status == 0)
-                                        <div class="text-rejected p-2 text-center rounded-pill text-center">Not Active
+                                        <div class="text-rejected p-2 text-left rounded-pill text-center">Not Active
                                         </div>
                                         @else
-                                        <div class="text-complete p-2 text-center rounded-pill text-center">Active</div>
+                                        <div class="text-complete p-2 text-left rounded-pill text-center">Active</div>
                                         @endif
-                                    <td scope="col" class="text-end">
+                                    <td scope="col" class="text-left">
 
-                                        <a class="btn btn-outline"
+                                        <a class="btn btn-outline" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Pratinjau Pertanyaan"
                                             href="{{ route('admin.questionbank.show', $item->id) }}">
                                             <i class="bi bi-search"></i>
                                         </a>
-                                        <a class="btn btn-outline"
+                                        <a class="btn btn-outline" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit Template"
                                             href="{{ route('admin.questionbank.edit', ['questionbank' => $item->id])}}">
                                             <i class="bi bi-pencil-square"></i>
                                         </a>
-                                        <a class="btn btn-outline" data-bs-toggle="modal"
+                                        <a class="btn btn-outline" data-bs-toggle="modal" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Hapus"
                                             data-bs-target="#deleteModal{{ $item->id }}">
                                             <i class="bi bi-trash"></i>
                                         </a>

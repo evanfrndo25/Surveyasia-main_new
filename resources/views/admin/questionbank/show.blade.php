@@ -27,7 +27,7 @@
                 <a href="{{ route('admin.questionbank.index') }}" class="mb-2 text-dark text-decoration-none h6">
                     <i class="bi bi-chevron-left pe-2"></i>Kembali </a>
                 <h1 class="text-center fw-bold" style="font-size: 20px">Pratinjau Pertanyaan</h1>
-                <div class="card">
+                <div class="card" style="border-radius: 20px;">
                     <div class="card-body">
                         <h5 class="py-4 fw-bold">{{ $questionbank->sub_template_name }}</h5>
                         <p>{{ $questionbank->goals }}</p>
@@ -38,7 +38,7 @@
                     </div>
                 </div>
                 <br>
-                <div class="card">
+                <div class="card" style="border-radius: 20px;">
                     <div class="card-body">
                         <h5 class="py-4 fw-bold">Semua Pertanyaan</h5>
                         <hr>

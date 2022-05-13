@@ -24,8 +24,8 @@
                 <div class="container ">
                     <div class="row">
                         <div class="col">
-                            <a href="{{ route('admin.questionbank.index') }}" class="mb-2 text-dark h5 text-decoration-none">
-                                <i class="bi bi-arrow-left pe-2"></i>
+                            <a href="{{ route('admin.questionbank.index') }}" class="mb-2 text-dark h6 text-decoration-none">
+                                <i class="bi bi-chevron-left pe-2"></i>
                                 Kembali
                             </a>
                             <h1 class=" text-center py-3" style="font-size: 30px">Edit Template</h1>
@@ -33,7 +33,7 @@
                                 method="post">
                                 @method('put')
                                 @csrf
-                                <div class="card">
+                                <div class="card" style="border-radius: 20px;">
                                 <div class="card-body">
                                 <div class="mb-3">
                                     <label for="title" class="form-label">Template</label>
