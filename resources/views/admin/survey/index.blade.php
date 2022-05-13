@@ -121,7 +121,7 @@
                                         <div class=" ms-2 bg-success card border-0 d-grid gap-2"
                                             style="border-radius: 5px; width: 120px; height: 200px;">
                                             <i class="bi bi-check-lg h1 m-0 text-white fw-bold mt-auto fw-bold"></i>
-                                            <a href="{{ route('admin.survey.acc', $item->id) }}" class="btn mb-auto stretched-link text-white fw-bold">Terima</a>
+                                            <a href="{{ route('admin.survey.acc-survey', $item->id) }}" class="btn mb-auto stretched-link text-white fw-bold">Terima</a>
                                         </div>
                                     </div>
                                 </div>
@@ -131,7 +131,7 @@
                         <div class="modal fade" id="denyModal{{ $item->id }}" tabindex="-1"
                             aria-labelledby="denyModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
-                                <form action="{{ route('admin.survey.deny', $item->id) }}" method="POST">
+                                <form action="{{ route('admin.survey.deny-survey', $item->id) }}" method="POST">
                                     @csrf
                                     <div class="modal-content">
                                         <div class="btn ms-auto">
@@ -270,7 +270,7 @@
                             <div class="row bg-primary mb-3" style="border-radius: 0 0 17px 17px;">
                                 <div class="col">
                                     <div class="d-grid">
-                                        <a href="{{ route('admin.survey.show', $survey->id) }}" class="btn btn-outline-light">Survei Detail</a>
+                                        <a href="{{ route('admin.survey.deny', $survey->id) }}" class="btn btn-outline-light">Survei Detail</a>
                                     </div>
                                 </div>
                             </div>
@@ -454,7 +454,7 @@
                             <div class="row bg-primary mb-3" style="border-radius: 0 0 17px 17px;">
                                 <div class="col">
                                     <div class="d-grid">
-                                        <a href="{{ route('admin.survey.show', $survey->id) }}" class="btn btn-outline-light">Survei Detail</a>
+                                        <a href="{{ route('admin.survey.acc', $survey->id) }}" class="btn btn-outline-light">Survei Detail</a>
                                     </div>
                                 </div>
                             </div>

@@ -407,8 +407,8 @@ Route::middleware(['is_admin', 'role:admin'])->group(function () {
         Route::get('survey/{survey}/delete', [SurveyInAdmin::class, 'destroy'])->name('survey.destroy');
         Route::get('data-verification', [UserController::class, 'dataVerify'])->name('dataVerify');
 
-        Route::get('survey/acc/{survey}', [SurveyInAdmin::class, 'surveyAcc'])->name('survey.acc');
-        Route::post('survey/deny/{survey}', [SurveyInAdmin::class, 'surveyDeny'])->name('survey.deny');
+        Route::get('survey/acc/{survey}', [SurveyInAdmin::class, 'surveyAcc'])->name('survey.acc-survey');
+        Route::post('survey/deny/{survey}', [SurveyInAdmin::class, 'surveyDeny'])->name('survey.deny-survey');
         Route::get('survey/change-status/{survey}', [SurveyInAdmin::class, 'surveyChangeStatus'])->name('survey.change-status');
     });
 });
