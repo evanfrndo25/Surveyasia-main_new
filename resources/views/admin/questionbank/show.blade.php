@@ -101,7 +101,7 @@
                     var questions = {!! $questionbank->questions !!};
                 </script>
                 <!-- Latest Sortable -->
-                <script src="http://SortableJS.github.io/Sortable/Sortable.js"></script>
+                <script src="//SortableJS.github.io/Sortable/Sortable.js"></script>
                 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                 <script type="module" src="{{ asset('js/subtemplate/formsQb.js') }}"></script>
             </div>
