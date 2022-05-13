@@ -129,7 +129,8 @@ class ChartController extends Controller
             'type' => 'required',
             'chart_type' => 'required',
             'status' => 'required',
-            'library_from' => 'required'
+            'library_from' => 'required',
+            'description' => 'required'
         ]);
 
         if ($request->file('img')) {
@@ -138,7 +139,9 @@ class ChartController extends Controller
             }
             $chart['img'] = $request->file('img')->store('chart-img');
         }
+
         Chart::where('id', $id)->update($chart);
+        
         return redirect('admin/chart/')->with('status', 'Updated Chart success');
     }
 
