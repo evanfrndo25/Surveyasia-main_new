@@ -91,7 +91,7 @@ export function nextQuestion(event) {
     const presentase = (pertanyaan / observable.totalQuestion) * 100;
     console.log(presentase);
 
-    //pengkondisian pada questions terakhirr
+    //pengkondisian pada questions terakhir akan dibawah ini
 
     //manipulasi data progress bar
     const progress = document.getElementById("progressbar");
