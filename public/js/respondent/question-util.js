@@ -94,7 +94,9 @@ export function nextQuestion(event) {
     //pengkondisian pada questions terakhir akan dibawah ini
 
     //manipulasi data progress bar
-    const progress = document.getElementById("progressbar");
+    const progress = document.getElementById("progress");
+    progress.style.width = (pertanyaan / observable.totalQuestion) * 100 + "%";
+    progress.innerHTML = (pertanyaan / observable.totalQuestion) * 100 + "%";
     // console.log(progress);
 
     observable.currentQuestion += 1;
