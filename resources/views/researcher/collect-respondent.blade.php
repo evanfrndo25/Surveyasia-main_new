@@ -346,21 +346,8 @@
     </div>
 </section>
 
-<div class="modal hide fade in" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-body pt-5 pb-4">
-        <div class="text-center">
-            <img src="{{ asset('assets/img/fontisto_preview.svg') }}" width="120px" alt="">
-            <p class="pt-3">Survey anda sedang ditinjau oleh tim kami hingga 1-2 hari kedepan. Tautan dapat diakses setelah mendapatkan persetujuan dari tim kami.</p>
-        </div>
-      </div>
-      <div class="text-center pb-4">
-        <a href="/researcher/surveys" class="btn btn-modal py-2 px-3">Kembali ke Beranda</a>
-      </div>
-    </div>
-  </div>
-</div>
+@include('researcher.modals.popup-status')
+
 {{-- End Collect Respondent --}}
 
 <script type="text/javascript">
@@ -388,9 +375,13 @@ function showQr(){
 
 <script type="text/javascript">
     $(window).on('load', function() {
-        $('#myModal').modal('show');
+        if( "{{ $survey->status }}" !== 'active' ) {
+            $('#myModal').modal('show');
+        } else {
+            $('#myModal').modal('hide');
+        }
     });
 
-    $('#myModal').modal({backdrop: 'static', keyboard: false})  
+    $('#myModal').modal({backdrop: 'static', keyboard: false})
 </script>
 @endsection
