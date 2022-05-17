@@ -88,13 +88,11 @@ export function nextQuestion(event) {
 
     //pehitungan presentase pengisian
     const pertanyaan = observable.currentQuestion + 1;
-    const presentase = (pertanyaan / observable.totalQuestion) * 100;
-    console.log(presentase);
-
-    //pengkondisian pada questions terakhirr
 
     //manipulasi data progress bar
-    const progress = document.getElementById("progressbar");
+    const progress = document.getElementById("progress");
+    progress.style.width = (pertanyaan / observable.totalQuestion) * 100 + "%";
+    progress.innerHTML = (pertanyaan / observable.totalQuestion) * 100 + "%";
     // console.log(progress);
 
     observable.currentQuestion += 1;

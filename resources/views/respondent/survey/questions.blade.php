@@ -26,8 +26,8 @@
 
     <div class="container p-5">
         <div class="progress">
-            <div class="progress-bar bg-orange" role="progressbar" style="width: 25%;" aria-valuenow="25"
-                aria-valuemin="0" aria-valuemax="100">25%</div>
+            <div id="progress" class="progress-bar bg-orange" role="progressbar" style="width: 0%;" aria-valuenow="25"
+                aria-valuemin="0" aria-valuemax="100"></div>
         </div> <br>
         <div class="card shadow">
             <div class="card-body">
