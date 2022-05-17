@@ -29,7 +29,7 @@
             <div id="progress" class="progress-bar bg-orange" role="progressbar" style="width: 0%;" aria-valuenow="25"
                 aria-valuemin="0" aria-valuemax="100"></div>
         </div> <br>
-        <div class="card " style="padding: 10px; border: 1px solid #EF4C29">
+        <div class="card " style="padding: 10px; border: 1px solid #000000">
             <div class="card-body">
                 <div class="row tab-content" id="questionContainer">
                     <div class="tab-pane fade show active" id="preQuestion">
@@ -51,7 +51,7 @@
                         class="bi bi-chevron-left"></i>
                     Sebelumnya</button>
             </div>
-            <div class="col text-end" id="btnContainer">
+            <div class="col text-end" id="btnContainer btn-last">
                 <button type="button" class="btn btn-orange text-white disabled" id="nextBtn">Berikutnya <i
                         class="bi bi-chevron-right"></i></button>
             </div>
