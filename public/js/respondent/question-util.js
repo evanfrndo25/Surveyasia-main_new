@@ -61,16 +61,18 @@ export function nextQuestion(event) {
 
     // logic untuk mendapatkan componentID dari option yang dipilih
     // hanya berlaku untuk dropdown (multiplechoice dan scale menyusul)
-    const getElements = document.getElementsByClassName('show active');
+    const getElements = document.getElementsByClassName("show active");
     for (let i = 0; i < getElements.length; i++) {
-        const ele = getElements[i].querySelectorAll('#mainInput');
+        const ele = getElements[i].querySelectorAll("#mainInput");
         for (let j = 0; j < ele.length; j++) {
-            if( ele[j].tagName == 'SELECT' ) {  // Apabila tagNamenya SELECT, maka akan diolah di fungsi dropdown
+            if (ele[j].tagName == "SELECT") {
+                // Apabila tagNamenya SELECT, maka akan diolah di fungsi dropdown
                 _checkForDropdown(ele[j]);
-            } else if( ele[j].tagName == 'UL' ) {    // Apabila tagNamenya UL, maka akan diolah di fungsi multipleChoice
+            } else if (ele[j].tagName == "UL") {
+                // Apabila tagNamenya UL, maka akan diolah di fungsi multipleChoice
                 _checkForMultiplechoice(ele[j]);
-            } else if( ele[j].tagName == 'DIV' ) {
-                console.log('_checkScale');
+            } else if (ele[j].tagName == "DIV") {
+                console.log("_checkScale");
             } else {
                 continue;
             }
@@ -78,18 +80,33 @@ export function nextQuestion(event) {
     }
 
     // hide current question first
-    _hideQuestion(questionUtils.currentQuestion);
+    _hideQuestion(questionUtils.currentQuestion, questionUtils.totalQuestion);
 
     const observable = questionObserver();
+    // console.log(observable.currentQuestion);
+    // console.log(observable.totalQuestion);
+
+    //pehitungan presentase pengisian
+    const pertanyaan = observable.currentQuestion + 1;
+    const presentase = (pertanyaan / observable.totalQuestion) * 100;
+    console.log(presentase);
+
+    //pengkondisian pada questions terakhir
+
+    //manipulasi data progress bar
+    const progress = document.getElementById("progressbar");
+    // console.log(progress);
+
     observable.currentQuestion += 1;
 }
 
 function _checkForDropdown(ele) {
-    const options = ele.querySelectorAll('option');
+    const options = ele.querySelectorAll("option");
     for (let k = 0; k < options.length; k++) {
-        if( options[k].getAttribute('value') === ele.value) {
+        if (options[k].getAttribute("value") === ele.value) {
             _redirectTo({
-                text: ele.value, componentId: options[k].getAttribute('logic')
+                text: ele.value,
+                componentId: options[k].getAttribute("logic"),
             });
         }
         continue;
@@ -97,11 +114,12 @@ function _checkForDropdown(ele) {
 }
 
 function _checkForMultiplechoice(ele) {
-    const inputs = ele.querySelectorAll('input');
+    const inputs = ele.querySelectorAll("input");
     for (let k = 0; k < inputs.length; k++) {
-        if( inputs[k].checked ) {
+        if (inputs[k].checked) {
             _redirectTo({
-                text: inputs[k].value, componentId: inputs[k].getAttribute('logic')
+                text: inputs[k].value,
+                componentId: inputs[k].getAttribute("logic"),
             });
         }
         continue;
@@ -109,7 +127,9 @@ function _checkForMultiplechoice(ele) {
 }
 
 function _redirectTo(target) {
-    console.log(`kamu akan dialihkan ke ${target.text} -> ${target.componentId}`);
+    console.log(
+        `kamu akan dialihkan ke ${target.text} -> ${target.componentId}`
+    );
 }
 
 export function previousQuestion(event) {
@@ -245,6 +265,7 @@ function shouldShowSubmit() {
     if (showSubmit) {
         // create submit button if not exists
         if ($("#submitBtn").length === 0)
+            // $(".col text-end").append($("#submitBtn"));
             $("#btnContainer").append(
                 '<button class="btn btn-orange text-white" type="submit" id="submitBtn">Submit</button>'
             );
