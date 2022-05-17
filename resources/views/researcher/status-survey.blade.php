@@ -73,6 +73,24 @@
         </table>
     </div>
 </section>
+
+{{-- Popup --}}
+{{-- when survey status is reject or waiting --}}
+@include('researcher.modals.popup-status')
+
+<script type="text/javascript">
+    $(window).on('load', function() {
+        if( "{{ $survey->status }}" !== 'active' ) {
+            $('#myModal').modal('show');
+        } else {
+            $('#myModal').modal('hide');
+        }
+    });
+
+    $('#myModal').modal({backdrop: 'static', keyboard: false})
+</script>
+{{-- End Popup --}}
+
 {{-- End Data Respondent --}}
 
 @endsection
