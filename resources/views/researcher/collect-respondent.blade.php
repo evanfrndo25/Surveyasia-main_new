@@ -382,6 +382,12 @@ function showQr(){
         }
     });
 
-    $('#myModal').modal({backdrop: 'static', keyboard: false})
+    $(window).on('load', function() {
+        if( "{{ $survey->status }}" !== 'active' ) {
+            $('#myModal1').modal('show');
+        } else {
+            $('#myModal1').modal('hide');
+        }
+    });
 </script>
 @endsection
