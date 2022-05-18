@@ -83,11 +83,13 @@
                         <div class="col">
                             <p class="fs-14px">Status</p>
                             @if ($survey->status == 'active')
-                                <h6 class="text-capitalize text-success fw-semibold">Active</h6>
-                            @elseif ($survey->status == 'closed')
-                                <h6 class="text-capitalize text-danger fw-semibold">Unpublished</h6>
+                                <h6 class="text-capitalize text-success fw-semibold">Aktif</h6>
+                            @elseif ($survey->status == 'reject')
+                                <h6 class="text-capitalize text-danger fw-semibold">Ditolak</h6>
+                            @elseif ($survey->status == 'draft')
+                                <h6 class="text-capitalize text-primary fw-semibold">Diarsipkan</h6>
                             @else
-                                <h6 class="text-capitalize text-warning fw-semibold">Pending</h6>
+                                <h6 class="text-capitalize text-warning fw-semibold">Menunggu</h6>
                             @endif
                         </div>
                     </div>

@@ -123,6 +123,12 @@ class SurveyController extends Controller
             'Survey Not Found'
         );
 
+        // if survey status is draft, reject, or pending
+        abort_if(
+            $survey->status != 'active',
+            404,
+            'Survey Not Found'
+        );
 
         // set some record / increment / listener here
 

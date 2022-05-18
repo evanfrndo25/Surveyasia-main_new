@@ -173,5 +173,26 @@
         });
     </script> --}}
 
+<!-- for modal survey status -->
+@if ($survey->status == 'pending')
+    @include('researcher.modals.popup-status-pending')
+@elseif ($survey->status == 'reject')
+    @include('researcher.modals.popup-status-reject')
+@else
+    @include('researcher.modals.popup-status-pending')
+@endif
+
+<script type="text/javascript">
+    $(window).on('load', function() {
+        if( "{{ $survey->status }}" !== 'active' ) {
+            $('#myModal').modal('show');
+        } else {
+            $('#myModal').modal('hide');
+        }
+    });
+
+    $('#myModal').modal({backdrop: 'static', keyboard: false})
+</script>
+<!-- end modal survey status -->
 
 @endsection

@@ -164,8 +164,10 @@
                                                         <option>
                                                             @if ($survey->status == 'active')
                                                                 Diterima
-                                                            @elseif ($survey->status == 'closed')
+                                                            @elseif ($survey->status == 'reject')
                                                                 Ditolak
+                                                            @elseif ($survey->status == 'draft')
+                                                                Diarsipkan
                                                             @else
                                                                 Menunggu
                                                             @endif
