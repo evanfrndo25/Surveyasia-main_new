@@ -76,18 +76,18 @@
     </div>
 
     <div class="row">
-        <div class="col-auto mx-auto border-orange text-center" style=" margin-top: 20px; padding:5px 10px; font-size: 20px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 5px;">
-            <div id="submitBtn" class="disabled fade">
+        <div id="submitBtn" class="disabled fade col-auto mx-auto">
+            <div class=" border-orange text-center" style=" margin-top: 20px; padding:5px 10px; font-size: 20px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 5px;">
                 <button id="btnAddPart" data-bs-toggle="modal" data-bs-target="#partComponentModal" 
                     data-toggle="tooltip" data-placement="bottom" title="Tambahkan bagian" 
-                    class="btn fs-4 btn1 text-orange"><i class="bi bi-list" class="btn "></i></button>
+                    class="btn fs-4 btn1 text-orange"><i class="bi bi-list"></i></button>
                 <button id="btn2"
                     data-toggle="tooltip" data-placement="bottom" title="Pratinjau" 
-                    class="btn fs-4 btn2 text-orange"><i class="bi bi-eye" class="btn "></i>
+                    class="btn fs-4 btn2 text-orange"><i class="bi bi-eye"></i>
                 </button>
                 <button 
                     data-toggle="tooltip" data-placement="bottom" title="Simpan" 
-                class="btn fs-4 btn3 text-orange"><i class="fal fa-save" class="btn " id="submitBtn"
+                class="btn fs-4 btn3 text-orange"><i class="fal fa-save" id="submitBtn"
                         type="submit"></i></button>
                         
             </div>

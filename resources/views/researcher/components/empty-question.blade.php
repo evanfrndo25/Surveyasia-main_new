@@ -3,24 +3,21 @@
 <div class="row mb-3 text-center">
 
 
-    <div class="col-2">
-
-    </div>
-
-    <div class="card col-9 p-3 mt-" style="display:inline;">
-        <div>
+    <div class="col-auto mx-auto border-orange text-center" style="display:inline; margin-top: 20px; padding:5px 10px; font-size: 20px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 5px;"> 
+        {{-- <div> --}}
             <button id="btnAddQuestion" data-bs-toggle="modal" data-bs-target="#questionComponentModal"
-                class="btn btn-sm "><i class="bi bi-plus-square iconsfot"></i> Tambahkan Pertanyaan</button>
-            <button id="btnAddPart" data-bs-toggle="modal" data-bs-target="#partComponentModal" class="btn btn-sm "><i
-                    class="bi bi-list" class="btn btn-sm "></i> Tambahkan Bagian</button>
-            <button class="btn btn-sm"><i class="bi bi-eye" class="btn btn-sm "></i> Pratinjau</button>
-            <button class="btn btn-sm btn-orange"><i class="bi bi-save" class="btn btn-sm "></i> Simpan</button>
-        </div>
+                data-toggle="tooltip" data-placement="bottom" title="Tambahkan pertanyaan"
+                class="btn btn1 fs-4 text-orange"><i class="fal fa-plus"></i></button>
+            <button id="btnAddPart" data-bs-toggle="modal" data-bs-target="#partComponentModal" 
+                data-toggle="tooltip" data-placement="bottom" title="Tambahkan bagian"
+                class="btn btn1 fs-4 text-orange"><i class="bi bi-list"></i></button>
+            <button data-toggle="tooltip" data-placement="bottom" title="Pratinjau"
+                class="btn btn1 fs-4 text-orange"><i class="bi bi-eye"></i></button>
+            <button data-toggle="tooltip" data-placement="bottom" title="Simpan"
+                class="btn btn1 fs-4 text-orange"><i class="fal fa-save"></i></button>
+        {{-- </div> --}}
     </div>
 
-    <div class="col-2">
-
-    </div>
 
 
 </div>
