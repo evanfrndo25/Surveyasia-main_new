@@ -74,9 +74,16 @@
     </div>
 </section>
 
-{{-- Popup --}}
-{{-- when survey status is reject or waiting --}}
-@include('researcher.modals.popup-status')
+{{-- End Data Respondent --}}
+
+<!-- for modal survey status -->
+@if ($survey->status == 'pending')
+    @include('researcher.modals.popup-status-pending')
+@elseif ($survey->status == 'reject')
+    @include('researcher.modals.popup-status-reject')
+@else
+    @include('researcher.modals.popup-status-pending')
+@endif
 
 <script type="text/javascript">
     $(window).on('load', function() {
@@ -86,11 +93,9 @@
             $('#myModal').modal('hide');
         }
     });
-
+    
     $('#myModal').modal({backdrop: 'static', keyboard: false})
 </script>
-{{-- End Popup --}}
-
-{{-- End Data Respondent --}}
+<!-- end modal survey status -->
 
 @endsection

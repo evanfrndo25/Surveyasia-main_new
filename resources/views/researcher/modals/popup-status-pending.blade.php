@@ -11,17 +11,6 @@
       color: #ef4c29 !important;
     }
 
-    .btn-modal1 {
-        color: #ef4c29;
-        background-color: #F2F2F2;
-        border: solid #ef4c29 1px;
-    }
-
-    .btn-modal1:hover {
-      background-color: #ef4c29;
-      color: #F2F2F2;
-    }
-
     .color-modal {
         color: #ef4c29;
     }
@@ -29,7 +18,7 @@
 </style>
 
 <!-- Modal Pending -->
-<div class="d-none modal hide fade in" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+<div class="modal hide fade in" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">

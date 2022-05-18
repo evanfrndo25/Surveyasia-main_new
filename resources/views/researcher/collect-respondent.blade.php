@@ -3,18 +3,6 @@
 {{-- @extends('researcher.layouts.breadcrumb') --}}
 @extends('researcher.layouts.navbar2')
 
-<!-- CSS -->
-<style>
-    .btn-modal {
-        color: #F2F2F2 !important;
-        background-color: #ef4c29 !important;
-    }
-
-    .color-modal {
-        color: #ef4c29;
-    }
-</style>
-
 @section('content')
 
     {{-- Breadcrumb --}}
@@ -52,15 +40,6 @@
 {{-- Collect Respondent --}}
 <section class="collect-respondent py-5" id="collect-respondent">
     <div class="container">
-        <!-- Untuk logic status survey -->
-        @if ($survey->status == 'active')
-            <span class="badge bg-success mb-3">Aktif</span>
-        @elseif ($survey->status == 'closed')
-            <span class="badge bg-danger mb-3">Ditolak</span>
-        @else
-            <span class="badge bg-warning mb-3">Pending</span>
-        @endif
-
         {{-- <h4>Collect Responses</h4> --}}
         {{-- Share Link --}}
         <div class="border rounded p-5" style="margin-bottom: 200px">
@@ -185,9 +164,9 @@
                     <a class="btn border" data-bs-toggle="collapse" href="#collapseIncome" role="button"
                         aria-expanded="false" aria-controls="collapseIncome">
                         <p>Pendapatan</p>
+                    </div>
                         <img src="/assets/img/income_respondent.png" alt="income" height="130" class="rounded p-4">
                     </a>
-                </div>
             </div>
         </div> --}}
         {{-- Collapse --}}
@@ -346,8 +325,6 @@
     </div>
 </section>
 
-@include('researcher.modals.popup-status')
-
 {{-- End Collect Respondent --}}
 
 <script type="text/javascript">
@@ -373,6 +350,15 @@ function showQr(){
 }
 </script>
 
+<!-- for modal survey status -->
+@if ($survey->status == 'pending')
+    @include('researcher.modals.popup-status-pending')
+@elseif ($survey->status == 'reject')
+    @include('researcher.modals.popup-status-reject')
+@else
+    @include('researcher.modals.popup-status-pending')
+@endif
+
 <script type="text/javascript">
     $(window).on('load', function() {
         if( "{{ $survey->status }}" !== 'active' ) {
@@ -381,13 +367,9 @@ function showQr(){
             $('#myModal').modal('hide');
         }
     });
-
-    $(window).on('load', function() {
-        if( "{{ $survey->status }}" !== 'active' ) {
-            $('#myModal1').modal('show');
-        } else {
-            $('#myModal1').modal('hide');
-        }
-    });
+    
+    $('#myModal').modal({backdrop: 'static', keyboard: false})
 </script>
+<!-- end modal survey status -->
+
 @endsection
