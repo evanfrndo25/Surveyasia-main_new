@@ -114,7 +114,7 @@ class SurveyController extends Controller
 
     public function surveyDeny(Request $request, $survey) {
         Survey::where('id', $survey)->update(
-            ['status' => 'closed', 'reason_deny' => $request->reason]
+            ['status' => 'reject', 'reason_deny' => $request->reason]
         );
 
         return redirect('/admin/survey');
