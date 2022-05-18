@@ -96,7 +96,9 @@ export function nextQuestion(event) {
     //manipulasi data progress bar
     const progress = document.getElementById("progress");
     progress.style.width = (pertanyaan / observable.totalQuestion) * 100 + "%";
-    progress.innerHTML = (pertanyaan / observable.totalQuestion) * 100 + "%";
+    const result = (pertanyaan / observable.totalQuestion) * 100;
+    progress.innerHTML = result.toFixed(0) + "%";
+    
     // console.log(progress);
 
     observable.currentQuestion += 1;
@@ -269,7 +271,7 @@ function shouldShowSubmit() {
         if ($("#submitBtn").length === 0)
             // $(".col text-end").append($("#submitBtn"));
             $("#btnContainer").append(
-                '<button class="btn btn-orange text-white" type="submit" id="submitBtn">Submit</button>'
+                '<button class="btn btn-orange text-white ms-2" type="submit" id="submitBtn">Submit</button>'
             );
     }
 }
