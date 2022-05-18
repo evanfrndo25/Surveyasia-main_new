@@ -16,8 +16,9 @@ class Survey extends Model
     public const TYPE_PAID = 'paid';
 
     public const STATUS_ACTIVE = "active";
-    public const STATUS_CLOSED = "closed";
-    public const STATUS_UNPUBLISHED = "unpublished";
+    public const STATUS_REJECT = "reject";
+    public const STATUS_DRAFT = "draft";
+    public const STATUS_PENDING = "pending";
 
     public $timestamps = true;
 

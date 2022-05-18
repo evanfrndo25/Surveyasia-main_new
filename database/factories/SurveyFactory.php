@@ -34,7 +34,7 @@ class SurveyFactory extends Factory
             'signature' => $this->faker->words(3, true),
             'attempted' => 0,
             'max_attempt' => 20,
-            'status' => 'unpublished',
+            'status' => 'draft',
             'reward_point' => 0,
             'key' => null,
             'type' => 'free',
