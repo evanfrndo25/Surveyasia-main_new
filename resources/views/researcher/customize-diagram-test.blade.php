@@ -190,8 +190,6 @@
             $('#myModal').modal('hide');
         }
     });
-
-    $('#myModal').modal({backdrop: 'static', keyboard: false})
 </script>
 <!-- end modal survey status -->
 
