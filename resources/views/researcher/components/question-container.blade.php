@@ -75,6 +75,7 @@
 
     </div>
 
+
     <div class="row">
         <div id="submitBtn" class="disabled fade col-auto mx-auto">
             <div class=" border-orange text-center" style=" margin-top: 20px; padding:5px 10px; font-size: 20px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 5px;">
@@ -85,17 +86,48 @@
                     data-toggle="tooltip" data-placement="bottom" title="Pratinjau" 
                     class="btn fs-4 btn2 text-orange"><i class="bi bi-eye"></i>
                 </button>
-                <button 
+                <button data-bs-toggle="modal" data-bs-target="#ajukanModal"
                     data-toggle="tooltip" data-placement="bottom" title="Simpan" 
-                class="btn fs-4 btn3 text-orange"><i class="fal fa-save" id="submitBtn"
-                        type="submit"></i></button>
+                class="btn fs-4 btn3 text-orange"><i class="fal fa-save" ></i></button>
                         
             </div>
         </div>
-        <div>
-        </div>
     </div>
 
+    {{-- Modal Ajukan survey --}}
+    <div class="modal fade" id="ajukanModal"  aria-labelledby="ajukanModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="max-width: 600px;">
+            <div class="modal-content">
+                <div class="btn ms-auto">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="{{ asset('assets/img/Copy paste 1.png') }}" class="img-fluid" alt="">
+                    <h4 class="text-center">Apakah kamu ingin mengajukan survey?</h4>
+                    <p class="px-4 small text-center">Anda dapat simpan dan ajukan survey agar admin dapat meninjau survey anda untuk dapat dipublis. Jika hanya ingin mengarsipkan survey dan ingin mengubah kembali survey anda dapat simpan sebagai arsip.</p>
+                </div>
+                <div class="row px-5 pb-5">
+                    {{-- <form action="{{ route('admin.news.destroy', $item->id) }}" method="post">
+                        @method('delete')
+                        @csrf --}}
+                        {{-- <input type="hidden" name="img" value="{{ $item->img }}"> --}}
+                        {{-- <div class="col d-grid gap-2">
+                            <button type="submit" class="btn btn-danger">Ya, simpan dan ajukan survey</button>
+                        </div> --}}
+                    {{-- </form> --}}
+                    <div class="col d-grid gap-2">
+                        <button type="button" class="btn btn-outline-dark" style="font-size: 14px;"
+                            data-bs-dismiss="modal">Tidak, simpan sebagai arsip</button>
+                    </div>
+                    <div class="col d-grid gap-2">
+                        <button type="submit" class="btn btn-success" style="font-size: 14px;">Ya, simpan dan ajukan survey</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- End Modal Ajukan survey --}}
 </form>
 {{-- End Question Form --}}
 
