@@ -87,7 +87,7 @@
                             @elseif ($survey->status == 'reject')
                                 <h6 class="text-capitalize text-danger fw-semibold">Ditolak</h6>
                             @elseif ($survey->status == 'draft')
-                                <h6 class="text-capitalize text-primary fw-semibold">Diarsipkan</h6>
+                                <h6 class="text-capitalize text-secondary fw-semibold">Diarsipkan</h6>
                             @else
                                 <h6 class="text-capitalize text-warning fw-semibold">Menunggu</h6>
                             @endif
