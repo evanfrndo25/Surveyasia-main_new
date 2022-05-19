@@ -40,7 +40,7 @@
     <a href="{{ route('admin.dataVerify') }}" class="text-decoration-none">
         <div class="d-flex align-items-center px-4 py-3 {{ Request::is('admin/data-verification*') ? 'active' : '' }}">
             <img src="{{ asset('assets/img/vec-data-ver.svg') }}" alt="" width="16px" height="16px">
-            <span class="ms-3 text-sidebar" aria-current="page">Vertifikasi</span>
+            <span class="ms-3 text-sidebar" aria-current="page">Verifikasi</span>
         </div>
     </a>
     <a href="{{ route('admin.news.index') }}" class="text-decoration-none">
