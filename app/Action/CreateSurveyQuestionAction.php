@@ -193,6 +193,8 @@ class CreateSurveyQuestionAction
             } */
         }
 
-        return redirect()->route('researcher.surveys.customizeDiagram', $surveyId);
+        // setelah menyimpan survey maka akan diredirect ke halaman CustomizeDiagram
+        // return redirect()->route('researcher.surveys.customizeDiagram', $surveyId);
+        return redirect()->back();  // tetap di halaman pertanyaan survey
     }
 }
