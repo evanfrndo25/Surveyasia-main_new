@@ -20,7 +20,7 @@ class SurveyController extends Controller
     {
         return SurveyResource::collection(
             Survey::with(['questions', 'user', 'user_id', 'options'])
-                ->where('status', '!=', Survey::STATUS_UNPUBLISHED) // hide unpublished survey
+                ->where('status', '=', Survey::STATUS_ACTIVE) // hide unpublished survey
                 ->where('user_id', '!=', Auth::id()) // hide owned survey
                 ->get()
         );

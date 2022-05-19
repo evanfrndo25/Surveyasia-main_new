@@ -36,8 +36,8 @@ class SurveyController extends Controller
         // $surveys = Survey::where(['creator_id' => $user->id])->get();
 
         // Relational
-        $surveysPending = Survey::where('status', 'unpublished')->with('user')->latest()->get();
-        $surveysDeny = Survey::where('status', 'closed')->with('user')->latest()->get();
+        $surveysPending = Survey::where('status', 'pending')->with('user')->latest()->get();
+        $surveysDeny = Survey::where('status', 'reject')->with('user')->latest()->get();
         $surveysAcc = Survey::where('status', 'active')->with('user')->latest()->get();
         $categories = SurveyCategory::select(['id', 'name'])->get();
         // $surveys = Auth::user()->surveys;
@@ -114,7 +114,7 @@ class SurveyController extends Controller
 
     public function surveyDeny(Request $request, $survey) {
         Survey::where('id', $survey)->update(
-            ['status' => 'closed', 'reason_deny' => $request->reason]
+            ['status' => 'reject', 'reason_deny' => $request->reason]
         );
 
         return redirect('/admin/survey');
@@ -154,7 +154,7 @@ class SurveyController extends Controller
     // untuk merubah status survey dari tolak ke pending
     public function surveyChangeStatus($survey) {
         Survey::where('id', $survey)->update(
-            ['status' => 'unpublished', 'reason_deny' => null]
+            ['status' => 'pending', 'reason_deny' => null]
         );
 
         return redirect('/admin/survey');
