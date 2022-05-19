@@ -86,9 +86,20 @@
                     data-toggle="tooltip" data-placement="bottom" title="Pratinjau" 
                     class="btn fs-4 btn2 text-orange"><i class="bi bi-eye"></i>
                 </button>
-                <button data-bs-toggle="modal" data-bs-target="#ajukanModal"
+                <!-- <button data-bs-toggle="modal" data-bs-target="#ajukanModal"
                     data-toggle="tooltip" data-placement="bottom" title="Simpan" 
-                class="btn fs-4 btn3 text-orange"><i class="fal fa-save" ></i></button>
+                class="btn fs-4 btn3 text-orange"><i class="fal fa-save" ></i></button> -->
+                <a 
+                    href="#" 
+                    class="btn fs-4 btn3 text-orange"
+                    data-bs-toggle="modal" 
+                    data-bs-target="#ajukanModal"
+                    data-toggle="tooltip" 
+                    data-placement="bottom" 
+                    title="Simpan"
+                >
+                    <i class="fal fa-save" ></i>
+                </a>
                         
             </div>
         </div>
