@@ -220,6 +220,9 @@
                     </div>
                     <div class="tab-pane fade" id="tolak" role="tabpanel" aria-labelledby="tolak-tab">
                         @foreach ($surveysDeny as $survey)
+                        @if (count($surveysDeny) == 0)
+                            <p>Tidak ada survey</p>
+                        @endif
                         <div class="card border-0" style="border-radius: 20px; overflow: hidden;">
                             <div class="card-body p-0">
                                 <table class="table table-no-border-head align-middle">
@@ -411,6 +414,9 @@
                     </div>
                     <div class="tab-pane fade" id="terima" role="tabpanel" aria-labelledby="terima-tab">
                         @foreach ($surveysAcc as $survey)
+                        @if (count($surveysAcc) == 0)
+                            <p>Tidak ada survey</p>
+                        @endif
                         <div class="card border-0" style="border-radius: 20px; overflow: hidden;">
                             <div class="card-body p-0">
                                 <table class="table table-no-border-head align-middle">
@@ -444,17 +450,14 @@
                                             <td class="col-1">
                                                 <div>
                                                     <h5 class="fw-light">
-                                                        Personal
+                                                        {{ $survey->type }}
                                                     </h5>
                                                 </div>
                                             </td>
                                             <td class="col-2">
                                                 <div>
-                                                    <p class="small text-danger text-center btn rounded-pill" style="background-color: #FBE7E8;">
-                                                        Tidak Dipublish
-                                                    </p>
-                                                    <p class="d-none small text-success btn text-center rounded-pill" style="background-color: #EBF9F1;">
-                                                        Publish
+                                                    <p class="small text-success btn text-center rounded-pill" style="background-color: #EBF9F1;">
+                                                        Aktif
                                                     </p>
                                                 </div>
                                             </td>
