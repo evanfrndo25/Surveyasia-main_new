@@ -2,12 +2,35 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/admin-dashboard.css') }}">
+<style>
+    .btn-1,
+    .btn-2 {
+        border: solid #B0B0B0 2px;
+        color: #B0B0B0;
+    }
+
+    .btn-1:hover {
+        background-color: #F99E3F;
+        color: #fff;
+        border: solid #F99E3F 2px;
+    }
+
+    .btn-2:hover {
+        background-color: #B0B0B0;
+        color: #000;
+    }
+
+    .survey-tabs .nav-tabs .nav-link.active {
+        color: #F99E3F !important;
+        border-bottom: 3px solid #F99E3F;
+    }
+</style>
 @endsection
 
 
 @section('content')
 
-<div class="container-fluid">
+<div class="container-fluid" style="background-color: #F7F8FC; height: 100vh;">
     <div class="row">
         <div class="col-2 nopadding">
             @include('admin.component.sidebar')
@@ -20,7 +43,21 @@
                     {{ session()->get('status') }}
                 </div>
                 @endif
-                <div class="d-flex align-items-center justify-content-between mb-3">
+                <div class="card border-0 bg-white p-3" style="border-radius: 20px;">
+                    <nav class="survey-tabs">
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <button class="nav-link text-secondary active" id="menunggu-tab" data-bs-toggle="tab"
+                                data-bs-target="#menunggu" type="button" role="tab" aria-controls="menunggu"
+                                aria-selected="true">MENUNGGU</button>
+                            <button class="nav-link text-secondary" id="tolak-tab" data-bs-toggle="tab" data-bs-target="#tolak"
+                                type="button" role="tab" aria-controls="tolak" aria-selected="false">DITOLAK</button>
+                            <button class="nav-link text-secondary" id="terima-tab" data-bs-toggle="tab" data-bs-target="#terima"
+                                type="button" role="tab" aria-controls="terima" aria-selected="false">DITERIMA</button>
+                        </div>
+                    </nav>
+                </div>
+
+                <div class="d-flex align-items-center justify-content-between py-4">
                     <div class="position-relative input-group align-items-center" style="width: 15%">
                         <input type="text" class="form-control rounded-pill py-2 text-center"
                             placeholder="Cari disini..." aria-label="search" aria-describedby="basic-addon1"
@@ -32,106 +69,81 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <nav class="survey-tabs">
-                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                            <button class="nav-link active" id="menunggu-tab" data-bs-toggle="tab"
-                                data-bs-target="#menunggu" type="button" role="tab" aria-controls="menunggu"
-                                aria-selected="true">MENUNGGU</button>
-                            <button class="nav-link" id="tolak-tab" data-bs-toggle="tab" data-bs-target="#tolak"
-                                type="button" role="tab" aria-controls="tolak" aria-selected="false">DITOLAK</button>
-                            <button class="nav-link" id="terima-tab" data-bs-toggle="tab" data-bs-target="#terima"
-                                type="button" role="tab" aria-controls="terima" aria-selected="false">DITERIMA</button>
-                        </div>
-                    </nav>
-                </div>
-
                 {{-- LOOPING DATA --}}
-                <div class="tab-content pt-4" id="nav-tabContent">
+                <!-- Tampilan Baru -->
+                <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="menunggu" role="tabpanel" aria-labelledby="menunggu-tab">
                         @if (count($surveysPending) == 0)
                             <p>Tidak ada survey</p>
                         @endif
-                        @foreach ($surveysPending as $item)
-                        <div class="container survey-active">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="row shadow pt-4" style="border-radius: 17px 17px 0 0;">
-                                        <div class="col-2 text-center">
-                                            <img src="{{ asset('assets/img/img-survey.svg') }}" class="img-fluid"
+                        @foreach ($surveysPending as $survey)
+                        <div class="card border-0" style="border-radius: 20px; overflow: hidden;">
+                            <div class="card-body p-0">
+                                <table class="table table-no-border-head align-middle">
+                                    <thead>
+                                        <tr style="background: rgba(255, 175, 158, 0.2);">
+                                            <th scope="col" style="font-size: 18px;" colspan="2">Survey</th>
+                                            <th scope="col" style="font-size: 18px;">Kreator</th>
+                                            <th scope="col" style="font-size: 18px;">Hitung Mundur</th>
+                                            <th scope="col" style="font-size: 18px;">Aksi</th>
+                                            <th scope="col" style="font-size: 18px;">Konfirmasi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="col-1">
+                                            <img src="{{ asset('assets/img/img-survey.svg') }}" class="rounded-circle img-fluid"
                                                 alt="">
-                                        </div>
-                                        <div class="col my-auto">
-                                            <div class="row">
-                                                <div class="col">
-                                                    <p class="card-title">{{ Str::limit($item->title, 20, '...') }}</p>
+                                            </td>
+                                            <td class="col-4">
+                                                <div>
+                                                    <p>{{ $survey->title }}</p>
+                                                    <p class="small">{{ $survey->description }}</p>
                                                 </div>
-                                                <div class="col-3 text-center">
-                                                    <p>Status</p>
+                                            </td>
+                                            <td class="col-2">
+                                                <div>
+                                                    <p class="small">{{ $survey->created_at }}</p>
+                                                    <p class="small">{{ $survey->user_id }} <br> {{ $survey->user->nama_lengkap }}</p>
                                                 </div>
-                                                <div class="col-3 text-center">
-                                                    <p>Tanggal Upload</p>
+                                            </td>
+                                            <td class="col-2">
+                                                <div>
+                                                    <h5 style="color: #F99E3F;">30 : 00 : 0</h5>
                                                 </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col">
+                                            </td>
+                                            <td class="col-1">
+                                                <div>
+                                                <a href="{{ route('admin.survey.show', $survey->id) }}"
+                                                    class="btn"><i class="bi bi-search h4"></i></a>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="text-center d-flex">
+                                                    <div class="pe-3">
+                                                        <a href="{{ route('admin.survey.acc-survey', $survey->id) }}" class="rounded-circle btn btn-1">
+                                                            <i class="bi bi-check-lg h1"></i>
+                                                        </a>
+                                                        <p class="btn-1-1">Terima</p>
+                                                    </div>
                                                     <div>
-                                                        <p class="small text-secondary">
-                                                            {{ Str::limit($item->description, 20, '...') }}</p>
-                                                        <p class="pt-1 small">Kreator :<span>
-                                                                {{ $item->user->nama_lengkap }}</span>
-                                                        </p>
+                                                        <button type="button"  data-bs-toggle="modal" data-bs-target="#denyModal{{ $survey->id }}" class="rounded-circle btn btn-2">
+                                                        <i class="bi bi-x-lg h1"></i>
+                                                        </button>
+                                                        <p class="btn-2-1">Tolak</p>
                                                     </div>
                                                 </div>
-                                                <div class="col-3 text-center">
-                                                    <div>
-                                                        <h6 class="text-capitalize text-warning fw-semibold">Pending</h6>
-                                                    </div>
-                                                </div>
-                                                <div class="col-3 text-center">
-                                                    <div>
-                                                        <h5>{{ $item->created_at->diffForHumans() }}</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row bg-primary justify-content-center mb-3" style="border-radius: 0 0 17px 17px;">
-                                        <div class="col text-end">
-                                            <div class="btn bg-warning my-2 px-4 rounded-pill">
-                                                <i class="bi bi-clock text-white"> 30:02:48</i>
-                                            </div>
-                                        </div>
-                                        <div class="col border-start text-start my-auto">
-                                                <a href="{{ route('admin.survey.show', $item->id) }}"
-                                                    class="btn btn-outline-light">Survei Detail</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-3 text-center">
-                                    <div class="btn-group" role="group" aria-label="Basic example">
-                                        <div class=" bg-danger card border-0 d-grid gap-2"
-                                            style="border-radius: 5px; width: 120px; height: 200px;">
-                                            <i class="bi bi-x-lg h1 m-0 text-white fw-bold mt-auto fw-bold"></i>
-                                            <button type="button" class="btn mb-auto stretched-link text-white fw-bold"
-                                                data-bs-toggle="modal" data-bs-target="#denyModal{{ $item->id }}">
-                                                Tolak
-                                            </button>
-                                        </div>
-                                        <div class=" ms-2 bg-success card border-0 d-grid gap-2"
-                                            style="border-radius: 5px; width: 120px; height: 200px;">
-                                            <i class="bi bi-check-lg h1 m-0 text-white fw-bold mt-auto fw-bold"></i>
-                                            <a href="{{ route('admin.survey.acc-survey', $item->id) }}" class="btn mb-auto stretched-link text-white fw-bold">Terima</a>
-                                        </div>
-                                    </div>
-                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                        <!-- Modal deny -->
-                        <div class="modal fade" id="denyModal{{ $item->id }}" tabindex="-1"
+                         <!-- Modal deny -->
+                         <div class="modal fade" id="denyModal{{ $survey->id }}" tabindex="-1"
                             aria-labelledby="denyModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
-                                <form action="{{ route('admin.survey.deny-survey', $item->id) }}" method="POST">
+                                <form action="{{ route('admin.survey.deny-survey', $survey->id) }}" method="POST">
                                     @csrf
                                     <div class="modal-content">
                                         <div class="btn ms-auto">
@@ -208,74 +220,73 @@
                     </div>
                     <div class="tab-pane fade" id="tolak" role="tabpanel" aria-labelledby="tolak-tab">
                         @foreach ($surveysDeny as $survey)
-                        <div class="container survey-active">
-                            <div class="row shadow pt-4" style="border-radius: 17px 17px 0 0;">
-                                <div class="col-2 text-center">
-                                    <img src="{{ asset('assets/img/img-survey.svg') }}" class="img-fluid" alt="">
-                                </div>
-                                <div class="col my-auto">
-                                    <div class="row">
-                                        <div class="col">
-                                            <p class="card-title">{{ $survey->title }}</p>
-                                        </div>
-                                        <div class="col-3 text-center">
-                                            <p>Status</p>
-                                        </div>
-                                        <div class="col-3 text-center">
-                                            <p>Tanggal Upload</p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <div>
-                                                <p class="small text-secondary">{{ $survey->description }}</p>
-                                                <p class="pt-1 small">Kreator : <span>{{ $survey->user->nama_lengkap }}</span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="col-3 text-center">
-                                            <div>
-                                                <h6 class="text-capitalize text-danger fw-semibold">Ditolak</h6>
-                                            </div>
-                                        </div>
-                                        <div class="col-3 text-center">
-                                            <div>
-                                                <h5>{{ $survey->created_at }}</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-3 bo d-flex">
-                                    <div>
-                                        <p class="text-center">Detail Penolakan</p>
-                                        <p class="text-danger small">{{ $survey->reason_deny ? $survey->reason_deny : 'Detail kosong' }}</p>
-                                    </div>
-                                    <div>
-                                        <a href="#" role="button" id="dropdown-manage-news text-end"
-                                            data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="bi bi-three-dots-vertical text-secondary h5"></i>
-                                        </a>
-                                        <ul class="dropdown-menu bg-dark" aria-labelledby="dropdown-manage-news">
-                                            <li><a class="dropdown-item text-white" href="#" data-bs-toggle="modal"
-                                                    data-bs-target="#ubahstts0"></i><i
-                                                        class="bi bi-gear-fill me-2"></i>Ubah Staus</a></li>
-                                            <li>
-                                            <li>
-                                                <a href="{{ route('admin.survey.change-status', $survey->id) }}" class="dropdown-item text-white">Batal tolak</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row bg-primary mb-3" style="border-radius: 0 0 17px 17px;">
-                                <div class="col">
-                                    <div class="d-grid">
-                                        <a href="{{ route('admin.survey.deny', $survey->id) }}" class="btn btn-outline-light">Survei Detail</a>
-                                    </div>
-                                </div>
+                        <div class="card border-0" style="border-radius: 20px; overflow: hidden;">
+                            <div class="card-body p-0">
+                                <table class="table table-no-border-head align-middle">
+                                    <thead>
+                                        <tr style="background: rgba(255, 175, 158, 0.2);">
+                                            <th scope="col" style="font-size: 18px;" colspan="2">Survey</th>
+                                            <th scope="col" style="font-size: 18px;">Kreator</th>
+                                            <th scope="col" style="font-size: 18px;" class="text-center">Waktu</th>
+                                            <th scope="col" style="font-size: 18px;" class="text-center">Alasan</th>
+                                            <th scope="col" style="font-size: 18px;" class="text-center">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="col-1">
+                                            <img src="{{ asset('assets/img/img-survey.svg') }}" class="rounded-circle img-fluid"
+                                                alt="">
+                                            </td>
+                                            <td class="col-4">
+                                                <div>
+                                                    <p>{{ $survey->title }}</p>
+                                                    <p class="small">{{ $survey->description }}</p>
+                                                </div>
+                                            </td>
+                                            <td class="col-1">
+                                                <div>
+                                                    <p class="small">{{ $survey->user_id }} <br> {{ $survey->user->nama_lengkap }}</p>
+                                                </div>
+                                            </td>
+                                            <td class="col-2">
+                                                <div class="text-center">
+                                                    <h5>{{ $survey->created_at }}</h5>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <p class="small text-danger">
+                                                        {{ $survey->reason_deny ? $survey->reason_deny : 'Detail kosong' }}
+                                                    </p>
+                                                </div>
+                                            </td>
+                                            <td class="col-1 text-center">
+                                                <div class="btn-group">
+                                                    <div>
+                                                        <a href="{{ route('admin.survey.deny', $survey->id) }}" class="btn text-secondary"><i class="bi bi-search h3"></i></a>
+                                                    </div>
+                                                    <div> 
+                                                        <a href="#" role="button" id="dropdown-manage-news text-end" data-bs-toggle="dropdown" class="btn text-secondary" aria-expanded="false">
+                                                            <i class="bi bi-pencil-square h3"></i>
+                                                        </a>
+                                                        <ul class="dropdown-menu bg-dark" aria-labelledby="dropdown-manage-news">
+                                                            <li><a class="dropdown-item text-white" href="#" data-bs-toggle="modal"
+                                                                    data-bs-target="#ubahstts0"></i><i
+                                                                        class="bi bi-gear-fill me-2"></i>Ubah Staus</a></li>
+                                                            <li>
+                                                            <li>
+                                                                <a href="{{ route('admin.survey.change-status', $survey->id) }}" class="dropdown-item text-white">Batal tolak</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                        @endforeach
                         <!-- Modal -->
                         <div class="modal fade" id="ubahstts0" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
@@ -396,70 +407,85 @@
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                     </div>
                     <div class="tab-pane fade" id="terima" role="tabpanel" aria-labelledby="terima-tab">
                         @foreach ($surveysAcc as $survey)
-                        <div class="container survey-active">
-                            <div class="row shadow pt-4" style="border-radius: 17px 17px 0 0;">
-                                <div class="col-2 text-center">
-                                    <img src="{{ asset('assets/img/img-survey.svg') }}" class="img-fluid" alt="">
-                                </div>
-                                <div class="col my-auto">
-                                    <div class="row">
-                                        <div class="col">
-                                            <p class="card-title">{{ $survey->title }}</p>
-                                        </div>
-                                        <div class="col-3 text-center">
-                                            <p>Status</p>
-                                        </div>
-                                        <div class="col-3 text-center">
-                                            <p>Tanggal Upload</p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <div>
-                                                <p class="small text-secondary">{{ $survey->description }}</p>
-                                                <p class="pt-1 small">Kreator : <span>{{ $survey->user->nama_lengkap }}</span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="col-3 text-center">
-                                            <div>
-                                                <h6 class="text-capitalize text-success fw-semibold">Diterima</h6>
-                                            </div>
-                                        </div>
-                                        <div class="col-3 text-center">
-                                            <div>
-                                                <h5>{{ $survey->created_at }}</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-1 d-flex">
-                                    <div class="ms-auto">
-                                        <a href="#" role="button" id="dropdown-manage-news text-end"
-                                            data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="bi bi-three-dots-vertical text-secondary h5"></i>
-                                        </a>
-                                        <ul class="dropdown-menu bg-dark" aria-labelledby="dropdown-manage-news">
-                                            <li><a class="dropdown-item text-white" href="#" data-bs-toggle="modal"
-                                                    data-bs-target="#ubahstts"></i><i
-                                                        class="bi bi-gear-fill me-2"></i>Ubah Staus</a></li>
-                                            <li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row bg-primary mb-3" style="border-radius: 0 0 17px 17px;">
-                                <div class="col">
-                                    <div class="d-grid">
-                                        <a href="{{ route('admin.survey.acc', $survey->id) }}" class="btn btn-outline-light">Survei Detail</a>
-                                    </div>
-                                </div>
+                        <div class="card border-0" style="border-radius: 20px; overflow: hidden;">
+                            <div class="card-body p-0">
+                                <table class="table table-no-border-head align-middle">
+                                    <thead>
+                                        <tr style="background: rgba(255, 175, 158, 0.2);">
+                                            <th scope="col" style="font-size: 18px;" colspan="2">Survey</th>
+                                            <th scope="col" style="font-size: 18px;">Kreator</th>
+                                            <th scope="col" style="font-size: 18px;">Aktifitas</th>
+                                            <th scope="col" style="font-size: 18px;">Status</th>
+                                            <th scope="col" style="font-size: 18px;" class="text-center">Waktu</th>
+                                            <th scope="col" style="font-size: 18px;" class="text-center">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="col-1">
+                                            <img src="{{ asset('assets/img/img-survey.svg') }}" class="rounded-circle img-fluid"
+                                                alt="">
+                                            </td>
+                                            <td class="col-4">
+                                                <div>
+                                                    <p>{{ $survey->title }}</p>
+                                                    <p class="small">{{ $survey->description }}</p>
+                                                </div>
+                                            </td>
+                                            <td class="col-2">
+                                                <div>
+                                                    <p class="small">{{ $survey->user_id }} <br> {{ $survey->user->nama_lengkap }}</p>
+                                                </div>
+                                            </td>
+                                            <td class="col-1">
+                                                <div>
+                                                    <h5 class="fw-light">
+                                                        Personal
+                                                    </h5>
+                                                </div>
+                                            </td>
+                                            <td class="col-2">
+                                                <div>
+                                                    <p class="small text-danger text-center btn rounded-pill" style="background-color: #FBE7E8;">
+                                                        Tidak Dipublish
+                                                    </p>
+                                                    <p class="d-none small text-success btn text-center rounded-pill" style="background-color: #EBF9F1;">
+                                                        Publish
+                                                    </p>
+                                                </div>
+                                            </td>
+                                            <td class="col-2">
+                                                <div class="text-center">
+                                                    <h5>{{ $survey->created_at }}</h5>
+                                                </div>
+                                            </td>
+                                            <td class="col-1 text-center">
+                                                <div class="btn-group">
+                                                    <div>
+                                                        <a href="{{ route('admin.survey.acc', $survey->id) }}" class="btn text-secondary"><i class="bi bi-search h3"></i></a>
+                                                    </div>
+                                                    <div> 
+                                                        <a href="#" role="button" id="dropdown-manage-news text-end" data-bs-toggle="dropdown" class="btn text-secondary" aria-expanded="false">
+                                                            <i class="bi bi-pencil-square h3"></i>
+                                                        </a>
+                                                        <ul class="dropdown-menu bg-dark" aria-labelledby="dropdown-manage-news">
+                                                            <li><a class="dropdown-item text-white" href="#" data-bs-toggle="modal"
+                                                                    data-bs-target="#ubahstts0"></i><i
+                                                                        class="bi bi-gear-fill me-2"></i>Ubah Staus</a></li>
+                                                            <li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                        @endforeach
                         <!-- Modal -->
                         <div class="modal fade" id="ubahstts" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
@@ -583,6 +609,7 @@
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
