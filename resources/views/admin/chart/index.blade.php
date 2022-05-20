@@ -57,7 +57,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="chart-container{{ $num }}" style="padding:10px; height:26rem; max-height:26rem;">
+                            <div id="chart-container{{ $num }}" style="padding:10px;">
                                 <canvas id="chart{{ $num }}" style="max-height: 250px;"></canvas>
                             </div>
                             <div class="card-body">

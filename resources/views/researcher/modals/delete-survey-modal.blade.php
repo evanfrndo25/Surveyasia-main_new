@@ -1,6 +1,6 @@
 <!-- Modal Delete Survey-->
 <div class="modal fade" id="deleteSurveyModal{{ $survey->id }}" role="dialog">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-dialog modal-lg">
 
         <!-- Modal content-->
         <div class="modal-content">
