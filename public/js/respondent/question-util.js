@@ -83,23 +83,16 @@ export function nextQuestion(event) {
     _hideQuestion(questionUtils.currentQuestion, questionUtils.totalQuestion);
 
     const observable = questionObserver();
-    // console.log(observable.currentQuestion);
-    // console.log(observable.totalQuestion);
 
     //pehitungan presentase pengisian
     const pertanyaan = observable.currentQuestion + 1;
     const presentase = (pertanyaan / observable.totalQuestion) * 100;
-    console.log(presentase);
-
-    //pengkondisian pada questions terakhir akan dibawah ini
 
     //manipulasi data progress bar
     const progress = document.getElementById("progress");
     progress.style.width = (pertanyaan / observable.totalQuestion) * 100 + "%";
     const result = (pertanyaan / observable.totalQuestion) * 100;
     progress.innerHTML = result.toFixed(0) + "%";
-    
-    // console.log(progress);
 
     observable.currentQuestion += 1;
 }
@@ -191,6 +184,8 @@ export function questionObserver() {
             if (key == "currentQuestion") {
                 _showOrHideButtons(value, target.totalQuestion);
                 showQuestion(value);
+                // hide_submit();
+                // show_submit();
             }
             target[key] = value;
             return true;
@@ -238,8 +233,13 @@ function _hideQuestion(index) {
 function _showOrHideButtons(currentQuestion, totalQuestion) {
     if (currentQuestion + 1 == totalQuestion) {
         nextButton.hide();
+        $("#submitBtn").show();
     } else if (currentQuestion == 0) {
         previousButton.addClass("disabled");
+    } else if (currentQuestion != totalQuestion) {
+        $("#submitBtn").hide();
+        nextButton.show();
+        previousButton.removeClass("disabled");
     } else {
         nextButton.show();
         previousButton.removeClass("disabled");
