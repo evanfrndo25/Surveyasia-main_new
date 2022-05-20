@@ -77,11 +77,15 @@
 
 
     <div class="row">
-        <div id="submitBtn" class="disabled fade col-auto mx-auto">
+        <div id="groupBtn" class="disabled fade col-auto mx-auto">
             <div class=" border-orange text-center" style=" margin-top: 20px; padding:5px 10px; font-size: 20px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 5px;">
-                <button id="btnAddPart" data-bs-toggle="modal" data-bs-target="#partComponentModal" 
+                {{-- <button id="btnAddPart" data-bs-toggle="modal" data-bs-target="#partComponentModal" 
                     data-toggle="tooltip" data-placement="bottom" title="Tambahkan bagian" 
-                    class="btn fs-4 btn1 text-orange"><i class="bi bi-list"></i></button>
+                    class="btn fs-4 btn1 text-orange"><i class="bi bi-list"></i>
+                </button> --}}
+                <a href="#" id="btnAddPart" data-bs-toggle="modal" data-bs-target="#partComponentModal" 
+                    data-toggle="tooltip" data-placement="bottom" title="Tambahkan bagian" 
+                    class="btn fs-4 btn1 text-orange"><i class="bi bi-list"></i></a>
                 <button id="btn2"
                     data-toggle="tooltip" data-placement="bottom" title="Pratinjau" 
                     class="btn fs-4 btn2 text-orange"><i class="bi bi-eye"></i>
@@ -132,7 +136,7 @@
                             data-bs-dismiss="modal">Tidak, simpan sebagai arsip</button>
                     </div>
                     <div class="col d-grid gap-2">
-                        <button type="submit" class="btn btn-success" style="font-size: 14px;">Ya, simpan dan ajukan survey</button>
+                        <button id="submitBtn" type="submit" class="btn btn-success" style="font-size: 14px;">Ya, simpan dan ajukan survey</button>
                     </div>
                 </div>
             </div>
