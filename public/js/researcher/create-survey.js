@@ -244,6 +244,8 @@ function shouldHideButton() {
     if (totalQuestion >= 1) {
         noQuestion.hide();
     } else {
+        noQuestion.addClass("disabled");
+        noQuestion.addClass("show");
         noQuestion.show();
     }
 
