@@ -21,6 +21,7 @@ use App\Http\Requests\CreateSurveyRequest;
 use App\Http\Requests\CreateSurveyDiagramRequest;
 use App\Http\Requests\CreateSurveyQuestionRequest;
 use App\Models\Chart;
+use Exception;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\URL;
@@ -115,8 +116,31 @@ class SurveyController extends Controller
 
     public function storeQuestions(CreateSurveyQuestionRequest $request)
     {
-        $action = new CreateSurveyQuestionAction();
-        return $action->alternate($request);
+        try {
+            $action = new CreateSurveyQuestionAction();
+            $action->alternate($request);
+            
+            $surveyId = $request->survey_id;
+            Survey::where('id', $surveyId)->update(
+                ['status' => 'pending', 'reason_deny' => null]
+            );
+
+            return redirect()->route('researcher.surveys.index')->with('success', 'Survey Anda sedang ditinjau, peninjauan akan dilakukan maksimal 2x24 jam');
+        } catch (Exception $e) {
+            abort(400, $e->getMessage());
+        }
+    }
+
+    public function storeDraftQuestions(CreateSurveyQuestionRequest $request)
+    {
+        try {
+            $action = new CreateSurveyQuestionAction();
+            $action->alternate($request);
+            
+            return redirect()->back()->with('success', 'Survey Berhasil Tersimpan');
+        } catch (Exception $e) {
+            abort(400, $e->getMessage());
+        }
     }
 
     public function storeDiagrams(CreateSurveyDiagramRequest $request, Survey $survey)

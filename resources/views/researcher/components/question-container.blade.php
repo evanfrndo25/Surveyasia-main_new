@@ -31,6 +31,8 @@
     <div class="col">
         <div class="card">
 
+<!-- Untuk popup sukses -->
+{{ Session::get('success') }}
 
             <div class="container mt-4">
                 @include('researcher.modals.edit-judul-deskripsi-modal')
@@ -132,8 +134,15 @@
                         </div> --}}
                     {{-- </form> --}}
                     <div class="col d-grid gap-2">
-                        <button type="button" class="btn btn-outline-dark" style="font-size: 14px;"
-                            data-bs-dismiss="modal">Tidak, simpan sebagai arsip</button>
+                        <button 
+                            type="button" 
+                            id="submitDraftBtn"
+                            class="btn btn-outline-dark" 
+                            style="font-size: 14px;"
+                            data-bs-dismiss="modal"
+                        >
+                            Tidak, simpan sebagai arsip
+                        </button>
                     </div>
                     <div class="col d-grid gap-2">
                         <button id="submitBtn" type="submit" class="btn btn-success" style="font-size: 14px;">Ya, simpan dan ajukan survey</button>
@@ -174,6 +183,7 @@
 </style>
 
 <script>
+    let survey_id = "{{ $survey->id }}";  //this variable for btnDraftSubmit only
     $(function () {
         $('[data-toggle="tooltip"]').tooltip();
     });
