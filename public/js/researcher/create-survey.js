@@ -22,6 +22,7 @@ export let totalQuestion = 0;
 let form = $("#formSurveyQuestion");
 let btnAdd = $("#btnAddQuestion");
 let btnSubmit = $("#submitBtn");
+let btnDraftSubmit = $("#submitDraftBtn");
 let btnGroup = $("#groupBtn");
 let spinner = $("#spinner");
 let alert = $("#minQuestionAlert");
@@ -82,6 +83,21 @@ function _initFields() {
             form.trigger("submit");
         });
     });
+
+    // submit form with draft type
+    btnDraftSubmit.on("click", (event) => {
+        event.preventDefault();
+        transformToLoadingButton(btnSubmit.get(0));
+
+        // override attribute form action to url storeDraftQuestions
+        form[0].action = `${document.location.origin}/researcher/surveys/${survey_id}/draft-questions`;
+
+        // submit when all files are processed
+        _saveForm().then(() => {
+            form.trigger("submit");
+        });
+    });
+
     observer.observe(questionsContainer.get(0), {
         subtree: false,
         childList: true,
