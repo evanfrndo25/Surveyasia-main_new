@@ -41,18 +41,19 @@ return [
     'google' => [
         'client_id' => '848250045653-io9nr64g73apl66m0lll42l5deeig36d.apps.googleusercontent.com',
         'client_secret' => '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',
-        'redirect' => 'http://localhost:8000/auth/google/callback'
+        // 'redirect' => 'http://localhost:8000/auth/google/callback'
+        'redirect' => $_SERVER['HTTP_HOST'].'/auth/google/callback'
     ],
 
     'facebook' => [
         'client_id' => '189757589899123',
         'client_secret' => 'bd56c724cc77e7b9981d5eb4d68e8811',
-        'redirect' => 'http://localhost:8000/auth/facebook/callback'
+        'redirect' => $_SERVER['HTTP_HOST'].'/auth/facebook/callback'
     ],
 
     'linkedin' => [
         'client_id' => '86u9i8fcavi2uc',
         'client_secret' => 'FKNqCk63tBA22y0k',
-        'redirect' => 'http://localhost:8000/auth/linkedin/callback'
+        'redirect' => $_SERVER['HTTP_HOST'].'/auth/linkedin/callback'
     ],
 ];
