@@ -10,11 +10,11 @@ export let totalQuestion = 0;
 let form = $("#formSurveyQuestion");
 let btnAdd = $("#btnAddQuestion");
 let btnSubmit = $("#submitBtn");
+let btnGroup = $("#groupBtn");
 let spinner = $("#spinner");
 let alert = $("#minQuestionAlert");
 let noQuestion = $("#noQuestionContainer");
 let questionsContainer = $("#questions_container");
-
 
 $(function () {
     _initFields();
@@ -245,15 +245,15 @@ function shouldHideButton() {
     }
 
     if (totalQuestion >= 5) {
-        btnSubmit.removeClass("disabled");
+        btnGroup.removeClass("disabled");
         alert.removeClass("show");
     } else if (totalQuestion >= 1) {
-        btnSubmit.addClass("disabled");
-        btnSubmit.addClass("show");
-        btnSubmit.show();
+        btnGroup.addClass("disabled");
+        btnGroup.addClass("show");
+        btnGroup.show();
         alert.addClass("show");
     } else {
-        btnSubmit.hide();
+        btnGroup.hide();
     }
 
     return totalQuestion >= 1;

@@ -141,6 +141,12 @@ Route::middleware(['auth', 'role:researcher', 'verified'])->group(function () {
                         'storeQuestions',
                     ])->name('storeQuestions');
 
+                    //create draft questions
+                    Route::post('/{survey}/draft-questions', [
+                        SurveyController::class,
+                        'storeDraftQuestions',
+                    ])->name('storeDraftQuestions');
+
                     // customize diagram
                     Route::get('/{survey}/customize-diagram', [
                         SurveyController::class,

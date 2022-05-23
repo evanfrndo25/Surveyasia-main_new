@@ -5,6 +5,7 @@ namespace App\Action;
 use App\Http\Requests\CreateSurveyQuestionRequest;
 use App\Models\Question;
 use App\Models\QuestionsOption;
+use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -125,6 +126,12 @@ class CreateSurveyQuestionAction
         $questionsJson = $request->questions;
         $surveyId = $request->survey_id;
         // $questions = array();
+        
+        if( !$questionsJson || !$surveyId) {
+            throw new Exception(
+                'Terdapat kesalahan pada pertanyaan Anda, silahkan cek kembali'
+            );
+        }
 
         // check if there is any deleted question
         if ($request->has('deleted')) {
@@ -192,9 +199,6 @@ class CreateSurveyQuestionAction
                 }
             } */
         }
-
-        // setelah menyimpan survey maka akan diredirect ke halaman CustomizeDiagram
-        // return redirect()->route('researcher.surveys.customizeDiagram', $surveyId);
-        return redirect()->back();  // tetap di halaman pertanyaan survey
+        return true;
     }
 }
