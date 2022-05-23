@@ -133,6 +133,20 @@ function _initCustomComponentClick(target) {
         customElementModal.modal("hide");
     };
 
+    // init on triple options clicked
+    $("#addTripleOptions").get(0).onclick = function () {
+        const config = JSON.parse(JSON.stringify(tripleOptionsComponent));
+
+        config.meta.survey = {
+            id: configuration.id,
+            title: configuration.title,
+        };
+        config.meta.user = configuration.user;
+        renderQuestion(config, target);
+
+        customElementModal.modal("hide");
+    };
+
     // init on multiple choice clicked
     $("#addMultipleChoice").get(0).onclick = function () {
         const config = JSON.parse(JSON.stringify(multipleChoiceComponent));

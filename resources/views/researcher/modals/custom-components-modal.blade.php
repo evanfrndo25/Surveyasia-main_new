@@ -85,6 +85,18 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-2">
+                                    <div class="card  m-1" id="addTripleOptions">
+                                        <div class="card-body">
+                                            <img class="card-img-top" src="{{ asset('assets/img/checkboxprot.png') }}" alt="Coming Soon">
+                                            <p class="card-title mt-4">Triplepart</p>
+                                            <small class="card-text">Gunakan fitur ini ketika anda ingin responden
+                                            bisa mencentang lebih dari satu pilihan dari
+                                            beberapa pilihan yang anda sediakan.
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

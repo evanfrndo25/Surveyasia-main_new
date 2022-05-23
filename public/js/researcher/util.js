@@ -1,16 +1,16 @@
 import { configuration } from "../components/configuration.js";
 import { DropDown } from "../components/dropdown.js";
 import { MultipleChoice } from "../components/multipleChoice.js";
-import { MultiOption } from "../components/multiOption.js"
+import { MultiOption } from "../components/multiOption.js";
+import { TripleOption } from "../components/tripleOption.js";
 import { TextBox } from "../components/textbox.js";
 import { UploadFile } from "../components/uploadFile.js";
 import uniqid from "../components/util.js";
 
-
 export function renderQuestion(config, after = null) {
     let questionsContainer = $("#questions_container");
     let questionElement;
-    
+
     if (config.componentId === undefined) {
         config.componentId = uniqid("component");
     }
@@ -40,6 +40,9 @@ export function renderQuestion(config, after = null) {
             break;
         case "multiOptions":
             questionElement = new MultiOption(config);
+            break;
+        case "tripleOptions":
+            questionElement = new TripleOption(config);
             break;
         case "dropdown":
             questionElement = new DropDown(config);
