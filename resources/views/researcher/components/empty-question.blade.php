@@ -13,8 +13,8 @@
                 class="btn btn1 fs-4 text-orange"><i class="bi bi-list"></i></button>
             <button data-toggle="tooltip" data-placement="bottom" title="Pratinjau"
                 class="btn btn1 fs-4 text-orange"><i class="bi bi-eye"></i></button>
-            <button data-toggle="tooltip" data-placement="bottom" title="Simpan"
-                class="btn btn1 fs-4 text-orange"><i class="fal fa-save"></i></button>
+            {{--<button data-toggle="tooltip" data-placement="bottom" title="Simpan"
+                class="btn btn1 fs-4 text-orange"><i class="fal fa-save"></i></button>--}}
         {{-- </div> --}}
     </div>
 
