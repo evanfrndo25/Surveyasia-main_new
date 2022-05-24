@@ -96,9 +96,10 @@ export const multiOptionsComponent = {
     meta: {},
 };
 
-export const tripleOptionsComponent = {
+// matriks options
+export const matrixOptionsComponent = {
     question: "Tulis Pertanyaan Anda disini",
-    componentName: "tripleOptions",
+    componentName: "matrixOptions",
     questionNumber: 0,
     // use this for dynamic container
     /* container: {

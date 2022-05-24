@@ -1,7 +1,7 @@
 import { Component } from "./component.js";
 import uniqid, { baseRules, buildHelperText } from "./util.js";
 
-export class TripleOption extends Component {
+export class MatrixOption extends Component {
     constructor(config) {
         // init parent
         super(config);
@@ -953,6 +953,6 @@ export class TripleOption extends Component {
     }
 }
 
-customElements.define("triple-option", TripleOption, {
+customElements.define("matrix-option", MatrixOption, {
     extends: "div",
 });

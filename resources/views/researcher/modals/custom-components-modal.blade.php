@@ -11,10 +11,12 @@
                         <h6 class="mb-3">Pilih Jenis Pertanyaan</h6>
                         <div id="customQuestions">
                             <div class="row">
-                                <div class="col-2">
-                                    <div class="card" id="addTextbox">
-                                        <div class="card-body">
-                                            <img class="card-img-top" src="{{ asset('assets/img/textboxprot.png') }}" alt="Coming Soon">
+                                <div class="col-3">
+                                    <div class="card mb-4" id="addTextbox">
+                                        <div class="card-body" style="height: 335px; max-height: 335px;">
+                                            <div class="text-center">
+                                                <img class="card-img-top w-50" src="{{ asset('assets/img/textboxprot.png') }}" alt="Coming Soon">
+                                            </div>
                                             <p class="card-title fs-6 mt-4">Kotak Teks</p>
                                             <small class="card-text">Tambahkan kolom teks ketika anda ingin
                                             responden menuliskan jawaban yang mereka
@@ -25,10 +27,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-2">
-                                    <div class="card" id="addDropdown">
-                                        <div class="card-body">
-                                            <img class="card-img-top" src="{{ asset('assets/img/dropdownprot.png') }}" alt="Coming Soon">
+                                <div class="col-3">
+                                    <div class="card mb-4" id="addDropdown">
+                                        <div class="card-body" style="height: 335px; max-height: 335px;">
+                                            <div class="text-center">
+                                                <img class="card-img-top w-50" src="{{ asset('assets/img/dropdownprot.png') }}" alt="Coming Soon">
+                                            </div>
+                                            
                                             <p class="card-title fs-6 mt-4">Drop-down</p>
                                             <small class="card-text">Tambahkan dropdown ketika anda ingin
                                             memunculkan daftar menu dimana responden
@@ -37,10 +42,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-2">
-                                    <div class="card" id="addFileUpload">
-                                        <div class="card-body">
-                                            <img class="card-img-top" src="{{ asset('assets/img/fileuploadprot.png') }}" alt="Coming Soon">
+                                <div class="col-3">
+                                    <div class="card mb-4" id="addFileUpload">
+                                        <div class="card-body" style="height: 335px; max-height: 335px;">
+                                            <div class="text-center">
+                                                <img class="card-img-top w-50" src="{{ asset('assets/img/fileuploadprot.png') }}" alt="Coming Soon">
+                                            </div>
+                                            
                                             <p class="card-title mt-4">Upload File</p>
                                             <small class="card-text">Responden dapat mengupload file dengan
                                             format (pdf, docx, xls, jpg, png, webp) untuk
@@ -48,10 +56,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-2">
-                                    <div class="card  m-1" id="addScale">
-                                        <div class="card-body">
-                                            <img class="card-img-top" src="{{ asset('assets/img/scaleprot.png') }}" alt="Coming Soon">
+                                <div class="col-3">
+                                    <div class="card  mb-4" id="addScale">
+                                        <div class="card-body" style="height: 335px; max-height: 335px;">
+                                            <div class="text-center">
+                                                <img class="card-img-top w-50" src="{{ asset('assets/img/scaleprot.png') }}" alt="Coming Soon">
+                                            </div>
+                                            
                                             <p class="card-title mt-4">Skala</p>
                                             <small class="card-text">Gunakan skala untuk mengetahui tingkat
                                             persetujuan atau tidak dari responden atas
@@ -61,10 +72,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-2">
+                                <div class="col-3">
                                     <div class="card" id="addMultipleChoice">
-                                        <div class="card-body">
-                                            <img class="card-img-top" src="{{ asset('assets/img/multipleprot.png') }}" alt="Coming Soon">
+                                        <div class="card-body" style="height: 335px; max-height: 335px;">
+                                            <div class="text-center">
+                                                <img class="card-img-top w-50" src="{{ asset('assets/img/multipleprot.png') }}" alt="Coming Soon">
+                                            </div>
+                                            
                                             <p class="card-title mt-4">Pilihan Ganda</p>
                                             <small class="card-text">Opsi untuk mengajukan pertanyaan dengan
                                             jawaban benar yang telah anda tentukan
@@ -73,10 +87,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-2">
+                                <div class="col-3">
                                     <div class="card  m-1" id="addMultiOptions">
-                                        <div class="card-body">
-                                            <img class="card-img-top" src="{{ asset('assets/img/checkboxprot.png') }}" alt="Coming Soon">
+                                        <div class="card-body" style="height: 335px; max-height: 335px;">
+                                            <div class="text-center">
+                                                <img class="card-img-top w-50" src="{{ asset('assets/img/checkboxprot.png') }}" alt="Coming Soon">
+                                            </div>
+                                            
                                             <p class="card-title mt-4">Kotak Centang</p>
                                             <small class="card-text">Gunakan fitur ini ketika anda ingin responden
                                             bisa mencentang lebih dari satu pilihan dari
@@ -85,11 +102,14 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-2">
-                                    <div class="card  m-1" id="addTripleOptions">
-                                        <div class="card-body">
-                                            <img class="card-img-top" src="{{ asset('assets/img/checkboxprot.png') }}" alt="Coming Soon">
-                                            <p class="card-title mt-4">Triplepart</p>
+                                <div class="col-3">
+                                    <div class="card  m-1" id="addMatrixOptions">
+                                        <div class="card-body" style="height: 335px; max-height: 335px;">
+                                            <div class="text-center">
+                                                <img class="card-img-top w-50" src="{{ asset('assets/img/checkboxprot.png') }}" alt="Coming Soon">
+                                            </div>
+                                            
+                                            <p class="card-title mt-4">Matrix Option</p>
                                             <small class="card-text">Gunakan fitur ini ketika anda ingin responden
                                             bisa mencentang lebih dari satu pilihan dari
                                             beberapa pilihan yang anda sediakan.

@@ -9,6 +9,7 @@ import {
     dropDownComponent,
     fileUploadComponent,
     multiOptionsComponent,
+    matrixOptionsComponent,
     multipleChoiceComponent,
     ratingStarComponent,
     scaleComponent,
@@ -134,8 +135,8 @@ function _initCustomComponentClick(target) {
     };
 
     // init on triple options clicked
-    $("#addTripleOptions").get(0).onclick = function () {
-        const config = JSON.parse(JSON.stringify(tripleOptionsComponent));
+    $("#addMatrixOptions").get(0).onclick = function () {
+        const config = JSON.parse(JSON.stringify(matrixOptionsComponent));
 
         config.meta.survey = {
             id: configuration.id,
