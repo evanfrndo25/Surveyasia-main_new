@@ -23,6 +23,7 @@ let form = $("#formSurveyQuestion");
 let btnAdd = $("#btnAddQuestion");
 let btnSubmit = $("#submitBtn");
 let btnDraftSubmit = $("#submitDraftBtn");
+let btnSave = $("#btnSave");
 let btnGroup = $("#groupBtn");
 let spinner = $("#spinner");
 let alert = $("#minQuestionAlert");
@@ -273,6 +274,7 @@ const observer = new MutationObserver(function (children) {
 function shouldHideButton() {
     if (totalQuestion >= 1) {
         noQuestion.hide();
+        btnSave.addClass("disabled");
     } else {
         noQuestion.addClass("disabled");
         noQuestion.addClass("show");
@@ -282,6 +284,7 @@ function shouldHideButton() {
     if (totalQuestion >= 5) {
         btnGroup.removeClass("disabled");
         alert.removeClass("show");
+        btnSave.removeClass("disabled");
     } else if (totalQuestion >= 1) {
         btnGroup.addClass("disabled");
         btnGroup.addClass("show");

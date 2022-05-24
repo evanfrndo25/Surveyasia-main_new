@@ -97,6 +97,7 @@
                 class="btn fs-4 btn3 text-orange"><i class="fal fa-save" ></i></button> -->
                 <a 
                     href="#" 
+                    id="btnSave"
                     class="btn fs-4 btn3 text-orange"
                     data-bs-toggle="modal" 
                     data-bs-target="#ajukanModal"
