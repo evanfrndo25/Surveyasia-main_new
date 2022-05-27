@@ -30,10 +30,6 @@
 <div class="row mb-3">
     <div class="col">
         <div class="card">
-
-<!-- Untuk popup sukses -->
-{{ Session::get('success') }}
-
             <div class="container mt-4">
                 @include('researcher.modals.edit-judul-deskripsi-modal')
                 <form>
