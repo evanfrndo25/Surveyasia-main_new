@@ -254,7 +254,7 @@
                                             </td>
                                             <td class="col-2">
                                                 <div class="text-center">
-                                                    <h5>{{ $survey->created_at }}</h5>
+                                                    <h5>{{ date('d-m-Y', strtotime($survey->created_at)); }}</h5>
                                                 </div>
                                             </td>
                                             <td>
@@ -463,7 +463,7 @@
                                             </td>
                                             <td class="col-2">
                                                 <div class="text-center">
-                                                    <h5>{{ $survey->created_at }}</h5>
+                                                    <h5>{{ date('d-m-Y', strtotime($survey->created_at)); }}</h5>
                                                 </div>
                                             </td>
                                             <td class="col-1 text-center">
