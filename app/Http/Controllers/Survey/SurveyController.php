@@ -125,7 +125,7 @@ class SurveyController extends Controller
                 ['status' => 'pending', 'reason_deny' => null]
             );
 
-            return redirect()->route('researcher.surveys.index')->with('success', 'Survey Anda sedang ditinjau, peninjauan akan dilakukan maksimal 2x24 jam');
+            return redirect()->route('researcher.surveys.index')->with('success', 'Survey Anda sedang ditinjau oleh Admin, Mohon menunggu peninjauan akan dilakukan maksimal 2x24 jam');
         } catch (Exception $e) {
             abort(400, $e->getMessage());
         }
