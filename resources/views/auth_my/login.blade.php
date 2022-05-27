@@ -83,12 +83,12 @@
                                     <img src="{{ asset('assets/img/btn_google.png') }}" alt="Google" height="25" />
                                 </div>
                             </a>
-                            <a href="{{ url('/auth/facebook') }}">
+                            <a href="{{ url('/auth/facebook') }}" class="d-none">
                                 <div class="card card-btn radius-default py-2 px-3">
                                     <img src="{{ asset('assets/img/btn_facebook.png') }}" alt="Facebook" height="25" />
                                 </div>
                             </a>
-                            <a href="{{ url('/auth/linkedin') }}">
+                            <a href="{{ url('/auth/linkedin') }}" class="d-none">
                                 <div class="card card-btn radius-default py-2 px-3">
                                     <img src="{{ asset('assets/img/btn_linkedin.png') }}" alt="LinkedIn" height="25" />
                                 </div>

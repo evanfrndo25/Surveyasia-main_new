@@ -39,8 +39,8 @@ return [
 
     // Socialite
     'google' => [
-        'client_id' => '848250045653-io9nr64g73apl66m0lll42l5deeig36d.apps.googleusercontent.com',
-        'client_secret' => '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',
+        'client_id' => '736463992620-5ebkc6g4p2giqr7f6i1fausrlkvfhmte.apps.googleusercontent.com',
+        'client_secret' => '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',
         'redirect' => 'http://localhost:8000/auth/google/callback'
     ],
 
