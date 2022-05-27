@@ -74,21 +74,21 @@
                         </div>
                         <div class="row mt-4">
                             <div class="col-12 col-sm-5 d-flex">
-                                <img src="{{ asset('assets/img/ic_total_balance.svg') }}" alt="Total Balance"
+                                {{-- <img src="{{ asset('assets/img/ic_total_balance.svg') }}" alt="Total Balance"
                                     class="img-fluid me-2" width="50">
                                 <div class="col-auto">
                                     <p class="text-muted fs-14px m-0">Total Saldo</p>
                                     <p class="fw-semibold m-0">Rp{{ number_format(0, 0, 0, '.') }}</p>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="col-12 col-sm-7 d-flex mt-3 mt-sm-0">
-                                <img src="{{ asset('assets/img/ic_withdraw_balance.svg') }}" alt="Withdraw Balance"
+                                {{-- <img src="{{ asset('assets/img/ic_withdraw_balance.svg') }}" alt="Withdraw Balance"
                                     class="img-fluid me-2" width="50">
                                 <div class="col-auto">
                                     <p class="text-muted fs-14px m-0">Tarik Saldo</p>
                                     <a href="{{ route('respondent.survey.history') }}"
                                         class="link-orange text-decoration-none m-0">Klik & Cek Riwayat</a>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>

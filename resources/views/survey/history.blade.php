@@ -6,6 +6,7 @@
 @section('content')
 
 {{-- Survey History --}}
+
 <section class="history-survey pb-5" id="history-survey">
   <div class="container">
     {{-- Side Tab --}}
@@ -13,18 +14,18 @@
       <div class="nav flex-column me-5" id="tab" role="tablist" aria-orientation="vertical">
         <ul class="nav" id="myTab" role="tablist">
           <li class="nav-item" role="presentation">
-            <a class="nav-link link-survey-history-side link-secondary link-orange" aria-current="page" href="#"
+            {{-- <a class="nav-link link-survey-history-side link-secondary link-orange" aria-current="page" href="#"
               id="survey-side-tab" data-bs-toggle="tab" data-bs-target="#survey-side" type="button" role="tab"
               aria-controls="survey-side" aria-selected="true">
               <h5 class="fw-semibold">Survey</h5>
-            </a>
+            </a> --}}
           </li>
           <li class="nav-item">
-            <a class="nav-link link-survey-history-side link-secondary" aria-current="page" href="#" id="change-tab"
+            {{-- <a class="nav-link link-survey-history-side link-secondary" aria-current="page" href="#" id="change-tab"
               data-bs-toggle="tab" data-bs-target="#change" type="button" role="tab" aria-controls="change"
               aria-selected="true">
               <h5 class="fw-semibold">Tukar Saldo</h5>
-            </a>
+            </a> --}}
           </li>
         </ul>
       </div>
@@ -53,7 +54,7 @@
           <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="survey" role="tabpanel" aria-labelledby="survey-tab">
               @if($histories->count() > 0)
-              @foreach ($histories as $history)
+              @foreach ( $histories as $history )
               <a href="#" data-bs-toggle="modal" data-bs-target="#approvedModal" role="button"
                 class="link-dark text-decoration-none">
                 <div class="card mt-3">
@@ -63,10 +64,7 @@
                         <img src="{{ asset('assets/img/ic_paper.svg') }}" alt="Paper">
                       </div>
                       <div class="col d-flex align-self-center">
-                        <p class="fw-semibold m-0">Kamu telah menyelesaikan studi <span class="text-muted fw-normal">{{
-                            $history->survey->title
-                            }}</span>
-                        </p>
+                        <p class="fw-semibold m-0">Kamu telah menyelesaikan studi <span class="text-muted fw-normal"> {{ $history->survey->title }} </span> </p>
                       </div>
                       <div class="col-md-2">
                         <p class="text-muted fs-14px m-0">{{ $history->updated_at->diffForHumans() }}</p>
