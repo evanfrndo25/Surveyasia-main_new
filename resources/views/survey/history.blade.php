@@ -41,13 +41,13 @@
                 <h6 class="fw-semibold">Survey</h6>
               </a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
               <a class="nav-link link-survey-history link-secondary" aria-current="page" href="#" id="exchange-tab"
                 data-bs-toggle="tab" data-bs-target="#exchange" type="button" role="tab" aria-controls="exchange"
                 aria-selected="true">
                 <h6 class="fw-semibold">Penukaran</h6>
               </a>
-            </li>
+            </li> --}}
           </ul>
           {{-- End Tab --}}
           {{-- Tab Content --}}
@@ -66,10 +66,10 @@
                       <div class="col d-flex align-self-center">
                         <p class="fw-semibold m-0">Kamu telah menyelesaikan studi <span class="text-muted fw-normal"> {{ $history->survey->title }} </span> </p>
                       </div>
-                      <div class="col-md-2">
+                      {{-- <div class="col-md-2">
                         <p class="text-muted fs-14px m-0">{{ $history->updated_at->diffForHumans() }}</p>
                         <button type="button" class="btn btn-success radius-default mt-2" disabled>Disetujui</button>
-                      </div>
+                      </div> --}}
                     </div>
                   </div>
                 </div>
