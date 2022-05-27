@@ -101,6 +101,10 @@ export const matrixOptionsComponent = {
     question: "Tulis Pertanyaan Anda disini",
     componentName: "matrixOptions",
     questionNumber: 0,
+
+    questionLeft: ["Option 1", "Option 2", "Option 3"],
+    componentName: "matrixOptions",
+    questionNumber: 0,
     // use this for dynamic container
     /* container: {
         elementName: "div",

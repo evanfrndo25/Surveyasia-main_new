@@ -12,6 +12,9 @@ export class MatrixOption extends Component {
         const row = document.createElement("div");
         row.className += "row mb-3";
 
+        const colFirst = document.createElement("div");
+        colFirst.className += "col";
+
         const col = document.createElement("div");
         col.className += "col";
 
@@ -42,6 +45,7 @@ export class MatrixOption extends Component {
             }
         }
 
+        row.appendChild(colFirst);
         row.appendChild(col);
 
         return row;
@@ -56,7 +60,24 @@ export class MatrixOption extends Component {
         return wrapper;
     }
 
+    // for question matrix left
+    _buildQuestionLeftContainer() {
+        const wrapper = document.createElement("ul");
+        wrapper.id = "questInput";
+        wrapper.className += "list-group";
+
+        this._wrapOptions(wrapper);
+        return wrapper;
+    }
+
     _wrapOptions(wrapper) {
+        // const valuesQuest = this.blueprint.questionLeft;
+
+        // for (let i = 0; i < valuesQuest.length; i++) {
+        //     const questionLeft = this._createQuestLeft(valuesQuest[i]);
+        //     wrapper.appendChild(questionLeft);
+        // }
+
         const values = this.blueprint.options;
 
         for (let i = 0; i < values.length; i++) {
@@ -68,12 +89,6 @@ export class MatrixOption extends Component {
     // for standard radio/checkbox type questions
     _createOption(value) {
         const id = uniqid("option");
-        const labelWrapper = document.createElement("label");
-        labelWrapper.className += "form-check-label";
-        labelWrapper.htmlFor = id;
-
-        const item = document.createElement("li");
-        item.className += "list-group-item";
 
         const formWrapper = document.createElement("div");
         formWrapper.className = "form-check";
@@ -83,6 +98,13 @@ export class MatrixOption extends Component {
         } else {
             label = document.createTextNode(value.value);
         }
+
+        const labelWrapper = document.createElement("label");
+        labelWrapper.className += "form-check-label";
+        labelWrapper.htmlFor = id;
+
+        const item = document.createElement("li");
+        item.className += "list-group-item";
 
         const option = document.createElement("input");
         option.id = id;
@@ -102,6 +124,53 @@ export class MatrixOption extends Component {
             option.value = value.value;
         } else {
             option.value = value;
+        }
+
+        formWrapper.appendChild(option);
+        formWrapper.appendChild(label);
+        item.appendChild(formWrapper);
+        labelWrapper.appendChild(item);
+
+        return labelWrapper;
+    }
+
+    _createQuestLeft(valueQuest) {
+        const id = uniqid("option");
+
+        const formWrapper = document.createElement("div");
+        formWrapper.className = "form-check";
+        let label;
+        if (valueQuest.id == null) {
+            label = document.createTextNode(valueQuest);
+        } else {
+            label = document.createTextNode(valueQuest.valueQuest);
+        }
+
+        const labelWrapper = document.createElement("label");
+        labelWrapper.className += "form-check-label";
+        labelWrapper.htmlFor = id;
+
+        const item = document.createElement("li");
+        item.className += "list-group-item";
+
+        const option = document.createElement("input");
+        option.id = id;
+        if (this._fromRespondent()) {
+            if (this.blueprint.configuration.inputType === "checkbox") {
+                option.name = "answers[" + this.blueprint.id + "][]";
+            } else {
+                option.name = "answers[" + this.blueprint.id + "]";
+            }
+        } else {
+            option.name = "answers[" + this.blueprint.componentId + "]";
+        }
+
+        option.className += "form-check-input";
+        option.type = this.blueprint.configuration.inputType;
+        if (valueQuest.id != null) {
+            option.valueQuest = valueQuest.valueQuest;
+        } else {
+            option.valueQuest = valueQuest;
         }
 
         formWrapper.appendChild(option);

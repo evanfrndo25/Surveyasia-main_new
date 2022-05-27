@@ -1,5 +1,6 @@
 import { TextBox } from "../components/textbox.js";
 import { MultipleChoice } from "../components/multipleChoice.js";
+import { MultipleChoice } from "../components/matrixOption.js";
 import { DropDown } from "../components/dropdown.js";
 import { UploadFile } from "../components/uploadFile.js";
 import { Rating } from "../components/rating.js";
@@ -25,11 +26,12 @@ export function CreateQuestion(config) {
         openEditModal(question);
     };
 
-
     if (config.questionType == "textBox") {
         question = new TextBox(config);
     } else if (config.questionType == "multiOptions") {
         question = new MultipleChoice(config);
+    } else if (config.questionType == "matrixOptions") {
+        question = new MatrixOption(config);
     } else if (config.questionType == "multipleChoice") {
         question = new MultipleChoice(config);
     } else if (config.questionType == "dropdown") {
