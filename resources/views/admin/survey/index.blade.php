@@ -73,10 +73,7 @@
                 <!-- Tampilan Baru -->
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="menunggu" role="tabpanel" aria-labelledby="menunggu-tab">
-                        @if (count($surveysPending) == 0)
-                            <p>Tidak ada survey</p>
-                        @endif
-                        @foreach ($surveysPending as $survey)
+
                         <div class="card border-0" style="border-radius: 20px; overflow: hidden;">
                             <div class="card-body p-0">
                                 <table class="table table-no-border-head align-middle">
@@ -84,12 +81,16 @@
                                         <tr style="background: rgba(255, 175, 158, 0.2);">
                                             <th scope="col" style="font-size: 18px;" colspan="2">Survey</th>
                                             <th scope="col" style="font-size: 18px;">Kreator</th>
-                                            <th scope="col" style="font-size: 18px;">Hitung Mundur</th>
-                                            <th scope="col" style="font-size: 18px;">Aksi</th>
-                                            <th scope="col" style="font-size: 18px;">Konfirmasi</th>
+                                            <th scope="col" style="font-size: 18px;" class="text-center">Hitung Mundur</th>
+                                            <th scope="col" style="font-size: 18px;" class="text-center">Aksi</th>
+                                            <th scope="col" style="font-size: 18px;" class="text-center">Konfirmasi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    @if (count($surveysPending) == 0)
+                                        <p>Tidak ada survey</p>
+                                    @endif
+                                    @foreach ($surveysPending as $survey)
                                         <tr>
                                             <td class="col-1">
                                             <img src="{{ asset('assets/img/img-survey.svg') }}" class="rounded-circle img-fluid"
@@ -97,132 +98,130 @@
                                             </td>
                                             <td class="col-4">
                                                 <div>
-                                                    <p>{{ $survey->title }}</p>
+                                                    <p class="fw-bold">{{ $survey->title }}</p>
                                                     <p class="small">{{ $survey->description }}</p>
                                                 </div>
                                             </td>
                                             <td class="col-2">
                                                 <div>
-                                                    <p class="small">{{ $survey->created_at }}</p>
-                                                    <p class="small">{{ $survey->user_id }} <br> {{ $survey->user->nama_lengkap }}</p>
+                                                    <p class="small">{{ date('d-M-Y', strtotime($survey->created_at)); }}</p>
+                                                    <p class="small">ID#{{ $survey->user_id }} <br> {{ $survey->user->nama_lengkap }}</p>
                                                 </div>
                                             </td>
                                             <td class="col-2">
                                                 <div>
-                                                    <h5 style="color: #F99E3F;">30 : 00 : 0</h5>
+                                                    <h5 style="color: #F99E3F;" class="text-center">30 : 00 : 0</h5>
                                                 </div>
                                             </td>
                                             <td class="col-1">
-                                                <div>
+                                                <div class="text-center">
                                                 <a href="{{ route('admin.survey.show', $survey->id) }}"
                                                     class="btn"><i class="bi bi-search h4"></i></a>
                                                 </div>
                                             </td>
                                             <td>
-                                                <div class="text-center d-flex">
+                                                <div class="text-center d-flex justify-content-center">
                                                     <div class="pe-3">
                                                         <a href="{{ route('admin.survey.acc-survey', $survey->id) }}" class="rounded-circle btn btn-1">
                                                             <i class="bi bi-check-lg h1"></i>
                                                         </a>
-                                                        <p class="btn-1-1">Terima</p>
+                                                        <p class="btn-1-1 small">Terima</p>
                                                     </div>
                                                     <div>
                                                         <button type="button"  data-bs-toggle="modal" data-bs-target="#denyModal{{ $survey->id }}" class="rounded-circle btn btn-2">
                                                         <i class="bi bi-x-lg h1"></i>
                                                         </button>
-                                                        <p class="btn-2-1">Tolak</p>
+                                                        <p class="btn-2-1 small">Tolak</p>
                                                     </div>
                                                 </div>
                                             </td>
                                         </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                         <!-- Modal deny -->
-                         <div class="modal fade" id="denyModal{{ $survey->id }}" tabindex="-1"
-                            aria-labelledby="denyModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <form action="{{ route('admin.survey.deny-survey', $survey->id) }}" method="POST">
-                                    @csrf
-                                    <div class="modal-content">
-                                        <div class="btn ms-auto">
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
+                        <!-- Modal deny -->
+                        @foreach ($surveysPending as $survey)
+                            <div class="modal fade" id="denyModal{{ $survey->id }}" tabindex="-1"
+                                aria-labelledby="denyModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <form action="{{ route('admin.survey.deny-survey', $survey->id) }}" method="POST">
+                                        @csrf
+                                        <div class="modal-content">
+                                            <div class="btn ms-auto">
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="bg-white">
+                                                <h1 class="text-center"><i class="bi bi-trash display-1 text-danger"></i></h1>
+                                                <h4 class="text-center text-danger">Tolak Survey?</h4>
+                                            </div>
+                                            <div class="modal-body bg-light px-4">
+                                                <div>
+                                                <div class="form-check">
+                                                    <input 
+                                                        class="form-check-input" 
+                                                        type="radio" 
+                                                        name="reason" 
+                                                        value="Survei terindikasi mengandung SARA."
+                                                    >
+                                                        Survei terindikasi mengandung SARA.
+                                                </div>
+                                                <div class="form-check">
+                                                    <input 
+                                                        class="form-check-input" 
+                                                        type="radio" 
+                                                        name="reason" 
+                                                        value="Survei terindikasi mengandung unsur kekerasan."
+                                                    >
+                                                        Survei terindikasi mengandung unsur kekerasan.
+                                                </div>
+                                                <div class="form-check">
+                                                    <input 
+                                                        class="form-check-input" 
+                                                        type="radio" 
+                                                        name="reason" 
+                                                        value="Survei tidak relevan (logo/judul survei tidak cocok dengan isi survei)."
+                                                    >
+                                                        Survei tidak relevan (logo/judul survei tidak cocok dengan isi survei).
+                                                </div>
+                                                <div class="form-check">
+                                                    <input 
+                                                        class="form-check-input" 
+                                                        type="radio" 
+                                                        name="reason" 
+                                                        value="Survei terindikasi bukan merupakan karya orisinil."
+                                                    >
+                                                        Survei terindikasi bukan merupakan karya orisinil.
+                                                </div>
+                                                <div class="form-check">
+                                                    <input 
+                                                        class="form-check-input" 
+                                                        type="radio" 
+                                                        name="reason" 
+                                                        value="Survei terindikasi melanggar hak privasi individu (terlalu vulgar, mengandung pelecehan seksual)."
+                                                    >
+                                                        Survei terindikasi melanggar hak privasi individu (terlalu vulgar, mengandung pelecehan seksual).
+                                                </div>
+                                                </div>
+                                            </div>
+                                            <div class="row px-4 mt-3 mb-3">
+                                                <div class="col d-grid gap-2">
+                                                    <button type="submit" class="btn btn-danger">TOLAK</button>
+                                                </div>
+                                                <div class="col d-grid gap-2">
+                                                    <button type="button" class="btn btn-outline-secondary"
+                                                        data-bs-dismiss="modal">KEMBALI</button>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="bg-white">
-                                            <h1 class="text-center"><i class="bi bi-trash display-1 text-danger"></i></h1>
-                                            <h4 class="text-center text-danger">Tolak Survey?</h4>
-                                        </div>
-                                        <div class="modal-body bg-light px-4">
-                                            <div>
-                                            <div class="form-check">
-                                                <input 
-                                                    class="form-check-input" 
-                                                    type="radio" 
-                                                    name="reason" 
-                                                    value="Survei terindikasi mengandung SARA."
-                                                >
-                                                    Survei terindikasi mengandung SARA.
-                                            </div>
-                                            <div class="form-check">
-                                                <input 
-                                                    class="form-check-input" 
-                                                    type="radio" 
-                                                    name="reason" 
-                                                    value="Survei terindikasi mengandung unsur kekerasan."
-                                                >
-                                                    Survei terindikasi mengandung unsur kekerasan.
-                                            </div>
-                                            <div class="form-check">
-                                                <input 
-                                                    class="form-check-input" 
-                                                    type="radio" 
-                                                    name="reason" 
-                                                    value="Survei tidak relevan (logo/judul survei tidak cocok dengan isi survei)."
-                                                >
-                                                    Survei tidak relevan (logo/judul survei tidak cocok dengan isi survei).
-                                            </div>
-                                            <div class="form-check">
-                                                <input 
-                                                    class="form-check-input" 
-                                                    type="radio" 
-                                                    name="reason" 
-                                                    value="Survei terindikasi bukan merupakan karya orisinil."
-                                                >
-                                                    Survei terindikasi bukan merupakan karya orisinil.
-                                            </div>
-                                            <div class="form-check">
-                                                <input 
-                                                    class="form-check-input" 
-                                                    type="radio" 
-                                                    name="reason" 
-                                                    value="Survei terindikasi melanggar hak privasi individu (terlalu vulgar, mengandung pelecehan seksual)."
-                                                >
-                                                    Survei terindikasi melanggar hak privasi individu (terlalu vulgar, mengandung pelecehan seksual).
-                                            </div>
-                                            </div>
-                                        </div>
-                                        <div class="row px-4 mt-3 mb-3">
-                                            <div class="col d-grid gap-2">
-                                                <button type="submit" class="btn btn-danger">TOLAK</button>
-                                            </div>
-                                            <div class="col d-grid gap-2">
-                                                <button type="button" class="btn btn-outline-secondary"
-                                                    data-bs-dismiss="modal">KEMBALI</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
+                                    </form>
+                                </div>
                             </div>
-                        </div>
                         @endforeach
                     </div>
                     <div class="tab-pane fade" id="tolak" role="tabpanel" aria-labelledby="tolak-tab">
-                        @foreach ($surveysDeny as $survey)
-                        @if (count($surveysDeny) == 0)
-                            <p>Tidak ada survey</p>
-                        @endif
                         <div class="card border-0" style="border-radius: 20px; overflow: hidden;">
                             <div class="card-body p-0">
                                 <table class="table table-no-border-head align-middle">
@@ -236,6 +235,10 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    @foreach ($surveysDeny as $survey)
+                                        @if (count($surveysDeny) == 0)
+                                            <p>Tidak ada survey</p>
+                                        @endif
                                         <tr>
                                             <td class="col-1">
                                             <img src="{{ asset('assets/img/img-survey.svg') }}" class="rounded-circle img-fluid"
@@ -243,18 +246,18 @@
                                             </td>
                                             <td class="col-4">
                                                 <div>
-                                                    <p>{{ $survey->title }}</p>
+                                                    <p class="fw-bold">{{ $survey->title }}</p>
                                                     <p class="small">{{ $survey->description }}</p>
                                                 </div>
                                             </td>
                                             <td class="col-1">
                                                 <div>
-                                                    <p class="small">{{ $survey->user_id }} <br> {{ $survey->user->nama_lengkap }}</p>
+                                                    <p class="small">ID#{{ $survey->user_id }} <br> {{ $survey->user->nama_lengkap }}</p>
                                                 </div>
                                             </td>
                                             <td class="col-2">
                                                 <div class="text-center">
-                                                    <h5>{{ date('d-m-Y', strtotime($survey->created_at)); }}</h5>
+                                                    <h5>{{ date('d-M-Y', strtotime($survey->created_at)); }}</h5>
                                                 </div>
                                             </td>
                                             <td>
@@ -286,11 +289,13 @@
                                                 </div>
                                             </td>
                                         </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                         <!-- Modal -->
+                        @foreach ($surveysDeny as $survey)
                         <div class="modal fade" id="ubahstts0" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog modal-lg">
@@ -413,10 +418,6 @@
                         @endforeach
                     </div>
                     <div class="tab-pane fade" id="terima" role="tabpanel" aria-labelledby="terima-tab">
-                        @foreach ($surveysAcc as $survey)
-                        @if (count($surveysAcc) == 0)
-                            <p>Tidak ada survey</p>
-                        @endif
                         <div class="card border-0" style="border-radius: 20px; overflow: hidden;">
                             <div class="card-body p-0">
                                 <table class="table table-no-border-head align-middle">
@@ -431,6 +432,10 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    @foreach ($surveysAcc as $survey)
+                                        @if (count($surveysAcc) == 0)
+                                            <p>Tidak ada survey</p>
+                                        @endif
                                         <tr>
                                             <td class="col-1">
                                             <img src="{{ asset('assets/img/img-survey.svg') }}" class="rounded-circle img-fluid"
@@ -438,13 +443,13 @@
                                             </td>
                                             <td class="col-4">
                                                 <div>
-                                                    <p>{{ $survey->title }}</p>
+                                                    <p class="fw-bold">{{ $survey->title }}</p>
                                                     <p class="small">{{ $survey->description }}</p>
                                                 </div>
                                             </td>
                                             <td class="col-2">
+                                                <p class="small">ID#{{ $survey->user_id }} <br> {{ $survey->user->nama_lengkap }}</p>
                                                 <div>
-                                                    <p class="small">{{ $survey->user_id }} <br> {{ $survey->user->nama_lengkap }}</p>
                                                 </div>
                                             </td>
                                             <td class="col-1">
@@ -463,7 +468,7 @@
                                             </td>
                                             <td class="col-2">
                                                 <div class="text-center">
-                                                    <h5>{{ date('d-m-Y', strtotime($survey->created_at)); }}</h5>
+                                                    <h5>{{ date('d-M-Y', strtotime($survey->created_at)); }}</h5>
                                                 </div>
                                             </td>
                                             <td class="col-1 text-center">
@@ -485,11 +490,13 @@
                                                 </div>
                                             </td>
                                         </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                         <!-- Modal -->
+                        @foreach ($surveysAcc as $survey)
                         <div class="modal fade" id="ubahstts" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog modal-lg">

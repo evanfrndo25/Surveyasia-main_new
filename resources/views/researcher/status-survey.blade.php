@@ -82,7 +82,7 @@
 @elseif ($survey->status == 'reject')
     @include('researcher.modals.popup-status-reject')
 @else
-    @include('researcher.modals.popup-status-pending')
+    @include('researcher.modals.popup-status-draft')
 @endif
 
 <script type="text/javascript">
