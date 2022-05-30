@@ -117,14 +117,17 @@ class SurveyController extends Controller
     public function storeQuestions(CreateSurveyQuestionRequest $request)
     {
         try {
+            // save question
             $action = new CreateSurveyQuestionAction();
             $action->alternate($request);
             
+            // change status survey to Pending
             $surveyId = $request->survey_id;
             Survey::where('id', $surveyId)->update(
                 ['status' => 'pending', 'reason_deny' => null]
             );
 
+            // redirect with success message
             return redirect()->route('researcher.surveys.index')->with('success', 'Survey Anda sedang ditinjau oleh Admin, Mohon menunggu peninjauan akan dilakukan maksimal 2x24 jam');
         } catch (Exception $e) {
             abort(400, $e->getMessage());
@@ -134,9 +137,17 @@ class SurveyController extends Controller
     public function storeDraftQuestions(CreateSurveyQuestionRequest $request)
     {
         try {
+            // save question
             $action = new CreateSurveyQuestionAction();
             $action->alternate($request);
+
+            // change status survey to Draft
+            $surveyId = $request->survey_id;
+            Survey::where('id', $surveyId)->update(
+                ['status' => 'draft']
+            );
             
+            // redirect with success message
             return redirect()->back()->with('success', 'Survey Berhasil Tersimpan');
         } catch (Exception $e) {
             abort(400, $e->getMessage());
