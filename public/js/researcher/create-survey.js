@@ -10,6 +10,7 @@ import {
     fileUploadComponent,
     multiOptionsComponent,
     matrixOptionsComponent,
+    repeatQuestComponent,
     multipleChoiceComponent,
     ratingStarComponent,
     scaleComponent,
@@ -135,10 +136,23 @@ function _initCustomComponentClick(target) {
         customElementModal.modal("hide");
     };
 
-    // init on triple options clicked
+    // init on matrix options clicked
     $("#addMatrixOptions").get(0).onclick = function () {
         const config = JSON.parse(JSON.stringify(matrixOptionsComponent));
 
+        config.meta.survey = {
+            id: configuration.id,
+            title: configuration.title,
+        };
+        config.meta.user = configuration.user;
+        renderQuestion(config, target);
+
+        customElementModal.modal("hide");
+    };
+
+    // init on repeat question clicked
+    $("#addRepeatQuestion").get(0).onclick = function () {
+        const config = JSON.parse(JSON.stringify(repeatQuestComponent));
         config.meta.survey = {
             id: configuration.id,
             title: configuration.title,

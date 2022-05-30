@@ -130,6 +130,40 @@ export const matrixOptionsComponent = {
     meta: {},
 };
 
+// Repeat Question
+export const repeatQuestComponent = {
+    question: "Tulis Pertanyaan Anda disini",
+    componentName: "repeatQuestion",
+    questionNumber: 0,
+    // use this for dynamic container
+    /* container: {
+        elementName: "div",
+        style: "p-3 mb-3 border rounded shadow-sm draggable",
+    }, */
+    configuration: {
+        inputType: "text",
+        label: "Masukkan Label Pertanyaan Anda ",
+        placeholder: "Masukkan Jawaban Anda",
+        width: "long",
+        style: "form-control",
+        // position: 0,
+        helperText: "this is a textBox",
+        /* listeners: {
+            change: function () {},
+        }, */
+    },
+
+    media: {
+        /* mediaType: "image",
+        source: "https://images.unsplash.com/photo-1638913662252-70efce1e60a7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=550&q=80",
+        description: "sample image", */
+    },
+    validations: [
+        JSON.parse(JSON.stringify(requiredRule)), // required
+    ],
+    meta: {},
+};
+
 export const scaleComponent = {
     question: "Tulis Pertanyaan Anda disini",
     componentName: "scale",
