@@ -23,9 +23,12 @@
             <div class="modal-body pt-5 pb-4">
                 <div class="text-center">
                     <img src="{{ asset('assets/img/survey ditolak.svg') }}" width="100px" alt="">
-                    <p class="pt-4">
+                    <p class="pt-3" style="font-size: 1.2em;">
+                        <b>Survey Ditolak</b>
+                    </p>
+                    <p>
                         Maaf, survey <span class="fw-bold">{{ $survey->title }}</span> ditolak karena melanggar aturan kami yaitu
-                        <span class="fw-bold">{{ $survey->reason_deny }}</span>. Anda dapat mengedit kembali survey Anda dan
+                        <span class="fw-bold">{{ $survey->reason_deny }}</span> Anda dapat mengedit kembali survey Anda dan
                         menunggu persetujuan dari tim kami.
                     </p>
                 </div>
