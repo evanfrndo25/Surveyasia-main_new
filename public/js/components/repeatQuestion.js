@@ -15,6 +15,12 @@ export class RepeatQuestion extends Component {
         const input = this._buildTextField();
         wrapper.appendChild(input);
 
+        const addAnswer = this._addAnswerRepeatButton();
+        wrapper.appendChild(addAnswer);
+
+        const addQuestTurunan = this._addQuestTurunanButton();
+        wrapper.appendChild(addQuestTurunan);
+
         // validate when inputable (respondent)
         // TODO : use preferred contentRespondent instead
         if (this._fromRespondent()) {
@@ -397,6 +403,76 @@ export class RepeatQuestion extends Component {
                 }
             });
         });
+    }
+
+    // button tambah jawaban repeat question
+    _addAnswerRepeatButton() {
+        // let addAnswer = new Object();
+        // addAnswer.id = "addAnswerRepeatButton";
+        // addAnswer.label = "Tambah jawaban ";
+        // addAnswer.target = this.blueprint.componentId;
+        // addAnswer.className = "btn btn-orange";
+        // addAnswer.icon = this._buildIcon("fas fa-plus");
+        // // return this._buildButton(addAnswer);
+        // return addAnswer;
+
+        const addAnswer = document.createElement("button");
+        addAnswer.id = "btnAddAnswerRepeat";
+        addAnswer.className += "btn btn-orange mt-2";
+        addAnswer.icon = this._buildIcon("fas fa-plus");
+        addAnswer.innerHTML = "Tambah jawaban";
+        return addAnswer;
+    }
+
+    _addQuestTurunanButton() {
+        const addQuestTurunan = document.createElement("button");
+        // const wrapper = this._updatableWrapper();
+        const label = this._createInputLabel("Buat Pertanyaan Turunan");
+
+        // check https://www.w3schools.com/html/html_form_input_types.asp for input types
+        const inputTypes = [
+            {
+                value: "",
+                name: "Kotak Teks",
+                // description: "Input for generic text",
+            },
+            {
+                value: "",
+                name: "Drop-down",
+                // description: "Input for generic text",
+            },
+            {
+                value: "",
+                name: "Upload File",
+                // description: "Input for generic text",
+            },
+            {
+                value: "",
+                name: "Skala",
+                // description: "Input for generic text",
+            },
+            {
+                value: "",
+                name: "Pilihan Ganda",
+                // description: "Input for generic text",
+            },
+            {
+                value: "",
+                name: "Kotak Centang",
+                // description: "Input for generic text",
+            },
+            {
+                value: "",
+                name: "Matriks",
+                // description: "Input for time",
+            },
+        ];
+
+        const selectInput = this._createSelect(inputTypes);
+
+        addQuestTurunan.appendChild(label);
+        addQuestTurunan.appendChild(selectInput);
+        return addQuestTurunan;
     }
 
     _buildUpdatableInputType() {
