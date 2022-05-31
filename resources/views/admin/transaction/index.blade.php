@@ -2,7 +2,16 @@
 
 @section('css')
   <link rel="stylesheet" href="{{ asset('css/admin-dashboard.css') }}">
+  <style>
+    body {
+        background-color: #F7FAFC;
+    }
+
+</style>
 @endsection
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.12.0/css/dataTables.bootstrap5.min.css">
 
 
 @section('content')
@@ -20,25 +29,19 @@
               {{ session()->get('status') }}
             </div>
           @endif
-          <div class="d-flex align-items-center justify-content-between mb-3">
-            <div class="position-relative input-group align-items-center" style="width: 15%">
-                <input type="text" class="form-control rounded-pill py-2 text-center" placeholder="Search everything" aria-label="search" aria-describedby="basic-addon1" style="font-size: 12px">
-                <a href="#">
-                    <i class="position-absolute top-50 start-0 translate-middle-y bi bi-search p-2 ms-1 text-secondary" style="z-index: 999;"></i>
-                </a>
-            </div>
-            
-        </div>
+          
 
-            <table class="table table-no-border-head align-middle">
-                <thead>
-                    <tr>
-                        <td scope="col">#</td>
-                        <td scope="col">Name</td>
-                        <td scope="col">Email</td>
-                        <td scope="col">Subscription</td>
-                        <td scope="col">Price</td>
-                        <td scope="col">Tanggal</td>
+          <div class="container pt-4">
+             <table id="hempas" class="table table-no-border-head align-middle" style="border-radius: 20px; overflow: hidden; background-color:#ffffff">
+                <thead style="background-color:#f6beb226;">
+                    <tr class="fw-bold">
+                        <td scope="col" class="text-left align-middle">No</td>
+                        <td scope="col" class="text-left align-middle">Pengguna</td>
+                        <td scope="col" class="text-left align-middle">AKtivitas</td>
+                        <td scope="col" class="text-left align-middle">Paket</td>
+                        <td scope="col" class="text-left align-middle">Biaya</td>
+                        <td scope="col" class="text-left align-middle">Tanggal <br> Pembelian</td>
+                        <td scope="col" class="text-left align-middle">Batas Aktif <br> Paket</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -47,12 +50,18 @@
                     @foreach ($transactions as $item)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $item->sub->user->nama_lengkap }}</td>
-                        <td>{{ $item->sub->user->email }}</td>
+                        <td>
+                          <div>
+                            <h6 class="nopadding">{{ $item->sub->user->nama_lengkap }}</h6>
+                            <span class="d-block" style="font-size: 13px">{{ $item->sub->user->email }}</span>
+                          </div>
+                        </td>
+                        <td>{{ $item->title}}</td>
                         <td>{{ $item->sub->subscription->name }}</td>
                         <td>
                           {{ $price = "Rp " . number_format($item->price ,0,',','.')}}</td>
-                        <td>{{ $item->created_at->diffForHumans() }}</td>
+                        <td>{{ date('d-m-Y', strtotime ($item->created_at)); }}</td>
+                        <td>{{date('d-m-Y', strtotime ($item->expired_at)); }}</td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -176,4 +185,57 @@
   {{-- END OF MODAL EDIT NEWS --}}
 
 
+@endsection
+@section('script')
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.12.0/js/dataTables.bootstrap5.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+    $('#heyaa').DataTable( {
+        "language": {
+            "decimal":        "",
+    "emptyTable":     "Tidak ada data yang tersedia di tabel",
+    "info":           "Menampilkan START sampai END dari TOTAL item",
+    "infoEmpty":      "Menampilkan 0 sampai 0 dari 0 item",
+    "infoFiltered":   "(difilter dari MAX total item)",
+    "infoPostFix":    "",
+    "thousands":      ",",
+    "lengthMenu":     "Tampilkan MENU item",
+    "loadingRecords": "Memuat...",
+    "processing":     "",
+    "search":         "Cari :",
+    "zeroRecords":    "Arsip tidak ditemukan",
+    "paginate": {
+        "next":       ">",
+        "previous":   "<"
+    },
+        }
+    } );
+});
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+    $('#hempas').DataTable( {
+        "language": {
+            "decimal":        "",
+    "emptyTable":     "Tidak ada data yang tersedia di tabel",
+    "info":           "Menampilkan _START_ sampai _END_ dari _TOTAL_ item",
+    "infoEmpty":      "Menampilkan 0 sampai 0 dari 0 item",
+    "infoFiltered":   "(difilter dari _MAX_ total item)",
+    "infoPostFix":    "",
+    "thousands":      ",",
+    "lengthMenu":     "Tampilkan _MENU_ item",
+    "loadingRecords": "Memuat...",
+    "processing":     "",
+    "search":         "Cari :",
+    "zeroRecords":    "Arsip tidak ditemukan",
+    "paginate": {
+        "next":       ">",
+        "previous":   "<"
+    },
+        }
+    } );
+});
+</script>
 @endsection

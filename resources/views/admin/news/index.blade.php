@@ -2,10 +2,19 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/admin-dashboard.css') }}">
+<style>
+    body {
+        background-color: #F7FAFC;
+    }
+
+</style>
 @endsection
 @section('importLibraryArea')
 <script src="/js/edit-news.js"></script>
 @endsection
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.12.0/css/dataTables.bootstrap5.min.css">
 
 @section('content')
 
@@ -25,19 +34,6 @@
                 @endif
                 <div class="row py-4">
                     <div class="col">
-                        <div class=" input-group align-items-center w-50">
-                            <input type="text" class="form-control rounded-pill py-2 px-5 " 
-                                
-                                placeholder="Cari disini" aria-label="search" aria-describedby="basic-addon1"
-                                style="font-size: 14px">
-                                
-                            <a href="#">
-                                
-                                <i class="position-absolute top-50 start-0 translate-middle-y bi bi-search p-2 ms-1 text-secondary"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col">
                         <div class="text-end">
                             <a href="{{ route('admin.news.create') }}" class="btn btn-orange text-white">
                                 <i class="bi bi-plus-lg me-2"></i>
@@ -47,17 +43,20 @@
                     </div>
                 </div>
 
-                <table class="table table-no-border-head align-middle" id="" >
-                    <thead>
-                        <tr class="fw-bold" style="background: rgba(246, 190, 178, 0.15); border-radius: 15px 15px 0px 0px;" >
-                            <td scope="col" class="w-50">Judul</td>
-                            <td scope="col" class="text-center">Status</td>
-                            <td scope="col" class="text-center">Kategori</td>
-                            <td></td>
-                        </tr>
-                    </thead>
+                <table id="hempas" class="table table-no-border-head align-middle" style="border-radius: 20px; overflow: hidden; background-color:#ffffff">
+                        <thead>
+                            <tr class="fw-bold">
+                                <tr class="fw-bold" style="background: rgba(246, 190, 178, 0.15); border-radius: 15px 15px 0px 0px;" >
+                                    <td scope="col" class="text-left py-3 align-middle">Judul</td>
+                                    <td scope="col" class="text-left py-3 align-middle">Status</td>
+                                    <td scope="col" class="text-center py-3 align-middle">Kategori</td>
+                                    <td scope="col" class="text-center py-3 align-middle">
+                                        Aksi
+                                    </td>
+                                </tr>
+                            </tr>
+                        </thead>
                     <tbody>
-
                         {{-- LOOPING NEWS --}}
                         @foreach ($news as $item)
                         <tr >
@@ -69,11 +68,11 @@
                             <td scope="col" class="text-center">
                                 @if ($item->status == 0)
                                 <div class=" rounded-pill py-1 text-center" style="background-color: #FBE7E8; color: #A30D11;">
-                                    Unpublished
+                                    Tidak Aktif
                                 </div>
                                 @else
                                 <div class=" rounded-pill py-1 text-center" style="background-color: #EBF9F1;color: #1F9254;">
-                                    Published
+                                    Aktif
                                 </div>
                                 @endif
                             </td>
@@ -82,42 +81,23 @@
                             </td>
 
                             <td scope="col" class="text-end">
-                                <a class="btn btn-outline text-muted"
+                            <div class="aksi-menu">
+                            <ul>
+                            <li><a class="btn btn-outline" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Pratinjau Pertanyaan"
                                     href="{{ route('admin.news.show',$item->slug) }}">
                                     <i class="bi bi-search"></i>
-                                </a>
-                                <a class="btn btn-outline text-muted"
+                                </a></li>
+                            <li><a class="btn btn-outline" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit Template"
                                     href="{{ route('admin.news.edit',$item->slug) }}">
                                     <i class="bi bi-pencil-square"></i>
-                                </a>
-                                <a class="btn btn-outline text-muted" data-bs-toggle="modal"
+                                </a></li>
+                            <li><a class="btn btn-outline" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Hapus"
                                     data-bs-target="#deleteModal{{ $item->id }}">
                                     <i class="bi bi-trash"></i>
-                                </a>
+                                </a></li>
+                            </ul>
+                            </div>
                             </td>
-
-                            {{-- dropdown action --}}
-                            {{-- <td scope="col" class="text-center" class="text-end pe-3">
-                                <a href="#" role="button" id="dropdown-manage-news" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    <i class="bi bi-three-dots fs-3 text-secondary"></i>
-                                </a>
-                                <ul class="dropdown-menu bg-dark" aria-labelledby="dropdown-manage-news">
-                                    <li><a class="dropdown-item text-white"
-                                            href="{{ route('admin.news.show',$item->slug) }}"></i><i
-                                                class="bi bi-zoom-in pe-3"></i>Pratinjau</a></li>
-                                    <li>
-                                    <li><a class="dropdown-item text-white"
-                                            href="{{ route('admin.news.edit',$item->slug) }}"><i
-                                                class="bi bi-gear-fill pe-3"></i>Edit
-                                        </a></li>
-                                    <li>
-                                        <button type="button" class="btn dropdown-item text-white"
-                                            data-bs-toggle="modal" data-bs-target="#deleteModal{{ $item->id }}">
-                                            <i class="bi bi-trash pe-2"></i>
-                                            Hapus
-                                        </button>
-                                    </li>
                                     <!-- <li>
                                         <form action="{{ route('admin.news.destroy', $item->id) }}" method="post">
                                             @method('delete')
@@ -129,7 +109,7 @@
                                         </form>
                                     </li> -->
                                 </ul>
-                            </td> --}}
+                            </td>
                         </tr>
 
                         <!-- Modal delete -->
@@ -284,5 +264,33 @@
 <script>
     CKEDITOR.replace('my-editor', options);
 
+</script>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.12.0/js/dataTables.bootstrap5.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+    $('#hempas').DataTable( {
+        "language": {
+            "decimal":        "",
+    "emptyTable":     "Tidak ada data yang tersedia di tabel",
+    "info":           "Menampilkan _START_ sampai _END_ dari _TOTAL_ item",
+    "infoEmpty":      "Menampilkan 0 sampai 0 dari 0 item",
+    "infoFiltered":   "(difilter dari _MAX_ total item)",
+    "infoPostFix":    "",
+    "thousands":      ",",
+    "lengthMenu":     "Tampilkan _MENU_ item",
+    "loadingRecords": "Memuat...",
+    "processing":     "",
+    "search":         "Cari :",
+    "zeroRecords":    "Arsip tidak ditemukan",
+    "paginate": {
+        "next":       ">",
+        "previous":   "<"
+    },
+        }
+    } );
+});
 </script>
 @endpush
