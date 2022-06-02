@@ -38,7 +38,6 @@
                             <div class="upload-ktp text-center mb-5">
                                 <img src="{{ asset('assets/img/ktp_dummy.jpg') }}" alt="Uploaded KTP"
                                     class="img-fluid ms-5 " id="img-preview" name="image_ktp">
-                                {{-- <img src=""> --}}
                                 <div class="cari mt-5 @error('image_ktp') is-invalid @enderror">
                                     <label for="fileUpload" class="text-orange " style="cursor: pointer">Upload
                                         File!</label>
@@ -52,7 +51,7 @@
                                     {{ $message }}
                                 </div>
                                 @enderror
-                            </div>
+                            </div> 
 
                             <div class="mb-3">
                                 <label for="nik" class="form-label">NIK (Nomor Induk Kependudukan)</label>

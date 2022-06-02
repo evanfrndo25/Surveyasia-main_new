@@ -12,6 +12,60 @@
     <!-- Navbar-->
     <div class="collapse navbar-collapse bg-light" id="navbarNav">
         <ul class="navbar-nav ms-auto me-3 me-lg-4">
+        <li class="nav-item dropdown">
+                <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <i class="bi bi-bell h4"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="navbarDropdown" style="width: 600px; border-radius: 6px; height: 70vh; overflow-y: scroll;">
+                    <li class="pt-3 px-3">
+                        <h4>Notifikasi</h4>
+                    </li>
+                    <hr>
+                    <li class="px-3">
+                        <div class="row">
+                            <div class="col-3">
+                                <img src="{{ asset('assets/img/hero_tutorial.png') }}" class="img-fluid" style="border-radius: 6px;" alt="">
+                            </div>
+                            <div class="col">
+                                <h5 style="font-size: 16px;" class="fw-bold text-danger">Survey Anda Ditolak!</h5>
+                                <p style="font-size: 14px;">Maaf, survey <span class="fw-bold">(judul)</span> ditolak karena melanggar aturan kami yaitu, <span class="fw-bold">(alasan penolakan dari admin).</span> Anda dapat mengedit kembali survey Anda dan menunggu persetujuan dari tim kami.</p>
+                                <button type="button" class="btn btn-outline-danger">Edit Survey</button>
+                                <p class="text-muted small pt-2 mb-0">1 hari yang lalu</p>
+                            </div>
+                        </div>
+                    </li>
+                    <hr>
+                    <li class="px-3">
+                        <div class="row">
+                            <div class="col-3">
+                                <img src="{{ asset('assets/img/hero_tutorial.png') }}" class="img-fluid" style="border-radius: 6px;" alt="">
+                            </div>
+                            <div class="col">
+                                <h5 style="font-size: 16px;" class="fw-bold text-success">Survey Anda Diterima!</h5>
+                                <p style="font-size: 14px;">Survey <span class="fw-bold">(judul)</span> telah kami terima. Silahkan bagikan tautan survey Anda untuk mengumpulkan tanggapan responden</p>
+                                <button type="button" class="btn btn-outline-danger">Bagikan Tautan</button>
+                                <p class="text-muted small pt-2 mb-0">2 hari yang lalu</p>
+                            </div>
+                        </div>
+                    </li>
+                    <hr>
+                    <li class="px-3">
+                        <div class="row">
+                            <div class="col-3">
+                                <img src="{{ asset('assets/img/hero_tutorial.png') }}" class="img-fluid" style="border-radius: 6px;" alt="">
+                            </div>
+                            <div class="col">
+                                <h5 style="font-size: 16px;" class="fw-bold text-warning">Survey Anda sedang ditinjau</h5>
+                                <p style="font-size: 14px;">Survey <span class="fw-bold">(judul)</span> sedang dalam peninjauan tim kami. peninjauan akan dilakukan maksimal <span class="fw-bold">2x48 jam</span>. Mohon menunggu untuk pemberitahuan selanjutnya.</p>
+                                <div class="btn bg-warning rounded-pill text-white"><i class="bi bi-clock"></i> 30 : 30 : 30</div>
+                                <p class="text-muted small pt-2 mb-0">1 hari yang lalu</p>
+                            </div>
+                        </div>
+                    </li>
+                    <hr>
+                </ul>
+            </li>
             @auth
             @if (Auth::user()->avatar == null)
             <img src="{{ asset('assets/img/noimage.png') }}" alt="Profile Picture" width="40px" height="40px"

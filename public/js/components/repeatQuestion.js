@@ -90,15 +90,17 @@ export class RepeatQuestion extends Component {
         const form = this._buildOptionsContainer();
         const question = this._updateableQuestion();
         const label = this._updateableLabel();
-        const textBoxType = this._buildUpdatableQuestionType();
-        const answerLength = this._buildAnswerLengthOption();
-        const inputType = this._buildUpdatableInputType();
+        const statusAddAnswer = this._buildStatusAddAnswer();
+        // const textBoxType = this._buildUpdatableQuestionType();
+        // const answerLength = this._buildAnswerLengthOption();
+        // const inputType = this._buildUpdatableInputType();
 
         form.appendChild(question);
         form.appendChild(label);
-        form.appendChild(textBoxType);
-        form.appendChild(answerLength);
-        form.appendChild(inputType);
+        form.appendChild(statusAddAnswer);
+        // form.appendChild(textBoxType);
+        // form.appendChild(answerLength);
+        // form.appendChild(inputType);
 
         return form;
     }
@@ -474,6 +476,47 @@ export class RepeatQuestion extends Component {
         addQuestTurunan.appendChild(selectInput);
         return addQuestTurunan;
     }
+
+    _updateAnswerLength() {
+        const mainInput = $(this).find("#mainInput");
+        const width = this.observer().configuration.width;
+        if (width === "short") {
+            mainInput.get(0).style.maxWidth = 350;
+        } else {
+            mainInput.get(0).style.maxWidth = "";
+        }
+    }
+
+    // aktivasi tambah jawaban responden di edit
+    _buildStatusAddAnswer() {
+        const wrapper = this._updatableWrapper();
+        const label = this._createInputLabel(
+            "Tambahkan Opsi Jawaban Responden"
+        );
+        const types = [
+            {
+                name: "Aktif",
+                value: "active",
+            },
+            {
+                name: "Tidak Aktif",
+                value: "non-active",
+            },
+        ];
+
+        const helperText = buildHelperText(
+            "Aktifkan tombol Tambah Jawaban agar responden dapat memberikan jawaban lebih"
+        );
+
+        wrapper.appendChild(label);
+        this._createRadio(types, wrapper);
+        wrapper.appendChild(helperText);
+
+        return wrapper;
+    }
+
+    _updateStatusAddAnswer() {}
+    // end aktivasi tambah jawaban responden di edit
 
     _buildUpdatableInputType() {
         const wrapper = this._updatableWrapper();

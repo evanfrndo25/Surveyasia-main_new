@@ -82,37 +82,24 @@
 
                             <td scope="col" class="text-end">
                             <div class="aksi-menu">
-                            <ul>
-                            <li><a class="btn btn-outline" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Pratinjau Pertanyaan"
-                                    href="{{ route('admin.news.show',$item->slug) }}">
-                                    <i class="bi bi-search"></i>
-                                </a></li>
-                            <li><a class="btn btn-outline" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit Template"
-                                    href="{{ route('admin.news.edit',$item->slug) }}">
-                                    <i class="bi bi-pencil-square"></i>
-                                </a></li>
-                            <li><a class="btn btn-outline" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Hapus"
-                                    data-bs-target="#deleteModal{{ $item->id }}">
-                                    <i class="bi bi-trash"></i>
-                                </a></li>
-                            </ul>
-                            </div>
-                            </td>
-                                    <!-- <li>
-                                        <form action="{{ route('admin.news.destroy', $item->id) }}" method="post">
-                                            @method('delete')
-                                            @csrf
-                                            <input type="hidden" name="img" value="{{ $item->img }}">
-                                            <button type="submit" class="dropdown-item text-white"
-                                                onclick="return confirm('Apakah kamu yakin ingin menghapus?')"><i
-                                                    class="bi bi-trash pe-3"></i>Delete</button>
-                                        </form>
-                                    </li> -->
-                                </ul>
-                            </td>
-                        </tr>
-
-                        <!-- Modal delete -->
+                                        <ul>
+                                        <li><a class="btn btn-outline" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Pratinjau Pertanyaan"
+                                            href="{{ route('admin.news.show',$item->slug) }}">
+                                            <i class="bi bi-search"></i>
+                                        </a></li>
+                                        <li><a class="btn btn-outline" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Edit Template"
+                                            href="{{ route('admin.news.edit',$item->slug) }}">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </a></li>
+                                        <li><a class="btn btn-outline" data-bs-toggle="modal" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Hapus"
+                                            data-bs-target="#deleteModal{{ $item->id }}">
+                                            <i class="bi bi-trash"></i>
+                                        </a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                                  <!-- Modal delete -->
                         <div class="modal fade" id="deleteModal{{ $item->id }}" tabindex="-1"
                             aria-labelledby="deleteModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
@@ -150,6 +137,11 @@
                     </tbody>
                 </table>
                 {{-- END OF LIST USER --}}
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
                 {{-- PAGINATION --}}
