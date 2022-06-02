@@ -35,7 +35,7 @@
                         @csrf
                         <h2 class="text-orange fw-bold">Data Pribadi</h2>
                         <div class="col-md-12 border radius-default p-4">
-                         {{--   <div class="upload-ktp text-center mb-5">
+                            <div class="upload-ktp text-center mb-5">
                                 <img src="{{ asset('assets/img/ktp_dummy.jpg') }}" alt="Uploaded KTP"
                                     class="img-fluid ms-5 " id="img-preview" name="image_ktp">
                                 <div class="cari mt-5 @error('image_ktp') is-invalid @enderror">
@@ -51,7 +51,7 @@
                                     {{ $message }}
                                 </div>
                                 @enderror
-                            </div> --}} 
+                            </div> 
 
                             <div class="mb-3">
                                 <label for="nik" class="form-label">NIK (Nomor Induk Kependudukan)</label>
