@@ -29,6 +29,41 @@
 
 
 @section('content')
+<script>
+    const countDown = (time, surveyId) => {
+        // Mengatur waktu akhir perhitungan mundur
+        var after2day = new Date(time);
+        after2day.setDate(after2day.getDate() + 2);
+        let countDownDate = after2day.getTime();
+
+        // Memperbarui hitungan mundur setiap 1 detik
+        var x = setInterval(() => {
+            // Untuk mendapatkan tanggal dan waktu hari ini
+            var now = new Date().getTime();
+
+            // Temukan jarak antara sekarang dan tanggal hitung mundur
+            var distance = countDownDate - now;
+
+            // Perhitungan waktu untuk hari, jam, menit dan detik
+            // var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 48)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Keluarkan hasil dalam elemen dengan id = "countD"
+            document.getElementById(`countD${surveyId}`).innerHTML = `${hours} : ${minutes} : ${seconds}`;
+                
+            // Jika hitungan mundur selesai, tulis beberapa teks 
+            if (distance < 0) {
+                clearInterval(x);
+                let getAttr = document.getElementById("countD" + surveyId);
+                getAttr.className = 'text-center text-danger'
+                getAttr.innerHTML = "EXPIRED";
+            }
+        }, 1000);
+    }
+
+</script>
 
 <div class="container-fluid" style="background-color: #F7F8FC; height: 100vh;">
     <div class="row">
@@ -110,7 +145,10 @@
                                             </td>
                                             <td class="col-2">
                                                 <div>
-                                                    <h5 style="color: #F99E3F;" class="text-center">30 : 00 : 0</h5>
+                                                    <script>
+                                                        countDown('{{ $survey->created_at }}', '{{ $survey->id }}');
+                                                    </script>
+                                                    <h5 class="text-center text-warning" id="countD{{ $survey->id }}"></h5>
                                                 </div>
                                             </td>
                                             <td class="col-1">
