@@ -20,7 +20,7 @@
                                                 <div class="card-body">
                                                     <img class="card-img-top" src="{{ asset('assets/img/prototyping.png') }}" alt="Coming Soon">
                                                     <h6 class="card-title">{{ $item['name'] }}</h6>
-                                                    <p class="card-text">
+                                                    <p class="card-text" style="height: 15rem; max-height:15rem;">
                                                         {{ $item['description'] }}
                                                     </p>
                                                     <div class="d-flex justify-content-end">

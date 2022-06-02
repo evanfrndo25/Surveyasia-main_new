@@ -30,10 +30,6 @@
 <div class="row mb-3">
     <div class="col">
         <div class="card">
-
-<!-- Untuk popup sukses -->
-{{ Session::get('success') }}
-
             <div class="container mt-4">
                 @include('researcher.modals.edit-judul-deskripsi-modal')
                 <form>
@@ -97,6 +93,7 @@
                 class="btn fs-4 btn3 text-orange"><i class="fal fa-save" ></i></button> -->
                 <a 
                     href="#" 
+                    id="btnSave"
                     class="btn fs-4 btn3 text-orange"
                     data-bs-toggle="modal" 
                     data-bs-target="#ajukanModal"

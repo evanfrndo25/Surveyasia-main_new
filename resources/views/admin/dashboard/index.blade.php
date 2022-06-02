@@ -54,7 +54,7 @@
                                 ">
                                     <h1 class="fw-bold ms-4">{{ $users}}</h1>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <i class="bi bi-people-fill fs-1"></i>
+                                    <img src="{{asset('assets/img/fa6-solid_user-group.svg')}}"  class="fs-3 p-1 me-4" >
                                         <div class="text-end">
                                             <span class="fw-bold fs-5">Pengguna</span>
                                             <span class="d-block text-mini">Semua pengguna di Surveyasia</span>
@@ -70,9 +70,9 @@
                                 ">
                                     <h1 class="fw-bold ms-4">{{ $questionbank }}</h1>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <i class="bi bi-chat-left-text-fill fs-1"></i>
+                                    <img src="{{asset('assets/img/Vector-1.svg')}}"  class="fs-3 p-1 me-4" >
                                         <div class="text-end">
-                                            <span class="fw-bold fs-5">Bank Pertanyaan</span>
+                                            <span class="fw-bold fs-8">Bank Pertanyaan</span>
                                             <span class="d-block text-mini">Sejak Berdiri</span>
                                         </div>
                                     </div>
@@ -86,7 +86,7 @@
                                 ">
                                     <h1 class="fw-bold ms-4">{{ $news }}</h1>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <i class="bi bi-newspaper fs-1"></i>
+                                    <img src="{{asset('assets/img/fluent_news-28-filled.svg')}}"  class="fs-3 p-1 me-4" >
                                         <div>
                                             <span class="fw-bold fs-5">Berita</span>
                                             <span class="d-block text-mini">Dari Produk</span>
@@ -103,9 +103,9 @@
                                     <h1 class="fw-bold ms-4">20</h1>
                                     {{-- <h1 class="fw-bold ms-4">{{ $chart }}</h1> --}}
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <i class="bi bi-file-bar-graph-fill fs-1"></i>
+                                    <img src="{{asset('assets/img/Vector.svg')}}"  class="fs-3 p-2 me-4" >
                                         <div>
-                                            <span class="fw-bold fs-5">Diagram</span>
+                                            <span class="fw-bold fs-6">Diagram</span>
                                             <span class="d-block text-mini">All time</span>
                                         </div>
                                     </div>
@@ -119,7 +119,7 @@
                                 ">
                                     <h1 class="fw-bold ms-4">{{ $transaksi }}</h1>
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <i class="bi bi-currency-dollar fs-1"></i>
+                                    <img src="{{asset('assets/img/Vector-2.svg')}}"  class="rounded-pill fs-3 p-1 me-4" >
                                         <div>
                                             <span class="fw-bold fs-5">Transaksi</span>
                                             <span class="d-block text-mini">All user of Surveyasia</span>

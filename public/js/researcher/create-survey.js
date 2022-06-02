@@ -9,6 +9,8 @@ import {
     dropDownComponent,
     fileUploadComponent,
     multiOptionsComponent,
+    matrixOptionsComponent,
+    repeatQuestComponent,
     multipleChoiceComponent,
     ratingStarComponent,
     scaleComponent,
@@ -23,6 +25,7 @@ let form = $("#formSurveyQuestion");
 let btnAdd = $("#btnAddQuestion");
 let btnSubmit = $("#submitBtn");
 let btnDraftSubmit = $("#submitDraftBtn");
+let btnSave = $("#btnSave");
 let btnGroup = $("#groupBtn");
 let spinner = $("#spinner");
 let alert = $("#minQuestionAlert");
@@ -123,6 +126,33 @@ function _initCustomComponentClick(target) {
     // init on multi options clicked
     $("#addMultiOptions").get(0).onclick = function () {
         const config = JSON.parse(JSON.stringify(multiOptionsComponent));
+        config.meta.survey = {
+            id: configuration.id,
+            title: configuration.title,
+        };
+        config.meta.user = configuration.user;
+        renderQuestion(config, target);
+
+        customElementModal.modal("hide");
+    };
+
+    // init on matrix options clicked
+    $("#addMatrixOptions").get(0).onclick = function () {
+        const config = JSON.parse(JSON.stringify(matrixOptionsComponent));
+
+        config.meta.survey = {
+            id: configuration.id,
+            title: configuration.title,
+        };
+        config.meta.user = configuration.user;
+        renderQuestion(config, target);
+
+        customElementModal.modal("hide");
+    };
+
+    // init on repeat question clicked
+    $("#addRepeatQuestion").get(0).onclick = function () {
+        const config = JSON.parse(JSON.stringify(repeatQuestComponent));
         config.meta.survey = {
             id: configuration.id,
             title: configuration.title,
@@ -259,6 +289,7 @@ const observer = new MutationObserver(function (children) {
 function shouldHideButton() {
     if (totalQuestion >= 1) {
         noQuestion.hide();
+        btnSave.addClass("disabled");
     } else {
         noQuestion.addClass("disabled");
         noQuestion.addClass("show");
@@ -268,6 +299,7 @@ function shouldHideButton() {
     if (totalQuestion >= 5) {
         btnGroup.removeClass("disabled");
         alert.removeClass("show");
+        btnSave.removeClass("disabled");
     } else if (totalQuestion >= 1) {
         btnGroup.addClass("disabled");
         btnGroup.addClass("show");

@@ -17,7 +17,7 @@ use Carbon\Carbon;
 class DashboardController extends Controller
 {
     //
-    public $title = "dashboard";
+    public $title = "Beranda";
 
     public function index()
     {
