@@ -3,6 +3,8 @@ import { MultipleChoice } from "../components/multipleChoice.js";
 import { DropDown } from "../components/dropdown.js";
 import { UploadFile } from "../components/uploadFile.js";
 import { MultiOption } from "../components/multiOption.js";
+import { RepeatQuestion } from "../components/repeatQuestion.js";
+import { MatrixOption } from "../components/matrixOption.js";
 // import { Rating } from "../components/rating.js";
 
 export var questionUtils = {
@@ -33,6 +35,12 @@ export function CreateQuestion(config) {
             break;
         case "multiOptions":
             question = new MultiOption(config);
+            break;
+        case "matrixOptions":
+            question = new MatrixOption(config);
+            break;
+        case "repeatQuestion":
+            question = new RepeatQuestion(config);
             break;
         case "dropdown":
             question = new DropDown(config);
