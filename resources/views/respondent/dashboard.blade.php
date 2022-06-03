@@ -228,8 +228,8 @@
             <div class="col-12 col-sm-6 col-lg-3">
                 <div>
                     <a href="{{ route('news.show', $news->slug) }}" class="link-dark text-decoration-none">
-                        <img src="{{ asset('assets/img/surveyasia_news_1.png') }}" alt="SurveyAsia News"
-                            class="card-img-top">
+                    <img src="{{ url('storage/'.$news->img) }}" alt="SurveyAsia News"
+                    class="img-fluid mb-3 w-100" style="height: 150px;">
                         <p class="text-orange fs-14px mt-3 mb-2"><i class="fas fa-calendar-alt fa-fw"></i> {{ date('j F
                             Y', strtotime($news->created_at)) }}
                         </p>

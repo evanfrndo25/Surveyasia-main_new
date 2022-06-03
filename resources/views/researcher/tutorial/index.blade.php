@@ -44,7 +44,7 @@
                 <div>
                     <a href="{{ route('researcher.tutorial.show', $news->slug) }}"
                         class="link-dark text-decoration-none">
-                        <img src="{{ asset('assets/img/blog_6.png') }}" alt="Blog 6" class="img-fluid mb-2 w-100">
+                        <img src="{{ url('storage/'.$news->img) }}" alt="Blog 6" class="img-fluid mb-3 w-100" style="height: 150px;">
                         <p class="text-muted fw-light fs-14px mb-2">{{ date('j F Y', strtotime($news->created_at)) }}
                         </p>
                         <h6>{{ $news->title }}</h6>
