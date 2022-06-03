@@ -29,6 +29,8 @@
 
 
 @section('content')
+
+<!-- FUNGSI COUNTDOWN -->
 <script>
     const countDown = (time, surveyId) => {
         // Mengatur waktu akhir perhitungan mundur
@@ -60,10 +62,16 @@
                 getAttr.className = 'text-center text-danger'
                 getAttr.innerHTML = "EXPIRED";
             }
+
+            // Jika waktu kurang dari 10 jam, maka ubah warna teks menjadi merah
+            if( hours < 10 ) {
+                let getAttr = document.getElementById("countD" + surveyId);
+                getAttr.className = 'text-center text-danger'
+            }
         }, 1000);
     }
-
 </script>
+<!-- END FUNGSI COUNTDOWN -->
 
 <div class="container-fluid" style="background-color: #F7F8FC; height: 100vh;">
     <div class="row">
@@ -146,7 +154,7 @@
                                             <td class="col-2">
                                                 <div>
                                                     <script>
-                                                        countDown('{{ $survey->created_at }}', '{{ $survey->id }}');
+                                                        countDown('{{ $survey->updated_at }}', '{{ $survey->id }}');
                                                     </script>
                                                     <h5 class="text-center text-warning" id="countD{{ $survey->id }}"></h5>
                                                 </div>

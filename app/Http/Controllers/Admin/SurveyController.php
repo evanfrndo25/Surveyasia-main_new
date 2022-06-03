@@ -36,7 +36,7 @@ class SurveyController extends Controller
         // $surveys = Survey::where(['creator_id' => $user->id])->get();
 
         // Relational
-        $surveysPending = Survey::where('status', 'pending')->with('user')->latest()->get();
+        $surveysPending = Survey::where('status', 'pending')->with('user')->orderBy('updated_at', 'asc')->get();
         $surveysDeny = Survey::where('status', 'reject')->with('user')->latest()->get();
         $surveysAcc = Survey::where('status', 'active')->with('user')->latest()->get();
         $categories = SurveyCategory::select(['id', 'name'])->get();
