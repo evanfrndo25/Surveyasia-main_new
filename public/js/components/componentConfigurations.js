@@ -101,8 +101,6 @@ export const matrixOptionsComponent = {
     question: "Tulis Pertanyaan Anda disini",
     componentName: "matrixOptions",
     questionNumber: 0,
-
-    questionLeft: ["Option 1", "Option 2", "Option 3"],
     componentName: "matrixOptions",
     questionNumber: 0,
     // use this for dynamic container
@@ -111,12 +109,13 @@ export const matrixOptionsComponent = {
         style: "p-3 mb-3 border rounded shadow-sm draggable",
     }, */
     configuration: {
-        inputType: "checkbox",
+        inputType: "radio",
         label: "Masukkan Label Pertanyaan Anda",
         style: "form-check-input",
         // position: 0,
     },
-    options: ["Option 1", "Option 2", "Option 3", "Option 4"],
+    rowOptions: ["Gaya bicara", "Perilaku", "Option 3", "Option 4"],
+    colOptions: ["Sangat Buruk", "Buruk", "Netral", "Baik", "Sangat Baik"],
     otherOption: {
         inputType: "text",
         placeholder: "input your answer",

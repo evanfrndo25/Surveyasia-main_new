@@ -10,27 +10,29 @@ export class MatrixOption extends Component {
 
     content() {
         const row = document.createElement("div");
-        row.className += "row mb-3";
+        row.className += "row mb-3 mt-3";
 
-        const colFirst = document.createElement("div");
-        colFirst.className += "col";
+        const colOptions = document.createElement("div");
+        colOptions.className += "col md-6 border-start";
 
-        const col = document.createElement("div");
-        col.className += "col";
+        const labelCol = document.createElement("p");
+        labelCol.textContent = "Column Labels";
+        labelCol.className = "fw-bold";
+        colOptions.appendChild(labelCol);
 
-        let content;
+        const rowOptions = document.createElement("div");
+        rowOptions.className += "col md-6";
 
-        const ratingOrScaleComponent =
-            this.blueprint.componentName === "scale" ||
-            this.blueprint.componentName === "ratingStar";
+        const labelRow = document.createElement("p");
+        labelRow.textContent = "Row Labels";
+        labelRow.className = "fw-bold";
+        rowOptions.appendChild(labelRow);
 
-        if (ratingOrScaleComponent) {
-            content = this._buildRatingContainer();
-        } else {
-            content = this._buildChoiceContainer();
-        }
+        const columnRight = this._buildChoiceContainer();
+        const rowLeft = this._buildQuestionRowContainer();
 
-        col.appendChild(content);
+        colOptions.appendChild(columnRight);
+        rowOptions.appendChild(rowLeft);
 
         // validate when inputable (respondent)
         // TODO : use preferred contentRespondent instead
@@ -45,8 +47,8 @@ export class MatrixOption extends Component {
             }
         }
 
-        row.appendChild(colFirst);
-        row.appendChild(col);
+        row.appendChild(rowOptions);
+        row.appendChild(colOptions);
 
         return row;
     }
@@ -54,23 +56,23 @@ export class MatrixOption extends Component {
     _buildChoiceContainer() {
         const wrapper = document.createElement("ul");
         wrapper.id = "mainInput";
-        wrapper.className += "list-group flex-row";
+        wrapper.className += "list-group";
 
-        this._wrapOptions(wrapper);
+        this._wrapColOptions(wrapper);
         return wrapper;
     }
 
     // for question matrix left
-    _buildQuestionLeftContainer() {
+    _buildQuestionRowContainer() {
         const wrapper = document.createElement("ul");
-        wrapper.id = "questInput";
+        wrapper.id = "mainInput";
         wrapper.className += "list-group";
 
-        this._wrapOptions(wrapper);
+        this._wrapRowOptions(wrapper);
         return wrapper;
     }
 
-    _wrapOptions(wrapper) {
+    _wrapRowOptions(wrapper) {
         // const valuesQuest = this.blueprint.questionLeft;
 
         // for (let i = 0; i < valuesQuest.length; i++) {
@@ -78,7 +80,23 @@ export class MatrixOption extends Component {
         //     wrapper.appendChild(questionLeft);
         // }
 
-        const values = this.blueprint.options;
+        const values = this.blueprint.rowOptions;
+
+        for (let i = 0; i < values.length; i++) {
+            const options = this._createOption(values[i]);
+            wrapper.appendChild(options);
+        }
+    }
+
+    _wrapColOptions(wrapper) {
+        // const valuesQuest = this.blueprint.questionLeft;
+
+        // for (let i = 0; i < valuesQuest.length; i++) {
+        //     const questionLeft = this._createQuestLeft(valuesQuest[i]);
+        //     wrapper.appendChild(questionLeft);
+        // }
+
+        const values = this.blueprint.colOptions;
 
         for (let i = 0; i < values.length; i++) {
             const options = this._createOption(values[i]);
@@ -503,16 +521,7 @@ export class MatrixOption extends Component {
         const form = this._buildOptionsContainer();
         const question = this._updateableQuestion();
         const label = this._updateableLabel();
-        let choiceOptions;
-
-        if (
-            this.blueprint.componentName === "scale" ||
-            this.blueprint.componentName === "ratingStar"
-        ) {
-            choiceOptions = this._updateableScale();
-        } else {
-            choiceOptions = this._updateableOptions();
-        }
+        const choiceOptions = this._updateableOptions();
 
         form.appendChild(question);
         form.appendChild(label);
@@ -557,7 +566,7 @@ export class MatrixOption extends Component {
         label.className += "form-input-label mb-2";
         wrapper.appendChild(label);
 
-        for (let i = 0; i < observable.options.length; i++) {
+        for (let i = 0; i < observable.colOptions.length; i++) {
             const editableOption = this._createEditableOption(i);
             wrapper.appendChild(editableOption);
         }
