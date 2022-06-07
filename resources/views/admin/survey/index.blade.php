@@ -60,7 +60,7 @@
                 clearInterval(x);
                 let getAttr = document.getElementById("countD" + surveyId);
                 getAttr.className = 'text-center text-danger'
-                getAttr.innerHTML = "EXPIRED";
+                getAttr.innerHTML = "0 : 0 : 0";
             }
 
             // Jika waktu kurang dari 10 jam, maka ubah warna teks menjadi merah
