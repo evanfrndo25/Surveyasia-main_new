@@ -26,7 +26,7 @@ class PersonalDataRequest extends FormRequest
         return ([
             'nama_lengkap' => ['required', 'regex:/^[a-zA-ZÑñ\s]+$/', 'max:25'],
             'nik' => ['required', 'numeric', 'digits:16'],
-            'image_ktp' => ['required', 'image', 'mimes:jpg,jpeg,png', 'max:2000'],
+            'image_ktp' => ['nullable', 'image', 'mimes:jpg,jpeg,png', 'max:2000'],
             'gender' => ['required'],
             'birth_place' => ['required', 'regex:/^[a-zA-ZÑñ\s]+$/', 'max:50'],
             'birth_date' => ['required', 'date', 'before:-17 years'],
