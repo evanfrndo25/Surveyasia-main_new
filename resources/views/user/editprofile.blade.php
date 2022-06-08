@@ -24,7 +24,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             @endif
-            <a href="{{ route('user-profile') }}" class="link-dark"><i class="fa fa-arrow-left"></i> Kembali ke
+            <a href="{{ route('user-profile') }}" class="mb-2 text-dark h6 text-decoration-none"><i class="fa fa-arrow-left"></i> Kembali ke
                 Profil</a>
             <div class="card mt-3">
                 <div class="card-header">
@@ -64,7 +64,7 @@
                         <div class="row mt-3">
                             <div class="col">
                                 <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
-                                <!-- <input type="text" class="form-control @error('nama_lengkap') is-invalid @enderror "
+                                <input type="text" class="form-control @error('nama_lengkap') is-invalid @enderror "
                                     name="nama_lengkap"
                                     value="{{ \Auth::user()->profile->nama_lengkap ?? $user->nama_lengkap }}">
                                 @error('nama_lengkap')
@@ -72,7 +72,7 @@
                                     {{ $message }}
                                 </div>
                                 @enderror
-                            </div> -->
+                            </div>
                         </div>
                         <div class="row mt-3">
                             <div class="col">
@@ -101,15 +101,14 @@
                         <div class="row mt-3">
                             <div class="col">
                                 <label for="job" class="form-label">Pekerjaan</label>
-                                <input type="text" class="form-control" onkeypress="if(event.key.match(/^[a-zA-ZÑñ\s]+$/) == null) { return false; }" />
-
-                                <!-- <input type="text" class="form-control @error('job') is-invalid @enderror" name="job"
+                                
+                                <input type="text" class="form-control @error('job') is-invalid @enderror" name="job"
                                     value="{{ $user->profile->job ?? $user->job }}">
                                 @error('job')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
-                                @enderror -->
+                                @enderror
                             </div>
                         </div>
                         <div class="row mt-3">
