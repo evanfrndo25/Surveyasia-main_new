@@ -21,6 +21,19 @@ export class RepeatQuestion extends Component {
         const addQuestTurunan = this._addQuestTurunanButton();
         wrapper.appendChild(addQuestTurunan);
 
+        const wrapperTextBox = document.createElement("div");
+        wrapper.className += "mb-3";
+
+        const inputt = this.wrapperTextBox();
+        wrapper.appendChild(inputt);
+
+        const container = this._buildContainerTurunan();
+        wrapper.appendChild(container);
+
+        // const containerTurunan = this._buildContainerTurunan("div");
+        // wrapper.className += "ml-5";
+        // wrapper.appendChild(containerTurunan);
+
         // validate when inputable (respondent)
         // TODO : use preferred contentRespondent instead
         if (this._fromRespondent()) {
@@ -146,6 +159,52 @@ export class RepeatQuestion extends Component {
             : (input.name = "answers[" + this.blueprint.componentId + "]");
 
         return input;
+    }
+
+    _buildContainerTurunan() {
+        const container = document.createElement("div");
+        container.id = "ContainerTurunan";
+        container.className +=
+            "ms-5 p-4 mb-3 border rounded shadow-sm draggable";
+        // this.setAttribute("id", this.blueprint.componentId);
+        // this.setAttribute(
+        //     "class",
+        //     "ms-5 p-4 mb-3 border rounded shadow-sm draggable"
+        // );
+
+        const input = this._buildTextField();
+        container.appendChild(input);
+
+        // const body = this._buildBody();
+        // container.appendChild(body);
+        // const body = this._addComponent(this, this._buildBody());
+        // container.appendChild(body);
+        // this._addComponent(this, this._buildBody());
+
+        this._addComponent(this, this._buildActionButton());
+        this.onmouseover = this._highlightQuestion;
+        this.onmouseleave = this._removeHighlight;
+
+        // return this;
+        return container;
+    }
+
+    wrapperTextBox() {
+        const inputt = document.createElement("input");
+        inputt.id = "mainInput";
+        inputt.type = this.blueprint.configuration.inputType;
+        inputt.className += this.blueprint.configuration.style;
+        if (this.blueprint.configuration.placeholder !== undefined) {
+            inputt.placeholder += this.blueprint.configuration.placeholder;
+        }
+        if (this.blueprint.configuration.width === "short") {
+            inputt.style.maxWidth = 350;
+        }
+        this._fromRespondent()
+            ? (inputt.name = "answers[" + this.blueprint.id + "]")
+            : (inputt.name = "answers[" + this.blueprint.componentId + "]");
+
+        return inputt;
     }
 
     _buildInvalidContainer() {
@@ -423,6 +482,7 @@ export class RepeatQuestion extends Component {
         addAnswer.className += "btn btn-orange mt-2";
         addAnswer.icon = this._buildIcon("fas fa-plus");
         addAnswer.innerHTML = "Tambah jawaban";
+
         return addAnswer;
     }
 
@@ -440,21 +500,6 @@ export class RepeatQuestion extends Component {
             },
             {
                 value: "",
-                name: "Drop-down",
-                // description: "Input for generic text",
-            },
-            {
-                value: "",
-                name: "Upload File",
-                // description: "Input for generic text",
-            },
-            {
-                value: "",
-                name: "Skala",
-                // description: "Input for generic text",
-            },
-            {
-                value: "",
                 name: "Pilihan Ganda",
                 // description: "Input for generic text",
             },
@@ -462,11 +507,6 @@ export class RepeatQuestion extends Component {
                 value: "",
                 name: "Kotak Centang",
                 // description: "Input for generic text",
-            },
-            {
-                value: "",
-                name: "Matriks",
-                // description: "Input for time",
             },
         ];
 
