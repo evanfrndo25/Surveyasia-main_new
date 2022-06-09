@@ -70,7 +70,9 @@
                         </button>
                         
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li><a class="dropdown-item" href="customize-diagram/export_excel?id={{ $survey->id }}">Excel</a>
+                            <li>
+                                <a class="dropdown-item" onclick="hitApi('{{ $survey->id }}')">Excel</a>
+                                {{--<a class="dropdown-item" href="customize-diagram/export_excel?id={{ $survey->id }}">Excel</a>--}}
                             </li>
                             <li><a class="dropdown-item" href="customize-diagram/export-pdf?id={{ $survey->id }}">PDF</a>
                             </li>
@@ -145,6 +147,32 @@
 
             formExportChart.submit();
         });
+    </script>
+
+    <script>
+        const hitApi = (survey_id) => {
+            try {
+                fetch(`http://analysis.surveyasia.id/api/excel/${survey_id}/`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': 'Basic c3lzYWRtOkNpdGlhc2lhQDEyMzQh',
+                        'Content-Type': 'application/json; charset=utf-8'
+                    },
+                })
+                .then(response => response.blob())
+                .then(response => {
+                    const blob = new Blob([response], {type: 'application/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+                    const downloadUrl = URL.createObjectURL(blob);
+                    const a = document.createElement("a");
+                    a.href = downloadUrl;
+                    a.download = "file.xlsx";
+                    document.body.appendChild(a);
+                    a.click();
+                })
+            } catch (error) {
+                return error.message
+            }
+        }
     </script>
 
     <!-- for modal survey status -->
