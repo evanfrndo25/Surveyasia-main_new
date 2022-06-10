@@ -406,6 +406,13 @@ body {
 }
 /* end progress bar circle */
 
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+    border-bottom: 3px solid #c93e1f !important;
+    color: #c93e1f !important;
+    font-weight: bold;
+}
+
 /* qr code */
 
 @media (max-width: 767.98px) {
