@@ -161,7 +161,10 @@ class UserController extends Controller
         // if (!Gate::allows('delete', $user)) {
         //     abort(403, 'Unauthorized');
         // }
+        $user->surveys()->delete();
         $user->transactions()->delete();
+        $user->surveyHistories()->delete();
+
         $user->delete();
 
         return back()->with('status', 'Deleted user success');
