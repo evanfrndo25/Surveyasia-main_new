@@ -43,9 +43,9 @@
 
                                     <label for="" style="font-size:18px; color: #00000099;">Pesan Penutup</label>
                                     <div class="mb-3 mt-3">
-                                        <textarea type="text" name="description" value="{{ $survey->description }}"
+                                        <textarea type="text" name="closing" value="{{ $survey->closing }}"
                                             class="form-control"
-                                            style="width: 100%; height:111px;"> {{ $survey->description }}</textarea>
+                                            style="width: 100%; height:111px;"> {{ $survey->closing }}</textarea>
                                     </div>
                                 </div>
 

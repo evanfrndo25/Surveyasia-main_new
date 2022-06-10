@@ -101,7 +101,8 @@ class SurveyController extends Controller
 
         Survey::find($id)->update([
             'title' => $request->title,
-            'description' => $request->description
+            'description' => $request->description,
+            'closing' => $request->closing
         ]);
 
         return redirect()->back();
