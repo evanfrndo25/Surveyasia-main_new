@@ -10,29 +10,30 @@ export class MatrixOption extends Component {
 
     content() {
         const row = document.createElement("div");
-        row.className += "row mb-3 mt-3";
+        row.className += "row mb-3";
 
-        const colOptions = document.createElement("div");
-        colOptions.className += "col md-6 border-start";
+        const colFirst = document.createElement("div");
+        colFirst.className += "col";
 
-        const labelCol = document.createElement("p");
-        labelCol.textContent = "Column Labels";
-        labelCol.className = "fw-bold";
-        colOptions.appendChild(labelCol);
+        const col = document.createElement("div");
+        col.className += "col md-6";
 
-        const rowOptions = document.createElement("div");
-        rowOptions.className += "col md-6";
+        let content;
+        let content2;
 
-        const labelRow = document.createElement("p");
-        labelRow.textContent = "Row Labels";
-        labelRow.className = "fw-bold";
-        rowOptions.appendChild(labelRow);
+        const ratingOrScaleComponent =
+            this.blueprint.componentName === "scale" ||
+            this.blueprint.componentName === "ratingStar";
 
-        const columnRight = this._buildChoiceContainer();
-        const rowLeft = this._buildQuestionRowContainer();
+        if (ratingOrScaleComponent) {
+            content = this._buildRatingContainer();
+        } else {
+            content = this._buildChoiceContainer();
+            content2 = this._buildChoiceRowContainer();
+        }
 
-        colOptions.appendChild(columnRight);
-        rowOptions.appendChild(rowLeft);
+        col.appendChild(content);
+        col.appendChild(content2);
 
         // validate when inputable (respondent)
         // TODO : use preferred contentRespondent instead
@@ -47,8 +48,8 @@ export class MatrixOption extends Component {
             }
         }
 
-        row.appendChild(rowOptions);
-        row.appendChild(colOptions);
+        row.appendChild(colFirst);
+        row.appendChild(col);
 
         return row;
     }
@@ -56,23 +57,32 @@ export class MatrixOption extends Component {
     _buildChoiceContainer() {
         const wrapper = document.createElement("ul");
         wrapper.id = "mainInput";
-        wrapper.className += "list-group";
+        wrapper.className += "list-group flex-row";
 
-        this._wrapColOptions(wrapper);
+        this._wrapOptions(wrapper);
         return wrapper;
     }
 
-    // for question matrix left
-    _buildQuestionRowContainer() {
+    _buildChoiceRowContainer() {
         const wrapper = document.createElement("ul");
-        wrapper.id = "mainInput";
-        wrapper.className += "list-group";
+        wrapper.id = "mainInput2";
+        wrapper.className += "list-group row";
 
-        this._wrapRowOptions(wrapper);
+        this._wrapOptions(wrapper);
         return wrapper;
     }
 
-    _wrapRowOptions(wrapper) {
+    // // for question matrix left
+    // _buildQuestionLeftContainer() {
+    //     const wrapper = document.createElement("ul");
+    //     wrapper.id = "questInput";
+    //     wrapper.className += "list-group";
+
+    //     this._wrapOptions(wrapper);
+    //     return wrapper;
+    // }
+
+    _wrapOptions(wrapper) {
         // const valuesQuest = this.blueprint.questionLeft;
 
         // for (let i = 0; i < valuesQuest.length; i++) {
@@ -80,23 +90,7 @@ export class MatrixOption extends Component {
         //     wrapper.appendChild(questionLeft);
         // }
 
-        const values = this.blueprint.rowOptions;
-
-        for (let i = 0; i < values.length; i++) {
-            const options = this._createOption(values[i]);
-            wrapper.appendChild(options);
-        }
-    }
-
-    _wrapColOptions(wrapper) {
-        // const valuesQuest = this.blueprint.questionLeft;
-
-        // for (let i = 0; i < valuesQuest.length; i++) {
-        //     const questionLeft = this._createQuestLeft(valuesQuest[i]);
-        //     wrapper.appendChild(questionLeft);
-        // }
-
-        const values = this.blueprint.colOptions;
+        const values = this.blueprint.options;
 
         for (let i = 0; i < values.length; i++) {
             const options = this._createOption(values[i]);
@@ -152,52 +146,52 @@ export class MatrixOption extends Component {
         return labelWrapper;
     }
 
-    _createQuestLeft(valueQuest) {
-        const id = uniqid("option");
+    // _createQuestLeft(valueQuest) {
+    //     const id = uniqid("option");
 
-        const formWrapper = document.createElement("div");
-        formWrapper.className = "form-check";
-        let label;
-        if (valueQuest.id == null) {
-            label = document.createTextNode(valueQuest);
-        } else {
-            label = document.createTextNode(valueQuest.valueQuest);
-        }
+    //     const formWrapper = document.createElement("div");
+    //     formWrapper.className = "form-check";
+    //     let label;
+    //     if (valueQuest.id == null) {
+    //         label = document.createTextNode(valueQuest);
+    //     } else {
+    //         label = document.createTextNode(valueQuest.valueQuest);
+    //     }
 
-        const labelWrapper = document.createElement("label");
-        labelWrapper.className += "form-check-label";
-        labelWrapper.htmlFor = id;
+    //     const labelWrapper = document.createElement("label");
+    //     labelWrapper.className += "form-check-label";
+    //     labelWrapper.htmlFor = id;
 
-        const item = document.createElement("li");
-        item.className += "list-group-item";
+    //     const item = document.createElement("li");
+    //     item.className += "list-group-item";
 
-        const option = document.createElement("input");
-        option.id = id;
-        if (this._fromRespondent()) {
-            if (this.blueprint.configuration.inputType === "checkbox") {
-                option.name = "answers[" + this.blueprint.id + "][]";
-            } else {
-                option.name = "answers[" + this.blueprint.id + "]";
-            }
-        } else {
-            option.name = "answers[" + this.blueprint.componentId + "]";
-        }
+    //     const option = document.createElement("input");
+    //     option.id = id;
+    //     if (this._fromRespondent()) {
+    //         if (this.blueprint.configuration.inputType === "checkbox") {
+    //             option.name = "answers[" + this.blueprint.id + "][]";
+    //         } else {
+    //             option.name = "answers[" + this.blueprint.id + "]";
+    //         }
+    //     } else {
+    //         option.name = "answers[" + this.blueprint.componentId + "]";
+    //     }
 
-        option.className += "form-check-input";
-        option.type = this.blueprint.configuration.inputType;
-        if (valueQuest.id != null) {
-            option.valueQuest = valueQuest.valueQuest;
-        } else {
-            option.valueQuest = valueQuest;
-        }
+    //     option.className += "form-check-input";
+    //     option.type = this.blueprint.configuration.inputType;
+    //     if (valueQuest.id != null) {
+    //         option.valueQuest = valueQuest.valueQuest;
+    //     } else {
+    //         option.valueQuest = valueQuest;
+    //     }
 
-        formWrapper.appendChild(option);
-        formWrapper.appendChild(label);
-        item.appendChild(formWrapper);
-        labelWrapper.appendChild(item);
+    //     formWrapper.appendChild(option);
+    //     formWrapper.appendChild(label);
+    //     item.appendChild(formWrapper);
+    //     labelWrapper.appendChild(item);
 
-        return labelWrapper;
-    }
+    //     return labelWrapper;
+    // }
 
     _buildRatingContainer() {
         const wrapper = document.createElement("div");
@@ -274,6 +268,12 @@ export class MatrixOption extends Component {
                     if (key == "options") {
                         instance._updateOptions();
                     }
+                    
+                    //salah disini
+                    if (key == "options") {
+                        instance._updateRowOptions();
+                    }
+
 
                     if (key === "maxVal" || key === "minVal") {
                         instance._updateScale();
@@ -327,6 +327,191 @@ export class MatrixOption extends Component {
         item.innerHTML = "*" + errorMessage;
 
         return item;
+    }
+
+    _validateRowInput(validationObserver){
+        const instance = this;
+        const input = this._getInput2();
+        const messageContainer = this._getValidationErrorsContainer();
+
+        $(input).on("change", () => {
+            let checkedCount = 0;
+            const children = $(this).find(
+                'input[type="' +
+                    instance.blueprint.configuration.inputType +
+                    '"]'
+            );
+
+            // loop each children
+            children.each((i, child) => {
+                // check if children is checked
+                if ($(child).is(":checked")) {
+                    checkedCount++;
+                }
+            });
+
+            const validations = instance.blueprint.validations;
+
+            validations.forEach((validation) => {
+                const rule = validation.rule;
+                const value = validation.value;
+                const message = validation.message;
+
+                // option not checked
+                const isEmpty = checkedCount === 0;
+
+                // not set
+                const isNotSet = value === 0;
+
+                // check if errors is already shown
+                const isShowingErrors = $(children).hasClass("is-invalid");
+
+                // error item
+                const errorItem = $(messageContainer).find("#" + rule);
+                errorItem.get(0).innerHTML = message;
+
+                // checked at least one option
+                const isRequired = rule === "required" && value === true;
+
+                // checked with minimum options
+                const minimumOptions = rule === "minLength";
+
+                // checked options is less than minimum
+                const isLessThan = checkedCount < value && !isEmpty;
+
+                // checked with minimum options
+                const maximumOptions = rule === "maxLength";
+
+                // checked options is less than minimum
+                const isExcMax = checkedCount > value && !isEmpty;
+
+                // this field is valid
+                const isValid = !isEmpty && !isLessThan && !isExcMax;
+
+                if (isEmpty && isRequired) {
+                    if (!isShowingErrors) {
+                        children.addClass("is-invalid");
+                    }
+
+                    $(messageContainer).show();
+                    errorItem.show();
+                    validationObserver.passed = false;
+                } else if (!isNotSet && isLessThan && minimumOptions) {
+                    if (!isShowingErrors) {
+                        children.addClass("is-invalid");
+                    }
+
+                    $(messageContainer).show();
+                    errorItem.show();
+                    validationObserver.passed = false;
+                } else if (!isNotSet && isExcMax && maximumOptions) {
+                    if (!isShowingErrors) {
+                        children.addClass("is-invalid");
+                    }
+
+                    $(messageContainer).show();
+                    errorItem.show();
+                    validationObserver.passed = false;
+                } else {
+                    if (isValid) {
+                        $(messageContainer).hide();
+                        errorItem.hide();
+                        children.removeClass("is-invalid");
+                        validationObserver.passed = true;
+                    }
+                }
+            });
+        });
+
+        $(input).on("click", () => {
+            let checkedCount = 0;
+            const children = $(this).find(
+                'input[type="' +
+                    instance.blueprint.configuration.inputType +
+                    '"]'
+            );
+
+            // loop each children
+            children.each((i, child) => {
+                // check if children is checked
+                if ($(child).is(":checked")) {
+                    checkedCount++;
+                }
+            });
+
+            const validations = instance.blueprint.validations;
+
+            validations.forEach((validation) => {
+                const rule = validation.rule;
+                const value = validation.value;
+                const message = validation.message;
+
+                // option not checked
+                const isEmpty = checkedCount === 0;
+
+                // not set
+                const isNotSet = value === 0;
+
+                // check if errors is already shown
+                const isShowingErrors = $(children).hasClass("is-invalid");
+
+                // error item
+                const errorItem = $(messageContainer).find("#" + rule);
+                errorItem.get(0).innerHTML = message;
+
+                // checked at least one option
+                const isRequired = rule === "required" && value === true;
+
+                // checked with minimum options
+                const minimumOptions = rule === "minLength";
+
+                // checked options is less than minimum
+                const isLessThan = checkedCount < value && !isEmpty;
+
+                // checked with minimum options
+                const maximumOptions = rule === "maxLength";
+
+                // checked options is less than minimum
+                const isExcMax = checkedCount > value && !isEmpty;
+
+                // this field is valid
+                const isValid = !isEmpty && !isLessThan && !isExcMax;
+
+                if (isEmpty && isRequired) {
+                    if (!isShowingErrors) {
+                        children.addClass("is-invalid");
+                    }
+
+                    $(messageContainer).show();
+                    errorItem.show();
+                    validationObserver.passed = false;
+                } else if (!isNotSet && isLessThan && minimumOptions) {
+                    if (!isShowingErrors) {
+                        children.addClass("is-invalid");
+                    }
+
+                    $(messageContainer).show();
+                    errorItem.show();
+                    validationObserver.passed = false;
+                } else if (!isNotSet && isExcMax && maximumOptions) {
+                    if (!isShowingErrors) {
+                        children.addClass("is-invalid");
+                    }
+
+                    $(messageContainer).show();
+                    errorItem.show();
+                    validationObserver.passed = false;
+                } else {
+                    if (isValid) {
+                        $(messageContainer).hide();
+                        errorItem.hide();
+                        children.removeClass("is-invalid");
+                        validationObserver.passed = true;
+                    }
+                }
+            });
+        });
+
     }
 
     _validateInput(validationObserver) {
@@ -517,15 +702,31 @@ export class MatrixOption extends Component {
         this._validateInput(validationObserver);
     }
 
+    Validate(validationObserver) {
+        this._validateRowInput(validationObserver);
+    }
+
     Options() {
         const form = this._buildOptionsContainer();
         const question = this._updateableQuestion();
         const label = this._updateableLabel();
-        const choiceOptions = this._updateableOptions();
+        let choiceOptions;
+        let choiceOptions2;
+
+        if (
+            this.blueprint.componentName === "scale" ||
+            this.blueprint.componentName === "ratingStar"
+        ) {
+            choiceOptions = this._updateableScale();
+        } else {
+            choiceOptions = this._updateableOptions();
+            choiceOptions2 = this._updateableRowOptions()
+        }
 
         form.appendChild(question);
         form.appendChild(label);
         form.appendChild(choiceOptions);
+        form.appendChild(choiceOptions2);
 
         return form;
     }
@@ -566,7 +767,7 @@ export class MatrixOption extends Component {
         label.className += "form-input-label mb-2";
         wrapper.appendChild(label);
 
-        for (let i = 0; i < observable.colOptions.length; i++) {
+        for (let i = 0; i < observable.options.length; i++) {
             const editableOption = this._createEditableOption(i);
             wrapper.appendChild(editableOption);
         }
@@ -583,7 +784,7 @@ export class MatrixOption extends Component {
 
         const addOptionButton = document.createElement("button");
         addOptionButton.className += "btn btn-sm btn-default text-white";
-        addOptionButton.innerHTML = "Opsi Pilihan";
+        addOptionButton.innerHTML = "Tambah";
 
         // const saveOptionButton = document.createElement("button");
         // saveOptionButton.className += "btn btn-md btn-danger text-white";
@@ -593,6 +794,58 @@ export class MatrixOption extends Component {
         addOptionButton.onclick = function (event) {
             event.preventDefault();
             instance._addUpdatableOption();
+        };
+
+        addOptionContainer.appendChild(addOptionButton);
+
+        // saveOptionContainer.appendChild(saveOptionButton);
+
+        wrapper.appendChild(addOptionContainer);
+
+        wrapper.appendChild(saveOptionContainer);
+
+        return wrapper;
+    }
+
+    //Update Row Option
+    _updateableRowOptions() {
+        const observable = this.observer();
+        const wrapper = document.createElement("div");
+        wrapper.id = uniqid("wrapper");
+        wrapper.className += "mb-3";
+
+        const label = document.createElement("label");
+        label.innerHTML = "Choice Row Options";
+        label.className += "form-input-label mb-2";
+        wrapper.appendChild(label);
+
+        for (let i = 0; i < observable.options.length; i++) {
+            const editableOption = this._createEditableRowOption(i);
+            wrapper.appendChild(editableOption);
+        }
+
+        // add option button
+
+        const addOptionContainer = document.createElement("div");
+        addOptionContainer.id = "addOptionContainer";
+        addOptionContainer.className += "d-flex mt-3";
+
+        const saveOptionContainer = document.createElement("div");
+        saveOptionContainer.id = "addOptionContainer";
+        saveOptionContainer.className += "d-flex justify-content-end mt-3";
+
+        const addOptionButton = document.createElement("button");
+        addOptionButton.className += "btn btn-sm btn-default text-white";
+        addOptionButton.innerHTML = "Tambah";
+
+        // const saveOptionButton = document.createElement("button");
+        // saveOptionButton.className += "btn btn-md btn-danger text-white";
+        // saveOptionButton.innerHTML = "Simpan";
+
+        const instance = this;
+        addOptionButton.onclick = function (event) {
+            event.preventDefault();
+            instance._addUpdatableRowOption();
         };
 
         addOptionContainer.appendChild(addOptionButton);
@@ -723,6 +976,16 @@ export class MatrixOption extends Component {
         return wrapper;
     }
 
+    _updateRowOptions() {
+        const wrapper = this._getInput2();
+        wrapper.empty();
+        this._wrapOptions(wrapper.get(0));
+
+        return wrapper;
+    }
+    
+    
+
     _createEditableOption(index) {
         let inputGroup = document.createElement("div");
         inputGroup.className = "input-group mb-2";
@@ -746,6 +1009,33 @@ export class MatrixOption extends Component {
 
         return inputGroup;
     }
+
+    //Create Row Option
+    _createEditableRowOption(index) {
+        let inputGroup = document.createElement("div");
+        inputGroup.className = "input-group mb-2";
+
+        // option prefix (optional)
+        const prefix = document.createElement("span");
+        prefix.className += "input-group-text";
+
+        let inputPrefix = document.createElement("input");
+        inputPrefix.className += "form-control-input";
+        inputPrefix.type = this.blueprint.configuration.inputType;
+
+        const suffix = this._createRowOptionsSuffix(index);
+        const optionInput = this._createRowOptionUpdateInput(index);
+
+        prefix.appendChild(inputPrefix);
+
+        inputGroup.appendChild(prefix);
+        inputGroup.appendChild(optionInput);
+        inputGroup.appendChild(suffix);
+
+        return inputGroup;
+    }
+
+
 
     // input option text and value update
     _createOptionUpdateInput(index) {
@@ -793,6 +1083,103 @@ export class MatrixOption extends Component {
 
         return optionInput;
     }
+
+    // input option text and value update
+    _createRowOptionUpdateInput(index) {
+        const observable = this.observer();
+
+        const optionInput = document.createElement("input");
+        optionInput.type = "text";
+        optionInput.required = true;
+
+        var options = [];
+
+        // load options if exists (always true)
+        if (observable.options != null) {
+            options = observable.options;
+        }
+
+        // load configuration from database if exists
+        if (index != null && observable.options[index].id == null) {
+            optionInput.value = observable.options[index];
+        } else if (index != null) {
+            optionInput.value = observable.options[index].value;
+        }
+
+        optionInput.onchange = function (e) {
+            // change value if not empty
+            if (this.value != "") {
+                if (index != null) {
+                    if (observable.options[index].id != null) {
+                        options[index].value = this.value;
+                    } else {
+                        options[index] = this.value;
+                    }
+                } else {
+                    options.push(this.value);
+                }
+                observable.options = options;
+            } else {
+                // get parent form and force to show error
+                this.parentElement.parentElement.parentElement.classList.add(
+                    "was-validated"
+                );
+            }
+        };
+        optionInput.className += "form-control";
+
+        return optionInput;
+    }
+
+    // delete icon for each ROW option
+    _createRowOptionsSuffix(index) {
+        const suffix = document.createElement("span");
+        suffix.style.cursor = "pointer";
+        suffix.className += "input-group-text";
+
+        const instance = this;
+        suffix.onclick = function (event) {
+            event.preventDefault();
+
+            var options = instance.observer().options;
+            // if options is more than 2
+            if (options.length > 2) {
+                // allow delete
+                instance._deleteOption(options[index]);
+                options.splice(index, 1);
+                instance.observer().options = options;
+                this.parentElement.remove();
+            } else {
+                // delete option not allowed!
+            }
+        };
+
+        // option delete button
+        // const deleteButton = document.createElement("button");
+        const deleteIcon = document.createElement("i");
+        deleteIcon.ariaHidden = true;
+        deleteIcon.style.cursor = "pointer";
+        deleteIcon.className += "fas fa-trash";
+        deleteIcon.onclick = function (event) {
+            event.preventDefault();
+            // if options is more than 2
+            if (options.length > 2) {
+                // allow delete
+                instance._deleteOption(options[index]);
+                options.splice(index, 1);
+                instance.observer().options = options;
+                this.parentElement.remove();
+            } else {
+                // delete option not allowed!
+            }
+        };
+
+        // deleteButton.appendChild(deleteIcon);
+        suffix.appendChild(deleteIcon);
+
+        return suffix;
+    }
+
 
     // delete icon for each option
     _createOptionsSuffix(index) {
@@ -849,9 +1236,18 @@ export class MatrixOption extends Component {
         $(option).insertBefore("#addOptionContainer");
     }
 
+    _addUpdatableRowOption() {
+        const option = this._createRowEditableOption();
+        $(option).insertBefore("#addOptionContainer");
+    }
+
     // get current input
     _getInput() {
         return $(this).find("#mainInput");
+    }
+
+    _getInput2() {
+        return $(this).find("#mainInput2");
     }
 
     // get validation errors container
@@ -1033,4 +1429,4 @@ export class MatrixOption extends Component {
 
 customElements.define("matrix-option", MatrixOption, {
     extends: "div",
-});
+})
