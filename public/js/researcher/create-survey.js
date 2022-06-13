@@ -26,6 +26,7 @@ let btnAdd = $("#btnAddQuestion");
 let btnSubmit = $("#submitBtn");
 let btnDraftSubmit = $("#submitDraftBtn");
 let btnSave = $("#btnSave");
+let btnAlert = $("#btnAlert");
 let btnGroup = $("#groupBtn");
 let spinner = $("#spinner");
 let alert = $("#minQuestionAlert");
@@ -290,6 +291,7 @@ function shouldHideButton() {
     if (totalQuestion >= 1) {
         noQuestion.hide();
         btnSave.addClass("disabled");
+        btnAlert.removeClass("d-none");
     } else {
         noQuestion.addClass("disabled");
         noQuestion.addClass("show");
@@ -297,6 +299,7 @@ function shouldHideButton() {
     }
 
     if (totalQuestion >= 5) {
+        btnAlert.addClass("d-none");
         btnGroup.removeClass("disabled");
         alert.removeClass("show");
         btnSave.removeClass("disabled");

@@ -86,6 +86,9 @@
                     <form action="{{ route('researcher.surveys.storeQuestions', $survey->id) }}" method="post"
                         id="formSurveyQuestion" class="mb-5">
                         @csrf
+                        <div class="alert alert-danger" id="btnAlert" role="alert">
+                            Minimal harus 5 pertanyaan!
+                        </div>
                         <input type="hidden" name="survey_id" value="{{ $survey->id }}">
                         <div class="mt-3" id="questions_container">
 

@@ -21,13 +21,10 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="row mb-3">
                         <div class="col">
                             <div class="card mb-3">
-
                                 <div class="container mt-4">
-
                                     <label for="" style="font-size:18px; color: #00000099;">Deskripsi</label>
                                     <div class="mb-3 mt-3">
                                         <textarea type="text" name="description" value="{{ $survey->description }}"
@@ -38,9 +35,7 @@
 
                             </div>
                             <div class="card">
-
                                 <div class="container mt-4">
-
                                     <label for="" style="font-size:18px; color: #00000099;">Pesan Penutup</label>
                                     <div class="mb-3 mt-3">
                                         <textarea type="text" name="closing" value="{{ $survey->closing }}"
