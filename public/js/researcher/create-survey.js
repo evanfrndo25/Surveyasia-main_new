@@ -238,6 +238,7 @@ async function _fetchQuestions() {
     });
     return await response.json();
 }
+
 function _initQuestions() {
     _fetchQuestions()
         .then((response) => {
@@ -256,14 +257,21 @@ function _initQuestions() {
             configuration.components = response.questions;
             var questions = configuration.components;
 
-            for (let i = 0; i < questions.length; i++) {
-                const configuration = JSON.parse(questions[i].configuration);
-                configuration.id = questions[i].id;
+            const sortQuestionByQuestionNumber = _sortByQuestionNumber(questions);
+
+            for (let i = 0; i < sortQuestionByQuestionNumber.length; i++) {
+                const configuration = JSON.parse(sortQuestionByQuestionNumber[i].configuration);
+                configuration.id = sortQuestionByQuestionNumber[i].id;
                 const question = renderQuestion(configuration);
                 addComponent(configuration, configuration.index);
             }
         })
         .catch((e) => console.log(e));
+}
+
+// Mengurutkan pertanyaan berdasarkan questionNumber
+const _sortByQuestionNumber = questions => {
+    return questions.sort((a, b) => JSON.parse(a.configuration).questionNumber - JSON.parse(b.configuration).questionNumber);
 }
 
 const observer = new MutationObserver(function (children) {
