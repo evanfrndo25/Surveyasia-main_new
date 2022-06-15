@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Respondent;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\SurveyHistoryResource;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class SurveyHistoryController extends Controller
 {
@@ -14,53 +13,24 @@ class SurveyHistoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function __invoke()
     {
-        //
-    }
+        $user = Auth::user();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        // get surveys history with query
+        $histories = DB::table('users_surveys')
+        ->select(
+            'users_surveys.id', 
+            'users_surveys.created_at as users_surveys_createdAt', 
+            'users_surveys.updated_at as users_surveys_updatedAt', 
+            'surveys.reward_point', 
+            'surveys.title'
+        )
+        ->join('surveys', 'users_surveys.survey_id', 'surveys.id')
+        ->where('users_surveys.user_id', $user->id)
+        ->orderBy('users_surveys.created_at', 'desc')
+        ->get();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return view('survey.history',[ 'histories' => $histories ]);
     }
 }
