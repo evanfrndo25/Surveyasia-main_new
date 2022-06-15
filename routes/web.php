@@ -24,6 +24,7 @@ use App\Http\Controllers\TutorialController;
 use App\Http\Controllers\Admin\SurveyController as SurveyInAdmin;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PDFController;
+use App\Http\Controllers\Respondent\SurveyHistoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -213,10 +214,7 @@ Route::middleware(['auth', 'role:respondent', 'verified'])->group(function () {
     Route::prefix('respondent')
         ->name('respondent.')
         ->group(function () {
-            Route::get('survey/history', function () {
-                $data = ['histories' => Auth::user()->surveyHistories];
-                return view('survey.history', $data);
-            })->name('survey.history');
+            Route::get('survey/history', SurveyHistoryController::class)->name('survey.history');
             Route::view('/survey/change-point', 'survey.change-point')->name('survey.change-point');
             Route::view('/survey/pre-survey', 'survey.pre-survey')->name('survey.pre-survey');
             Route::view('/survey/pre-soal', 'survey.pre-soal');

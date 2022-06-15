@@ -26,6 +26,7 @@ let btnAdd = $("#btnAddQuestion");
 let btnSubmit = $("#submitBtn");
 let btnDraftSubmit = $("#submitDraftBtn");
 let btnSave = $("#btnSave");
+let btnAlert = $("#btnAlert");
 let btnGroup = $("#groupBtn");
 let spinner = $("#spinner");
 let alert = $("#minQuestionAlert");
@@ -237,6 +238,7 @@ async function _fetchQuestions() {
     });
     return await response.json();
 }
+
 function _initQuestions() {
     _fetchQuestions()
         .then((response) => {
@@ -255,14 +257,21 @@ function _initQuestions() {
             configuration.components = response.questions;
             var questions = configuration.components;
 
-            for (let i = 0; i < questions.length; i++) {
-                const configuration = JSON.parse(questions[i].configuration);
-                configuration.id = questions[i].id;
+            const sortQuestionByQuestionNumber = _sortByQuestionNumber(questions);
+
+            for (let i = 0; i < sortQuestionByQuestionNumber.length; i++) {
+                const configuration = JSON.parse(sortQuestionByQuestionNumber[i].configuration);
+                configuration.id = sortQuestionByQuestionNumber[i].id;
                 const question = renderQuestion(configuration);
                 addComponent(configuration, configuration.index);
             }
         })
         .catch((e) => console.log(e));
+}
+
+// Mengurutkan pertanyaan berdasarkan questionNumber
+const _sortByQuestionNumber = questions => {
+    return questions.sort((a, b) => JSON.parse(a.configuration).questionNumber - JSON.parse(b.configuration).questionNumber);
 }
 
 const observer = new MutationObserver(function (children) {
@@ -290,6 +299,7 @@ function shouldHideButton() {
     if (totalQuestion >= 1) {
         noQuestion.hide();
         btnSave.addClass("disabled");
+        btnAlert.removeClass("d-none");
     } else {
         noQuestion.addClass("disabled");
         noQuestion.addClass("show");
@@ -297,6 +307,7 @@ function shouldHideButton() {
     }
 
     if (totalQuestion >= 5) {
+        btnAlert.addClass("d-none");
         btnGroup.removeClass("disabled");
         alert.removeClass("show");
         btnSave.removeClass("disabled");

@@ -142,7 +142,9 @@
                                             <td class="col-4">
                                                 <div>
                                                     <p class="fw-bold">{{ $survey->title }}</p>
-                                                    <p class="small">{{ $survey->description }}</p>
+                                                    <p class="small">{!! Str::limit($survey->description,70) !!}
+                                                        <a class="btn btn-link" data-bs-toggle="modal"
+                                                            data-bs-target="#modal{{ $survey->id }}">Baca Selengkapnya</a></p>
                                                 </div>
                                             </td>
                                             <td class="col-2">
@@ -182,6 +184,26 @@
                                                 </div>
                                             </td>
                                         </tr>
+                                        {{-- MODAL FOR VIEW DETAIL BUTTON --}}
+                        <div class="modal fade" id="modal{{ $survey->id }}" aria-hidden="true"
+                            aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                            {{-- MODAL VIEW DETAIL --}}
+                            <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="text-center"> {{ $survey->title }}</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                    <div class="card-header">
+                                        <p class="fw-bold" style="font-size: 18px;">Deskripsi</p>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>{{ $survey->description }}</p>
+                                    </div>
+                            </div>
+                        </div>
                                     @endforeach
                                     </tbody>
                                 </table>
@@ -293,7 +315,9 @@
                                             <td class="col-4">
                                                 <div>
                                                     <p class="fw-bold">{{ $survey->title }}</p>
-                                                    <p class="small">{{ $survey->description }}</p>
+                                                    <p class="small">{!! Str::limit($survey->description,70) !!}
+                                                        <a class="btn btn-link" data-bs-toggle="modal"
+                                                            data-bs-target="#modal{{ $survey->id }}">Baca Selengkapnya</a></p>
                                                 </div>
                                             </td>
                                             <td class="col-1">
@@ -335,6 +359,26 @@
                                                 </div>
                                             </td>
                                         </tr>
+                                        {{-- MODAL FOR VIEW DETAIL BUTTON --}}
+                        <div class="modal fade" id="modal{{ $survey->id }}" aria-hidden="true"
+                            aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                            {{-- MODAL VIEW DETAIL --}}
+                            <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="text-center"> {{ $survey->title }}</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                    <div class="card-header">
+                                        <p class="fw-bold" style="font-size: 18px;">Deskripsi</p>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>{{ $survey->description }}</p>
+                                    </div>
+                            </div>
+                        </div>
                                     @endforeach
                                     </tbody>
                                 </table>
@@ -490,7 +534,9 @@
                                             <td class="col-4">
                                                 <div>
                                                     <p class="fw-bold">{{ $survey->title }}</p>
-                                                    <p class="small">{{ $survey->description }}</p>
+                                                    <p class="small">{!! Str::limit($survey->description,70) !!}
+                                                        <a class="btn btn-link" data-bs-toggle="modal"
+                                                            data-bs-target="#modal{{ $survey->id }}">Baca Selengkapnya</a></p>
                                                 </div>
                                             </td>
                                             <td class="col-2">
@@ -529,13 +575,33 @@
                                                         <ul class="dropdown-menu bg-dark" aria-labelledby="dropdown-manage-news">
                                                             <li><a class="dropdown-item text-white" href="#" data-bs-toggle="modal"
                                                                     data-bs-target="#ubahstts0"></i><i
-                                                                        class="bi bi-gear-fill me-2"></i>Ubah Staus</a></li>
+                                                                        class="bi bi-gear-fill me-2"></i>Ubah Status</a></li>
                                                             <li>
                                                         </ul>
                                                     </div>
                                                 </div>
                                             </td>
                                         </tr>
+                                        {{-- MODAL FOR VIEW DETAIL BUTTON --}}
+                        <div class="modal fade" id="modal{{ $survey->id }}" aria-hidden="true"
+                            aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                            {{-- MODAL VIEW DETAIL --}}
+                            <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="text-center"> {{ $survey->title }}</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                    <div class="card-header">
+                                        <p class="fw-bold" style="font-size: 18px;">Deskripsi</p>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>{{ $survey->description }}</p>
+                                    </div>
+                            </div>
+                        </div>
                                     @endforeach
                                     </tbody>
                                 </table>
