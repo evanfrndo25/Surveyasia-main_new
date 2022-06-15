@@ -84,7 +84,6 @@
                     @foreach ($surveys as $survey)
                     <li class="px-3">
                         <div class="row">
-
                             @if ($survey->status == 'active')
                                 <div class="col-3">
                                     {{-- <img src="{{ asset('assets/img/hero_tutorial.png') }}" class="img-fluid" style="border-radius: 6px;" alt=""> --}}
@@ -141,11 +140,9 @@
                                     <p class="text-muted small pt-2 mb-0">{{ $survey->created_at->diffForHumans() }}</p>
                                 </div>
                                 <hr class="mt-3">
-                            @endif
-                            
+                            @endif    
                         </div> 
-                    </li>
-                    
+                    </li>          
                     @endforeach
                     @endif
                     {{-- <li class="px-3">

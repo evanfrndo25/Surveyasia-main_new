@@ -99,13 +99,13 @@
                             <div id="groupBtn" class="disabled fade col-auto mx-auto">
                                 <div class=" border-orange text-center"
                                     style=" margin-top: 20px; padding:5px 10px; font-size: 20px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 5px;">
-                                    <a href="#" id="btnAddPart" data-bs-toggle="modal"
+                                    <!-- <a href="#" id="btnAddPart" data-bs-toggle="modal"
                                         data-bs-target="#partComponentModal" data-toggle="tooltip"
                                         data-placement="bottom" title="Tambahkan bagian"
-                                        class="btn fs-4 btn1 text-orange"><i class="bi bi-list"></i></a>
-                                    <button id="btn2" data-toggle="tooltip" data-placement="bottom" title="Pratinjau"
+                                        class="btn fs-4 btn1 text-orange"><i class="bi bi-list"></i></a> -->
+                                    <!-- <button id="btn2" data-toggle="tooltip" data-placement="bottom" title="Pratinjau"
                                         class="btn fs-4 btn2 text-orange"><i class="bi bi-eye"></i>
-                                    </button>
+                                    </button> -->
                                     <a href="#" id="btnSave" class="btn fs-4 btn3 text-orange" data-bs-toggle="modal"
                                         data-bs-target="#ajukanModal" data-toggle="tooltip" data-placement="bottom"
                                         title="Simpan">
