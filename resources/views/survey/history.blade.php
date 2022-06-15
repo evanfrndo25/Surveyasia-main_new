@@ -55,7 +55,7 @@
             <div class="tab-pane fade show active" id="survey" role="tabpanel" aria-labelledby="survey-tab">
               @if($histories->count() > 0)
               @foreach ( $histories as $history )
-              <a href="#" data-bs-toggle="modal" data-bs-target="#approvedModal" role="button"
+              <a href="#" data-bs-toggle="modal" data-bs-target="{{ '#approvedModal' . $history->id }}" role="button"
                 class="link-dark text-decoration-none">
                 <div class="card mt-3">
                   <div class="card-body">
@@ -64,10 +64,10 @@
                         <img src="{{ asset('assets/img/ic_paper.svg') }}" alt="Paper">
                       </div>
                       <div class="col d-flex align-self-center">
-                        <p class="fw-semibold m-0">Kamu telah menyelesaikan studi <span class="text-muted fw-normal"> {{ $history->survey->title }} </span> </p>
+                        <p class="fw-semibold m-0">Kamu telah menyelesaikan studi <span class="text-muted fw-normal"> {{ $history->title }} </span> </p>
                       </div>
                       {{-- <div class="col-md-2">
-                        <p class="text-muted fs-14px m-0">{{ $history->updated_at->diffForHumans() }}</p>
+                        <p class="text-muted fs-14px m-0">{{ $history->users_surveys_updatedAt->diffForHumans() }}</p>
                         <button type="button" class="btn btn-success radius-default mt-2" disabled>Disetujui</button>
                       </div> --}}
                     </div>
@@ -82,29 +82,6 @@
                 <p class="text-muted mt-3 m-0">Anda belum melakukan pengisian survey</p>
               </div>
               @endif
-            </div>
-            <div class="tab-pane fade" id="exchange" role="tabpanel" aria-labelledby="exchange-tab">
-              @for ($i = 0; $i < 9; $i++) <a href="#" data-bs-toggle="modal" data-bs-target="#approvedModal"
-                role="button" class="link-dark text-decoration-none">
-                <div class="card mt-3">
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-md-1 align-self-center">
-                        <img src="{{ asset('assets/img/ic_paper.svg') }}" alt="Paper">
-                      </div>
-                      <div class="col d-flex align-self-center">
-                        <p class="fw-semibold m-0">Kamu telah menyelesaikan studi <span
-                            class="text-muted fw-normal">Survey Kepuasan Pengguna</span></p>
-                      </div>
-                      <div class="col-md-2">
-                        <p class="text-muted fs-14px m-0">21-10-2020</p>
-                        <button type="button" class="btn btn-success radius-default mt-2" disabled>Disetujui</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                </a>
-                @endfor
             </div>
           </div>
           {{-- End Tab Content --}}
@@ -144,20 +121,21 @@
   </div>
 
   {{-- Modal --}}
-  <div class="modal fade" id="approvedModal" tabindex="-1" aria-labelledby="approvedModalLabel" aria-hidden="true">
+@foreach ($histories as $history)
+  <div class="modal fade" id="{{ 'approvedModal' . $history->id }}" tabindex="-1" aria-labelledby="approvedModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-body">
           <h5 class="fw-semibold">Detail Riwayat</h5>
-          <p class="fw-semibold shadow-sm radius-default p-2 my-3">Survey Kepuasan Pelanggan</p>
+          <p class="fw-semibold shadow-sm radius-default p-2 my-3">{{ $history->title }}</p>
           <div class="row">
             <div class="col">
               <p class="text-muted fw-light fs-14px m-0 p-0">Reward</p>
-              <h6>Rp1.600</h6>
+              <h6>Rp.{{ number_format($history->reward_point, 0, 0, '.') }}</h6>
             </div>
             <div class="col">
               <p class="text-muted fw-light fs-14px m-0 p-0">Tanggal</p>
-              <h6>20-10-2020</h6>
+              <h6>{{ date('d-m-Y', strtotime ($history->users_surveys_createdAt)) }}</h6>
             </div>
           </div>
           <hr>
@@ -177,6 +155,7 @@
       </div>
     </div>
   </div>
+@endforeach
   {{-- End Modal --}}
 </section>
 {{-- End Survey History --}}
