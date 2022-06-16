@@ -21,7 +21,7 @@ class QuestionBankTemplateController extends Controller
 
         // $questionbank_sub_templates_ing = QuestionBankSubTemplate::with('template')->where('language_id', '=', 0)->get();
         // $questionbank_sub_templates_ind = QuestionBankSubTemplate::with('template')->where('language_id', '=', 1)->get();
-        $questionbank_sub_templates_act = QuestionBankSubTemplate::with('template')->where('language_id', '=', $language_active)->paginate(10);
+        $questionbank_sub_templates_act = QuestionBankSubTemplate::with('template')->where('language_id', '=', $language_active)->paginate(10000);
         $questionbank_templates = QuestionBankTemplate::get();
         $id = QuestionBankSubTemplate::with('template')->whereId('id')->get();
 
