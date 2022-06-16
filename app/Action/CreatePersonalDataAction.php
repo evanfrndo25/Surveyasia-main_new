@@ -5,6 +5,7 @@ namespace App\Action;
 use App\Models\UsersProfile;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\PersonalDataRequest;
+use App\Models\UsersSubscriptions;
 
 class CreatePersonalDataAction
 {
@@ -42,6 +43,14 @@ class CreatePersonalDataAction
         // $user = $request->user()->id;
 
         // $user->ktp = $file;
+
+        // add user_subscription as free user
+        UsersSubscriptions::create([
+            'user_id' => $request->user()->id,
+            'subscription_id' => 1,
+            'note' => 'New User',
+            'category_id' => 1
+        ]);
 
         // check if current address is similar to ktp addresses
         if (
