@@ -43,7 +43,7 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
-            "App\\Services\\Midtrans\\": "app/Services/Midtrans/"
+            "App\\Services\\Midtrans\\": "app/services/midtrans/"
         }
     },
     "autoload-dev": {
