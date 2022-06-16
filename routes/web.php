@@ -503,7 +503,7 @@ Route::get('testRadio', function () {
 
 // midtrans
 Route::post('midtrans/callback', [MidtransController::class, 'notificationHandler']);
-Route::get('midtrans/finish', [MidtransController::class, 'finishRedirect'])->name('midtrans.finish');
+Route::post('midtrans/finish', [MidtransController::class, 'finishRedirect'])->name('midtrans.finish');
 Route::get('midtrans/unfinish', [MidtransController::class, 'unfinishRedirect'])->name('midtrans.unfinish');
 Route::get('midtrans/error', [MidtransController::class, 'errorRedirect'])->name('midtrans.error');
 
