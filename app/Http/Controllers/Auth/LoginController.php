@@ -69,6 +69,7 @@ class LoginController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
+
     public function login(Request $request)
     {
         $this->validateLogin($request);
@@ -88,7 +89,7 @@ class LoginController extends Controller
         if ($this->attemptLogin($request)) {
             return $this->sendLoginResponse($request);
         }
-
+        
         // If the login attempt was unsuccessful we will increment the number of attempts
         // to login and redirect the user back to the login form. Of course, when this
         // user surpasses their maximum number of attempts they will get locked out.
@@ -104,13 +105,15 @@ class LoginController extends Controller
      * @return bool
      */
     protected function attemptLogin(Request $request)
-    {
+    {   
+        // return $attempt;
         // return $this->guard()->attempt(
         //     $this->credentials($request),
         //     $request->filled('remember')
         // );
         $attempt = Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->remember);
         return $attempt;
+    
     }
 
     /**
