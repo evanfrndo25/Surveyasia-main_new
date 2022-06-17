@@ -40,7 +40,7 @@
                             </div>
                             
                             <div class="card-body desc-news">
-                                <p>{!! $news->description !!}</p>
+                                <p>{{ $news->description }}</p>
                             </div>
                         </div>
                     </div>

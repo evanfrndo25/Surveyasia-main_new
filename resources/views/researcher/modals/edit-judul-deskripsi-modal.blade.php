@@ -27,9 +27,11 @@
                                 <div class="container mt-4">
                                     <label for="" style="font-size:18px; color: #00000099;">Deskripsi</label>
                                     <div class="mb-3 mt-3">
-                                        <textarea type="text" name="description" value="{{ $survey->description }}"
+                                        <textarea class="my-editor form-control" id="my-editor" rows="10"
+                                            name="description" value="{{ $survey->description }}">{{ $survey->description  }}</textarea>
+                                        <!-- <textarea type="text" name="description" value="{{ $survey->description }}"
                                             class="form-control"
-                                            style="width: 100%; height:111px;"> {{ $survey->description }}</textarea>
+                                            style="width: 100%; height:111px;"> {{ $survey->description }}</textarea> -->
                                     </div>
                                 </div>
 
@@ -38,9 +40,11 @@
                                 <div class="container mt-4">
                                     <label for="" style="font-size:18px; color: #00000099;">Pesan Penutup</label>
                                     <div class="mb-3 mt-3">
-                                        <textarea type="text" name="closing" value="{{ $survey->closing }}"
+                                        <!-- <textarea type="text" name="closing" value="{{ $survey->closing }}"
                                             class="form-control"
-                                            style="width: 100%; height:111px;"> {{ $survey->closing }}</textarea>
+                                            style="width: 100%; height:111px;"> {{ $survey->closing }}</textarea> -->
+                                            <textarea class="my-editor1 form-control" id="my-editor1" rows="10"
+                                            name="closing" value="{{ $survey->closing }}">{{ $survey->closing  }}</textarea>
                                     </div>
                                 </div>
 

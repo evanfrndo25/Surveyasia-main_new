@@ -59,7 +59,7 @@
                 <h6 class="fw-semibold py-3 m-0">Deskripsi</h6>
             </div>
             <div class="card-body">
-                <p class="fs-14px m-0"> {{ $survey->description }} </p>
+                <p class="fs-14px m-0 small"> {!! $survey->description !!} </p>
             </div>
         </div>
         <div class="card border-0 bg-light-orange radius-default mt-3">

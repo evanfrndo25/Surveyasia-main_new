@@ -47,11 +47,10 @@
                             <div class="card mb-3">
                                 <div class="container mt-4">
                                     <form>
-                                        <label for="" style="font-size:18px; color: #00000099;">Deskripsi</label>
-                                        <div class="mb-3 mt-3">
-                                            <textarea type="text" value="{{ $survey->description }}"
-                                                class="form-control" style="width: 100%; height:111px;"
-                                                readonly> {{ $survey->description }}</textarea>
+                                        <label for="description"
+                                            style="font-size:18px; color: #00000099;">Deskripsi</label>
+                                        <div class="mb-3 mt-3 bg-light py-4 px-2 border border-1">
+                                            <p>{!! $survey->description !!}</p>
                                         </div>
                                     </form>
                                 </div>
@@ -60,10 +59,8 @@
                                 <div class="container mt-4">
                                     <form>
                                         <label for="" style="font-size:18px; color: #00000099;">Pesan Penutup</label>
-                                        <div class="mb-3 mt-3">
-                                            <textarea type="text" value="{{ $survey->closing }}" class="form-control"
-                                                style="width: 100%; height:111px;"
-                                                readonly> {{ $survey->closing }}</textarea>
+                                        <div class="mb-3 mt-3 bg-light py-4 px-2 border border-1">
+                                            <p>{!! $survey->closing !!}</p>
                                         </div>
                                     </form>
                                 </div>
@@ -173,7 +170,21 @@
 </div>
 <!-- New Design Akhot -->
 
+<script src="https://cdn.ckeditor.com/4.19.0/basic/ckeditor.js"></script>
+<script>
+    var options = {
+        filebrowserImageBrowseUrl: '/filemanager?type=Images',
+        filebrowserImageUploadUrl: '/filemanager/upload?type=Images&_token=',
+        filebrowserBrowseUrl: '/filemanager?type=Files',
+        filebrowserUploadUrl: '/filemanager/upload?type=Files&_token='
+    };
 
+</script>
+<script>
+    CKEDITOR.replace('my-editor', options);
+    CKEDITOR.replace('my-editor1', options);
+
+</script>
 
 <style>
     .tooltip>.tooltip-inner {

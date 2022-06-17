@@ -147,6 +147,5 @@
 </script>
 <script>
     CKEDITOR.replace('my-editor', options);
-
 </script>
 @endpush
