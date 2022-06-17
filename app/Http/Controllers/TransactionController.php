@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Exception;
-use App\Models\Transaction;
-use App\Models\Subscription;
-use Illuminate\Http\Request;
-use App\Models\UsersSubscriptions;
 use App\Models\CategorySubcriptions;
-use App\Models\Order;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Subscription;
+use App\Models\Transaction;
+use App\Models\UsersSubscriptions;
 use App\Services\Midtrans\CreateSnapTokenService;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {

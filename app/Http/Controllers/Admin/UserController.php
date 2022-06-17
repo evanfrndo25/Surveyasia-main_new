@@ -29,12 +29,12 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public $title = "Users";
+    public $title = "Pengguna";
     public function index()
     {
         //
         //abort_if(!$user->can('viewAny', User::class), 403, 'Unauthorized');
-        $users = User::with('subscription')->latest()->paginate(10);
+        $users = User::with('subscription')->latest()->paginate(10000);
         $subscriptions = Subscription::with('users')->get(); //user subscriptions
         $rolesWithPermissions = Role::with('permissions')->get();
         $rolesWithUsers = Role::with('users')->get();

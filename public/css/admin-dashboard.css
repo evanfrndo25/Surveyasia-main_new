@@ -261,3 +261,56 @@ body {
 .aksi-menu ul li a:hover {
     background-color: #F7F8FC;
 }
+.user-tabs .nav-tabs .nav-link.active {
+    background-color: transparent;
+    border: none;
+    border-bottom: 3px solid orange;
+}
+.main {
+    display: block;
+    position: relative;
+    padding-left: 45px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    font-size: 11px;
+    color: black
+  }
+ 
+  input[type=checkbox] {
+    visibility: hidden;
+  }
+ 
+  .w3docs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 12px;
+    width: 12px;
+  }
+  .main input ~ .w3docs {
+    background-color: gray;
+  }
+  
+  .main input:checked ~ .w3docs {
+    background-color: orange;
+  }
+  .w3docs:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  .main input:checked ~ .w3docs:after {
+    display: block;
+  }
+ 
+  .main .w3docs:after {
+    left: 3px;
+    bottom: 2px;
+    width: 4px;
+    height: 7px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }

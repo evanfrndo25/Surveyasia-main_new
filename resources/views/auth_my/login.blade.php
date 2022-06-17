@@ -55,9 +55,19 @@
                                 @enderror
                             </div>
                             <div class="mt-3">
-                                <label for="password" class="form-label fw-semibold">Password</label>
+                                {{-- <label for="password" class="form-label fw-semibold">Password</label>
                                 <input type="password" class="form-control" id="password" name="password"
-                                    placeholder="Masukkan password Anda" required />
+                                    placeholder="Masukkan password Anda" required /> --}}
+                                <div class="form-group">
+                                    
+                                    <label for="password" class="form-label fw-semibold">Password</label>
+                                    <div class="input-group" id="show_hide_password" style="align-items: center">
+                                        <input type="password" class="form-control border-end-0" id="password" name="password" placeholder="Masukkan password Anda" required />
+                                        <div class="input-group-text border-start-0 bg-white" style="padding: 10px;">
+                                            <a href=""><i class="bi bi-eye-slash-fill text-muted" aria-hidden="true"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="d-flex justify-content-between  mt-3">
                                 <div class="form-group">
@@ -104,4 +114,22 @@
         </div>
     </div>
 </section>
+
+
+<script>
+    $(document).ready(function() {
+        $("#show_hide_password a").on('click', function(event) {
+            event.preventDefault();
+            if($('#show_hide_password input').attr("type") == "text"){
+                $('#show_hide_password input').attr('type', 'password');
+                $('#show_hide_password i').addClass( "bi-eye-slash-fill" );
+                $('#show_hide_password i').removeClass( "bi-eye-fill" );
+            }else if($('#show_hide_password input').attr("type") == "password"){
+                $('#show_hide_password input').attr('type', 'text');
+                $('#show_hide_password i').removeClass( "bi-eye-slash-fill" );
+                $('#show_hide_password i').addClass( "bi-eye-fill" );
+            }
+        });
+    });
+</script>
 @endsection

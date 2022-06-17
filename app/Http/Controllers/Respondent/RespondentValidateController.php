@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Responden;
+namespace App\Http\Controllers\Respondent;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;

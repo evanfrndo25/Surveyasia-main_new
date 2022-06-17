@@ -1,6 +1,6 @@
 @extends('layouts.footer')
 @extends('researcher.layouts.base')
-@extends('researcher.layouts.navbar')
+@extends('researcher.layouts.navbar2')
 
 @section('content')
 <section class="404 text-center">

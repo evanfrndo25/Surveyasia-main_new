@@ -1,20 +1,17 @@
 @extends('admin.layouts.base')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/admin-dashboard.css') }}">
-<style>
-    .form-abu .form-select,
-    .form-abu .form-control {
-        background-color: #fafafa;
-    }
-
-    .table-striped>tbody>tr:nth-child(odd)>td,
-    .table-striped>tbody>tr:nth-child(odd)>th {
-        background-color: #fff2ef33;
+  <link rel="stylesheet" href="{{ asset('css/admin-dashboard.css') }}">
+  <style>
+    body {
+        background-color: #F7FAFC;
     }
 
 </style>
 @endsection
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.12.0/css/dataTables.bootstrap5.min.css">
 
 @section('content')
 <div class="container-fluid" style="background-color: #F7F8FC;">
@@ -32,18 +29,7 @@
                 </div>
                 @endif
 
-                <div class="row pt-4 pb-5">
-                    <div class="col">
-                        <div class=" input-group align-items-center w-50">
-                            <input type="text" class="form-control rounded-pill py-2 text-center"
-                                placeholder="Cari disini" aria-label="search" aria-describedby="basic-addon1"
-                                style="font-size: 12px">
-                            <a href="#">
-                                <i
-                                    class="position-absolute top-50 start-0 translate-middle-y bi bi-search p-2 ms-1 text-secondary"></i>
-                            </a>
-                        </div>
-                    </div>
+              
                     <div class="col text-end">
                         <a href="" class="btn btn-orange text-white" data-bs-toggle="modal"
                             data-bs-target="#modal-add-sub-template">
@@ -65,11 +51,10 @@
                         @endif
                     </form> -->
                 </div>
-                <div class="card"  style="border-radius: 20px; overflow: hidden;">
-                    <div class="card-body p-0">
-                        <table class="table table-striped table-no-border-head align-middle">
-                            <thead>
-                                <tr class="fw-bold" style="background-color:#f6beb226;">
+                <div class="container pt-4">
+                        <table id="heyaa" class="table table-no-border-head align-middle" style="border-radius: 20px; overflow: hidden; background-color:#ffffff">
+                        <thead style="background-color:#f6beb226;">
+                            <tr class="fw-bold">
                                     <td scope="col" class="text-left py-3 align-middle">No</td>
                                     <td scope="col" class="text-left py-3 align-middle">Bahasa</td>
                                     <td scope="col" class="text-left py-3 align-middle">Sub Template</td>
@@ -185,18 +170,6 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        <div class="left">
-                            Menampilkan
-                            {{ $questionbank_sub_templates_act->firstItem() }}
-                            sampai
-                            {{ $questionbank_sub_templates_act ->lastItem() }}
-                            dari
-                            {{ $questionbank_sub_templates_act->total() }}
-                            item
-                        </div>
-                        <ul class="pagination justify-content-end">
-                            <div class="right">{{ $questionbank_sub_templates_act->links() }}</div>
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -245,7 +218,7 @@
                                     <div class="mb-3 w-25">
                                         <label for="aktivitas" class="form-label fw-bold">Aktifitas</label>
                                         <select class="form-select" id="aktivitas" rows="3" name="aktivitas">
-                                            <option>--Choose--</option>
+                                            <option>--Pilih Aktifitas--</option>
                                             <option value="Free">Free</option>
                                             <option value="Premium">Premium</option>
                                         </select>
@@ -253,7 +226,7 @@
                                     <div class="mb-3 w-25">
                                         <label for="language_id" class="form-label fw-bold">Bahasa</label>
                                         <select class="form-select" id="language_id" rows="3" name="language_id">
-                                            <option>--Choose--</option>
+                                            <option>--Pilih Bahasa--</option>
                                             <option value="1">IND</option>
                                             <option value="0">ENG</option>
                                         </select>
@@ -271,6 +244,10 @@
         </div>
     </div>
 </div>
+
+
+@endsection
+@push('scripts')
 <script>
     var form = document.getElementById('form-language');
     var language_select = document.getElementById('language-select');
@@ -280,5 +257,47 @@
 
 </script>
 
+<script src="//cdn.ckeditor.com/4.18.0/full/ckeditor.js"></script>
+<script>
+    var options = {
+        filebrowserImageBrowseUrl: '/filemanager?type=Images',
+        filebrowserImageUploadUrl: '/filemanager/upload?type=Images&_token=',
+        filebrowserBrowseUrl: '/filemanager?type=Files',
+        filebrowserUploadUrl: '/filemanager/upload?type=Files&_token='
+    };
 
+</script>
+<script>
+    CKEDITOR.replace('my-editor', options);
+
+</script>
+@endpush
+@section('script')
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.12.0/js/dataTables.bootstrap5.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+    $('#heyaa').DataTable( {
+        "language": {
+            "decimal":        "",
+    "emptyTable":     "Tidak ada data yang tersedia di tabel",
+    "info":           "Menampilkan _START_ sampai _END_ dari _TOTAL_ item",
+    "infoEmpty":      "Menampilkan 0 sampai 0 dari 0 item",
+    "infoFiltered":   "(difilter dari _MAX_ total item)",
+    "infoPostFix":    "",
+    "thousands":      ",",
+    "lengthMenu":     "Tampilkan _MENU_ item",
+    "loadingRecords": "Memuat...",
+    "processing":     "",
+    "search":         "Cari :",
+    "zeroRecords":    "Arsip tidak ditemukan",
+    "paginate": {
+        "next":       ">",
+        "previous":   "<"
+    },
+        }
+    } );
+});
+</script>
 @endsection
