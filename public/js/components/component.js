@@ -260,7 +260,10 @@ export class Component extends HTMLDivElement {
         option.className =
             "btn border border-start-0 rounded-start text-orange";
         option.target = this.blueprint.componentId;
+
+        // config triger untuk sweetalert template
         option.onclick = this.onNegativeButtonClickListener();
+
         return this._buildButton(option);
     }
 
@@ -287,6 +290,10 @@ export class Component extends HTMLDivElement {
             button.setAttribute("data-bs-toggle", "modal");
             button.setAttribute("data-bs-target", "#updateQuestionModal");
         }
+        // else if (option.id === "deleteQuestionButton") {
+        //     button.setAttribute("data-bs-toggle", "modal");
+        //     button.setAttribute("data-bs-target", "#deleteQuestionModal");
+        // }
 
         let label = document.createTextNode(option.label);
         button.appendChild(label);
@@ -318,12 +325,24 @@ export class Component extends HTMLDivElement {
         return inputGroup;
     }
 
+    // Configuration sweet aleert delete question in researcher
     onNegativeButtonClickListener() {
         const instance = this;
         return function (event) {
             event.preventDefault();
             Swal.fire({
                 template: "#deleteQuestionTemplate",
+                reverseButtons: true,
+
+                // title: "Hapus Survey",
+                // text: "Survey ini akan dihapus secara permanen dari daftar survey Anda dan tidak dapat dikembalikan lagi. Apakah Anda yakin ingin menghapus survey ini?",
+                // icon: "warning",
+                // showCancelButton: true,
+                // confirmButtonColor: "#ef4c29",
+                // cancelButtonColor: "#f2f2f2",
+                // cancelColor: "rgba(19, 15, 38, 0.7);",
+                // cancelButtonText: "Batal",
+                // confirmButtonText: "Ya",
             }).then((result) => {
                 if (result.isConfirmed) {
                     instance.destroy();

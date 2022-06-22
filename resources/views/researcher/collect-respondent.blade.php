@@ -96,10 +96,10 @@
 
         {{-- Modal Edit Link --}}
         <div class="modal fade" id="editLinkModal"  aria-labelledby="editLinkModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-xl modal-fullscreen-xl-down modal-dialog-scrollable">
+            <div class="modal-dialog modal-lg modal-fullscreen-lg-down modal-dialog-scrollable">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editLinkLabel">Edit link</h5>
+                    <h5 class="modal-title" id="editLinkLabel">Edit Tautan</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -107,30 +107,30 @@
                         @csrf
                         <div class="row mb-3">
                             <div class="col">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="container">
-                                            <input type="text" name="title" class="form-control" value="{{ $survey->shareable_link }}" style="color: #00000099; font-size:24px;"></input>
-                                        </div>
-                                    </div>
+                                <div class="container">
+                                    <label for="" class="mb-2">Masukan tautan baru</label>
+                                    <input type="text" name="title" class="form-control mb-5" value="{{ $survey->shareable_link }}" style="color: rgba(0, 0, 0, 0.6); font-size:16px;"></input>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="row mb-3">
-                            <div class="col">
-                                <div class="container mt-4">
-                                    <div class="text-end">
-                                        <button type="submit" class="btn btn-primary ms-auto"><i class="bi bi-save"
-                                                style="font-size: 12px;"></i>
-                                            Simpan
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
                 </div>
+
+                <div class="modal-footer">
+                    <div class="row mb-3">
+                        <div class="col">
+                            <div class="container">
+                                <div class="text-end">
+                                    <button type="button" class="btn btn-gray me-2"
+                                    data-bs-dismiss="modal">Batal</button>
+                                    <button type="submit" class="btn btn-save ms-auto">
+                                        Simpan
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </form>
                 </div>
             </div>
         </div>
