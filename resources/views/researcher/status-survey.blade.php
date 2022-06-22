@@ -47,7 +47,7 @@
                     <th scope="col"></th>
                     <th scope="col">Metode</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Responden</th>
+                    <th scope="col" class="text-center">Responden</th>
                     <th scope="col">Tanggal Modifikasi</th>
                     <th scope="col"></th>
                 </tr>
@@ -62,7 +62,7 @@
                         <input type="text" class="text" value="{{ $survey->shareable_link }}" readonly>
                     </td>
                     <td>{{ $survey->status }}</td>
-                    <td>{{ $survey->attempted }}</td>
+                    <td class="text-center">{{ $survey->attempted }}</td>
                     <td>{{ $survey->updated_at->format('l, d M Y H:i') }}</td>
                     <!-- <td><i class="fas fa-ellipsis-h fa-fw"></i></td> -->
                 </tr>
