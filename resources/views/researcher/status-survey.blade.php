@@ -53,13 +53,18 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td><i class="fas fa-share-alt fa-fw"></i></td>
-                    <td>{{ $survey->shareable_link }}</td>
+                <tr class="share">
+                    <td class="sharelink">
+                        <i class="fas fa-share-alt fa-fw"></i>
+                        <small class="copied">copied</small> 
+                    </td>
+                    <td>
+                        <input type="text" class="text" value="{{ $survey->shareable_link }}" readonly>
+                    </td>
                     <td>{{ $survey->status }}</td>
                     <td>{{ $survey->attempted }}</td>
                     <td>{{ $survey->updated_at->format('l, d M Y H:i') }}</td>
-                    <td><i class="fas fa-ellipsis-h fa-fw"></i></td>
+                    <!-- <td><i class="fas fa-ellipsis-h fa-fw"></i></td> -->
                 </tr>
                 {{-- <tr>
                     <td><i class="fas fa-user-check fa-fw"></i></td>
@@ -67,7 +72,7 @@
                     <td>Active</td>
                     <td>0</td>
                     <td>Kamis, 30 September 2021, 8:56 PM</td>
-                    <td><i class="fas fa-ellipsis-h fa-fw"></i></td>
+                    <!-- <td><i class="fas fa-ellipsis-h fa-fw"></i></td> -->
                 </tr> --}}
             </tbody>
         </table>
@@ -85,6 +90,33 @@
     @include('researcher.modals.popup-status-draft')
 @endif
 
+<style>
+    .sharelink{
+        cursor: pointer;
+    }
+    .text{
+        width:100%;
+        border: transparent;
+        background:transparent;
+    }
+    .text:focus{
+        padding: 2px;
+        outline: red;
+        background-color: transparent;
+    }
+    .copied{
+        color: transparent;
+        padding:2px;
+        font-size:10px;
+    }
+    .activecopied{
+        color: white;
+        background: grey;
+        padding: 3px;
+        border-radius: 5px;
+    }
+</style>
+
 <script type="text/javascript">
     $(window).on('load', function() {
         if( "{{ $survey->status }}" !== 'active' ) {
@@ -93,6 +125,19 @@
             $('#myModal').modal('hide');
         }
     });
+
+
+    let copied = document.querySelector(".copied")
+    let copytext = document.querySelector(".share");
+    copytext.querySelector(".sharelink").addEventListener("click", function(){
+        let input = copytext.querySelector("input.text");
+        input.select();
+        document.execCommand("copy");
+        copied.classList.add("activecopied");
+        setTimeout(function(){
+            copied.classList.remove("activecopied");
+        }, 500);
+    })
 </script>
 <!-- end modal survey status -->
 

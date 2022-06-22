@@ -10,7 +10,7 @@
 
 {{-- Alert --}}
 <div class="alert alert-info alert-dismissible visually-hidden" role="alert" id="minQuestionAlert">
-    Buat minimal 5 pertanyaan untuk disimpan
+    Buat minimal 3 pertanyaan untuk disimpan
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 
@@ -84,7 +84,7 @@
                         id="formSurveyQuestion" class="mb-5">
                         @csrf
                         <div class="alert alert-danger" id="btnAlert" role="alert">
-                            Minimal harus 5 pertanyaan!
+                            Minimal harus 3 pertanyaan!
                         </div>
                         <input type="hidden" name="survey_id" value="{{ $survey->id }}">
                         <div class="mt-3" id="questions_container">
@@ -197,7 +197,7 @@
         background: rgba(239, 76, 41, 0.3);
         color: #EF4C29;
         border-radius: 100px;
-    }
+     }
 
     .btn2:hover {
         background: rgba(239, 76, 41, 0.3);
@@ -210,6 +210,8 @@
         color: #EF4C29;
         border-radius: 100px;
     }
+
+    
 
 </style>
 
