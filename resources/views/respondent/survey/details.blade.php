@@ -34,20 +34,20 @@
         <div class="card border radius-default mt-3">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-12 col-sm-6 col-md-3">
+                    <div class="col-12 col-sm-6 col-md-4 text-center">
                         <h6 class="fw-semibold">Estimasi Pengerjaan</h6>
                         <p class="text-orange fs-14px"><i class="far fa-clock fa-fw"></i>
                             {{ $survey->estimate_completion }} Menit</p>
                     </div>
-                    <div class="col-12 col-sm-6 col-md-3">
+                    <div class="col-12 col-sm-6 col-md-4 text-center">
                         <h6 class="fw-semibold">Jumlah Pertanyaan</h6>
                         <p class="text-orange fs-14px">{{ $survey->questions->count() }} Pertanyaan</p>
                     </div>
-                    <div class="col-12 col-sm-6 col-md-3">
+                    {{-- <div class="col-12 col-sm-6 col-md-3">
                         <h6 class="fw-semibold">Status</h6>
                         <p class="text-orange fs-14px text-capitalize">{{ $survey->status }}</p>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-3">
+                    </div> --}}
+                    <div class="col-12 col-sm-6 col-md-4 text-center">
                         <h6 class="fw-semibold">Jumlah Hadiah</h6>
                         <p class="text-orange fs-14px">Rp{{ $survey->reward_point }}</p>
                     </div>
