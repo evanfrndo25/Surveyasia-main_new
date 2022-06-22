@@ -574,9 +574,9 @@ export class Component extends HTMLDivElement {
         // button action container
         const btnContainer = document.createElement("div");
         btnContainer.id = "mediaBtnContainer_" + this.blueprint.componentId;
-        btnContainer.className += "row justify-content-end visually-hidden";
+        btnContainer.className += "row justify-content-end";
 
-        if (hasMedia) btnContainer.classList.remove("visually-hidden");
+        // if (hasMedia) btnContainer.classList.remove("visually-hidden");
 
         const btnCol = document.createElement("div");
         btnCol.className += "col-auto";
@@ -683,7 +683,7 @@ export class Component extends HTMLDivElement {
         // remove button if any source is present
         const removeImgBtn = document.createElement("button");
         removeImgBtn.id = "btnRemove";
-        removeImgBtn.className += "btn btn-sm btn-danger m-1";
+        removeImgBtn.className += "btn btn-sm btn-danger m-1 visually-hidden";
         removeImgBtn.innerHTML = "Remove";
 
         removeImgBtn.onclick = function (event) {
@@ -695,7 +695,11 @@ export class Component extends HTMLDivElement {
                 configuration.deleted.media.push(source);
             }
 
-            instance.observer().media.source = undefined;
+            instance.observer().media.source = null;
+            const removebtn = $("#btnRemove");
+            const applybtn = $("#btnApply");
+            removebtn.addClass("visually-hidden");
+            applybtn.addClass("visually-hidden")
         };
 
         btnCol.appendChild(removeImgBtn);
@@ -756,9 +760,8 @@ export class Component extends HTMLDivElement {
                 if (file !== undefined) {
                     // show upload button
                     btnContainer.removeClass("visually-hidden");
-                    btnContainer
-                        .find("#btnApply")
-                        .removeClass("visually-hidden");
+                    btnContainer.find("#btnRemove").removeClass("visually-hidden");
+                    btnContainer.find("#btnApply").removeClass("visually-hidden");
 
                     // if file size exceed 1 Mb
                     // show error
@@ -771,7 +774,7 @@ export class Component extends HTMLDivElement {
                         instance.renderImageSource(file);
                     }
                 } else {
-                    btnContainer.addClass("visually-hidden");
+                    btnContainer.find("#btnRemove").removeClass("visually-hidden");
                 }
             };
         } else {
@@ -884,7 +887,10 @@ export class Component extends HTMLDivElement {
         const previewImage = $("#previewImage_" + this.blueprint.componentId);
         const descriptionInput = $("#mediaDescriptionOption");
         const btnContainer = $(
-            "#mediaBtnContainer_" + this.blueprint.componentId
+            "#mediaBtnContainer_" + this.blueprint.componentId 
+        );
+        const btnremove = $(
+            "#btnRemove"
         );
 
         const observableMedia = this.observer().media;
@@ -896,10 +902,11 @@ export class Component extends HTMLDivElement {
             mainImage.attr("src", observableMedia.source);
             previewImage.attr("src", observableMedia.source);
             descriptionInput.removeClass("visually-hidden");
+            btnremove.removeClass("visually-hidden");
         } else {
             mainImage.parent().addClass("visually-hidden");
-            descriptionInput.addClass("visually-hidden");
-            btnContainer.addClass("visually-hidden");
+            descriptionInput.addClass("visually-hidden"); 
+            btnremove.removeClass("visually-hidden");
             previewImage.attr(
                 "src",
                 "https://via.placeholder.com/550x280?text=550x280+Recommended+size"
