@@ -5,37 +5,37 @@
 
 @section('content')
 
-    {{-- Breadcrumb --}}
-    <section class="breadcrumb-contact mt-3 ms-5" id="breadcrumb-contact">
-        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                        <a href="/researcher/surveys" class="link-yellow text-decoration-none"><i
-                            class="fas fa-home fa-fw"></i>
-                        Beranda</a></li>
-                <li class="breadcrumb-item">
-                    <a href=" {{ route('researcher.surveys.manage', $survey->id) }}"
-                        class="link-secondary text-decoration-none"> Survey</a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a href=" {{ route('researcher.surveys.customizeDiagram', $survey->id) }}"
-                        class="link-secondary text-decoration-none">Diagram</a>
-                </li>
-                <li class="breadcrumb-item active"><a href=" {{ route('researcher.surveys.collectRespondent', $survey->id) }}"
-                        class="link-secondary text-decoration-none">Kumpulkan Responden</a>
-                </li>
-                </li>
-                <li class="breadcrumb-item"><a href=" {{ route('researcher.surveys.statusSurvey', $survey->id) }}"
-                        class="link-secondary text-decoration-none">Status Survey</a>
-                </li>
-                <li class="breadcrumb-item"><a href=" {{ route('researcher.surveys.report', $survey->id) }}"
-                        class="link-secondary text-decoration-none">Hasil Analisis</a>
-                </li>
-            </ol>
-        </nav>
-    </section>
-    <hr class="mb-0">
-    {{-- end Breadcrumb --}}
+{{-- Breadcrumb --}}
+<section class="breadcrumb-contact mt-3 ms-5" id="breadcrumb-contact">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="/researcher/surveys" class="link-yellow text-decoration-none"><i class="fas fa-home fa-fw"></i>
+                    Beranda</a></li>
+            <li class="breadcrumb-item">
+                <a href=" {{ route('researcher.surveys.manage', $survey->id) }}"
+                    class="link-secondary text-decoration-none"> Survey</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href=" {{ route('researcher.surveys.customizeDiagram', $survey->id) }}"
+                    class="link-secondary text-decoration-none">Diagram</a>
+            </li>
+            <li class="breadcrumb-item active"><a
+                    href=" {{ route('researcher.surveys.collectRespondent', $survey->id) }}"
+                    class="link-secondary text-decoration-none">Kumpulkan Responden</a>
+            </li>
+            </li>
+            <li class="breadcrumb-item"><a href=" {{ route('researcher.surveys.statusSurvey', $survey->id) }}"
+                    class="link-secondary text-decoration-none">Status Survey</a>
+            </li>
+            <li class="breadcrumb-item"><a href=" {{ route('researcher.surveys.report', $survey->id) }}"
+                    class="link-secondary text-decoration-none">Hasil Analisis</a>
+            </li>
+        </ol>
+    </nav>
+</section>
+<hr class="mb-0">
+{{-- end Breadcrumb --}}
 
 {{-- Collect Respondent --}}
 <section class="collect-respondent py-5" id="collect-respondent">
@@ -58,79 +58,90 @@
                 @endif
                 <div class="col-md-7">
                     <h5>Bagikan Tautan</h5>
-                    <p style="opacity: 80%;">Bagikan tautan ini dengan responden Anda untuk mengumpulkan tanggapan mereka</p>
+                    <p style="opacity: 80%;">Bagikan tautan ini dengan responden Anda untuk mengumpulkan tanggapan
+                        mereka</p>
                     <div class="d-flex align-items-center mb-2">
-                        <input type="text" class="form-control @error('link-input') is-invalid @enderror me-3" id="link-input" name="link-input"
-                            value="{{ $survey->shareable_link }}" readonly>
-                        
+                        <input type="text" class="form-control @error('link-input') is-invalid @enderror me-3"
+                            id="link-input" name="link-input" value="{{ $survey->shareable_link }}" readonly>
+
                         @error('link-input')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
                         @enderror
-                        
+
                         {{-- <div class="col-auto " id="button-hide" style="display: none;">
                             <div class="d-flex">
                                 <a href="" class="btn fs-4 me-2 px-2 float-left" style="background-color: #EF4C29; color:white;"><i class="bi bi-check2"></i></a>
                                 <a href="" class="btn fs-4 me-2 px-2 float-left" style="background-color: #85848B; color:white;"><i class="bi bi-x-lg"></i></a>
                             </div>
                         </div>    --}}
-                        
-                        
-                        <button style="background-color: #F2F2F2;" class="btn link-secondary fs-4 me-2" id="btn-edit" onclick="show()" data-bs-toggle="modal"
-                                data-bs-target="#editLinkModal"><i class="fal fa-pen"></i></button>
-                        <a href="#" style="background-color: #F2F2F2;" class="btn link-secondary fs-4" data-bs-toggle="tooltip" title="Copy link"
-                            onclick="clickToCopy()"><i class="far fa-copy"></i></a>
+
+
+                        <button style="background-color: #F2F2F2;" class="btn link-secondary fs-4 me-2" id="btn-edit"
+                            onclick="show()" data-bs-toggle="modal" data-bs-target="#editLinkModal"><i
+                                class="fal fa-pen"></i></button>
+                        <a href="#" style="background-color: #F2F2F2;" class="btn link-secondary fs-4"
+                            data-bs-toggle="tooltip" title="Copy link" onclick="clickToCopy()"><i
+                                class="far fa-copy"></i></a>
                     </div>
                     <p class="fs-12px" style="opacity: 80%;">Edit tautan terlebih dahulu untuk mendapatkan QR Code</p>
+                    <p class="fs-12px fw-bold" style="opacity: 80%;"># http://localhost:8000/survey/(edit)</p>
                 </div>
                 <div class="col-md-5">
-                    <h5 class="text-center qrcode" > QR CODE</h5>
-                    <div class="text-center">
-                        {!! QrCode::size(250)->generate( $survey->shareable_link ); !!}
+                    <h5 class="text-center qrcode"> QR CODE</h5>
+                    <div class="py-5" id="download">
+                        <div class="text-center">
+                            {!! QrCode::size(250)->generate( $survey->shareable_link ); !!}
+                        </div>
                     </div>
+                    <center>
+                        <button class="btn btn-orange pt-3" id="capture">Download</button>
+                    </center>
                 </div>
             </div>
         </div>
         {{-- End Share Link --}}
 
         {{-- Modal Edit Link --}}
-        <div class="modal fade" id="editLinkModal"  aria-labelledby="editLinkModalLabel" aria-hidden="true">
+        <div class="modal fade" id="editLinkModal" aria-labelledby="editLinkModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl modal-fullscreen-xl-down modal-dialog-scrollable">
                 <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editLinkLabel">Edit link</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="{{ route('survey.update', $survey->id) }}" method="POST">
-                        @csrf
-                        <div class="row mb-3">
-                            <div class="col">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="container">
-                                            <input type="text" name="title" class="form-control" value="{{ $survey->shareable_link }}" style="color: #00000099; font-size:24px;"></input>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editLinkLabel">Edit link</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ route('survey.update', $survey->id) }}" method="POST">
+                            @csrf
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="container">
+                                                <input type="text" name="title" class="form-control"
+                                                    value="{{ $survey->shareable_link }}"
+                                                    style="color: #00000099; font-size:24px;"></input>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="row mb-3">
-                            <div class="col">
-                                <div class="container mt-4">
-                                    <div class="text-end">
-                                        <button type="submit" class="btn btn-primary ms-auto"><i class="bi bi-save"
-                                                style="font-size: 12px;"></i>
-                                            Simpan
-                                        </button>
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <div class="container mt-4">
+                                        <div class="text-end">
+                                            <button type="submit" class="btn btn-primary ms-auto"><i class="bi bi-save"
+                                                    style="font-size: 12px;"></i>
+                                                Simpan
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </form>
-                </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -326,47 +337,64 @@
 </section>
 
 {{-- End Collect Respondent --}}
+<script src="{{ asset('js/html2canvas.js') }}"></script>
+<script>
+    document.getElementById("capture").onclick = function () {
+        const screenshotTarget = document.getElementById('download');
 
-<script type="text/javascript">
-function show(){
-var x = document.getElementById("button-hide");
-var y = document.getElementById("btn-edit");
-if (x.style.display === "none") {
-    x.style.display = "block";
-    y.style.display = "none";
-  } else {
-    x.style.display = "none";
-    y.style.display = "block";
-  }
-}
-
-function showQr(){
-    var q = document.getElementById("qr");
-    var b = document.getElementById("btn-check");
-    if (q.style.display === "none") {
-        b.style.display = "block";
-        q.style.display = "block";
+        html2canvas(screenshotTarget).then((canvas) => {
+            const base64image = canvas.toDataURL("image/png");
+            var anchor = document.createElement('a');
+            anchor.setAttribute("href", base64image);
+            anchor.setAttribute("download", "my-image.png");
+            anchor.click();
+            anchor.remove();
+        })
     }
-}
+
+</script>
+<script type="text/javascript">
+    function show() {
+        var x = document.getElementById("button-hide");
+        var y = document.getElementById("btn-edit");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+            y.style.display = "none";
+        } else {
+            x.style.display = "none";
+            y.style.display = "block";
+        }
+    }
+
+    function showQr() {
+        var q = document.getElementById("qr");
+        var b = document.getElementById("btn-check");
+        if (q.style.display === "none") {
+            b.style.display = "block";
+            q.style.display = "block";
+        }
+    }
+
 </script>
 
 <!-- for modal survey status -->
 @if ($survey->status == 'pending')
-    @include('researcher.modals.popup-status-pending')
+@include('researcher.modals.popup-status-pending')
 @elseif ($survey->status == 'reject')
-    @include('researcher.modals.popup-status-reject')
+@include('researcher.modals.popup-status-reject')
 @else
-    @include('researcher.modals.popup-status-draft')
+@include('researcher.modals.popup-status-draft')
 @endif
 
 <script type="text/javascript">
-    $(window).on('load', function() {
-        if( "{{ $survey->status }}" !== 'active' ) {
+    $(window).on('load', function () {
+        if ("{{ $survey->status }}" !== 'active') {
             $('#myModal').modal('show');
         } else {
             $('#myModal').modal('hide');
         }
     });
+
 </script>
 <!-- end modal survey status -->
 
