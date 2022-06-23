@@ -306,7 +306,7 @@ function shouldHideButton() {
         noQuestion.show();
     }
 
-    if (totalQuestion >= 5) {
+    if (totalQuestion >= 3) {
         btnAlert.addClass("d-none");
         btnGroup.removeClass("disabled");
         alert.removeClass("show");

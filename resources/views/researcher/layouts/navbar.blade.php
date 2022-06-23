@@ -94,7 +94,7 @@
                                     <h5 style="font-size: 16px;" class="fw-bold text-success">Survey Anda Diterima!</h5>
                                     <p style="font-size: 14px;">Survey <span class="fw-bold">{{ $survey->title }}</span> telah kami terima. Silahkan bagikan tautan survey Anda untuk mengumpulkan tanggapan responden</p>
                                     <a href="{{ route('researcher.surveys.collectRespondent', $survey->id) }}" class="link-dark">
-                                        <button type="button" class="btn btn-outline-danger">Bagikan Tautan</button>
+                                        <button type="button" class="btn btn-outline-orange">Bagikan Tautan</button>
                                     </a>
                                     
                                     <p class="text-muted small pt-2 mb-0">{{ $survey->created_at->diffForHumans() }}</p>

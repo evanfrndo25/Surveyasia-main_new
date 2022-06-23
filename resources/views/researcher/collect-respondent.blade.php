@@ -104,6 +104,7 @@
         {{-- End Share Link --}}
 
         {{-- Modal Edit Link --}}
+<<<<<<< HEAD
         <div class="modal fade" id="editLinkModal" aria-labelledby="editLinkModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl modal-fullscreen-xl-down modal-dialog-scrollable">
                 <div class="modal-content">
@@ -142,6 +143,44 @@
                             </div>
                         </form>
                     </div>
+=======
+        <div class="modal fade" id="editLinkModal"  aria-labelledby="editLinkModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-fullscreen-lg-down modal-dialog-scrollable">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editLinkLabel">Edit Tautan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('survey.update', $survey->id) }}" method="POST">
+                        @csrf
+                        <div class="row mb-3">
+                            <div class="col">
+                                <div class="container">
+                                    <label for="" class="mb-2">Masukan tautan baru</label>
+                                    <input type="text" name="title" class="form-control mb-5" value="{{ $survey->shareable_link }}" style="color: rgba(0, 0, 0, 0.6); font-size:16px;"></input>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+                <div class="modal-footer">
+                    <div class="row mb-3">
+                        <div class="col">
+                            <div class="container">
+                                <div class="text-end">
+                                    <button type="button" class="btn btn-gray me-2"
+                                    data-bs-dismiss="modal">Batal</button>
+                                    <button type="submit" class="btn btn-save ms-auto">
+                                        Simpan
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </form>
+>>>>>>> cd81c11c28ad6205d4ea6f0c9974da3a9e73c643
                 </div>
             </div>
         </div>
