@@ -14,18 +14,19 @@
                             </div>
                         </div>
                         <div class="row">
-                            <p class="fs-36px fw-bold">Kamu yakin ingin menghapus survey ini ?</p>
+                            <p class="text-delete">Hapus Survey</p>
+                            <p class="text-desc-delete">Survey ini akan dihapus secara permanen dari daftar survey Anda <br> dan tidak dapat dikembalikan lagi. Apakah Anda yakin ingin <br> menghapus survey ini?</p>
                         </div>
                         <div class="row justify-content-center">
                             <div class="col py-3">
                                 <form action="{{ route('researcher.surveys.delete', $survey->id) }}" method="post">
-                                    <button type="button" class="btn btn-secondary me-2"
+                                    <button type="button" class="btn btn-gray me-2"
                                         data-bs-dismiss="modal">Batal</button>
 
 
                                     @csrf
                                     @method('delete')
-                                    <button type="submit" class="btn btn-orange">Ya</button>
+                                    <button type="submit" class="btn btn-save">Ya</button>
 
                                 </form>
 
