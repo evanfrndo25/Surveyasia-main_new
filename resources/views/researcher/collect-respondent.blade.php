@@ -96,7 +96,7 @@
                         </div>
                     </div>
                     <center>
-                        <button class="btn btn-orange pt-3" id="capture">Download</button>
+                        <button class="btn btn-orange" id="capture">Download</button>
                     </center>
                 </div>
             </div>

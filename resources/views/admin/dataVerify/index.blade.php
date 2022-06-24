@@ -70,7 +70,7 @@
                                     class="rounded-pill me-2">
                                 <div>
                                     <h6 class="nopadding">{{ $user->nama_lengkap }}</h6>
-                                    <span class="d-block" style="font-size: 13px">{{ $user->email }}</span>
+                                    <span class="d-block" style="font-size: 13px">admin@gmail.com</span>
                                 </div>
                             </td>
                             <td>{{ $user->role->name }}</td>
