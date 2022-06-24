@@ -350,6 +350,10 @@
                                                         href="{{ route('admin.users.profile', $user->id) }}">
                                                         <i class="bi bi-search"></i>
                                                 </a></li>
+                                                <li><a class="btn btn-outline" data-bs-toggle="modal" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Hapus"
+                                                        data-bs-target="#deleteModal{{ $user->id }}">
+                                                        <i class="bi bi-trash"></i>
+                                                </a></li>
                                             </ul>
                                         </td>
                         @endif
@@ -439,7 +443,10 @@
                                                         href="{{ route('admin.users.profile', $ser->id) }}">
                                                         <i class="bi bi-search"></i>
                                                 </a></li>
-                                                
+                                                <li><a class="btn btn-outline" data-bs-toggle="modal" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Hapus"
+                                                        data-bs-target="#deleteModal{{ $ser->id }}">
+                                                        <i class="bi bi-trash"></i>
+                                                </a></li>
                                             </ul>
                                         </td>
                                     </tr>
@@ -474,11 +481,12 @@
                                         @endif
                                         <td>{{ $ser->updated_at }}</td>
                                         <td>
-                                    <div class="text-complete p-2 text-center rounded-pill">Aktif</div>
-                                </td>
+                                        <div class="text-complete p-2 text-center rounded-pill">Aktif</div>
+                                        </td>
+
                                         {{-- <td class="text-nowrap">
-                            <a href="{{ route('admin.users.notify', $ser->id) }}"
-                                        class="btn btn-sm btn-success">Notify</a>
+                                            <a href="{{ route('admin.users.notify', $ser->id) }}"
+                                            class="btn btn-sm btn-success">Notify</a>
                                         <form action="{{ route('admin.users.destroy', $ser->id) }}" method="POST"
                                             onsubmit="return confirm('Are you sure?');">
                                             <input type="hidden" name="_method" value="DELETE">
@@ -486,33 +494,38 @@
                                             <input type="submit" class="btn btn-sm btn-danger" value="Delete">
                                         </form>
                                         </td> --}}
-                                        <td scope="col" class="text-left">
+
+                                        <td scope="col" class="text-center">
                                         <div class="aksi-menu">
                                             <ul>
                                                 <li><a class="btn btn-outline" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Pratinjau"
                                                         href="{{ route('admin.users.profile', $ser->id) }}">
                                                         <i class="bi bi-search"></i>
                                                 </a></li>
-                                                
+                                                <li><a class="btn btn-outline" data-bs-toggle="modal" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Hapus"
+                                                        data-bs-target="#deleteModal{{ $ser->id }}">
+                                                        <i class="bi bi-trash"></i>
+                                                </a></li>
                                             </ul>
+                                        </div>
                                         </td>
                                     </tr>
                                     @endif
                                     @endforeach
                                 </tbody>
                             </table>
-                </div>
-                </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-@foreach ($users as $usr)
-<div class="modal fade" id="deleteModal{{ $usr->id }}" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+@foreach ($users as $ser)
+<div class="modal fade" id="deleteModal{{ $ser->id }}" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <form action="{{ route('admin.users.destroy', $usr->id) }}" method="POST">
+        <form action="{{ route('admin.users.destroy', $ser->id) }}" method="POST">
         @method('delete')
         @csrf
             <div class="modal-content">
@@ -522,7 +535,7 @@
                 <div class="modal-body">
                     <img src="{{ asset('assets/img/delete.png') }}" class="img-fluid" alt="">
                     <h2 class="text-center">Hapus Pengguna?</h2>
-                    <p class="px-5 small text-secondary text-center">Apakah kamu yakin ingin menghapus user <span class="fw-bold">{{ $usr->nama_lengkap }}</span>? Jika anda menghapus user, maka user akan terhapus secara <span class="fw-bold">permanen</span> .</p>
+                    <p class="px-5 small text-secondary text-center">Apakah kamu yakin ingin menghapus user <span class="fw-bold">{{ $ser->nama_lengkap }}</span>? Jika anda menghapus user, maka user akan terhapus secara <span class="fw-bold">permanen</span> .</p>
                 </div>
                 <div class="row px-5 pb-5">
                     <div class="col d-grid gap-2">
