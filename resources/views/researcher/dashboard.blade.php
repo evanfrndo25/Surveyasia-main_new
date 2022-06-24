@@ -63,7 +63,7 @@
                 </div>
                 <div class="col-md-4 d-flex align-items-center mb-2 mb-md-0">
                     <div class="row">
-                        <div class="col">
+                        <div class="text-break">
                             <a href="{{ route('researcher.surveys.show', $survey->id) }}"
                                 class="link-orange text-decoration-none fw-semibold">{{ $survey->title }}
                             </a>
