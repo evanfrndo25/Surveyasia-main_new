@@ -71,10 +71,10 @@
                         
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <li>
-                                <a class="dropdown-item" onclick="hitApi('{{ $survey->id }}')">Excel</a>
+                                <a class="dropdown-item" onclick="hitApiExcel('{{ $survey->id }}')">Excel</a>
                                 {{--<a class="dropdown-item" href="customize-diagram/export_excel?id={{ $survey->id }}">Excel</a>--}}
                             </li>
-                            <li><a class="dropdown-item" href="customize-diagram/export-pdf?id={{ $survey->id }}">PDF</a>
+                            <li><a class="dropdown-item" href="#" onclick="hitApiPDF('{{ $survey->id }}')">PDF</a>
                             </li>
                             {{-- <li><span class="dropdown-item" id="btnChartExport" style="cursor: pointer;">PDF</span></li> --}}
                             {{-- <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
@@ -150,15 +150,19 @@
     </script>
 
     <script>
-        const hitApi = (survey_id) => {
-            try {
-                fetch(`http://analysis.surveyasia.id/api/excel/${survey_id}/`, {
+        const fetching = (type, survey_id) => {
+            return fetch(`http://analysis.surveyasia.id/api/${type}/${survey_id}/`, {
                     method: 'GET',
                     headers: {
                         'Authorization': 'Basic c3lzYWRtOkNpdGlhc2lhQDEyMzQh',
                         'Content-Type': 'application/json; charset=utf-8'
                     },
-                })
+                });
+        };
+
+        const hitApiExcel = (survey_id) => {
+            try {
+                fetching('excel', survey_id)
                 .then(response => response.blob())
                 .then(response => {
                     const blob = new Blob([response], {type: 'application/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
@@ -166,6 +170,24 @@
                     const a = document.createElement("a");
                     a.href = downloadUrl;
                     a.download = "file.xlsx";
+                    document.body.appendChild(a);
+                    a.click();
+                })
+            } catch (error) {
+                return error.message
+            }
+        }
+
+        const hitApiPDF = (survey_id) => {
+            try {
+                fetching('pdf', survey_id)
+                .then(response => response.blob())
+                .then(response => {
+                    const blob = new Blob([response], {type: 'application/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+                    const downloadUrl = URL.createObjectURL(blob);
+                    const a = document.createElement("a");
+                    a.href = downloadUrl;
+                    a.download = "file.pdf";
                     document.body.appendChild(a);
                     a.click();
                 })
