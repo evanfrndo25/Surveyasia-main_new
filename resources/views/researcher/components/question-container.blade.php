@@ -338,8 +338,8 @@
                                                     <h3 class="pt-4 fw-bold mt-3">Berhasil!</h3>
                                                     <p class="py-3">Anda telah menyelesaikan survey<span class="fw-semibold"> {{ $survey->title }} </span></p>
                                                     <p class="small"> {!! $survey->closing !!} </p>
-                                                    <a class="btn btn-orange fw-semibold radius-default mt-3 py-2 px-4" href="{{ route('researcher.surveys.manage', $survey->id) }}"
-                                                    role="button">Back To Question</a>
+                                                    {{-- <a class="btn btn-orange fw-semibold radius-default mt-3 py-2 px-4" href="{{ route('researcher.surveys.manage', $survey->id) }}"
+                                                    role="button">Back To Question</a> --}}
                                                 </div>
                                                 </div>
                                             </div>

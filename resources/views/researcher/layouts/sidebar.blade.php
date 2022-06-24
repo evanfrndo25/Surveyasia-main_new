@@ -343,7 +343,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 
-                                <input type="file" id="uploadBackground" name="uploadBackground" class="dropify_0" required data-allowed-file-extensions="jpg png jpeg" data-max-file-size="5M" data-default-file=""/>
+                                <input type="file" id="uploadLogo" name="uploadLogo" class="dropify_0" required data-allowed-file-extensions="jpg png jpeg" data-max-file-size="5M" data-default-file=""/>
                                 <p class="fs-14px text-danger mt-1">JPG, PNG atau GIF, ukuran file maksimal 5 MB*</p>
                                 
                             </div>

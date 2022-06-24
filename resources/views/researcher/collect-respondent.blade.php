@@ -104,46 +104,6 @@
         {{-- End Share Link --}}
 
         {{-- Modal Edit Link --}}
-<<<<<<< HEAD
-        <div class="modal fade" id="editLinkModal" aria-labelledby="editLinkModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-xl modal-fullscreen-xl-down modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="editLinkLabel">Edit link</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="{{ route('survey.update', $survey->id) }}" method="POST">
-                            @csrf
-                            <div class="row mb-3">
-                                <div class="col">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="container">
-                                                <input type="text" name="title" class="form-control"
-                                                    value="{{ $survey->shareable_link }}"
-                                                    style="color: #00000099; font-size:24px;"></input>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col">
-                                    <div class="container mt-4">
-                                        <div class="text-end">
-                                            <button type="submit" class="btn btn-primary ms-auto"><i class="bi bi-save"
-                                                    style="font-size: 12px;"></i>
-                                                Simpan
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-=======
         <div class="modal fade" id="editLinkModal"  aria-labelledby="editLinkModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-fullscreen-lg-down modal-dialog-scrollable">
                 <div class="modal-content">
@@ -180,7 +140,6 @@
                     </div>
                 </div>
                 </form>
->>>>>>> cd81c11c28ad6205d4ea6f0c9974da3a9e73c643
                 </div>
             </div>
         </div>
