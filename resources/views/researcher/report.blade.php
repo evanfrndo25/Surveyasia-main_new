@@ -53,7 +53,7 @@
                 <div class="col-md-3">
                     <div class="border radius-default p-3">
                         <p class="text-muted m-0">Judul Survey</p>
-                        <h6>{{ $survey->title }}</h6>
+                        <h6 id="judul-survey">{{ $survey->title }}</h6>
                         <hr>
                         <p class="text-muted m-0">Jenis Survey</p>
                         <h6>Member {{ Str::ucfirst($survey->type) }}</h6>
@@ -160,6 +160,16 @@
                 });
         };
 
+        const getFileName = () => {
+            let today = new Date();
+            let dd = String(today.getDate()).padStart(2, '0');
+            let mm = String(today.getMonth() + 1).padStart(2, '0');
+            let yyyy = today.getFullYear();
+            let judulSurvey = document.getElementById('judul-survey').textContent.split(' ')?.join('-');
+
+            return `${judulSurvey} ${dd}-${mm}-${yyyy}`;
+        }
+
         const hitApiExcel = (survey_id) => {
             try {
                 fetching('excel', survey_id)
@@ -169,12 +179,12 @@
                     const downloadUrl = URL.createObjectURL(blob);
                     const a = document.createElement("a");
                     a.href = downloadUrl;
-                    a.download = "file.xlsx";
+                    a.download = `${getFileName()}.xlsx`;
                     document.body.appendChild(a);
                     a.click();
                 })
             } catch (error) {
-                return error.message
+                alert('Terdapat error saat Export file. Silahkan hubungi Admin.');
             }
         }
 
@@ -187,12 +197,12 @@
                     const downloadUrl = URL.createObjectURL(blob);
                     const a = document.createElement("a");
                     a.href = downloadUrl;
-                    a.download = "file.pdf";
+                    a.download = `${getFileName()}.pdf`;
                     document.body.appendChild(a);
                     a.click();
                 })
             } catch (error) {
-                return error.message
+                alert('Terdapat error saat Export file. Silahkan hubungi Admin.');
             }
         }
     </script>
