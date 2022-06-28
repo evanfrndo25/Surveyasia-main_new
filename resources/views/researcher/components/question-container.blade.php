@@ -5,17 +5,13 @@
     </div>
     <h5 class="mt-3">Memuat konfigurasi....</h5>
 </div>
-
-
-
 {{-- Alert --}}
 <div class="alert alert-info alert-dismissible visually-hidden" role="alert" id="minQuestionAlert">
     Buat minimal 3 pertanyaan untuk disimpan
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
-
 <!-- New Design -->
-<div class="container-fluid">
+<div class="container-fluid my-0" id="clock">
     <div class="row">
         <div class="col">
             <nav>
@@ -59,7 +55,8 @@
                             <div class="card">
                                 <div class="container mt-4">
                                     <form>
-                                        <label for="" style="font-size:18px; color: #00000099;">Pesan Penutup</label>
+                                        <label for="" style="font-size:18px; color: #00000099;">Pesan
+                                            Penutup</label>
                                         <div class="mb-3 mt-3 bg-light py-4 px-2 border border-1">
                                             <p>{!! $survey->closing !!}</p>
                                         </div>
@@ -88,23 +85,14 @@
                             Minimal harus 3 pertanyaan!
                         </div>
                         <input type="hidden" name="survey_id" value="{{ $survey->id }}">
-                        <div class="mt-3" id="questions_container">
-
+                        <div class="mt-3 py-3" id="questions_container">
 
                         </div>
 
                         <div class="row">
                             <div id="groupBtn" class="disabled fade col-auto mx-auto">
-                                <div class=" border-orange text-center"
+                                <div class=" border-orange text-center bg-white"
                                     style=" margin-top: 20px; padding:5px 10px; font-size: 20px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 5px;">
-                                    <!-- <a href="#" id="btnAddPart" data-bs-toggle="modal"
-                                        data-bs-target="#partComponentModal" data-toggle="tooltip"
-                                        data-placement="bottom" title="Tambahkan bagian"
-                                        class="btn fs-4 btn1 text-orange"><i class="bi bi-list"></i></a> -->
-                                    {{-- <button id="btn2" data-toggle="tooltip" data-placement="bottom" title="Pratinjau"
-                                        data-bs-toggle="modal" data-bs-target="#pratinjauModal"
-                                        class="btn fs-4 btn2 text-orange"><i class="bi bi-eye"></i>
-                                    </button> --}}
                                     <a href="#" data-toggle="tooltip" data-placement="bottom" title="Pratinjau"
                                         data-bs-toggle="modal" data-bs-target="#pratinjauModal"
                                         class="btn fs-4 btn2 text-orange"><i class="bi bi-eye"></i>
@@ -117,7 +105,6 @@
                                 </div>
                             </div>
                         </div>
-
                         {{-- Modal Ajukan survey --}}
                         <div class="modal fade" id="ajukanModal" aria-labelledby="ajukanModalLabel" aria-hidden="true">
                             <div class="modal-dialog" style="max-width: 600px;">
@@ -129,21 +116,15 @@
                                     <div class="modal-body">
                                         <img src="{{ asset('assets/img/Copy paste 1.png') }}" class="img-fluid" alt="">
                                         <h4 class="text-center">Apakah kamu ingin mengajukan survey?</h4>
-                                        <p class="px-4 small text-center">Anda dapat simpan dan ajukan survey agar admin
+                                        <p class="px-4 small text-center">Anda dapat simpan dan ajukan survey
+                                            agar admin
                                             dapat meninjau
-                                            survey anda untuk dapat dipublis. Jika hanya ingin mengarsipkan survey dan
+                                            survey anda untuk dapat dipublis. Jika hanya ingin mengarsipkan
+                                            survey dan
                                             ingin mengubah
                                             kembali survey anda dapat simpan sebagai arsip.</p>
                                     </div>
                                     <div class="row px-5 pb-5">
-                                        {{-- <form action="{{ route('admin.news.destroy', $item->id) }}" method="post">
-                                        @method('delete')
-                                        @csrf --}}
-                                        {{-- <input type="hidden" name="img" value="{{ $item->img }}"> --}}
-                                        {{-- <div class="col d-grid gap-2">
-                            <button type="submit" class="btn btn-danger">Ya, simpan dan ajukan survey</button>
-                            </div> --}}
-                                        {{-- </form> --}}
                                         <div class="col d-grid gap-2">
                                             <button type="button" id="submitDraftBtn" class="btn btn-outline-dark"
                                                 style="font-size: 14px;" data-bs-dismiss="modal">
@@ -160,22 +141,16 @@
                             </div>
                         </div>
                         {{-- End Modal Ajukan survey --}}
-
-
-
                         {{-- Modal Pratinjau Survey --}}
-                        <div class="modal fade" id="pratinjauModal" aria-labelledby="pratinjauModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-xl" >
+                        <div class="modal fade" id="pratinjauModal" aria-labelledby="pratinjauModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-xl">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title">Pratinjau</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    {{-- <div class="btn ms-auto">
-                                        <h5 class="modal-title">Pratinjau</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
-                                    </div> --}}
+                                    </div>
                                     <div class="modal-body">
                                         <div class="container shadow p-3 radius-default">
                                             <div class="card border-0">
@@ -184,18 +159,24 @@
                                                         <h3 class="fw-semibold">{{ $survey->title }}</h3>
                                                         <div class="d-flex mt-3">
                                                             @if ($survey->user->avatar == null)
-                                                            <img src="{{ asset('assets/img/noimage.png') }}" alt="{{ $survey->user->nama_lengkap }}"
-                                                                width="50" height="50" class="d-block mb-2 me-3 rounded-pill object-fit-cover">
+                                                            <img src="{{ asset('assets/img/noimage.png') }}"
+                                                                alt="{{ $survey->user->nama_lengkap }}" width="50"
+                                                                height="50"
+                                                                class="d-block mb-2 me-3 rounded-pill object-fit-cover">
                                                             @elseif ($survey->user->provider_name != null)
-                                                            <img src="{{ $survey->user->avatar }}" alt="{{ $survey->user->nama_lengkap }}" width="50"
-                                                                height="50" class="d-block mb-2 me-3 rounded-pill object-fit-cover">
+                                                            <img src="{{ $survey->user->avatar }}"
+                                                                alt="{{ $survey->user->nama_lengkap }}" width="50"
+                                                                height="50"
+                                                                class="d-block mb-2 me-3 rounded-pill object-fit-cover">
                                                             @else
                                                             <img src="{{ asset('storage/' . $survey->user->avatar) }}"
-                                                                alt="{{ $survey->user->nama_lengkap }}" width="50" height="50"
+                                                                alt="{{ $survey->user->nama_lengkap }}" width="50"
+                                                                height="50"
                                                                 class="d-block mb-2 me-3 rounded-pill object-fit-cover">
                                                             @endif
                                                             <div class="col">
-                                                                <h5 class="m-0">{{ $survey->user->nama_lengkap }}</h5>
+                                                                <h5 class="m-0">
+                                                                    {{ $survey->user->nama_lengkap }}</h5>
                                                                 <p class="text-muted fs-14px m-0">Author</p>
                                                             </div>
                                                         </div>
@@ -207,20 +188,20 @@
                                                     <div class="row">
                                                         <div class="col-12 col-sm-6 col-md-4 text-center">
                                                             <h6 class="fw-semibold">Estimasi Pengerjaan</h6>
-                                                            <p class="text-orange fs-14px"><i class="far fa-clock fa-fw"></i>
+                                                            <p class="text-orange fs-14px"><i
+                                                                    class="far fa-clock fa-fw"></i>
                                                                 {{ $survey->estimate_completion }} Menit</p>
                                                         </div>
                                                         <div class="col-12 col-sm-6 col-md-4 text-center">
                                                             <h6 class="fw-semibold">Jumlah Pertanyaan</h6>
-                                                            <p class="text-orange fs-14px">{{ $survey->questions->count() }} Pertanyaan</p>
+                                                            <p class="text-orange fs-14px">
+                                                                {{ $survey->questions->count() }} Pertanyaan</p>
                                                         </div>
-                                                        {{-- <div class="col-12 col-sm-6 col-md-3">
-                                                            <h6 class="fw-semibold">Status</h6>
-                                                            <p class="text-orange fs-14px text-capitalize">{{ $survey->status }}</p>
-                                                        </div> --}}
                                                         <div class="col-12 col-sm-6 col-md-4 text-center">
                                                             <h6 class="fw-semibold">Jumlah Hadiah</h6>
-                                                            <p class="text-orange fs-14px">Rp{{ $survey->reward_point }}</p>
+                                                            <p class="text-orange fs-14px">
+                                                                Rp{{ $survey->reward_point }}
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -230,59 +211,50 @@
                                                     <h6 class="fw-semibold py-3 m-0">Deskripsi</h6>
                                                 </div>
                                                 <div class="card-body">
-                                                    <p class="fs-14px m-0 small"> {!! $survey->description !!} </p>
+                                                    <p class="fs-14px m-0 small"> {!! $survey->description !!}
+                                                    </p>
                                                 </div>
                                             </div>
                                             <div class="card border-0 bg-light-orange radius-default mt-3">
                                                 <div class="card-body">
-                                                    <p class="fs-14px m-0"><span class="fw-semibold">*Jawab studi dengan jujur dan konsisten</span>, agar
+                                                    <p class="fs-14px m-0"><span class="fw-semibold">*Jawab
+                                                            studi dengan
+                                                            jujur dan konsisten</span>, agar
                                                         kami dapat
-                                                        memberikan survey yang sesuai dengan kamu kedepannya.</p>
+                                                        memberikan survey yang sesuai dengan kamu kedepannya.
+                                                    </p>
                                                 </div>
                                             </div>
                                             <div class="row pt-4 pb-2 mx-1 mb-3">
-                                                <a href="#" class="btn btn-orange radius-default text-white" data-bs-toggle="modal" data-bs-target="#pratinjauModal2">
+                                                <a href="#" class="btn btn-orange radius-default text-white"
+                                                    data-bs-toggle="modal" data-bs-target="#pratinjauModal2">
                                                     Mulai
                                                 </a>
-                                                {{-- @can('verifiedByAdmin')
-                                                @if ($survey->user->id == Auth::id())
-                                                <button class="btn btn-orange radius-default text-white disabled">Mulai</button>
-                                                @else
-                                                <a class="btn btn-orange radius-default text-white"
-                                                    href="{{ route('respondent.surveys.questions', $survey->id) }}">Mulai
-                                                </a>
-                                                @endif
-                                                @elsecannot('verifiedByAdmin')
-                                                <button type="button" class="btn btn-secondary w-100" data-bs-toggle="modal"
-                                                    data-bs-target="#alert-modal-unverified">
-                                                    Mulai
-                                                </button>
-                                                @endcan --}}
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </div>
                         {{-- End Modal Pratinjau Survey --}}
-
                         {{-- Modal Pratinjau question Survey --}}
-                        <div class="modal fade" id="pratinjauModal2" aria-labelledby="pratinjauModal2Label" aria-hidden="true">
-                            <div class="modal-dialog modal-xl" >
+                        <div class="modal fade" id="pratinjauModal2" aria-labelledby="pratinjauModal2Label"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-xl">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title">Pratinjau</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
                                     </div>
-                                    
                                     <div class="modal-body">
                                         <div class="container shadow p-3 radius-default">
-                                            
                                             <div class="container p-5">
                                                 <div class="progress">
-                                                    <div id="progress" class="progress-bar bg-orange" role="progressbar" style="width: 0%;" aria-valuenow="25"
-                                                        aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div id="progress" class="progress-bar bg-orange" role="progressbar"
+                                                        style="width: 0%;" aria-valuenow="25" aria-valuemin="0"
+                                                        aria-valuemax="100"></div>
                                                 </div> <br>
                                                 <div class="card " style="padding: 10px; border: 1px solid #000000">
                                                     <div class="card-body">
@@ -292,9 +264,12 @@
                                                                 <p>question will show up here.....</p>
                                                                 <ul class="list-group">
                                                                     <p>options ....</p>
-                                                                    <li class="list-group-item disabled">Option A</li>
-                                                                    <li class="list-group-item disabled">Option B</li>
-                                                                    <li class="list-group-item disabled">Option C</li>
+                                                                    <li class="list-group-item disabled">Option
+                                                                        A</li>
+                                                                    <li class="list-group-item disabled">Option
+                                                                        B</li>
+                                                                    <li class="list-group-item disabled">Option
+                                                                        C</li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -302,38 +277,52 @@
                                                 </div>
                                                 <div class="row mt-3">
                                                     <div class="col" id="btnContainer">
-                                                        <button type="button" class="btn btn-outline-orange" id="prevBtn"><i
-                                                                class="bi bi-chevron-left"></i>
+                                                        <button type="button" class="btn btn-outline-orange"
+                                                            id="prevBtn"><i class="bi bi-chevron-left"></i>
                                                             Sebelumnya</button>
                                                     </div>
                                                     <div class="col text-end" id="btnContainer btn-last">
-                                                        <button type="button" class="btn btn-orange text-white" id="nextBtn">Berikutnya <i
+                                                        <button type="button" class="btn btn-orange text-white"
+                                                            id="nextBtn">Berikutnya <i
                                                                 class="bi bi-chevron-right"></i></button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </div>
                         {{-- End Modal Pratinjau question Survey --}}
-
-
                         {{-- Modal Pratinjau berhasil isi Survey --}}
-                        <div class="modal fade" id="pratinjauModal3" aria-labelledby="pratinjauModal3Label" aria-hidden="true">
-                            <div class="modal-dialog modal-xl" >
+                        <div class="modal fade" id="pratinjauModal3" aria-labelledby="pratinjauModal3Label"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-xl">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title">Pratinjau</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
                                     </div>
-                                    
                                     <div class="modal-body">
                                         <div class="p-3">
                                             <div class="container">
                                                 <div class="row justify-content-center my-3">
+<<<<<<< HEAD
+                                                    <div class="col-md-8 text-center">
+                                                        <img src="{{ asset('assets/img/survey_finish1.svg') }}"
+                                                            alt="Surveyasia" class="img-fluid" width="200">
+                                                        <h3 class="pt-4 fw-bold mt-3">Berhasil!</h3>
+                                                        <p class="py-3">Anda telah menyelesaikan survey<span
+                                                                class="fw-semibold"> {{ $survey->title }}
+                                                            </span></p>
+                                                        <p class="small"> {!! $survey->closing !!} </p>
+                                                        <a class="btn btn-orange fw-semibold radius-default mt-3 py-2 px-4"
+                                                            href="{{ route('researcher.surveys.manage', $survey->id) }}"
+                                                            role="button">Back To Question</a>
+                                                    </div>
+=======
                                                 <div class="col-md-8 text-center">
                                                     <img src="{{ asset('assets/img/survey_finish1.svg') }}" alt="Surveyasia" class="img-fluid" width="200">
                                                     <h3 class="pt-4 fw-bold mt-3">Berhasil!</h3>
@@ -342,19 +331,18 @@
                                                     {{-- <a class="btn btn-orange fw-semibold radius-default mt-3 py-2 px-4" href="{{ route('researcher.surveys.manage', $survey->id) }}"
                                                     role="button">Back To Question</a> --}}
                                                 </div>
+>>>>>>> 6a8a704900d450dd8fa842f969b14766a0d0c9ad
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </div>
                         {{-- End Modal Pratinjau berhasil isi Survey --}}
-
                     </form>
                     {{-- End Question Form --}}
-
                     <div class="row fade" id="noQuestionContainer">
                         <div class="col">
                             {{-- empty question --}}
@@ -367,9 +355,7 @@
     </div>
 </div>
 <!-- New Design Akhot -->
-
-<script src="{{ asset('js/researcher/preview.js') }}" type="module">
-</script>
+<script src="{{ asset('js/researcher/preview.js') }}" type="module"></script>
 <script src="https://cdn.ckeditor.com/4.19.0/basic/ckeditor.js"></script>
 <script>
     var options = {
@@ -385,7 +371,6 @@
     CKEDITOR.replace('my-editor1', options);
 
 </script>
-
 <style>
     .tooltip>.tooltip-inner {
         background-color: #85848B;
@@ -397,7 +382,7 @@
         background: rgba(239, 76, 41, 0.3);
         color: #EF4C29;
         border-radius: 100px;
-     }
+    }
 
     .btn2:hover {
         background: rgba(239, 76, 41, 0.3);
@@ -411,7 +396,12 @@
         border-radius: 100px;
     }
 
-    
+    #clock {
+        background-image: url('');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
 
 </style>
 
@@ -420,6 +410,13 @@
     $(function () {
         $('[data-toggle="tooltip"]').tooltip();
     });
+
+</script>
+<script>
+    function readURL(event) {
+        var getImagePath = URL.createObjectURL(event.target.files[0]);
+        $('#clock').css('background-image', 'url(' + getImagePath + ')');
+    }
 
 </script>
 

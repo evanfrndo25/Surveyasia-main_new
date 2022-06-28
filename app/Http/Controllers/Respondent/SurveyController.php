@@ -138,6 +138,7 @@ class SurveyController extends Controller
 
     public function updateSharedSurvey(Request $request, $code)
     {
+        
         $url = $request->title;
         $checkUrl = Survey::where('shareable_link', $url)->first();
 
@@ -159,6 +160,7 @@ class SurveyController extends Controller
         Survey::where('id', $code)->update(['shareable_link' => $url, 'signature' => end($sign)]);
         return back()->with(session()->flash('success', 'Url berhasil diubah'));
     }
+    
 
     public function filter()
     {
