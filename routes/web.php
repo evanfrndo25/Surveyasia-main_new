@@ -132,9 +132,11 @@ Route::middleware(['auth', 'role:researcher', 'verified'])->group(function () {
                     //delete survey
                     Route::delete('/{id}', [SurveyController::class, 'destroy'])->name('delete');
 
-                    //update survey
+                    //update survey Judul & Desc
                     Route::post('/{survey}/manage', [SurveyController::class, 'update'])->name('update');
-
+                    
+                    //update survey Logo
+                    Route::post('/{survey}/manage/update-logo', [SurveyController::class, 'updateLogo'])->name('updateLogo');
 
                     //create questions
                     Route::post('/{survey}/questions', [

@@ -23,6 +23,7 @@ use App\Http\Requests\CreateSurveyQuestionRequest;
 use App\Models\Chart;
 use Exception;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\URL;
 use PDF;
@@ -102,7 +103,7 @@ class SurveyController extends Controller
         Survey::find($id)->update([
             'title' => $request->title,
             'description' => $request->description,
-            'closing' => $request->closing
+            'closing' => $request->closing,
         ]);
 
         return redirect()->back();
@@ -113,6 +114,28 @@ class SurveyController extends Controller
         // $data->save();
 
         // return redirect('/{survey}/manage');
+    }
+
+
+    // Update survey Logo
+    public function updateLogo(Request $request, $id)
+    {
+        Survey::find($id)->update([
+            'logo' => $request->logo
+        ]);
+
+        $data = Survey::findOrFail($id);
+
+        if ($request->file('logo')) {
+            if ($data->logo && file_exists(storage_path('app/public') . $data->logo)) {
+                Storage::delete('public/' . $data->logo);
+            }
+            $file = $request->file('logo')->store('logo_survey', 'public');
+            $data->logo = $file;
+        }
+
+        $data->save($request->all());
+        return redirect()->back();
     }
 
     public function storeQuestions(CreateSurveyQuestionRequest $request)
