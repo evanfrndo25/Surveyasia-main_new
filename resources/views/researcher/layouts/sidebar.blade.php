@@ -97,14 +97,8 @@
                                 </a>
                             </div>
                             <div class="col-md-6 text-center border p-3">
-<<<<<<< HEAD
-                                <input type="file" id='getval' name="img"
-                                onchange="readURL(event)" hidden>
-                                <label for="getval" style="cursor: pointer;">
-=======
                                 {{-- <input type="file" name="uploadBackground" id="uploadBackground" hidden> --}}
                                 <label for="" data-bs-toggle="modal" data-bs-target="#optionBackgroundModal" style="cursor: pointer;">
->>>>>>> 6a8a704900d450dd8fa842f969b14766a0d0c9ad
                                     <h6>Latar Belakang</h6>
                                     <img src="/assets/img/style_background.png" alt="Logo">
                                 </label>
