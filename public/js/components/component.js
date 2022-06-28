@@ -77,7 +77,7 @@ export class Component extends HTMLDivElement {
 
         this.setAttribute(
             "class",
-            "mx-2 p-4 mb-3 border rounded shadow-sm draggable"
+            "mx-2 p-4 mb-3 border rounded bg-white shadow-sm draggable"
         );
 
         // this.onclick = this._setOnClickListener();
@@ -699,7 +699,7 @@ export class Component extends HTMLDivElement {
             const removebtn = $("#btnRemove");
             const applybtn = $("#btnApply");
             removebtn.addClass("visually-hidden");
-            applybtn.addClass("visually-hidden")
+            applybtn.addClass("visually-hidden");
         };
 
         btnCol.appendChild(removeImgBtn);
@@ -760,8 +760,12 @@ export class Component extends HTMLDivElement {
                 if (file !== undefined) {
                     // show upload button
                     btnContainer.removeClass("visually-hidden");
-                    btnContainer.find("#btnRemove").removeClass("visually-hidden");
-                    btnContainer.find("#btnApply").removeClass("visually-hidden");
+                    btnContainer
+                        .find("#btnRemove")
+                        .removeClass("visually-hidden");
+                    btnContainer
+                        .find("#btnApply")
+                        .removeClass("visually-hidden");
 
                     // if file size exceed 1 Mb
                     // show error
@@ -774,7 +778,9 @@ export class Component extends HTMLDivElement {
                         instance.renderImageSource(file);
                     }
                 } else {
-                    btnContainer.find("#btnRemove").removeClass("visually-hidden");
+                    btnContainer
+                        .find("#btnRemove")
+                        .removeClass("visually-hidden");
                 }
             };
         } else {
@@ -887,11 +893,9 @@ export class Component extends HTMLDivElement {
         const previewImage = $("#previewImage_" + this.blueprint.componentId);
         const descriptionInput = $("#mediaDescriptionOption");
         const btnContainer = $(
-            "#mediaBtnContainer_" + this.blueprint.componentId 
+            "#mediaBtnContainer_" + this.blueprint.componentId
         );
-        const btnremove = $(
-            "#btnRemove"
-        );
+        const btnremove = $("#btnRemove");
 
         const observableMedia = this.observer().media;
 
@@ -905,7 +909,7 @@ export class Component extends HTMLDivElement {
             btnremove.removeClass("visually-hidden");
         } else {
             mainImage.parent().addClass("visually-hidden");
-            descriptionInput.addClass("visually-hidden"); 
+            descriptionInput.addClass("visually-hidden");
             btnremove.removeClass("visually-hidden");
             previewImage.attr(
                 "src",

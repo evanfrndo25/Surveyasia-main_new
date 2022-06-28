@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="p-3">
-  <div class="container">
+  <div class="container" id="">
     <div class="row justify-content-center my-3">
       <div class="col-md-8 text-center">
         <img src="{{ asset('assets/img/survey_finish1.svg') }}" alt="Surveyasia" class="img-fluid" width="200">
