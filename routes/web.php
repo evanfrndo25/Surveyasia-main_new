@@ -138,6 +138,9 @@ Route::middleware(['auth', 'role:researcher', 'verified'])->group(function () {
                     //update survey Logo
                     Route::post('/{survey}/manage/update-logo', [SurveyController::class, 'updateLogo'])->name('updateLogo');
 
+                    //update survey Background Survey
+                    Route::post('/{survey}/manage/update-background', [SurveyController::class, 'updateBackground'])->name('updateBackground');
+
                     //create questions
                     Route::post('/{survey}/questions', [
                         SurveyController::class,

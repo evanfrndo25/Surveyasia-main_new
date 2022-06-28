@@ -101,10 +101,15 @@
                                 </a>
                             </div>
                             <div class="col-md-6 text-center border p-3">
+<<<<<<< HEAD
                                 <!-- <input type="file" id='getval' name="img"
                                 onchange="readURL(event)" hidden> -->
                                 <label for="" data-bs-toggle="modal" data-bs-target="#optionBackgroundModal"
                                     style="cursor: pointer;">
+=======
+                                {{-- <input type="file" name="uploadBackground" id="uploadBackground" hidden> --}}
+                                <label for="" data-bs-toggle="modal" data-bs-target="#optionBackgroundModal" style="cursor: pointer;">
+>>>>>>> fd145867f2f37dfbd50f466ca44112c04f51d29b
                                     <h6>Latar Belakang</h6>
                                     <img src="/assets/img/style_logo.png" alt="Latar Belakang">
                                 </label>
@@ -210,6 +215,7 @@
                     <h5 class="modal-title" id="">Tambah Latar Belakang</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+<<<<<<< HEAD
                 <form action="{{ route('researcher.surveys.update', $survey->id) }}" method="POST">
                     @csrf
                     <div class="modal-body">
@@ -246,9 +252,44 @@
                                                     <img src="{{ asset('assets/img/Get lost in the forrest_ 1.png') }}"
                                                         class="galeri-img" alt="">
                                                 </div>
+=======
+                <form action="{{ route('researcher.surveys.updateBackground', $survey->id) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                
+                                <nav>
+                                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                        <button class="nav-link text-dark border-0 active" id="galeri-tab" data-bs-toggle="tab"
+                                            data-bs-target="#galeri" type="button" role="tab" aria-controls="galeri"
+                                            aria-selected="true">Galeri</button>
+                                        <button class="nav-link text-dark border-0" id="upload-tab" data-bs-toggle="tab"
+                                            data-bs-target="#upload" type="button" role="tab" aria-controls="upload"
+                                            aria-selected="false">Unggah</button>
+                                    </div>
+                                </nav>
+
+                                <div class="tab-content">
+                                    <div class="tab-pane fade pt-3 show active" id="galeri" role="tabpanel" aria-labelledby="galeri-tab">
+                                        <div class="row mb-3">
+                                            <div class="col-md-3">
+                                                <img src="{{ asset('assets/img/Get lost in the forrest_ 1.png') }}" class="galeri-img" alt="">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <img src="{{ asset('assets/img/Get lost in the forrest_ 1.png') }}" class="galeri-img" alt="">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <img src="{{ asset('assets/img/Get lost in the forrest_ 1.png') }}" class="galeri-img" alt="">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <img src="{{ asset('assets/img/Get lost in the forrest_ 1.png') }}" class="galeri-img" alt="">
+>>>>>>> fd145867f2f37dfbd50f466ca44112c04f51d29b
                                             </div>
                                         </div>
 
+<<<<<<< HEAD
                                         <div class="tab-pane fade pt-3" id="upload" role="tabpanel"
                                             aria-labelledby="upload-tab">
                                             <div class="row mb-3">
@@ -263,6 +304,15 @@
                                                         maksimal 5 MB*</p>
                                                     {{-- <input type="file" name="getval" id="getval"> --}}
                                                 </div>
+=======
+                                    <div class="tab-pane fade pt-3" id="upload" role="tabpanel" aria-labelledby="upload-tab">
+                                        <div class="row mb-3">
+                                            <div class="col-md-12">
+                                                <input type="file" id="uploadBackground" name="background" class="dropify_0" />
+                                                {{-- <input type="file" id="uploadBackground" name="background" class="dropify_0" required data-allowed-file-extensions="jpg png jpeg" data-max-file-size="5M" data-default-file=""/> --}}
+                                                <p class="fs-14px text-danger mt-1">JPG, PNG atau GIF, ukuran file maksimal 500Kb*</p>
+                                                {{-- <input type="file" name="uploadBackground" id="uploadBackground"> --}}
+>>>>>>> fd145867f2f37dfbd50f466ca44112c04f51d29b
                                             </div>
                                         </div>
                                     </div>
@@ -355,6 +405,7 @@
                     <h5 class="modal-title" id="">Tambah Logo</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+<<<<<<< HEAD
                 <form action="{{ route('researcher.surveys.updateLogo', $survey->id) }}" method="POST">
                     @csrf
                     <div class="modal-body">
@@ -367,6 +418,18 @@
                                     <p class="fs-14px text-danger mt-1">JPG, PNG atau GIF, ukuran file maksimal 5 MB*
                                     </p>
                                 </div>
+=======
+                <form action="{{ route('researcher.surveys.updateLogo', $survey->id) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input type="file" id="uploadLogo" name="logo" class="dropify_0" />
+                                {{-- <input type="file" id="uploadLogo" name="logo" class="dropify_0" required data-allowed-file-extensions="jpg png jpeg" data-max-file-size="500k" data-default-file=""/> --}}
+                                <p class="fs-14px text-danger mt-1">JPG, PNG atau GIF, ukuran file maksimal 5 MB*</p>
+                                
+>>>>>>> fd145867f2f37dfbd50f466ca44112c04f51d29b
                             </div>
                         </div>
                     </div>
