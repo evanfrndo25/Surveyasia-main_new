@@ -200,7 +200,7 @@
                     <h5 class="modal-title" id="">Tambah Latar Belakang</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('researcher.surveys.update', $survey->id) }}" method="POST">
+                <form action="{{ route('researcher.surveys.updateBackground', $survey->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
                     <div class="container">
@@ -239,8 +239,9 @@
                                     <div class="tab-pane fade pt-3" id="upload" role="tabpanel" aria-labelledby="upload-tab">
                                         <div class="row mb-3">
                                             <div class="col-md-12">
-                                                <input type="file" id="uploadBackground" name="uploadBackground" class="dropify_0" required data-allowed-file-extensions="jpg png jpeg" data-max-file-size="5M" data-default-file=""/>
-                                                <p class="fs-14px text-danger mt-1">JPG, PNG atau GIF, ukuran file maksimal 5 MB*</p>
+                                                <input type="file" id="uploadBackground" name="background" class="dropify_0" />
+                                                {{-- <input type="file" id="uploadBackground" name="background" class="dropify_0" required data-allowed-file-extensions="jpg png jpeg" data-max-file-size="5M" data-default-file=""/> --}}
+                                                <p class="fs-14px text-danger mt-1">JPG, PNG atau GIF, ukuran file maksimal 500Kb*</p>
                                                 {{-- <input type="file" name="uploadBackground" id="uploadBackground"> --}}
                                             </div>
                                             
@@ -336,14 +337,14 @@
                     <h5 class="modal-title" id="">Tambah Logo</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('researcher.surveys.updateLogo', $survey->id) }}" method="POST">
+                <form action="{{ route('researcher.surveys.updateLogo', $survey->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
-                                
-                                <input type="file" id="uploadLogo" name="logo" class="dropify_0" required data-allowed-file-extensions="jpg png jpeg" data-max-file-size="500k" data-default-file=""/>
+                                <input type="file" id="uploadLogo" name="logo" class="dropify_0" />
+                                {{-- <input type="file" id="uploadLogo" name="logo" class="dropify_0" required data-allowed-file-extensions="jpg png jpeg" data-max-file-size="500k" data-default-file=""/> --}}
                                 <p class="fs-14px text-danger mt-1">JPG, PNG atau GIF, ukuran file maksimal 5 MB*</p>
                                 
                             </div>

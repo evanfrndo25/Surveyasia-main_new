@@ -32,7 +32,7 @@
                 <div class="tab-pane fade pt-3 show active" id="umum" role="tabpanel" aria-labelledby="umum-tab">
                     <div class="row mb-3">
                         <div class="col">
-                            <img src="{{ asset('storage/' . \Auth::user()->avatar) }}" value="{{ asset('storage/' . \Auth::user()->avatar) }}"  class="w-25 mb-2" alt="">
+                            <img src="{{ asset('storage/' . $survey->logo) }}" value="{{ asset('storage/' . $survey->logo) }}"  class="w-25 mb-2" alt="">
                             <div class="card">
                                 <div class="card-body">
                                     <div class="container">

@@ -138,6 +138,28 @@ class SurveyController extends Controller
         return redirect()->back();
     }
 
+    // Update survey background
+    public function updateBackground(Request $request, $id)
+    {
+        Survey::find($id)->update([
+            'background' => $request->background
+        ]);
+
+        $data = Survey::findOrFail($id);
+
+        if ($request->file('background')) {
+            if ($data->background && file_exists(storage_path('app/public') . $data->background)) {
+                Storage::delete('public/' . $data->background);
+            }
+            $file = $request->file('background')->store('bg_survey', 'public');
+            $data->background = $file;
+        }
+
+        $data->save($request->all());
+        return redirect()->back();
+    }
+
+
     public function storeQuestions(CreateSurveyQuestionRequest $request)
     {
         try {
