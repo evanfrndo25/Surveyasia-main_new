@@ -28,6 +28,7 @@
                 <div class="tab-pane fade pt-3 show active" id="umum" role="tabpanel" aria-labelledby="umum-tab">
                     <div class="row mb-3">
                         <div class="col">
+                            <img src="{{ asset('storage/' . \Auth::user()->avatar) }}" value="{{ asset('storage/' . \Auth::user()->avatar) }}"  class="w-25 mb-2" alt="">
                             <div class="card">
                                 <div class="card-body">
                                     <div class="container">
@@ -308,6 +309,7 @@
                                         <div class="p-3">
                                             <div class="container">
                                                 <div class="row justify-content-center my-3">
+<<<<<<< HEAD
                                                     <div class="col-md-8 text-center">
                                                         <img src="{{ asset('assets/img/survey_finish1.svg') }}"
                                                             alt="Surveyasia" class="img-fluid" width="200">
@@ -320,6 +322,16 @@
                                                             href="{{ route('researcher.surveys.manage', $survey->id) }}"
                                                             role="button">Back To Question</a>
                                                     </div>
+=======
+                                                <div class="col-md-8 text-center">
+                                                    <img src="{{ asset('assets/img/survey_finish1.svg') }}" alt="Surveyasia" class="img-fluid" width="200">
+                                                    <h3 class="pt-4 fw-bold mt-3">Berhasil!</h3>
+                                                    <p class="py-3">Anda telah menyelesaikan survey<span class="fw-semibold"> {{ $survey->title }} </span></p>
+                                                    <p class="small"> {!! $survey->closing !!} </p>
+                                                    {{-- <a class="btn btn-orange fw-semibold radius-default mt-3 py-2 px-4" href="{{ route('researcher.surveys.manage', $survey->id) }}"
+                                                    role="button">Back To Question</a> --}}
+                                                </div>
+>>>>>>> 6a8a704900d450dd8fa842f969b14766a0d0c9ad
                                                 </div>
                                             </div>
                                         </div>

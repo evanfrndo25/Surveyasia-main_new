@@ -189,7 +189,7 @@
                 <img src="{{ asset('assets/img/recommendation_survey.png') }}" alt="Recommendation Survey"
                     class="card-img-top radius-default">
                 <div class="card-body">
-                    <h6 class="card-title fw-semibold m-0">{{ $survey->title }}</h6>
+                    <h6 class="card-title fw-semibold m-0">{!! Str::limit($survey->title,20) !!}</h6>
                     <p class="card-text text-muted fs-12px">by
                         {{ $survey->user->nama_lengkap }}</p>
 
