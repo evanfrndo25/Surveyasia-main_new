@@ -151,7 +151,7 @@
 
     <script>
         const fetching = (type, survey_id) => {
-            return fetch(`http://analysis.surveyasia.id/api/${type}/${survey_id}/`, {
+            return fetch(`//analysis.surveyasia.id/api/${type}/${survey_id}/`, {
                     method: 'GET',
                     headers: {
                         'Authorization': 'Basic c3lzYWRtOkNpdGlhc2lhQDEyMzQh',
