@@ -117,13 +117,32 @@
                         <div class="row mb-3">
                             <div class="col">
                                 <div class="container">
-                                    <label for="" class="mb-2">Masukan tautan baru</label>
-                                    <input type="text" name="title" class="form-control mb-5" value="{{ $survey->shareable_link }}" style="color: rgba(0, 0, 0, 0.6); font-size:16px;"></input>
+                                    <label for="basic-url" class="form-label">Masukkan tautan baru</label>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon3">{{ $survey->url_origin }}</span>
+                                        <input type="hidden" name="url_origin" value="{{ $survey->url_origin }}">
+                                        <input 
+                                            type="text" 
+                                            class="form-control" 
+                                            id="signature" 
+                                            aria-describedby="basic-addon3"
+                                            value="{{ $survey->signature }}"
+                                            name="signature"
+                                            required
+                                            onkeyup="checkChar(this.value)"
+                                            maxlength="20"
+                                            minlength="5"
+                                        >
+                                    </div>
+                                    <span 
+                                        id="input-error"
+                                        class="text-danger fw-light"
+                                    >
+                                    </span>
                                 </div>
                             </div>
                         </div>
                 </div>
-
                 <div class="modal-footer">
                     <div class="row mb-3">
                         <div class="col">
@@ -131,7 +150,7 @@
                                 <div class="text-end">
                                     <button type="button" class="btn btn-gray me-2"
                                     data-bs-dismiss="modal">Batal</button>
-                                    <button type="submit" class="btn btn-save ms-auto">
+                                    <button type="submit" class="btn btn-save ms-auto" id="submit-url">
                                         Simpan
                                     </button>
                                 </div>
@@ -395,5 +414,18 @@
 
 </script>
 <!-- end modal survey status -->
+
+<script>
+    const checkChar = (text) => {
+        let validasiHuruf = '^[a-zA-Z0-9\-\_]+$';
+        if( !text.match(validasiHuruf) ) {
+            document.getElementById('input-error').innerText = "Tidak boleh menggunakan karakter selain '-' dan '_'";
+            document.getElementById('submit-url').setAttribute('disabled', true);
+        } else {
+            document.getElementById('input-error').innerText = '';
+            document.getElementById('submit-url').removeAttribute('disabled');
+        }
+    };
+</script>
 
 @endsection
