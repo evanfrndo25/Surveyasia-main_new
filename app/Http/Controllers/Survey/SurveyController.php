@@ -370,6 +370,11 @@ class SurveyController extends Controller
             $survey->createShareableLink(40, Survey::STATUS_ACTIVE, true);  //  Survey::STATUS_ACTIVE tidak berarti apa-apa
         }
 
+        // change url without signature :: http://localhost:3000/survey/
+        $arrayUrl = explode('/', $survey->shareable_link);
+        array_pop($arrayUrl);
+        $survey->url_origin = implode('/', $arrayUrl).'/';
+
         return view('researcher.collect-respondent', [
             'survey' => $survey,
             'current' => $this->current,
