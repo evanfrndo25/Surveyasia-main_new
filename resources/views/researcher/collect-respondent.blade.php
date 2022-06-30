@@ -130,8 +130,8 @@
                                             name="signature"
                                             required
                                             onkeyup="checkChar(this.value)"
-                                            maxlength="20"
-                                            minlength="5"
+                                            maxlength="25"
+                                            minlength="3"
                                         >
                                     </div>
                                     <span 
