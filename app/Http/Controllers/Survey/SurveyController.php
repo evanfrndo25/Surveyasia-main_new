@@ -159,6 +159,27 @@ class SurveyController extends Controller
         return redirect()->back();
     }
 
+    // Update survey Header
+    public function updateHeader(Request $request, $id)
+    {
+        Survey::find($id)->update([
+            'img_header' => $request->img_header
+        ]);
+
+        $data = Survey::findOrFail($id);
+
+        if ($request->file('img_header')) {
+            if ($data->img_header && file_exists(storage_path('app/public') . $data->img_header)) {
+                Storage::delete('public/' . $data->img_header);
+            }
+            $file = $request->file('img_header')->store('headers', 'public');
+            $data->img_header = $file;
+        }
+
+        $data->save($request->all());
+        return redirect()->back();
+    }
+
 
     public function storeQuestions(CreateSurveyQuestionRequest $request)
     {

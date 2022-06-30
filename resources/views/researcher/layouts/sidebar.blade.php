@@ -126,6 +126,17 @@
                                         value="#1a94cd" title="Choose your color">
                                 </div>
                             </div>
+                            <div class="col-md-6 text-center border p-3">
+                                <label for="" data-bs-toggle="modal" data-bs-target="#optionHeaderModal"
+                                    style="cursor: pointer;">
+                                    <h6>Sampul</h6>
+                                    @if ($survey->img_header == null)
+                                    <img src="/assets/img/style_logo.png" alt="Sampul">
+                                    @else
+                                    <img src="{{ asset('storage/' . $survey->img_header) }}" class="img-fluid" alt="">
+                                    @endif
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -338,6 +349,93 @@
         </div>
     </div>
     {{-- End Modal Upload Logo --}}
+
+
+    {{-- Modal Upload sampul Header --}}
+    <div class="modal fade" id="optionHeaderModal" aria-labelledby="optionHeaderModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-fullscreen-xl-down modal-dialog-scrollable">
+            <div class="modal-content" style="overflow-y: scroll;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="">Tambah Sampul</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="{{ route('researcher.surveys.updateHeader', $survey->id) }}" method="POST"
+                    enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <nav>
+                                        <div class="nav nav-tabs" id="header-nav-tab" role="tablist">
+                                            <button class="nav-link text-dark border-0 active" id="header-galeri-tab"
+                                                data-bs-toggle="tab" data-bs-target="#header-galeri" type="button" role="tab"
+                                                aria-controls="header-galeri" aria-selected="true">Galeri</button>
+                                            <button class="nav-link text-dark border-0" id="header-upload-tab"
+                                                data-bs-toggle="tab" data-bs-target="#header-upload" type="button" role="tab"
+                                                aria-controls="header-upload" aria-selected="false">Unggah</button>
+                                        </div>
+                                    </nav>
+                                    <div class="tab-content">
+                                        <div class="tab-pane fade pt-3 show active" id="header-galeri" role="tabpanel"
+                                            aria-labelledby="galeri-tab">
+                                            <div class="row mb-3">
+                                                <div class="col-md-3">
+                                                    <img src="{{ asset('assets/img/Get lost in the forrest_ 1.png') }}"
+                                                        class="galeri-img" alt="">
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <img src="{{ asset('assets/img/Get lost in the forrest_ 1.png') }}"
+                                                        class="galeri-img" alt="">
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <img src="{{ asset('assets/img/Get lost in the forrest_ 1.png') }}"
+                                                        class="galeri-img" alt="">
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <img src="{{ asset('assets/img/Get lost in the forrest_ 1.png') }}"
+                                                        class="galeri-img" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade pt-3" id="header-upload" role="tabpanel"
+                                            aria-labelledby="upload-tab">
+                                            <div class="row mb-3">
+                                                <div class="col-md-12">
+                                                    <input type="file" id="uploadHeader" name="img_header"
+                                                        class="dropify_0" />
+                                                    {{-- <input type="file" id="uploadBackground" name="background" class="dropify_0" required data-allowed-file-extensions="jpg png jpeg" data-max-file-size="5M" data-default-file="" data-default-file="{{ asset('storage/' . $survey->img_header) }}"/> --}}
+                                                    <p class="fs-14px text-danger mt-1">JPG, PNG atau GIF, ukuran
+                                                        file maksimal 500Kb*</p>
+                                                    {{-- <input type="file" name="uploadBackground" id="uploadBackground"> --}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        <div class="container">
+                                            <div class="text-end">
+                                                <button type="button" class="btn btn-gray me-2"
+                                                    data-bs-dismiss="modal">Batal</button>
+                                                <button type="submit" class="btn btn-orange ms-auto">
+                                                    Terapkan
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{-- End Modal Upload Sampul Header --}}
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js" charset="utf-8"></script>

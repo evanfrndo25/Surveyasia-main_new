@@ -141,6 +141,9 @@ Route::middleware(['auth', 'role:researcher', 'verified'])->group(function () {
                     //update survey Background Survey
                     Route::post('/{survey}/manage/update-background', [SurveyController::class, 'updateBackground'])->name('updateBackground');
 
+                    //update survey Header Survey
+                    Route::post('/{survey}/manage/update-header', [SurveyController::class, 'updateHeader'])->name('updateHeader');
+
                     //create questions
                     Route::post('/{survey}/questions', [
                         SurveyController::class,
