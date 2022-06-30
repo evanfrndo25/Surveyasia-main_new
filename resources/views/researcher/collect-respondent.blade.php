@@ -86,7 +86,6 @@
                                 class="far fa-copy"></i></a>
                     </div>
                     <p class="fs-12px" style="opacity: 80%;">Edit tautan terlebih dahulu untuk mendapatkan QR Code</p>
-                    <p class="fs-12px fw-bold" style="opacity: 80%;"># http://localhost:8000/survey/(edit)</p>
                 </div>
                 <div class="col-md-5">
                     <h5 class="text-center qrcode"> QR CODE</h5>
