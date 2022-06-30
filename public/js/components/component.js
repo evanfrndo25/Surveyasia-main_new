@@ -77,7 +77,7 @@ export class Component extends HTMLDivElement {
 
         this.setAttribute(
             "class",
-            "mx-2 p-4 mb-3 border rounded bg-white shadow-sm draggable"
+            "mx-2 p-4 mb-3 border rounded shadow-sm bg-ts draggable"
         );
 
         // this.onclick = this._setOnClickListener();

@@ -1,4 +1,4 @@
-<footer class="bg-light pt-5">
+<footer class="bg-light pt-5" style="z-index: 99;">
     <div class="container">
         <div class="row pb-3">
             <div class="col-md-2 mb-5">

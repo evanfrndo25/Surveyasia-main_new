@@ -33,7 +33,6 @@
     </style>
 
     <div class="row">
-
         {{-- Sidebar Navigation --}}
         <div class="col-md-1 col-sm-3 col-xs-3 text-center">
             <a class="link-dark text-decoration-none" data-bs-toggle="collapse" href="#collapseStyle" role="button"
@@ -85,7 +84,11 @@
                                 <label for="" data-bs-toggle="modal" data-bs-target="#uploadLogoModal"
                                     style="cursor: pointer;">
                                     <h6>Logo</h6>
+                                    @if ($survey->logo == null)
                                     <img src="/assets/img/style_logo.png" alt="Logo">
+                                    @else
+                                    <img src="{{ asset('storage/' . $survey->logo) }}" class="img-fluid" alt="">
+                                    @endif
                                 </label>
                             </div>
                             <div class="col-md-6 text-center border p-3">
@@ -101,17 +104,15 @@
                                 </a>
                             </div>
                             <div class="col-md-6 text-center border p-3">
-<<<<<<< HEAD
-                                <!-- <input type="file" id='getval' name="img"
-                                onchange="readURL(event)" hidden> -->
+                                {{-- <input type="file" name="uploadBackground" id="uploadBackground" hidden> --}}
                                 <label for="" data-bs-toggle="modal" data-bs-target="#optionBackgroundModal"
                                     style="cursor: pointer;">
-=======
-                                {{-- <input type="file" name="uploadBackground" id="uploadBackground" hidden> --}}
-                                <label for="" data-bs-toggle="modal" data-bs-target="#optionBackgroundModal" style="cursor: pointer;">
->>>>>>> fd145867f2f37dfbd50f466ca44112c04f51d29b
                                     <h6>Latar Belakang</h6>
+                                    @if ($survey->background == null)
                                     <img src="/assets/img/style_logo.png" alt="Latar Belakang">
+                                    @else
+                                    <img src="{{ asset('storage/' . $survey->background) }}" class="img-fluid" alt="">
+                                    @endif
                                 </label>
                                 <!-- <label for="getval" style="cursor: pointer;">
                                     <h6>Latar Belakang</h6>
@@ -197,8 +198,7 @@
         {{-- End Style --}}
 
         {{-- Question Container --}}
-        <div class="col-9 col-md-8 py-3">
-
+        <div class="col-9 col-md-8">
             <div class="row">
                 {{-- questions --}}
                 @include('researcher.components.question-container')
@@ -215,8 +215,8 @@
                     <h5 class="modal-title" id="">Tambah Latar Belakang</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-<<<<<<< HEAD
-                <form action="{{ route('researcher.surveys.update', $survey->id) }}" method="POST">
+                <form action="{{ route('researcher.surveys.updateBackground', $survey->id) }}" method="POST"
+                    enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
                         <div class="container">
@@ -252,147 +252,44 @@
                                                     <img src="{{ asset('assets/img/Get lost in the forrest_ 1.png') }}"
                                                         class="galeri-img" alt="">
                                                 </div>
-=======
-                <form action="{{ route('researcher.surveys.updateBackground', $survey->id) }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="modal-body">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col">
-                                
-                                <nav>
-                                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                        <button class="nav-link text-dark border-0 active" id="galeri-tab" data-bs-toggle="tab"
-                                            data-bs-target="#galeri" type="button" role="tab" aria-controls="galeri"
-                                            aria-selected="true">Galeri</button>
-                                        <button class="nav-link text-dark border-0" id="upload-tab" data-bs-toggle="tab"
-                                            data-bs-target="#upload" type="button" role="tab" aria-controls="upload"
-                                            aria-selected="false">Unggah</button>
-                                    </div>
-                                </nav>
-
-                                <div class="tab-content">
-                                    <div class="tab-pane fade pt-3 show active" id="galeri" role="tabpanel" aria-labelledby="galeri-tab">
-                                        <div class="row mb-3">
-                                            <div class="col-md-3">
-                                                <img src="{{ asset('assets/img/Get lost in the forrest_ 1.png') }}" class="galeri-img" alt="">
-                                            </div>
-                                            <div class="col-md-3">
-                                                <img src="{{ asset('assets/img/Get lost in the forrest_ 1.png') }}" class="galeri-img" alt="">
-                                            </div>
-                                            <div class="col-md-3">
-                                                <img src="{{ asset('assets/img/Get lost in the forrest_ 1.png') }}" class="galeri-img" alt="">
-                                            </div>
-                                            <div class="col-md-3">
-                                                <img src="{{ asset('assets/img/Get lost in the forrest_ 1.png') }}" class="galeri-img" alt="">
->>>>>>> fd145867f2f37dfbd50f466ca44112c04f51d29b
                                             </div>
                                         </div>
-
-<<<<<<< HEAD
                                         <div class="tab-pane fade pt-3" id="upload" role="tabpanel"
                                             aria-labelledby="upload-tab">
                                             <div class="row mb-3">
                                                 <div class="col-md-12">
-                                                    <input type="file" id='getval' name="img" onchange="readURL(event)"
-                                                        hidden>
-                                                    <input type="file" id="getval" name="getval" class="dropify_0"
-                                                        required data-allowed-file-extensions="jpg png jpeg"
-                                                        data-max-file-size="5M" data-default-file=""
-                                                        onchange="readURL(event)" />
-                                                    <p class="fs-14px text-danger mt-1">JPG, PNG atau GIF, ukuran file
-                                                        maksimal 5 MB*</p>
-                                                    {{-- <input type="file" name="getval" id="getval"> --}}
+                                                    <input type="file" id="uploadBackground" name="background"
+                                                        class="dropify_0" />
+                                                    {{-- <input type="file" id="uploadBackground" name="background" class="dropify_0" required data-allowed-file-extensions="jpg png jpeg" data-max-file-size="5M" data-default-file=""/> --}}
+                                                    <p class="fs-14px text-danger mt-1">JPG, PNG atau GIF, ukuran
+                                                        file maksimal 500Kb*</p>
+                                                    {{-- <input type="file" name="uploadBackground" id="uploadBackground"> --}}
                                                 </div>
-=======
-                                    <div class="tab-pane fade pt-3" id="upload" role="tabpanel" aria-labelledby="upload-tab">
-                                        <div class="row mb-3">
-                                            <div class="col-md-12">
-                                                <input type="file" id="uploadBackground" name="background" class="dropify_0" />
-                                                {{-- <input type="file" id="uploadBackground" name="background" class="dropify_0" required data-allowed-file-extensions="jpg png jpeg" data-max-file-size="5M" data-default-file=""/> --}}
-                                                <p class="fs-14px text-danger mt-1">JPG, PNG atau GIF, ukuran file maksimal 500Kb*</p>
-                                                {{-- <input type="file" name="uploadBackground" id="uploadBackground"> --}}
->>>>>>> fd145867f2f37dfbd50f466ca44112c04f51d29b
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        <div class="container">
+                                            <div class="text-end">
+                                                <button type="button" class="btn btn-gray me-2"
+                                                    data-bs-dismiss="modal">Batal</button>
+                                                <button type="submit" class="btn btn-orange ms-auto">
+                                                    Terapkan
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        {{-- <form action="{{ route('researcher.surveys.update', $survey->id) }}" method="POST">
-                        @csrf
-                        <div class="row mb-3">
-                            <div class="col">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="container">
-                                            <input type="text" name="title" class="form-control border-0"
-                                                value="{{ $survey->title }}"
-                                                style="color: #00000099; font-size:24px;"></input>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col">
-                                <div class="card mb-3">
-                                    <div class="container mt-4">
-                                        <label for="" style="font-size:18px; color: #00000099;">Deskripsi</label>
-                                        <div class="mb-3 mt-3">
-                                            <textarea class="my-editor form-control" id="my-editor" rows="10"
-                                                name="description"
-                                                value="{{ $survey->description }}">{{ $survey->description  }}</textarea>
-                                            <!-- <textarea type="text" name="description" value="{{ $survey->description }}"
-                                                class="form-control"
-                                                style="width: 100%; height:111px;"> {{ $survey->description }}</textarea> -->
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="card">
-                                    <div class="container mt-4">
-                                        <label for="" style="font-size:18px; color: #00000099;">Pesan Penutup</label>
-                                        <div class="mb-3 mt-3">
-                                            <!-- <textarea type="text" name="closing" value="{{ $survey->closing }}"
-                                                class="form-control"
-                                                style="width: 100%; height:111px;"> {{ $survey->closing }}</textarea> -->
-                                            <textarea class="my-editor1 form-control" id="my-editor1" rows="10"
-                                                name="closing"
-                                                value="{{ $survey->closing }}">{{ $survey->closing  }}</textarea>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="text-end mt-3">
-                                    <button type="button" class="btn btn-gray me-2" data-bs-dismiss="modal">
-                                        Batal
-                                    </button>
-                                    <button type="submit" class="btn btn-save ms-auto">
-                                        Simpan
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                </form> --}}
-            </div>
-            <div class="modal-footer">
-                <div class="row mb-3">
-                    <div class="col">
-                        <div class="container">
-                            <div class="text-end">
-                                <button type="button" class="btn btn-gray me-2" data-bs-dismiss="modal">Batal</button>
-                                <button type="submit" class="btn btn-orange ms-auto">
-                                    Terapkan
-                                </button>
-                            </div>
-                        </div>
                     </div>
-                </div>
+                </form>
             </div>
-            </form>
         </div>
-    </div>
     </div>
     {{-- End Modal Upload Background --}}
 
@@ -405,45 +302,32 @@
                     <h5 class="modal-title" id="">Tambah Logo</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-<<<<<<< HEAD
-                <form action="{{ route('researcher.surveys.updateLogo', $survey->id) }}" method="POST">
+                <form action="{{ route('researcher.surveys.updateLogo', $survey->id) }}" method="POST"
+                    enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <input type="file" id="uploadLogo" name="logo" class="dropify_0" required
-                                        data-allowed-file-extensions="jpg png jpeg" data-max-file-size="500k"
-                                        data-default-file="" />
+                                    <input type="file" id="uploadLogo" name="logo" class="dropify_0" />
+                                    {{-- <input type="file" id="uploadLogo" name="logo" class="dropify_0" required data-allowed-file-extensions="jpg png jpeg" data-max-file-size="500k" data-default-file=""/> --}}
                                     <p class="fs-14px text-danger mt-1">JPG, PNG atau GIF, ukuran file maksimal 5 MB*
                                     </p>
+
                                 </div>
-=======
-                <form action="{{ route('researcher.surveys.updateLogo', $survey->id) }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="modal-body">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <input type="file" id="uploadLogo" name="logo" class="dropify_0" />
-                                {{-- <input type="file" id="uploadLogo" name="logo" class="dropify_0" required data-allowed-file-extensions="jpg png jpeg" data-max-file-size="500k" data-default-file=""/> --}}
-                                <p class="fs-14px text-danger mt-1">JPG, PNG atau GIF, ukuran file maksimal 5 MB*</p>
-                                
->>>>>>> fd145867f2f37dfbd50f466ca44112c04f51d29b
                             </div>
                         </div>
-                    </div>
-
-                    <div class="modal-footer">
-                        <div class="row mb-3">
-                            <div class="col">
-                                <div class="container">
-                                    <div class="text-end">
-                                        <button type="button" class="btn btn-gray me-2"
-                                            data-bs-dismiss="modal">Batal</button>
-                                        <button type="submit" class="btn btn-orange ms-auto">
-                                            Terapkan
-                                        </button>
+                        <div class="modal-footer">
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <div class="container">
+                                        <div class="text-end">
+                                            <button type="button" class="btn btn-gray me-2"
+                                                data-bs-dismiss="modal">Batal</button>
+                                            <button type="submit" class="btn btn-orange ms-auto">
+                                                Terapkan
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
