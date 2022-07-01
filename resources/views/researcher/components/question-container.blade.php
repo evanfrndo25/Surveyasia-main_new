@@ -28,12 +28,31 @@
         <div class="tab-pane fade pt-3 show active" id="umum" role="tabpanel" aria-labelledby="umum-tab">
             <div class="row mb-3">
                 <div class="col">
-                    @if ($survey->logo == null)
+                    @if ($survey->img_header == null)
+                        <div class="">
+                            @if ($survey->logo == null)
+                            <div></div>
+                            @else
+                            <img src="{{ asset('storage/' . $survey->logo) }}"
+                                value="{{ asset('storage/' . $survey->logo) }}" class="w-25 mb-2" alt="">
+                            @endif
+                        </div>
+                    @else
+                        <div class="bg-header">
+                            @if ($survey->logo == null)
+                            <div></div>
+                            @else
+                            <img src="{{ asset('storage/' . $survey->logo) }}"
+                                value="{{ asset('storage/' . $survey->logo) }}" class="w-25 mb-2" alt="">
+                            @endif
+                        </div>
+                    @endif
+                    {{-- @if ($survey->logo == null)
                     <div></div>
                     @else
                     <img src="{{ asset('storage/' . $survey->logo) }}" value="{{ asset('storage/' . $survey->logo) }}"
                         class="w-25 mb-2" alt="">
-                    @endif
+                    @endif --}}
                     <div class="card">
                         <div class="card-body">
                             <div class="container">
@@ -81,8 +100,12 @@
             </div>
         </div>
         <div class="tab-pane fade pt-3" id="pertanyaan" role="tabpanel" aria-labelledby="pertanyaan-tab">
-            <img src="{{ asset('storage/' . $survey->logo) }}" value="{{ asset('storage/' . $survey->logo) }}"
-                class="w-25 mb-2" alt="">
+            @if ($survey->logo == null)
+            <div></div>
+            @else
+            <img src="{{ asset('storage/' . $survey->logo) }}"
+                value="{{ asset('storage/' . $survey->logo) }}" class="w-25 mb-2" alt="">
+            @endif
             {{-- Question Form --}}
             <form action="{{ route('researcher.surveys.storeQuestions', $survey->id) }}" method="post"
                 id="formSurveyQuestion" class="mb-5">
@@ -357,14 +380,26 @@
             <div class="tab-pane fade pt-3 show active" id="umum" role="tabpanel" aria-labelledby="umum-tab">
                 <div class="row mb-3">
                     <div class="col">
-                        <div class="bg-header">
-                            @if ($survey->logo == null)
-                            <div></div>
-                            @else
-                            <img src="{{ asset('storage/' . $survey->logo) }}"
-                                value="{{ asset('storage/' . $survey->logo) }}" class="w-25 mb-2" alt="">
-                            @endif
-                        </div>
+                        @if ($survey->img_header == null)
+                            <div class="">
+                                @if ($survey->logo == null)
+                                <div></div>
+                                @else
+                                <img src="{{ asset('storage/' . $survey->logo) }}"
+                                    value="{{ asset('storage/' . $survey->logo) }}" class="w-25 mb-2" alt="">
+                                @endif
+                            </div>
+                        @else
+                            <div class="bg-header">
+                                @if ($survey->logo == null)
+                                <div></div>
+                                @else
+                                <img src="{{ asset('storage/' . $survey->logo) }}"
+                                    value="{{ asset('storage/' . $survey->logo) }}" class="w-25 mb-2" alt="">
+                                @endif
+                            </div>
+                        @endif
+                        
 
                         <div class="card bg-ts">
                             <div class="card-body">
