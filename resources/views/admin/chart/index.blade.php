@@ -2,6 +2,12 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/admin-dashboard.css') }}">
+<style>
+    body {
+        background-color: #F7FAFC;
+    }
+
+</style>
 @endsection
 
 

@@ -56,12 +56,12 @@
                             <span class="d-block" style="font-size: 13px">{{ $item->sub->user->email }}</span>
                           </div>
                         </td>
-                        <td>{{ $item->title}}</td>
                         <td>{{ $item->sub->subscription->name }}</td>
+                        <td>{{ $item->title}}</td>
                         <td>
                           {{ $price = "Rp " . number_format($item->price ,0,',','.')}}</td>
-                        <td>{{ date('d-m-Y', strtotime ($item->created_at)); }}</td>
-                        <td>{{date('d-m-Y', strtotime ($item->expired_at)); }}</td>
+                        <td>{{ date('d/m/Y', strtotime ($item->created_at)); }}</td>
+                        <td>{{date('d/m/Y', strtotime ($item->expired_at)); }}</td>
                     </tr>
                     @endforeach
                 </tbody>
