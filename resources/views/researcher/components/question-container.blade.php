@@ -14,7 +14,6 @@
 </div>
 
 @if ($survey->background == null )
-
 <div class="col px-5 py-3 bg-white">
     <nav>
         <div class="nav nav-tabs bg-white" id="nav-tab" role="tablist">
@@ -29,8 +28,12 @@
         <div class="tab-pane fade pt-3 show active" id="umum" role="tabpanel" aria-labelledby="umum-tab">
             <div class="row mb-3">
                 <div class="col">
-                    <img src="{{ asset('storage/' . $survey->logo) }}"
-                            value="{{ asset('storage/' . $survey->logo) }}" class="w-25 mb-2" alt="">
+                    @if ($survey->logo == null)
+                    <div></div>
+                    @else
+                    <img src="{{ asset('storage/' . $survey->logo) }}" value="{{ asset('storage/' . $survey->logo) }}"
+                        class="w-25 mb-2" alt="">
+                    @endif
                     <div class="card">
                         <div class="card-body">
                             <div class="container">
@@ -78,8 +81,8 @@
             </div>
         </div>
         <div class="tab-pane fade pt-3" id="pertanyaan" role="tabpanel" aria-labelledby="pertanyaan-tab">
-            <img src="{{ asset('storage/' . $survey->logo) }}"
-                            value="{{ asset('storage/' . $survey->logo) }}" class="w-25 mb-2" alt="">
+            <img src="{{ asset('storage/' . $survey->logo) }}" value="{{ asset('storage/' . $survey->logo) }}"
+                class="w-25 mb-2" alt="">
             {{-- Question Form --}}
             <form action="{{ route('researcher.surveys.storeQuestions', $survey->id) }}" method="post"
                 id="formSurveyQuestion" class="mb-5">
@@ -355,10 +358,14 @@
                 <div class="row mb-3">
                     <div class="col">
                         <div class="bg-header">
+                            @if ($survey->logo == null)
+                            <div></div>
+                            @else
                             <img src="{{ asset('storage/' . $survey->logo) }}"
                                 value="{{ asset('storage/' . $survey->logo) }}" class="w-25 mb-2" alt="">
+                            @endif
                         </div>
-                        
+
                         <div class="card bg-ts">
                             <div class="card-body">
                                 <div class="container">
@@ -406,7 +413,6 @@
                 </div>
             </div>
             <div class="tab-pane fade pt-3" id="pertanyaan" role="tabpanel" aria-labelledby="pertanyaan-tab">
-                <img src="{{ asset('storage/' . $survey->logo) }}" value="{{ asset('storage/' . $survey->logo) }}" class="w-25 mb-2" alt="">
                 {{-- Question Form --}}
                 <form action="{{ route('researcher.surveys.storeQuestions', $survey->id) }}" method="post"
                     id="formSurveyQuestion" class="mb-5">
@@ -724,7 +730,7 @@
 
     .bg-header {
         margin-bottom: 1rem;
-        border-radius: 10px; 
+        border-radius: 10px;
         background-size: cover !important;
         background: url("{{ asset('storage/' . $survey->img_header) }}");
     }
