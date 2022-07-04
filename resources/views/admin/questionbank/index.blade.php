@@ -142,10 +142,10 @@
                                                     alt="">
                                                 <h2 class="text-center">Hapus Sub Template?</h2>
                                                 <p class="px-5 small text-secondary text-center">
-                                                    Jika Anda menghapus sub template ini, maka semua pertanyaan di dalam
-                                                    sub template akan terhapus secara <span
+                                                    Jika Anda menghapus sub template ini, maka 
+                                                    sub template pada admin dan researcher akan terhapus secara <span
                                                         class="fw-bold">permanen</span> .
-                                                    <br><br>
+                                                    <br>
                                                     Apakah anda yakin ingin menghapus <span
                                                         class="fw-bold">{{ $item->sub_template_name }}</span> ?
                                                 </p>

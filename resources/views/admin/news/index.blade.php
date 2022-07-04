@@ -111,24 +111,24 @@
                                     <div class="modal-body">
                                         <img src="{{ asset('assets/img/delete.png') }}" class="img-fluid" alt="">
                                         <h2 class="text-center">Hapus News?</h2>
-                                        <p class="px-5 small text-secondary text-center">Apakah kamu yakin ingin
-                                            menghapus survey <span class="fw-bold">{{ $item->title }}</span> ? Jika anda
-                                            menghapus survey, maka survey pada researcher dan respondent akan terhapus
-                                            secara <span class="fw-bold">permanen</span> .</p>
+                                        <p class="px-5 small text-secondary text-center">Jika anda
+                                            menghapus survey, maka Beritapada admin dan user akan terhapus
+                                            secara <span class="fw-bold">Permanen.</span> <br> Apakah kamu yakin ingin menghapus survey 
+                                            <span class="fw-bold">{{ $item->title }} </span>?</p>
                                     </div>
                                     <div class="row px-5 pb-5">
                                         <form action="{{ route('admin.news.destroy', $item->id) }}" method="post">
-                                            @method('delete')
+                                        <div class="col d-grid gap-2">
+                                            <button type="button" class="btn btn-outline-secondary"
+                                                data-bs-dismiss="modal">Tidak, Tetap Simpan</button>
+                                        </div>
+                                        @method('delete')
                                             @csrf
                                             <input type="hidden" name="img" value="{{ $item->img }}">
                                             <div class="col d-grid gap-2">
-                                                <button type="submit" class="btn btn-danger">YA, HAPUS NEWS</button>
+                                                <button type="submit" class="btn btn-danger">Ya, Hapus</button>
                                             </div>
                                         </form>
-                                        <div class="col d-grid gap-2">
-                                            <button type="button" class="btn btn-outline-secondary"
-                                                data-bs-dismiss="modal">TIDAK, TETAP SIMPAN</button>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
