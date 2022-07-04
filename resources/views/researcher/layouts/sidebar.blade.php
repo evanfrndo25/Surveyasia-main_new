@@ -442,7 +442,7 @@
     <script>
         // upload image
         $('.dropify_0').dropify({
-
+            
             messages: {
                 default: 'Pilih atau tarik file ke sini',
             }
