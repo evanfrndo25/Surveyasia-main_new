@@ -115,6 +115,10 @@
                                     @php continue; @endphp
                                 @endif
 
+                                @if ($user->status == 2)
+                                    @php continue; @endphp
+                                @endif
+
                                 @if ($user->profile == null)
                                     @php continue; @endphp
                                 @endif
@@ -317,13 +321,18 @@
                                 <tbody>
                                     @php $i=1; @endphp
                                     @foreach ($users as $ser)
-                                        @if ($ser->status == 2)
-                                            @if ($ser->role_id == 1)
-                                                @php
-                                                    continue;
-                                                @endphp
-                                            @endif
+                                        @if ($ser->role_id == 1)
+                                            @php
+                                                continue;
+                                            @endphp
                                         @endif
+
+                                        @if ($ser->status != 2)
+                                            @php
+                                                continue;
+                                            @endphp
+                                        @endif
+
                                         <tr>
                                             <td>{{ $i++ }}</td>
                                             @if ($ser->avatar != null)
