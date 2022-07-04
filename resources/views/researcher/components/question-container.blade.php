@@ -100,12 +100,15 @@
             </div>
         </div>
         <div class="tab-pane fade pt-3" id="pertanyaan" role="tabpanel" aria-labelledby="pertanyaan-tab">
+<<<<<<< HEAD
+=======
             @if ($survey->logo == null)
             <div></div>
             @else
             <img src="{{ asset('storage/' . $survey->logo) }}"
                 value="{{ asset('storage/' . $survey->logo) }}" class="w-25 mb-2" alt="">
             @endif
+>>>>>>> 5b5b2db0b956e69d8e8fcaf6f4afc1f60466f29d
             {{-- Question Form --}}
             <form action="{{ route('researcher.surveys.storeQuestions', $survey->id) }}" method="post"
                 id="formSurveyQuestion" class="mb-5">
@@ -767,7 +770,6 @@
         margin-bottom: 1rem;
         border-radius: 10px;
         background-size: cover !important;
-        background: url("{{ asset('storage/' . $survey->img_header) }}");
     }
 
     .bg-ts1 {
