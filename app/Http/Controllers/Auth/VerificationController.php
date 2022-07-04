@@ -147,7 +147,7 @@ class VerificationController extends Controller
         //
         if ($request->user()->role_id == Role::IS_RESPONDENT && $request->user()->profile == null) {
             // respondent validate
-            $this->redirectTo = 'respondent.validate.scan';
+            $this->redirectTo = 'respondent.validate.personal';
             return redirect()->route($this->redirectTo, $request->user()->id);
         }
 
