@@ -45,12 +45,15 @@ class CreatePersonalDataAction
         // $user->ktp = $file;
 
         // add user_subscription as free user
-        UsersSubscriptions::create([
-            'user_id' => $request->user()->id,
-            'subscription_id' => 1,
-            'note' => 'New User',
-            'category_id' => 1
-        ]);
+        $checkUserSubscript = UsersSubscriptions::where('user_id', $request->user()->id)->get();
+        if( count($checkUserSubscript) < 1 ) {
+            UsersSubscriptions::create([
+                'user_id' => $request->user()->id,
+                'subscription_id' => 1,
+                'note' => 'New User',
+                'category_id' => 1
+            ]);
+        }
 
         // check if current address is similar to ktp addresses
         if (

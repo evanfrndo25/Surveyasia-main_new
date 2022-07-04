@@ -51,8 +51,7 @@ class ValidationController extends Controller
         if (!$action->execute($request)) {
             return redirect()->back()->withErrors('Something wrong');
         }
-
-        return redirect()->intended('/')->with('validate.success', 'Validation Success!');
+        return redirect()->route('respondent.dashboard')->with('validate.success', 'Validation Success!');
     }
 
     public function accept(User $user, Request $request)

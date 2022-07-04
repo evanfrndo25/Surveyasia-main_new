@@ -272,10 +272,10 @@ Route::middleware(['auth', 'role:respondent', 'verified'])->group(function () {
             Route::prefix('validation')
                 ->name('validate.')
                 ->group(function () {
-                    // Route::get('{user}/scan', [
-                    //     ValidationController::class,
-                    //     'scan',
-                    // ])->name('scan');
+                    Route::get('{user}/scan', [
+                        ValidationController::class,
+                        'scan',
+                    ])->name('scan');
                     Route::get('{user}/personal', [
                         ValidationController::class,
                         'personal',
