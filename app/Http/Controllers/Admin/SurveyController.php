@@ -14,6 +14,7 @@ use App\Models\QuestionBankSubTemplate;
 use App\Action\CreateSurveyQuestionAction;
 use App\Http\Requests\CreateSurveyRequest;
 use App\Http\Requests\CreateSurveyQuestionRequest;
+use App\Models\Answer;
 use App\Models\CategorySubcriptions;
 use App\Models\UsersSubscriptions;
 use App\Models\UsersSurvey;
@@ -36,6 +37,8 @@ class SurveyController extends Controller
         // $surveys = Survey::where(['creator_id' => $user->id])->get();
 
         // Relational
+
+
         $surveysPending = Survey::where('status', 'pending')->with('user')->orderBy('updated_at', 'asc')->get();
         $surveysDeny = Survey::where('status', 'reject')->with('user')->latest()->get();
         $surveysAcc = Survey::where('status', 'active')->with('user')->latest()->get();
@@ -112,7 +115,8 @@ class SurveyController extends Controller
         ]);
     }
 
-    public function surveyDeny(Request $request, $survey) {
+    public function surveyDeny(Request $request, $survey)
+    {
         Survey::where('id', $survey)->update(
             ['status' => 'reject', 'reason_deny' => $request->reason]
         );
@@ -144,15 +148,17 @@ class SurveyController extends Controller
             'total_filled_in' => count($getTotalofRespondent)
         ]);
     }
-    
-    public function surveyAcc(Survey $survey) {
+
+    public function surveyAcc(Survey $survey)
+    {
         Survey::where('id', $survey->id)->update(['status' => 'active']);
 
         return redirect('/admin/survey');
     }
 
     // untuk merubah status survey dari tolak ke pending
-    public function surveyChangeStatus($survey) {
+    public function surveyChangeStatus($survey)
+    {
         Survey::where('id', $survey)->update(
             ['status' => 'pending', 'reason_deny' => null]
         );

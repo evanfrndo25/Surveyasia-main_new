@@ -16,6 +16,8 @@ use App\Models\CategorySubcriptions;
 use Illuminate\Support\Facades\Mail;
 use App\Jobs\SendWelcomeMailToUserJob;
 use App\Http\Requests\PersonalDataRequest;
+use App\Models\Answer;
+use App\Models\Survey;
 use App\Models\UsersProfile;
 use Illuminate\Support\Facades\Gate as Gate;
 use Illuminate\Support\Facades\Notification;
@@ -180,12 +182,19 @@ class UserController extends Controller
         return redirect('/admin/users')->with('success', 'Notification sent');
     }
 
-    public function profile(User $user)
+    public function profile(User $user, Answer $respondent_id)
     {
         # code...
+        // return User::with('surveys.answers.question')->where('id', $user->id)->get();
+        // $gg = DB::connection('mysql')->select("SELECT
+
+        // ");
         return view('admin.user.profile', [
             'title' => 'Profile',
-            'user' => $user
+            'user' => $user,
+            // 'users' => $user->with('surveys')->whereId($user->id)->get()
+            'users' => Survey::with('user')->where('user_id', $user->id)->get(),
+            // 'respondents' => User::with('surveys.answers.question')->where('id', $user->id)->get()
         ]);
     }
 
