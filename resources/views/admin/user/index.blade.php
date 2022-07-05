@@ -144,11 +144,38 @@
                                     @endif
                                 </td>
                                 <td class="text-end">
+                                    @if ($user->status == 3)
+                                    <div class="aksi-menu">
+                                        <ul>
+                                            <li>
+                                                <a  class="btn btn-outline" 
+                                                    data-bs-toggle="tooltip" 
+                                                    data-bs-placement="bottom" title="Pratinjau"
+                                                    href="{{ route('admin.users.profile', $user->id) }}"
+                                                    >
+                                                    <i class="bi bi-search"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a  class="btn btn-outline" 
+                                                    data-bs-toggle="modal" 
+                                                    data-bs-toggle="tooltip" 
+                                                    data-bs-placement="bottom" 
+                                                    title="Hapus"
+                                                    data-bs-target="#deleteModal{{ $user->id }}"
+                                                    >
+                                                    <i class="bi bi-trash"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    @else
                                     <button type="button" class="btn btn-orange text-white me-3 px-3 py-2"
                                         data-bs-toggle="modal"
                                         data-bs-target="#modal{{ $user->id }}">
                                         Verifikasi
                                     </button>
+                                    @endif
                                 </td>
                             </tr>
                         
@@ -380,29 +407,30 @@
                                                 </form>
                                             </td> --}}
                                             <td scope="col" class="text-left">
-                                            <div class="aksi-menu">
-                                                <ul>
-                                                    <li>
-                                                        <a  class="btn btn-outline" 
-                                                            data-bs-toggle="tooltip" 
-                                                            data-bs-placement="bottom" title="Pratinjau"
-                                                            href="{{ route('admin.users.profile', $ser->id) }}"
-                                                            >
-                                                            <i class="bi bi-search"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a  class="btn btn-outline" 
-                                                            data-bs-toggle="modal" 
-                                                            data-bs-toggle="tooltip" 
-                                                            data-bs-placement="bottom" 
-                                                            title="Hapus"
-                                                            data-bs-target="#deleteModal{{ $ser->id }}"
-                                                            >
-                                                            <i class="bi bi-trash"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
+                                                <div class="aksi-menu">
+                                                    <ul>
+                                                        <li>
+                                                            <a  class="btn btn-outline" 
+                                                                data-bs-toggle="tooltip" 
+                                                                data-bs-placement="bottom" title="Pratinjau"
+                                                                href="{{ route('admin.users.profile', $ser->id) }}"
+                                                                >
+                                                                <i class="bi bi-search"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a  class="btn btn-outline" 
+                                                                data-bs-toggle="modal" 
+                                                                data-bs-toggle="tooltip" 
+                                                                data-bs-placement="bottom" 
+                                                                title="Hapus"
+                                                                data-bs-target="#deleteModal{{ $ser->id }}"
+                                                                >
+                                                                <i class="bi bi-trash"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
