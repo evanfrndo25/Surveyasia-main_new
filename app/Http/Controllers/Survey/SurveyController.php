@@ -23,6 +23,7 @@ use App\Http\Requests\CreateSurveyQuestionRequest;
 use App\Models\Chart;
 use Exception;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\URL;
 use PDF;
@@ -102,7 +103,7 @@ class SurveyController extends Controller
         Survey::find($id)->update([
             'title' => $request->title,
             'description' => $request->description,
-            'closing' => $request->closing
+            'closing' => $request->closing,
         ]);
 
         return redirect()->back();
@@ -114,6 +115,71 @@ class SurveyController extends Controller
 
         // return redirect('/{survey}/manage');
     }
+
+
+    // Update survey Logo
+    public function updateLogo(Request $request, $id)
+    {
+        Survey::find($id)->update([
+            'logo' => $request->logo
+        ]);
+
+        $data = Survey::findOrFail($id);
+
+        if ($request->file('logo')) {
+            if ($data->logo && file_exists(storage_path('app/public') . $data->logo)) {
+                Storage::delete('public/' . $data->logo);
+            }
+            $file = $request->file('logo')->store('logo_survey', 'public');
+            $data->logo = $file;
+        }
+
+        $data->save($request->all());
+        return redirect()->back();
+    }
+
+    // Update survey background
+    public function updateBackground(Request $request, $id)
+    {
+        Survey::find($id)->update([
+            'background' => $request->background
+        ]);
+
+        $data = Survey::findOrFail($id);
+
+        if ($request->file('background')) {
+            if ($data->background && file_exists(storage_path('app/public') . $data->background)) {
+                Storage::delete('public/' . $data->background);
+            }
+            $file = $request->file('background')->store('bg_survey', 'public');
+            $data->background = $file;
+        }
+
+        $data->save($request->all());
+        return redirect()->back();
+    }
+
+    // Update survey Header
+    public function updateHeader(Request $request, $id)
+    {
+        Survey::find($id)->update([
+            'img_header' => $request->img_header
+        ]);
+
+        $data = Survey::findOrFail($id);
+
+        if ($request->file('img_header')) {
+            if ($data->img_header && file_exists(storage_path('app/public') . $data->img_header)) {
+                Storage::delete('public/' . $data->img_header);
+            }
+            $file = $request->file('img_header')->store('headers', 'public');
+            $data->img_header = $file;
+        }
+
+        $data->save($request->all());
+        return redirect()->back();
+    }
+
 
     public function storeQuestions(CreateSurveyQuestionRequest $request)
     {
@@ -324,6 +390,11 @@ class SurveyController extends Controller
             // generate temporary signed URL (expirable) 40 minutes of expiration
             $survey->createShareableLink(40, Survey::STATUS_ACTIVE, true);  //  Survey::STATUS_ACTIVE tidak berarti apa-apa
         }
+
+        // change url without signature :: http://localhost:3000/survey/
+        $arrayUrl = explode('/', $survey->shareable_link);
+        array_pop($arrayUrl);
+        $survey->url_origin = implode('/', $arrayUrl).'/';
 
         return view('researcher.collect-respondent', [
             'survey' => $survey,

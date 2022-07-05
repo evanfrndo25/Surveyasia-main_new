@@ -132,9 +132,17 @@ Route::middleware(['auth', 'role:researcher', 'verified'])->group(function () {
                     //delete survey
                     Route::delete('/{id}', [SurveyController::class, 'destroy'])->name('delete');
 
-                    //update survey
+                    //update survey Judul & Desc
                     Route::post('/{survey}/manage', [SurveyController::class, 'update'])->name('update');
+                    
+                    //update survey Logo
+                    Route::post('/{survey}/manage/update-logo', [SurveyController::class, 'updateLogo'])->name('updateLogo');
 
+                    //update survey Background Survey
+                    Route::post('/{survey}/manage/update-background', [SurveyController::class, 'updateBackground'])->name('updateBackground');
+
+                    //update survey Header Survey
+                    Route::post('/{survey}/manage/update-header', [SurveyController::class, 'updateHeader'])->name('updateHeader');
 
                     //create questions
                     Route::post('/{survey}/questions', [
@@ -264,10 +272,10 @@ Route::middleware(['auth', 'role:respondent', 'verified'])->group(function () {
             Route::prefix('validation')
                 ->name('validate.')
                 ->group(function () {
-                    // Route::get('{user}/scan', [
-                    //     ValidationController::class,
-                    //     'scan',
-                    // ])->name('scan');
+                    Route::get('{user}/scan', [
+                        ValidationController::class,
+                        'scan',
+                    ])->name('scan');
                     Route::get('{user}/personal', [
                         ValidationController::class,
                         'personal',

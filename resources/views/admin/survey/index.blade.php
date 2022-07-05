@@ -27,6 +27,8 @@
 </style>
 @endsection
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.12.0/css/dataTables.bootstrap5.min.css">
 
 @section('content')
 
@@ -99,29 +101,18 @@
                         </div>
                     </nav>
                 </div>
+                <br>
 
-                <div class="d-flex align-items-center justify-content-between py-4">
-                    <div class="position-relative input-group align-items-center" style="width: 15%">
-                        <input type="text" class="form-control rounded-pill py-2 text-center"
-                            placeholder="Cari disini..." aria-label="search" aria-describedby="basic-addon1"
-                            style="font-size: 12px">
-                        <a href="#">
-                            <i class="position-absolute top-50 start-0 translate-middle-y bi bi-search p-2 ms-1 text-secondary"
-                                style="z-index: 999;"></i>
-                        </a>
-                    </div>
-                </div>
+                
 
                 {{-- LOOPING DATA --}}
                 <!-- Tampilan Baru -->
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="menunggu" role="tabpanel" aria-labelledby="menunggu-tab">
 
-                        <div class="card border-0" style="border-radius: 20px; overflow: hidden;">
-                            <div class="card-body p-0">
-                                <table class="table table-no-border-head align-middle">
-                                    <thead>
-                                        <tr style="background: rgba(255, 175, 158, 0.2);">
+                                <table id="asa" class="table table-no-border-head align-middle" style="border-radius: 20px; overflow: hidden; background-color:#ffffff">
+                                    <thead style="background: rgba(255, 175, 158, 0.2);">
+                                        <tr>
                                             <th scope="col" style="font-size: 18px;" colspan="2">Survey</th>
                                             <th scope="col" style="font-size: 18px;">Kreator</th>
                                             <th scope="col" style="font-size: 18px;" class="text-center">Hitung Mundur</th>
@@ -141,8 +132,8 @@
                                             </td>
                                             <td class="col-4">
                                                 <div>
-                                                    <p class="fw-bold">{{ $survey->title }}</p>
-                                                    <p class="small">{!! Str::limit($survey->description,70) !!}
+                                                    <p class="fw-bold">{!! Str::limit($survey->title,40) !!}</p>
+                                                    <p class="small">{!! Str::limit($survey->description,50) !!}
                                                         <a class="btn btn-link" data-bs-toggle="modal"
                                                             data-bs-target="#modal{{ $survey->id }}">Baca Selengkapnya</a></p>
                                                 </div>
@@ -191,24 +182,38 @@
                             <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="text-center"> {{ $survey->title }}</h5>
+                                        <h5 class="fw-bold"> Survey</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                    <div class="card-header">
-                                        <p class="fw-bold" style="font-size: 18px;">Deskripsi</p>
+                                        <div class="row mb-3">
+                                            <div class="col-lg-12">
+                                                <label for="exampleFormControlInput1" class="form-label">Kategori Survey</label>
+                                                    <input type="text" class="form-control" id="exampleFormControlInput1"
+                                                    name="" disabled value="{{ $survey->category->name }}">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-lg-12">
+                                                <label for="kategori" class="form-label">Judul</label>
+                                                <textarea class="form-control" id="kategori" rows="2"
+                                                readonly>{{ $survey->title }}</textarea>              
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-lg-12">
+                                                <label for="deskripsi" class="form-label">Deskripsi</label>
+                                                <textarea class="form-control" id="description" rows="10"
+                                                readonly>{{ $survey->description }}</textarea>
+                                            </div>
+                                        </div>  
                                     </div>
-                                    <div class="card-body">
-                                        <p>{{ $survey->description }}</p>
-                                    </div>
-                            </div>
-                        </div>
+                                </div>
                                     @endforeach
                                     </tbody>
                                 </table>
-                            </div>
-                        </div>
+                            
                         <!-- Modal deny -->
                         @foreach ($surveysPending as $survey)
                             <div class="modal fade" id="denyModal{{ $survey->id }}" tabindex="-1"
@@ -290,11 +295,9 @@
                         @endforeach
                     </div>
                     <div class="tab-pane fade" id="tolak" role="tabpanel" aria-labelledby="tolak-tab">
-                        <div class="card border-0" style="border-radius: 20px; overflow: hidden;">
-                            <div class="card-body p-0">
-                                <table class="table table-no-border-head align-middle">
-                                    <thead>
-                                        <tr style="background: rgba(255, 175, 158, 0.2);">
+                    <table id="aya" class="table table-no-border-head align-middle" style="border-radius: 20px; overflow: hidden; background-color:#ffffff">
+                                    <thead style="background: rgba(255, 175, 158, 0.2);">
+                                        <tr>
                                             <th scope="col" style="font-size: 18px;" colspan="2">Survey</th>
                                             <th scope="col" style="font-size: 18px;">Kreator</th>
                                             <th scope="col" style="font-size: 18px;" class="text-center">Waktu</th>
@@ -314,8 +317,8 @@
                                             </td>
                                             <td class="col-4">
                                                 <div>
-                                                    <p class="fw-bold">{{ $survey->title }}</p>
-                                                    <p class="small">{!! Str::limit($survey->description,70) !!}
+                                                <p class="fw-bold">{!! Str::limit($survey->title,40) !!}</p>
+                                                    <p class="small">{!! Str::limit($survey->description,50) !!}
                                                         <a class="btn btn-link" data-bs-toggle="modal"
                                                             data-bs-target="#modal{{ $survey->id }}">Baca Selengkapnya</a></p>
                                                 </div>
@@ -327,7 +330,7 @@
                                             </td>
                                             <td class="col-2">
                                                 <div class="text-center">
-                                                    <h5>{{ date('d-M-Y', strtotime($survey->created_at)); }}</h5>
+                                                    <h6>{{ date('d-M-Y', strtotime($survey->created_at)); }}</h6>
                                                 </div>
                                             </td>
                                             <td>
@@ -364,26 +367,40 @@
                             aria-labelledby="exampleModalToggleLabel" tabindex="-1">
                             {{-- MODAL VIEW DETAIL --}}
                             <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
-                                <div class="modal-content">
+                            <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="text-center"> {{ $survey->title }}</h5>
+                                        <h5 class="fw-bold"> Survey</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                    <div class="card-header">
-                                        <p class="fw-bold" style="font-size: 18px;">Deskripsi</p>
+                                        <div class="row mb-3">
+                                            <div class="col-lg-12">
+                                                <label for="exampleFormControlInput1" class="form-label">Kategori Survey</label>
+                                                    <input type="text" class="form-control" id="exampleFormControlInput1"
+                                                    name="" disabled value="{{ $survey->category->name }}">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-lg-12">
+                                                <label for="kategori" class="form-label">Judul</label>
+                                                <textarea class="form-control" id="kategori" rows="2"
+                                                readonly>{{ $survey->title }}</textarea>              
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-lg-12">
+                                                <label for="deskripsi" class="form-label">Deskripsi</label>
+                                                <textarea class="form-control" id="description" rows="10"
+                                                readonly>{{ $survey->description }}</textarea>
+                                            </div>
+                                        </div>  
                                     </div>
-                                    <div class="card-body">
-                                        <p>{{ $survey->description }}</p>
-                                    </div>
-                            </div>
-                        </div>
+                                </div>
                                     @endforeach
                                     </tbody>
                                 </table>
-                            </div>
-                        </div>
+                            
                         <!-- Modal -->
                         @foreach ($surveysDeny as $survey)
                         <div class="modal fade" id="ubahstts0" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -508,11 +525,10 @@
                         @endforeach
                     </div>
                     <div class="tab-pane fade" id="terima" role="tabpanel" aria-labelledby="terima-tab">
-                        <div class="card border-0" style="border-radius: 20px; overflow: hidden;">
-                            <div class="card-body p-0">
-                                <table class="table table-no-border-head align-middle">
-                                    <thead>
-                                        <tr style="background: rgba(255, 175, 158, 0.2);">
+                        
+                            <table id="ata" class="table table-no-border-head align-middle" style="border-radius: 20px; overflow: hidden; background-color:#ffffff">
+                                    <thead style="background: rgba(255, 175, 158, 0.2);">
+                                        <tr>
                                             <th scope="col" style="font-size: 18px;" colspan="2">Survey</th>
                                             <th scope="col" style="font-size: 18px;">Kreator</th>
                                             <th scope="col" style="font-size: 18px;">Aktifitas</th>
@@ -527,14 +543,14 @@
                                             <p>Tidak ada survey</p>
                                         @endif
                                         <tr>
-                                            <td class="col-1">
+                                        <td class="col-1">
                                             <img src="{{ asset('assets/img/img-survey.svg') }}" class="rounded-circle img-fluid"
                                                 alt="">
                                             </td>
                                             <td class="col-4">
                                                 <div>
-                                                    <p class="fw-bold">{{ $survey->title }}</p>
-                                                    <p class="small">{!! Str::limit($survey->description,70) !!}
+                                                <p class="fw-bold">{!! Str::limit($survey->title,40) !!}</p>
+                                                    <p class="small">{!! Str::limit($survey->description,50) !!}
                                                         <a class="btn btn-link" data-bs-toggle="modal"
                                                             data-bs-target="#modal{{ $survey->id }}">Baca Selengkapnya</a></p>
                                                 </div>
@@ -546,9 +562,9 @@
                                             </td>
                                             <td class="col-1">
                                                 <div>
-                                                    <h5 class="fw-light">
+                                                    <h6 class="fw-light">
                                                         {{ $survey->type }}
-                                                    </h5>
+                                                    </h6>
                                                 </div>
                                             </td>
                                             <td class="col-2">
@@ -560,7 +576,7 @@
                                             </td>
                                             <td class="col-2">
                                                 <div class="text-center">
-                                                    <h5>{{ date('d-M-Y', strtotime($survey->created_at)); }}</h5>
+                                                    <h6>{{ date('d-M-Y', strtotime($survey->created_at)); }}</h6>
                                                 </div>
                                             </td>
                                             <td class="col-1 text-center">
@@ -587,26 +603,40 @@
                             aria-labelledby="exampleModalToggleLabel" tabindex="-1">
                             {{-- MODAL VIEW DETAIL --}}
                             <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
-                                <div class="modal-content">
+                            <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="text-center"> {{ $survey->title }}</h5>
+                                        <h5 class="fw-bold"> Survey</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                    <div class="card-header">
-                                        <p class="fw-bold" style="font-size: 18px;">Deskripsi</p>
+                                        <div class="row mb-3">
+                                            <div class="col-lg-12">
+                                                <label for="exampleFormControlInput1" class="form-label">Kategori Survey</label>
+                                                    <input type="text" class="form-control" id="exampleFormControlInput1"
+                                                    name="" disabled value="{{ $survey->category->name }}">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-lg-12">
+                                                <label for="kategori" class="form-label">Judul</label>
+                                                <textarea class="form-control" id="kategori" rows="2"
+                                                readonly>{{ $survey->title }}</textarea>              
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-lg-12">
+                                                <label for="deskripsi" class="form-label">Deskripsi</label>
+                                                <textarea class="form-control" id="description" rows="10"
+                                                readonly>{{ $survey->description }}</textarea>
+                                            </div>
+                                        </div>  
                                     </div>
-                                    <div class="card-body">
-                                        <p>{{ $survey->description }}</p>
-                                    </div>
-                            </div>
-                        </div>
+                                </div>
                                     @endforeach
                                     </tbody>
                                 </table>
-                            </div>
-                        </div>
+                            
                         <!-- Modal -->
                         @foreach ($surveysAcc as $survey)
                         <div class="modal fade" id="ubahstts" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -853,3 +883,81 @@
 
 
     @endsection
+
+    @section('script')
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.12.0/js/dataTables.bootstrap5.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+    $('#asa').DataTable( {
+        "language": {
+            "decimal":        "",
+    "emptyTable":     "Tidak ada data yang tersedia di tabel",
+    "info":           "Menampilkan _START_ sampai _END_ dari _TOTAL_ item",
+    "infoEmpty":      "Menampilkan 0 sampai 0 dari 0 item",
+    "infoFiltered":   "(difilter dari _MAX_ total item)",
+    "infoPostFix":    "",
+    "thousands":      ",",
+    "lengthMenu":     "Tampilkan _MENU_ item",
+    "loadingRecords": "Memuat...",
+    "processing":     "",
+    "search":         "Cari :",
+    "zeroRecords":    "Arsip tidak ditemukan",
+    "paginate": {
+        "next":       ">",
+        "previous":   "<"
+    },
+        }
+    } );
+});
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+    $('#aya').DataTable( {
+        "language": {
+            "decimal":        "",
+    "emptyTable":     "Tidak ada data yang tersedia di tabel",
+    "info":           "Menampilkan _START_ sampai _END_ dari _TOTAL_ item",
+    "infoEmpty":      "Menampilkan 0 sampai 0 dari 0 item",
+    "infoFiltered":   "(difilter dari _MAX_ total item)",
+    "infoPostFix":    "",
+    "thousands":      ",",
+    "lengthMenu":     "Tampilkan _MENU_ item",
+    "loadingRecords": "Memuat...",
+    "processing":     "",
+    "search":         "Cari :",
+    "zeroRecords":    "Arsip tidak ditemukan",
+    "paginate": {
+        "next":       ">",
+        "previous":   "<"
+    },
+        }
+    } );
+});
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+    $('#ata').DataTable( {
+        "language": {
+            "decimal":        "",
+    "emptyTable":     "Tidak ada data yang tersedia di tabel",
+    "info":           "Menampilkan _START_ sampai _END_ dari _TOTAL_ item",
+    "infoEmpty":      "Menampilkan 0 sampai 0 dari 0 item",
+    "infoFiltered":   "(difilter dari _MAX_ total item)",
+    "infoPostFix":    "",
+    "thousands":      ",",
+    "lengthMenu":     "Tampilkan _MENU_ item",
+    "loadingRecords": "Memuat...",
+    "processing":     "",
+    "search":         "Cari :",
+    "zeroRecords":    "Arsip tidak ditemukan",
+    "paginate": {
+        "next":       ">",
+        "previous":   "<"
+    },
+        }
+    } );
+});
+</script>
+@endsection

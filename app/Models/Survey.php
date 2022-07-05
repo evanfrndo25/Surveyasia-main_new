@@ -26,6 +26,7 @@ class Survey extends Model
         'title',
         'description',
         'closing',
+        'background',
         'user_id',
         'slug',
         'category_id',

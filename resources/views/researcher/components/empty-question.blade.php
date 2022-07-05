@@ -7,7 +7,7 @@
         {{-- <div> --}}
             <button id="btnAddQuestion" data-bs-toggle="modal" data-bs-target="#questionComponentModal"
                 data-toggle="tooltip" data-placement="bottom" title="Tambahkan pertanyaan"
-                class="btn btn1 fs-4 text-orange"><i class="fal fa-plus"></i></button>
+                class="btn btn1 fs-4 text-orange bg-white"><i class="fal fa-plus"></i></button>
             {{--<button id="btnAddPart" data-bs-toggle="modal" data-bs-target="#partComponentModal" 
                 data-toggle="tooltip" data-placement="bottom" title="Tambahkan bagian"
                 class="btn btn1 fs-4 text-orange"><i class="bi bi-list"></i></button>

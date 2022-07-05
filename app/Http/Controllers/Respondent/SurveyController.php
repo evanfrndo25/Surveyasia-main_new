@@ -138,27 +138,24 @@ class SurveyController extends Controller
 
     public function updateSharedSurvey(Request $request, $code)
     {
-        $url = $request->title;
-        $checkUrl = Survey::where('shareable_link', $url)->first();
-
-
-        if( $checkUrl ) {   // Jika url telah digunakan
-            // $data = [
-            //     'link-input' => ''
-            //     // 'link-input' => 'unique:users,shareable_link,' . $code
-            // ];
-            // $request->validate($data);
+        $urlOrigin = $request->url_origin;
+        $signature = $request->signature;
+        $url = $urlOrigin . $signature;
         
-            return back()->with(session()->flash('error', 'Url telah digunakan')); // Tampilkan peringatan link telah digunakan
+        $checkUrl = Survey::where('signature', $signature)->first();
+
+        // Jika url telah digunakan
+        if( $checkUrl ) {   
+            return back()->with(session()->flash('error', 'Url telah digunakan'));
         } 
+        
         // $request->validate([
         //     'link-input' => 'unique'
         // ]);
-
-        $sign = explode('/', $url);
-        Survey::where('id', $code)->update(['shareable_link' => $url, 'signature' => end($sign)]);
-        return back()->with(session()->flash('success', 'Url berhasil diubah'));
+        Survey::where('id', $code)->update(['shareable_link' => $url, 'signature' => $signature]);
+        return back()->with(session()->flash('success', 'Tautan berhasil diubah'));
     }
+    
 
     public function filter()
     {

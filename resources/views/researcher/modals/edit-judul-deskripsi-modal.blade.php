@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-xl modal-fullscreen-xl-down modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editJudulLabel">Edit Judul & Deskripsi</h5>
+                <h5 class="modal-title" id="editJudulLabel">Edit Umum</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -49,9 +49,11 @@
                                 </div>
 
                             </div>
-                            <div class="text-end">
-                                <button type="submit" class="btn btn-primary ms-auto"><i class="bi bi-save"
-                                        style="font-size: 12px;"></i>
+                            <div class="text-end mt-3">
+                                <button type="button" class="btn btn-gray me-2" data-bs-dismiss="modal">
+                                    Batal
+                                </button>
+                                <button type="submit" class="btn btn-save ms-auto">
                                     Simpan
                                 </button>
                             </div>

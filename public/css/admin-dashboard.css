@@ -100,11 +100,14 @@ body {
     color: #109cf1;
 }
 #sidebar-dashboard > a:hover {
-    background-color: rgba(159, 162, 180, 0.08);
+    background-color: #e16146;
+    opacity: 0.7;
+    color: #fcfcfc;
+
 }
 #sidebar-dashboard .active {
     border-left: 4px solid #fcfcfc;
-    background-color: rgba(159, 162, 180, 0.08);
+    background-color: #e16146;
     color: #fcfcfc !important;
 }
 

@@ -53,7 +53,7 @@
                 <div class="col-md-3">
                     <div class="border radius-default p-3">
                         <p class="text-muted m-0">Judul Survey</p>
-                        <h6>{{ $survey->title }}</h6>
+                        <h6 id="judul-survey">{{ $survey->title }}</h6>
                         <hr>
                         <p class="text-muted m-0">Jenis Survey</p>
                         <h6>Member {{ Str::ucfirst($survey->type) }}</h6>
@@ -71,10 +71,10 @@
                         
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <li>
-                                <a class="dropdown-item" onclick="hitApi('{{ $survey->id }}')">Excel</a>
+                                <a class="dropdown-item" onclick="hitApiExcel('{{ $survey->id }}')">Excel</a>
                                 {{--<a class="dropdown-item" href="customize-diagram/export_excel?id={{ $survey->id }}">Excel</a>--}}
                             </li>
-                            <li><a class="dropdown-item" href="customize-diagram/export-pdf?id={{ $survey->id }}">PDF</a>
+                            <li><a class="dropdown-item" href="#" onclick="hitApiPDF('{{ $survey->id }}')">PDF</a>
                             </li>
                             {{-- <li><span class="dropdown-item" id="btnChartExport" style="cursor: pointer;">PDF</span></li> --}}
                             {{-- <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
@@ -150,27 +150,59 @@
     </script>
 
     <script>
-        const hitApi = (survey_id) => {
-            try {
-                fetch(`http://analysis.surveyasia.id/api/excel/${survey_id}/`, {
+        const fetching = (type, survey_id) => {
+            return fetch(`//analysis.surveyasia.id/api/${type}/${survey_id}/`, {
                     method: 'GET',
                     headers: {
                         'Authorization': 'Basic c3lzYWRtOkNpdGlhc2lhQDEyMzQh',
                         'Content-Type': 'application/json; charset=utf-8'
                     },
-                })
+                });
+        };
+
+        const getFileName = () => {
+            let today = new Date();
+            let dd = String(today.getDate()).padStart(2, '0');
+            let mm = String(today.getMonth() + 1).padStart(2, '0');
+            let yyyy = today.getFullYear();
+            let judulSurvey = document.getElementById('judul-survey').textContent.split(' ')?.join('-');
+
+            return `${judulSurvey} ${dd}-${mm}-${yyyy}`;
+        }
+
+        const hitApiExcel = (survey_id) => {
+            try {
+                fetching('excel', survey_id)
                 .then(response => response.blob())
                 .then(response => {
                     const blob = new Blob([response], {type: 'application/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
                     const downloadUrl = URL.createObjectURL(blob);
                     const a = document.createElement("a");
                     a.href = downloadUrl;
-                    a.download = "file.xlsx";
+                    a.download = `${getFileName()}.xlsx`;
                     document.body.appendChild(a);
                     a.click();
                 })
             } catch (error) {
-                return error.message
+                alert('Terdapat error saat Export file. Silahkan hubungi Admin.');
+            }
+        }
+
+        const hitApiPDF = (survey_id) => {
+            try {
+                fetching('pdf', survey_id)
+                .then(response => response.blob())
+                .then(response => {
+                    const blob = new Blob([response], {type: 'application/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+                    const downloadUrl = URL.createObjectURL(blob);
+                    const a = document.createElement("a");
+                    a.href = downloadUrl;
+                    a.download = `${getFileName()}.pdf`;
+                    document.body.appendChild(a);
+                    a.click();
+                })
+            } catch (error) {
+                alert('Terdapat error saat Export file. Silahkan hubungi Admin.');
             }
         }
     </script>

@@ -38,7 +38,7 @@ export const multipleChoiceComponent = {
     componentName: "multipleChoice",
     questionNumber: 0,
     // use this for dynamic container
-    /* container: {
+    /*\ container: {
         elementName: "div",
         style: "p-3 mb-3 border rounded shadow-sm draggable",
     }, */

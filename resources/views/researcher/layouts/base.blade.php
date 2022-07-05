@@ -97,6 +97,7 @@
     </script>
     <script src="{{ asset('js/index.js') }}"></script>
     <script src="{{ asset('js/dashboard.js') }}"></script>
+    <script src="{{ asset('js/html2canvas.js') }}"></script>
 </body>
 
 </html>

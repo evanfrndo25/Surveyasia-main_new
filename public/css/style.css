@@ -29,6 +29,19 @@ body {
     border-bottom: 2px solid #ef4c29;
 } */
 
+.text-delete {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: #000000;
+}
+.text-desc-delete {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #000000;
+}
+
 .fs-12px {
     font-size: 12px;
 }
@@ -125,6 +138,28 @@ body {
 .title-landing-page {
     padding: 0px 100px;
 }
+.icon-warning {
+    border-color: #ffb919 !important;
+    color: #ffb919 !important;
+}
+.btn-save {
+    background-color: #ef4c29 !important;
+    width: 88px;
+    color: white;
+}
+.btn-save:hover {
+    background-color: #ff7833 !important;
+    color: white;
+}
+.btn-gray {
+    background-color: #f2f2f2 !important;
+    width: 88px;
+    color: rgba(19, 15, 38, 0.7) !important;
+}
+.btn-gray:hover {
+    background-color: #e7e7e9 !important;
+    color: rgba(19, 15, 38, 0.7) !important;
+}
 
 .bg-light-orange {
     background-color: #fff1d8;
@@ -152,8 +187,9 @@ body {
     color: #ef4c29;
 }
 .btn-outline-orange:hover {
-    background-color: #ef4c29;
-    color: white;
+    border: 2px solid #ef4c29;
+    background-color: rgba(239, 76, 41, 0.1);
+    color: #ef4c29;
 }
 
 .form-check-input-orange,
@@ -408,8 +444,8 @@ body {
 
 .nav-tabs .nav-item.show .nav-link,
 .nav-tabs .nav-link.active {
-    border-bottom: 3px solid #c93e1f !important;
-    color: #c93e1f !important;
+    border-bottom: 3px solid #ef4c29 !important;
+    color: #ef4c29 !important;
     font-weight: bold;
 }
 

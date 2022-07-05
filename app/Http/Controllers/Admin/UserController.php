@@ -36,7 +36,7 @@ class UserController extends Controller
     {
         //
         //abort_if(!$user->can('viewAny', User::class), 403, 'Unauthorized');
-        $users = User::with('subscription')->latest()->paginate(10000);
+        $users = User::with('subscription', 'profile')->latest()->get();
         $subscriptions = Subscription::with('users')->get(); //user subscriptions
         $rolesWithPermissions = Role::with('permissions')->get();
         $rolesWithUsers = Role::with('users')->get();
