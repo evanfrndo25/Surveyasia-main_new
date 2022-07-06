@@ -15,7 +15,7 @@ class NewsController extends Controller
     {
         try {
             $videoList = $this->_videoList();
-            if( $videoList->error ) {
+            if( isset($videoList->error) ) {
                 throw new Exception($videoList->error->message);
             }
             
