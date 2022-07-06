@@ -19,7 +19,7 @@ class NewsController extends Controller
                 throw new Exception($videoList->error->message);
             }
             
-            $all_news = News::where('status', 1)->latest()->paginate(2);
+            $all_news = News::where('status', 1)->latest()->paginate(9);
 
             $news = News::where('status', 1)->latest()->get();
             $filteredNews = array();
