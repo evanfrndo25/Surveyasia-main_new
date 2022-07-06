@@ -26,216 +26,71 @@
                             Semua Postingan
                         </a>
                     </li>
+                @foreach ($news as $key => $n)
                     <li class="nav-item">
                         <a class="nav-link link-news-category link-secondary" aria-current="page" href="#"
-                            id="business-tab" data-bs-toggle="tab" data-bs-target="#business" type="button" role="tab"
+                            id="{{ str_replace(' ', '-', $key) }}-tab" data-bs-toggle="tab" data-bs-target="#{{ str_replace(' ', '-', $key) }}" type="button" role="tab"
                             aria-controls="business" aria-selected="true">
-                            Bisnis
+                            {{ ucfirst($key) }}
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link link-news-category link-secondary" aria-current="page" href="#"
-                            id="study-tab" data-bs-toggle="tab" data-bs-target="#study" type="button" role="tab"
-                            aria-controls="study" aria-selected="true">
-                            Belajar
-                        </a>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link link-news-category link-secondary" aria-current="page" href="#"
-                            id="hobby-tab" data-bs-toggle="tab" data-bs-target="#hobby" type="button" role="tab"
-                            aria-controls="hobby" aria-selected="true">
-                            Hobi
-                        </a>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link link-news-category link-secondary" aria-current="page" href="#"
-                            id="productivity-tab" data-bs-toggle="tab" data-bs-target="#productivity" type="button"
-                            role="tab" aria-controls="productivity" aria-selected="true">
-                            Produktifitas
-                        </a>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link link-news-category link-secondary" aria-current="page" href="#"
-                            id="lainnya-tab" data-bs-toggle="tab" data-bs-target="#lainnya" type="button"
-                            role="tab" aria-controls="lainnya" aria-selected="true">
-                            Lainnya
-                        </a>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link link-news-category link-secondary" aria-current="page" href="#"
-                            id="surveyasia-tab" data-bs-toggle="tab" data-bs-target="#surveyasia" type="button"
-                            role="tab" aria-controls="surveyasia" aria-selected="true">
-                            SurveyAsia
-                        </a>
-                    </li>
+                @endforeach
                 </ul>
-                {{-- End News Category --}}
                 <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
+                    <div class="tab-pane fade active show" id="all" role="tabpanel" aria-labelledby="all-tab">
                         <div class="row g-3">
-                            @foreach ($all_news as $news)
+                            @foreach ($all_news as $all_n)
                             <div class="col-4">
                                 <div>
-                                    <a href="{{ route('news.show', $news->slug) }}"
+                                    <a href="{{ route('news.show', $all_n->slug) }}"
                                         class="link-dark text-decoration-none">
-                                        <img src="{{ url('storage/'.$news->img) }}" alt="News"
+                                        <img src="{{ url('storage/'.$all_n->img) }}" alt="News"
                                             class="img-fluid mb-3 w-100" style="height: 250px;">
                                         <p class="text-muted fw-light fs-14px mb-2">{{
-                                            $news->created_at->diffForHumans() }}
+                                            $all_n->created_at }}
                                         </p>
-                                        <h5>{{ $news->title }}</h5>
+                                        <h5>{{ $all_n->title }}</h5>
                                         <p class="text-secondary fw-light fs-14px mt-2">{!!
-                                            Str::limit($news->description,
+                                            Str::limit($all_n->description,
                                             0) !!}
                                         </p>
                                     </a>
                                 </div>
                             </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="business" role="tabpanel" aria-labelledby="business-tab">
-                        <div class="row g-3">
-                            @foreach ($bisnis_news as $news)
-                                <div class="col-4">
-                                    <div>
-                                        <a href="{{ route('news.show', $news->slug) }}"
-                                            class="link-dark text-decoration-none">
-                                            <img src="{{ url('storage/'.$news->img) }}" alt="News"
-                                                class="img-fluid mb-3 w-100" style="height: 250px;">
-                                            <p class="text-muted fw-light fs-14px mb-2">{{
-                                                $news->created_at->diffForHumans() }}
-                                            </p>
-                                            <h5>{{ $news->title }}</h5>
-                                            <p class="text-secondary fw-light fs-14px mt-2">{!!
-                                                Str::limit($news->description,
-                                                0) !!}
-                                            </p>
-                                        </a>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="study" role="tabpanel" aria-labelledby="study-tab">
-                        <div class="row g-3">
-                            @foreach ($belajar_news as $news)
-                            <div class="col-4">
-                                <div>
-                                    <a href="{{ route('news.show', $news->slug) }}"
-                                        class="link-dark text-decoration-none">
-                                        <img src="{{ url('storage/'.$news->img) }}" alt="News"
-                                            class="img-fluid mb-3 w-100" style="height: 250px;">
-                                        <p class="text-muted fw-light fs-14px mb-2">{{
-                                            $news->created_at->diffForHumans() }}
-                                        </p>
-                                        <h5>{{ $news->title }}</h5>
-                                        <p class="text-secondary fw-light fs-14px mt-2">{!!
-                                            Str::limit($news->description,
-                                            0) !!}
-                                        </p>
-                                    </a>
-                                </div>
-                            </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="hobby" role="tabpanel" aria-labelledby="hobby-tab">
-                        <div class="row g-3">
-                            @foreach ($hobi_news as $news)
-                                <div class="col-4">
-                                    <div>
-                                        <a href="{{ route('news.show', $news->slug) }}"
-                                            class="link-dark text-decoration-none">
-                                            <img src="{{ url('storage/'.$news->img) }}" alt="News"
-                                                class="img-fluid mb-3 w-100" style="height: 250px;">
-                                            <p class="text-muted fw-light fs-14px mb-2">{{
-                                                $news->created_at->diffForHumans() }}
-                                            </p>
-                                            <h5>{{ $news->title }}</h5>
-                                            <p class="text-secondary fw-light fs-14px mt-2">{!!
-                                                Str::limit($news->description,
-                                                0) !!}
-                                            </p>
-                                        </a>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="productivity" role="tabpanel" aria-labelledby="productivity-tab">
-                        <div class="row g-3">
-                            @foreach ($Produktifitas_news as $news)
-                                <div class="col-4">
-                                    <div>
-                                        <a href="{{ route('news.show', $news->slug) }}"
-                                            class="link-dark text-decoration-none">
-                                            <img src="{{ url('storage/'.$news->img) }}" alt="News"
-                                                class="img-fluid mb-3 w-100" style="height: 250px;">
-                                            <p class="text-muted fw-light fs-14px mb-2">{{
-                                                $news->created_at->diffForHumans() }}
-                                            </p>
-                                            <h5>{{ $news->title }}</h5>
-                                            <p class="text-secondary fw-light fs-14px mt-2">{!!
-                                                Str::limit($news->description,
-                                                0) !!}
-                                            </p>
-                                        </a>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="lainnya" role="tabpanel" aria-labelledby="lainnya-tab">
-                        <div class="row g-3">
-                            @foreach ($lainnya_news as $news)
-                                <div class="col-4">
-                                    <div>
-                                        <a href="{{ route('news.show', $news->slug) }}"
-                                            class="link-dark text-decoration-none">
-                                            <img src="{{ url('storage/'.$news->img) }}" alt="News"
-                                                class="img-fluid mb-3 w-100" style="height: 250px;">
-                                            <p class="text-muted fw-light fs-14px mb-2">{{
-                                                $news->created_at->diffForHumans() }}
-                                            </p>
-                                            <h5>{{ $news->title }}</h5>
-                                            <p class="text-secondary fw-light fs-14px mt-2">{!!
-                                                Str::limit($news->description,
-                                                0) !!}
-                                            </p>
-                                        </a>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="surveyasia" role="tabpanel" aria-labelledby="surveyasia-tab">
-                        <div class="row g-3">
-                            @foreach ($surveyasia_news as $news)
-                                <div class="col-4">
-                                    <div>
-                                        <a href="{{ route('news.show', $news->slug) }}"
-                                            class="link-dark text-decoration-none">
-                                            <img src="{{ url('storage/'.$news->img) }}" alt="News"
-                                                class="img-fluid mb-3 w-100" style="height: 250px;">
-                                            <p class="text-muted fw-light fs-14px mb-2">{{
-                                                $news->created_at->diffForHumans() }}
-                                            </p>
-                                            <h5>{{ $news->title }}</h5>
-                                            <p class="text-secondary fw-light fs-14px mt-2">{!!
-                                                Str::limit($news->description,
-                                                0) !!}
-                                            </p>
-                                        </a>
-                                    </div>
-                                </div>
                             @endforeach
                         </div>
                     </div>
 
-                    <div class="d-flex justify-content-end">
-                        {!! $all_news->links() !!}
+                    @foreach ($news as $key => $element)
+                    <div class="tab-pane fade" id="{{ str_replace(' ', '-', $key) }}" role="tabpanel" aria-labelledby="{{ str_replace(' ', '-', $key) }}-tab">
+                        <div class="row g-3">
+                            @foreach ($element as $n)
+                            <div class="col-4">
+                                <div>
+                                    <a href="{{ route('news.show', $n->slug) }}"
+                                        class="link-dark text-decoration-none">
+                                        <img src="{{ url('storage/'.$n->img) }}" alt="News"
+                                            class="img-fluid mb-3 w-100" style="height: 250px;">
+                                        <p class="text-muted fw-light fs-14px mb-2">{{
+                                            $n->created_at }}
+                                        </p>
+                                        <h5>{{ $n->title }}</h5>
+                                        <p class="text-secondary fw-light fs-14px mt-2">{!!
+                                            Str::limit($n->description,
+                                            0) !!}
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
                     </div>
+                    @endforeach
+                </div>
+                
+                <!-- news pagination -->
+                <div class="d-flex justify-content-end">
+                    {!! $all_news->links() !!}
                 </div>
 
                 {{-- Surveyasia TV --}}
