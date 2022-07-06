@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\News;
 use ArrayObject;
+use Exception;
 use Illuminate\Support\Facades\Http;
 use Maatwebsite\Excel\Concerns\ToArray;
 
@@ -12,16 +13,25 @@ class NewsController extends Controller
 {
     public function index()
     {
-        $videoList = $this->_videoList();
-        $all_news = News::where('status', 1)->latest()->paginate(2);
+        try {
+            $videoList = $this->_videoList();
+            if( $videoList->error ) {
+                throw new Exception($videoList->error->message);
+            }
+            
+            $all_news = News::where('status', 1)->latest()->paginate(2);
 
-        $news = News::where('status', 1)->latest()->get();
-        $filteredNews = array();
-        foreach ($news as $element) {
-            $filteredNews[strtolower($element['category'])][] = json_decode($element);
+            $news = News::where('status', 1)->latest()->get();
+            $filteredNews = array();
+            foreach ($news as $element) {
+                $filteredNews[strtolower($element['category'])][] = json_decode($element);
+            }
+
+            return view('news.index', ['news' => $filteredNews, 'all_news' => $all_news] ,compact('videoList'));
+        } catch (\Throwable $th) {
+            error_log('[!] '.$th->getMessage());
+            return view('errors.500');
         }
-
-        return view('news.index', ['news' => $filteredNews, 'all_news' => $all_news] ,compact('videoList'));
     }
 
     public function show(News $news)
