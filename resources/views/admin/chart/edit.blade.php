@@ -7,7 +7,6 @@
     body {
         background-color: #F7FAFC;
     }
-
 </style>
 @endsection
 
@@ -27,10 +26,12 @@
                     {{ session()->get('status') }}
                 </div>
                 @endif
-                <a href="{{ route('admin.chart.index') }}" class="mb-2 text-dark text-decoration-none" style="font-weight: 600;font-size: 16px;">
+                <a href="{{ route('admin.chart.index') }}" class="mb-2 text-dark text-decoration-none"
+                    style="font-weight: 600;font-size: 16px;">
                     <i class="bi bi-chevron-left pe-2"></i>Kembali </a>
                 <h3 class="text-center py-3">Edit Diagram</h3>
-                <div class="card" style="background-color: #FFFFFF; border: 1px solid rgba(0, 0, 0, 0.3); border-radius: 15px; padding:30px;">
+                <div class="card"
+                    style="background-color: #FFFFFF; border: 1px solid rgba(0, 0, 0, 0.3); border-radius: 15px; padding:30px;">
                     <div class="row justify-content-center text-center">
                         <div class="col-6 mb-4" id="Diagram-target">
                             <canvas class="mx-3" id="chartPreview" style="max-height: 250px;"></canvas>
@@ -45,15 +46,17 @@
                                 <div class="mb-4">
                                     <label for="deskripsi" class="form-label title-form">Libray From</label>
                                     @php
-                                        $library = ['Chart JS', 'AnyChart', 'DevExpress'];
+                                    $library = ['Chart JS', 'AnyChart', 'DevExpress'];
                                     @endphp
-                                    <select class="form-select py-3 px-3" name="library_from" id="library_from" onchange="changeChartType()">
+                                    <select class="form-select py-3 px-3" name="library_from" id="library_from"
+                                        onchange="changeChartType()">
                                         @foreach ($library as $lib)
-                                            @if ($chart->library_from == $lib)
-                                                <option selected value="{{ $chart->library_from }}">{{ $chart->library_from }}</option>
-                                            @else
-                                                <option value="{{ $lib }}">{{ $lib }}</option>
-                                            @endif
+                                        @if ($chart->library_from == $lib)
+                                        <option selected value="{{ $chart->library_from }}">{{ $chart->library_from }}
+                                        </option>
+                                        @else
+                                        <option value="{{ $lib }}">{{ $lib }}</option>
+                                        @endif
                                         @endforeach
                                     </select>
                                 </div>
@@ -62,13 +65,15 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label title-form">Nama Diagram</label>
+                                    <label for="exampleFormControlInput1" class="form-label title-form">Nama
+                                        Diagram</label>
                                     <input type="text" name="name" class="form-control py-3 px-3"
                                         placeholder="Masukan Nama Chart" id="exampleFormControlInput1"
                                         value="{{ $chart->name }}">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label title-form">Kategori Diagram</label>
+                                    <label for="exampleFormControlInput1" class="form-label title-form">Kategori
+                                        Diagram</label>
                                     <select class="form-select py-3 px-3" id="chartCategory"
                                         aria-label="Default select example" name="type">
                                         {{--@foreach ($typeChart as $tchart)
@@ -85,8 +90,8 @@
                             <div class="col-6">
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label title-form">Status</label>
-                                    <select class="form-select py-3 px-3"
-                                        aria-label="Default select example" name="status">
+                                    <select class="form-select py-3 px-3" aria-label="Default select example"
+                                        name="status">
                                         @if ($chart->status == 0)
                                         <option selected value="0">Off</option>
                                         <option value="1">On</option>
@@ -97,9 +102,10 @@
                                     </select>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label title-form">Aktivitas</label>
-                                    <select class="form-select py-3 px-3"
-                                        aria-label="Default select example" name="chart_type">
+                                    <label for="exampleFormControlInput1"
+                                        class="form-label title-form">Aktivitas</label>
+                                    <select class="form-select py-3 px-3" aria-label="Default select example"
+                                        name="chart_type">
                                         @if ($chart->chart_type == 'free')
                                         <option selected value="free">free</option>
                                         <option value="premium">premium</option>
@@ -108,6 +114,16 @@
                                         <option selected value="premium">premium</option>
                                         @endif
                                     </select>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="mb-4">
+                                    <label for="foto" class="form-label border-r-besar">Upload Foto</label>
+                                    <div class="mb-3">
+                                        {{-- <img src="{{ url('storage/'.$chart->img) }}" class="w-25" id="prev"> --}}
+                                    </div>
+                                    <input type="file" class="form-control w-50" id="foto" name="img"
+                                        onChange="loadFile(event)">
                                 </div>
                             </div>
                         </div>
@@ -150,7 +166,8 @@
             <div class="modal-body">
                 <img src="{{ asset('assets/img/delete.png') }}" class="img-fluid" alt="">
                 <h2 class="text-center">Hapus Chart?</h2>
-                <p class="px-5 small text-secondary text-center"> Jika anda menghapus chart ini, maka chart pada admin dan researcher
+                <p class="px-5 small text-secondary text-center"> Jika anda menghapus chart ini, maka chart pada admin
+                    dan researcher
                     akan terhapus secara <span class="fw-bold">permanen.</span>
                     <br><br>
                     Apakah kamu yakin ingin menghapus <span class="fw-bold">{{ $chart->name }}</span>?
@@ -161,7 +178,7 @@
                     <a href="{{ route('admin.chart.destroy', $chart->id) }}" class="btn btn-orange">Ya, Hapus</a>
                 </div>
                 <div class="col d-grid gap-2">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tidak, 
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tidak,
                         tetap simpan</button>
                 </div>
             </div>
@@ -218,6 +235,17 @@
                     select_type_chart.innerHTML += `<option value="cjs_${t}">${t}</option>`;
                 }
             });
+        }
+    };
+</script>
+{{-- preview upload foto --}}
+<script>
+    var loadFile = function (event) {
+    var output = document.getElementById('prev');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function () {
+            URL.revokeObjectURL(output.src)
+            // free memory
         }
     };
 </script>
