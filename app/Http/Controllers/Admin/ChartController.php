@@ -76,11 +76,11 @@ class ChartController extends Controller
         ]);
         $chart['supported_questions'] = 'Multiple options';
         $chart['default_configuration'] = '{"type":null,"data":null,"options":null}';
-        // if ($request->file('img')) {
-        //     $chart['img'] = $request->file('img')->store('chart-img');
-        // }
-        // var_dump($chart); die;
+        if ($request->file('img')) {
+            $chart['image'] = $request->file('img')->store('chart-img');
+        }
         Chart::create($chart);
+        
         return redirect('admin/chart/')->with('status', 'Success add Chart!');
     }
 
@@ -137,7 +137,7 @@ class ChartController extends Controller
             if ($request->oldImg) {
                 Storage::delete($request->oldImg);
             }
-            $chart['img'] = $request->file('img')->store('chart-img');
+            $chart['image'] = $request->file('img')->store('chart-img');
         }
 
         Chart::where('id', $id)->update($chart);

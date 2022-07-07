@@ -11,5 +11,5 @@ class Chart extends Model
 
     public $timestamps = true;
 
-    protected $fillable = ['name', 'description', 'chart_type', 'type', 'library_from', 'supported_questions', 'status', 'default_configuration'];
+    protected $fillable = ['name', 'description', 'chart_type', 'type', 'library_from', 'supported_questions', 'status', 'default_configuration', 'image'];
 }

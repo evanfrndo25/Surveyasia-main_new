@@ -136,7 +136,7 @@
                                 <div class="mb-4">
                                     <label for="foto" class="form-label border-r-besar">Upload Foto</label>
                                     <div class="mb-3">
-                                        {{-- <img src="{{ url('storage/'.$chart->img) }}" class="w-25" id="prev"> --}}
+                                        <img src="" class="w-25" id="prev">
                                     </div>
                                     <input type="file" class="form-control w-50" id="foto" name="img"
                                         onChange="loadFile(event)">
