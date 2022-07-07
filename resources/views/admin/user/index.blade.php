@@ -346,6 +346,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <!-- Untuk tab Pengguna -->
                                     @php $i=1; @endphp
                                     @foreach ($users as $ser)
                                         @if ($ser->role_id == 1)
@@ -354,10 +355,15 @@
                                             @endphp
                                         @endif
 
-                                        @if ($ser->status != 2)
-                                            @php
-                                                continue;
-                                            @endphp
+                                        <!-- Jika role responden dan 
+                                        statusnya menggunggu atau ditolak
+                                        maka akan dilewati -->
+                                        @if ($ser->role_id == 3)
+                                            @if ($ser->status != 2)
+                                                @php
+                                                    continue;
+                                                @endphp
+                                            @endif
                                         @endif
 
                                         <tr>
@@ -390,7 +396,11 @@
                                             <td>{{ $ser->updated_at }}</td>
                                             <td>
                                             @if ($ser->status == 1)
-                                                <div class="text-pending p-2 text-center rounded-pill">Menunggu</div>
+                                                @if ($ser->role_id == 2)
+                                                    <div class="text-complete p-2 text-center rounded-pill">Aktif</div>
+                                                @else
+                                                    <div class="text-pending p-2 text-center rounded-pill">Menunggu</div>
+                                                @endif
                                             @elseif ($ser->status == 2)
                                                 <div class="text-complete p-2 text-center rounded-pill">Aktif</div>
                                             @else
