@@ -37,7 +37,7 @@
                 <label for="" class="form-label" data-bs-toggle="tooltip" data-bs-placement="top"
                   title="Untuk membantu responden mengetahui berapa lama waktu yang diperlukan untuk menyelesaikan survey ini">Estimasi
                   Penyelesaian
-                  <i class="fa fa-question-circle" aria-hidden="true"></i></label>
+                  {{-- <i class="fa fa-question-circle" aria-hidden="true"></i></label> --}}
                 <input type="number" class="form-control" required max="20" min="1" placeholder="dalam satuan menit"
                   name="estimate_completion">
                 <div class="form-text"><span class="text-orange">Tips!</span> Disarankan
@@ -47,7 +47,7 @@
               </div>
               <div class="col-md-4 mt-3 mt-md-0">
                 <label for="" class="form-label">Maksimum Responden
-                  <span><i class="fa fa-question-circle" aria-hidden="true"></i></span></label>
+                  {{-- <span><i class="fa fa-question-circle" aria-hidden="true"></i></span></label> --}}
                 <input name="max_attempt" type="number" class="form-control" min="1" placeholder="40"
                   @if($user->subscription != null && $user->subscription->id == 1) max="40" @endif>
                 @if ($user->subscription != null && $user->subscription->id == 1)
@@ -61,7 +61,7 @@
               </div>
               <div class="col-md-4 mt-3 mt-md-0">
                 <label for="" class="form-label">Jumlah Reward
-                  <span><i class="fa fa-question-circle" aria-hidden="true"></i></span></label>
+                  {{-- <span><i class="fa fa-question-circle" aria-hidden="true"></i></span></label> --}}
                 <input name="reward_point" type="number" class="form-control" placeholder="0">
               </div>
             </div>
@@ -74,7 +74,8 @@
                   <label class="form-check-label">
                     <input class="form-check-input form-check-input-orange" type="checkbox" name="shareable"
                       value="checkedValue" checked>
-                    Survey ini dapat dibagikan <i class="fa fa-question-circle" aria-hidden="true"></i>
+                    Survey ini dapat dibagikan
+                    {{-- <i class="fa fa-question-circle" aria-hidden="true"></i> --}}
                   </label>
                 </div>
               </div>
