@@ -4,58 +4,34 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\News;
+use ArrayObject;
+use Exception;
 use Illuminate\Support\Facades\Http;
+use Maatwebsite\Excel\Concerns\ToArray;
 
 class NewsController extends Controller
 {
     public function index()
     {
-        $videoList = $this->_videoList();
-        $allNews = News::where('status', 1)->latest()->paginate(6);
-        $belajarNews = News::where('status', 1)
-                            ->where('category', '=', 'belajar')
-                            ->latest()
-                            ->paginate(6);
+        try {
+            $videoList = $this->_videoList();
+            if( isset($videoList->error) ) {
+                throw new Exception($videoList->error->message);
+            }
+            
+            $all_news = News::where('status', 1)->latest()->paginate(9);
 
-        
-        $hobiNews = News::where('status', 1)
-                        ->where('category', '=', 'hobi')
-                        ->latest()
-                        ->paginate(6);
-        
-        $bisnisNews = News::where('status', 1)
-                        ->where('category', '=', 'bisnis')
-                        ->latest()
-                        ->paginate(6);
+            $news = News::where('status', 1)->latest()->get();
+            $filteredNews = array();
+            foreach ($news as $element) {
+                $filteredNews[strtolower($element['category'])][] = json_decode($element);
+            }
 
-
-        $ProduktifitasNews= News::where('status', 1)
-                        ->where('category', '=', 'Produktifitas')
-                        ->latest()
-                        ->paginate(6);
-                        
-        $lainnyaNews = News::where('status', 1)
-                        ->where('category', '=', 'lainnya')
-                        ->latest()
-                        ->paginate(6);
-                        
-        $surveyasiaNews = News::where('status', 1)
-                        ->where('category', '=', 'surveyasia')
-                        ->latest()
-                        ->paginate(6);
-        
-       
-        $data = [
-                "all_news" => $allNews,
-                "belajar_news" => $belajarNews,
-                "hobi_news" => $hobiNews,
-                "bisnis_news" => $bisnisNews,
-                "Produktifitas_news" => $ProduktifitasNews,
-                "lainnya_news" => $lainnyaNews,
-                "surveyasia_news" => $surveyasiaNews
-                ];
-        
-        return view('news.index', $data, compact('videoList'));
+            return view('news.index', ['news' => $filteredNews, 'all_news' => $all_news] ,compact('videoList'));
+        } catch (\Throwable $th) {
+            error_log('[!] '.$th->getMessage());
+            return view('errors.500');
+        }
     }
 
     public function show(News $news)
