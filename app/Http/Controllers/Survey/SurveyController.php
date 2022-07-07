@@ -269,6 +269,7 @@ class SurveyController extends Controller
                     'name' => $data->name,
                     'code' => $data->type,
                     'description' => $data->description,
+                    'image' => $data->image
                 ];
             }
             return $result;

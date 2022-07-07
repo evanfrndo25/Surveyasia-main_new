@@ -18,7 +18,7 @@
                                         <div class="col-3">
                                             <div class="card" id="lineChart">
                                                 <div class="card-body">
-                                                    <img class="card-img-top" src="{{ asset('assets/img/prototyping.png') }}" alt="Coming Soon">
+                                                    <img class="card-img-top" src="{{ $item['image'] == null ? asset('assets/img/prototyping.png') : url('storage/'. $item['image']) }}" alt="Coming Soon">
                                                     <h6 class="card-title">{{ $item['name'] }}</h6>
                                                     <p class="card-text" style="height: 15rem; max-height:15rem;">
                                                         {{ $item['description'] }}
