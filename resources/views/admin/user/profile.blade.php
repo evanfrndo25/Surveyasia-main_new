@@ -295,6 +295,7 @@
                                                                     </td>
                                                                 </tr>
                                                             </thead>
+                                                            <!-- Belum bisa Menampilkan Responden -->
                                                             {{-- @foreach ($respondents as $r1)
                                                             @foreach ($r1->surveys as $r2)
                                                             @foreach ($r2->answers as $r3)
@@ -341,6 +342,7 @@
                                                                     </td>
                                                                 </tr>
                                                             </thead>
+                                                            <!-- Belum Bisa menampilkan Resaercher  -->
                                                             @foreach ($users as $a)
                                                             <tbody>
                                                                 <td>{{ $loop->iteration }}</td>
@@ -379,7 +381,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-
+                                                <!-- Belum bisa Menampilkan Transaksi -->
                                             </tbody>
                                         </table>
                                     </div>

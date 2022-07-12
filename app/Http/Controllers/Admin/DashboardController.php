@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Models\Chart;
 use App\Models\News;
+use App\Models\Survey;
 use App\Models\QuestionBankSubTemplate;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
@@ -35,6 +36,10 @@ class DashboardController extends Controller
         $questionbank_free = QuestionBankSubTemplate::where('aktivitas', 'Free')->count();
         $questionbank_premium = QuestionBankSubTemplate::where('aktivitas', 'Premium')->count();
         $year = ['2015', '2016', '2017', '2018', '2019', '2020', '2021'];
+        //get notifikasi questionbank, survey pending, news
+        $questionbank_sub_templates_act = QuestionBankSubTemplate::with('template')->get();
+        $surveysPending = Survey::where('status', 'pending')->with('user')->orderBy('updated_at', 'asc')->get();
+        $news = News::latest()->get();
 
         $user = [];
 
@@ -46,6 +51,9 @@ class DashboardController extends Controller
             'title' => $this->title,
             'users' => $users,
             'news' => $news,
+            'surveysPending' => $surveysPending,
+            'charts' => Chart::latest()->get(),
+            'questionbank_sub_templates_act' => $questionbank_sub_templates_act,
             'transaksi' => $transaksi,
             // 'chart' => $chart,
             // 'chart_free' => $chart_free,

@@ -15,67 +15,8 @@
           </a>
         </li> --}}
         
-        <!-- Navbar-->
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto me-1 me-lg-1">
-            <li class="nav-item dropdown">
-              <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                <i class="bi bi-bell h4"></i>
-                  {{-- <span class="position-absolute top-10 start-65 translate-middle p-1 bg-danger border border-light rounded-circle">
-                    <span class="visually-hidden">New alerts</span>
-                    </span> --}}
-              </a>
-              <ul class="dropdown-menu dropdown-menu-end shadow p-2 text-black" aria-labelledby="navbarDropdown" style="width: 450px; border-radius: 6px; height: 70vh; overflow-y: scroll;">
-              <li
-                class="d-flex justify-content-between align-items-center pt-3 px-3 pb-1">
-                <span class="fw-bold" style="font-size: 20px;">Notifikasi</span>
-                <span><u><a href="#" class="text-decoration-none" style="font-size: 13px;">Tandai telah dibaca
-                  </a></u></span>
-              </li>
-                <hr>
-                <li class="px-3">
-                  <div class="row">
-                    <div class="col-2">
-                      <img src="{{asset('assets/img/survei.svg')}}" class="img-fluid" style="border-radius: 6px;">
-                    </div>
-
-                    <div class="col">
-                    <h5 style="font-size: 16px;" class="fw-bold">Konfirmasi Survei</h5> 
-                    <p style="font-size: 14px;">Terdapat 3 survei dengan waktu telah habis, mohon untuk segera <span class="fw-bold text-danger">Konfirmasi</span></p>
-                    </div>
-                    <hr class="mt-3">
-                    <div class="col-2">
-                      <img src="{{asset('assets/img/berita.svg')}}" class="img-fluid" style="border-radius: 6px;">
-                    </div>
-                    <div class="col">
-                      <h5 style="font-size: 16px;" class="fw-bold">Tambah Berita</h5> 
-                      <p style="font-size: 14px;">Berita (dengan Judul) <span class="fw-bold text-success">Berhasil</span> dipublikasi</p>
-                    </div>
-                    <hr class="mt-3">
-                    <div class="col-2">
-                      <img src="{{asset('assets/img/bagan1.svg')}}" class="img-fluid" style="border-radius: 6px;">
-                    </div>
-                    <div class="col">
-                      <h5 style="font-size: 16px;" class="fw-bold">Tambah Berita</h5> 
-                      <p style="font-size: 14px;">Bagan (dengan Judul) <span class="fw-bold text-success">Berhasil</span> dipublikasi</p>
-                    </div>
-                    <hr class="mt-3">
-                    <div class="col-2">
-                      <img src="{{asset('assets/img/bagan2.svg')}}" class="img-fluid" style="border-radius: 6px;">
-                    </div>
-                    <div class="col">
-                      <h5 style="font-size: 16px;" class="fw-bold">Tambah Berita</h5> 
-                      <p style="font-size: 14px;">Pertanayaan pada (nama sub template) <span class="fw-bold text-success">Berhasil</span> diperbarui</p>
-                    </div>
-                    <hr class="mt-3">
-                  </div>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-
+        <!-- Navbar dan Notifikasi-->
+        
         <div class="vr fs-3 my-3 mx-3 d-lg-block d-none"></div>
         <li class="nav-item">
           <a class="nav-link text-black" href="#">Super Admin</a>
