@@ -77,7 +77,7 @@ class QuestionBankTemplateController extends Controller
     {
         $action = new CreateQuestionBankAction();
         $action->alternate($request);
-        return redirect('admin/questionbank/')->with('status', 'Success add questions!');
+        return redirect('admin/questionbank/')->with('status', 'Pertanyaan berhasil ditambahkan');
     }
     public function store(Request $request)
     {
@@ -102,7 +102,7 @@ class QuestionBankTemplateController extends Controller
             'status' => $status,
             'language_id' => $request->language_id
         ]);
-        return redirect('admin/questionbank/')->with('status', 'Success add sub template!');
+        return redirect('admin/questionbank/')->with('status', 'Template berhasil ditambahkan');
     }
 
     /**
@@ -148,12 +148,12 @@ class QuestionBankTemplateController extends Controller
 
         QuestionBankSubTemplate::where('id', $id)->update($sub_template_name);
 
-        return redirect('admin/questionbank/')->with('status', 'Update sub template success');
+        return redirect('admin/questionbank/')->with('status', 'Template berhasil diubah');
     }
 
     public function destroy($id_questionbank)
     {
         $questionbank_templates = QuestionBankSubTemplate::find($id_questionbank)->delete();
-        return back()->with('status', 'Deleted sub template success');
+        return back()->with('status', 'Template berhasil dihapus');
     }
 }

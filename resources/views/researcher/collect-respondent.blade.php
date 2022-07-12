@@ -91,6 +91,7 @@
                     <h5 class="text-center qrcode"> QR CODE</h5>
                     <div class="py-5" id="download">
                         <div class="text-center">
+                            <!-- generate QrCode with package from Laravel -->
                             {!! QrCode::size(250)->generate( $survey->shareable_link ); !!}
                         </div>
                     </div>

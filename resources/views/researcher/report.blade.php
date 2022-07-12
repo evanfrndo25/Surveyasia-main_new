@@ -150,6 +150,7 @@
     </script>
 
     <script>
+        // hit url API dengan membawa jenis dokumen dan survey_id yang ditentukan
         const fetching = (type, survey_id) => {
             return fetch(`//analysis.surveyasia.id/api/${type}/${survey_id}/`, {
                     method: 'GET',
@@ -160,6 +161,7 @@
                 });
         };
 
+        // membuat nama file dari nama survey dan tanggal saat ini
         const getFileName = () => {
             let today = new Date();
             let dd = String(today.getDate()).padStart(2, '0');
@@ -170,6 +172,7 @@
             return `${judulSurvey} ${dd}-${mm}-${yyyy}`;
         }
 
+        // download survey dengan format Excel
         const hitApiExcel = (survey_id) => {
             try {
                 fetching('excel', survey_id)
@@ -188,6 +191,7 @@
             }
         }
 
+        // download survey dengan format PDF
         const hitApiPDF = (survey_id) => {
             try {
                 fetching('pdf', survey_id)

@@ -215,7 +215,7 @@ class SurveyController extends Controller
             );
             
             // redirect with success message
-            return redirect()->back()->with('success', 'Survey Berhasil Tersimpan');
+            return redirect()->back()->with('success', 'Survey berhasil disimpan sebagai Draft');
         } catch (Exception $e) {
             abort(400, $e->getMessage());
         }
@@ -262,7 +262,9 @@ class SurveyController extends Controller
 
     public function customizeDiagram(Survey $survey)
     {
-        function mapper($datas) { // --> Mapping digunakan untuk mendapatkan nama dan tipe chart
+        // mapper() digunakan untuk memformat data
+        // dengan ketentuan nama, tipe, deskripsi, dan gambar
+        function mapper($datas) {
             $result = array();
             foreach ($datas as  $data) {
                 $result[] = [
@@ -276,28 +278,31 @@ class SurveyController extends Controller
         }
 
         $this->current = "diagram";
+
+        // AnyChart
         $chart_any = [
             'library_name' => 'AnyChart',
             'chart_list' => mapper(Chart::where('library_from', 'AnyChart')->get())
         ];
 
-        // Masih bug di bagian website surveynya
+        # ChartJS masih bug di bagian website surveynya
         // $chart_cjs = [
         //     'library_name' => 'Chart JS',
         //     'chart_list' => mapper(Chart::where('library_from', 'Chart JS')->get())
         // ];
 
+        // DevChart
         $chart_dev = [
             'library_name' => 'DevExpress',
             'chart_list' => mapper(Chart::where('library_from', 'DevExpress')->get())
         ];
 
-        // $charts = array_merge([$chart_any], [$chart_cjs], [$chart_dev]);
         $charts = array_merge([$chart_any], [$chart_dev]);
+        // $charts = array_merge([$chart_any], [$chart_cjs], [$chart_dev]);
 
 
         // replace this with real data
-        // charts_backup hanyalah contoh dari data charts yang dikirim
+        // charts_backup hanyalah contoh 'data charts' yang dikirim ke views
         $charts_backup = [
             [
                 'library_name' => 'AnyChart',

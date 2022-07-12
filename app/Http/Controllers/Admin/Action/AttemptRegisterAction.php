@@ -34,7 +34,7 @@ class AttemptRegisterAction
             abort(500, 'Internal Error');
         }
 
-        $request->session()->flash('register_success', 'Registration complete');
+        $request->session()->flash('register_success', 'Registrasi berhasil');
 
         return redirect()->to('/admin-login');
     }
