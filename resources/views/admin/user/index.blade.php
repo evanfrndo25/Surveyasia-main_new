@@ -59,7 +59,7 @@
                     <div class="col">
                         <div class=" d-flex bg-white align-items-center px-1 py-2 border-r-sedang h-20">
                             @if ($subscription->id == 1)
-                            <img src="{{asset('assets/img/Frame 384.svg')}}"  class="rounded-pill fs-3 p-1 me-2" >
+                            <img src="{{asset('assets/img/Frame_384.svg')}}"  class="rounded-pill fs-3 p-1 me-2" >
                             @endif
                             @if ($subscription->id == 2)
                             <img src="{{asset('assets/img/ic_baseline-payments.svg')}}"  class="rounded-pill fs-3 p-1 me-2" >

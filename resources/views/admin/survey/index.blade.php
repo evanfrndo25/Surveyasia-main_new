@@ -113,11 +113,11 @@
                                 <table id="asa" class="table table-no-border-head align-middle" style="border-radius: 20px; overflow: hidden; background-color:#ffffff">
                                     <thead style="background: rgba(255, 175, 158, 0.2);">
                                         <tr>
-                                            <th scope="col" style="font-size: 18px;" colspan="2">Survey</th>
-                                            <th scope="col" style="font-size: 18px;">Kreator</th>
-                                            <th scope="col" style="font-size: 18px;" class="text-center">Hitung Mundur</th>
-                                            <th scope="col" style="font-size: 18px;" class="text-center">Aksi</th>
-                                            <th scope="col" style="font-size: 18px;" class="text-center">Konfirmasi</th>
+                                            <th scope="col" colspan="2">Survey</th>
+                                            <th scope="col" >Kreator</th>
+                                            <th scope="col" class="text-center">Hitung Mundur</th>
+                                            <th scope="col" class="text-center">Aksi</th>
+                                            <th scope="col" class="text-center">Konfirmasi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -133,9 +133,9 @@
                                             <td class="col-4">
                                                 <div>
                                                     <p class="fw-bold">{!! Str::limit($survey->title,40) !!}</p>
-                                                    <p class="small">{!! Str::limit($survey->description,50) !!}
-                                                        <a class="btn btn-link" data-bs-toggle="modal"
-                                                            data-bs-target="#modal{{ $survey->id }}">Baca Selengkapnya</a></p>
+                                                    <p class="small">{!! Str::limit($survey->description,50) !!}</p>    
+                                                    <p class="btn btn-link" data-bs-toggle="modal"
+                                                            data-bs-target="#modal{{ $survey->id }}">Baca Selengkapnya</p>
                                                 </div>
                                             </td>
                                             <td class="col-2">
@@ -298,11 +298,11 @@
                     <table id="aya" class="table table-no-border-head align-middle" style="border-radius: 20px; overflow: hidden; background-color:#ffffff">
                                     <thead style="background: rgba(255, 175, 158, 0.2);">
                                         <tr>
-                                            <th scope="col" style="font-size: 18px;" colspan="2">Survey</th>
-                                            <th scope="col" style="font-size: 18px;">Kreator</th>
-                                            <th scope="col" style="font-size: 18px;" class="text-center">Waktu</th>
-                                            <th scope="col" style="font-size: 18px;" class="text-center">Alasan</th>
-                                            <th scope="col" style="font-size: 18px;" class="text-center">Aksi</th>
+                                            <th scope="col" colspan="2">Survey</th>
+                                            <th scope="col">Kreator</th>
+                                            <th scope="col" class="text-center">Waktu</th>
+                                            <th scope="col" class="text-center">Alasan</th>
+                                            <th scope="col" class="text-center">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -316,11 +316,11 @@
                                                 alt="">
                                             </td>
                                             <td class="col-4">
-                                                <div>
-                                                <p class="fw-bold">{!! Str::limit($survey->title,40) !!}</p>
-                                                    <p class="small">{!! Str::limit($survey->description,50) !!}
-                                                        <a class="btn btn-link" data-bs-toggle="modal"
-                                                            data-bs-target="#modal{{ $survey->id }}">Baca Selengkapnya</a></p>
+                                            <div>
+                                                    <p class="fw-bold">{!! Str::limit($survey->title,40) !!}</p>
+                                                    <p class="small">{!! Str::limit($survey->description,50) !!}</p>    
+                                                    <p class="btn btn-link" data-bs-toggle="modal"
+                                                            data-bs-target="#modal{{ $survey->id }}">Baca Selengkapnya</p>
                                                 </div>
                                             </td>
                                             <td class="col-1">
@@ -529,12 +529,12 @@
                             <table id="ata" class="table table-no-border-head align-middle" style="border-radius: 20px; overflow: hidden; background-color:#ffffff">
                                     <thead style="background: rgba(255, 175, 158, 0.2);">
                                         <tr>
-                                            <th scope="col" style="font-size: 18px;" colspan="2">Survey</th>
-                                            <th scope="col" style="font-size: 18px;">Kreator</th>
-                                            <th scope="col" style="font-size: 18px;">Aktifitas</th>
-                                            <th scope="col" style="font-size: 18px;">Status</th>
-                                            <th scope="col" style="font-size: 18px;" class="text-center">Waktu</th>
-                                            <th scope="col" style="font-size: 18px;" class="text-center">Aksi</th>
+                                            <th scope="col" colspan="2">Survey</th>
+                                            <th scope="col">Kreator</th>
+                                            <th scope="col">Aktifitas</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col" class="text-center">Waktu</th>
+                                            <th scope="col" class="text-center">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -548,11 +548,11 @@
                                                 alt="">
                                             </td>
                                             <td class="col-4">
-                                                <div>
-                                                <p class="fw-bold">{!! Str::limit($survey->title,40) !!}</p>
-                                                    <p class="small">{!! Str::limit($survey->description,50) !!}
-                                                        <a class="btn btn-link" data-bs-toggle="modal"
-                                                            data-bs-target="#modal{{ $survey->id }}">Baca Selengkapnya</a></p>
+                                            <div>
+                                                    <p class="fw-bold">{!! Str::limit($survey->title,40) !!}</p>
+                                                    <p class="small">{!! Str::limit($survey->description,50) !!}</p>    
+                                                    <p class="btn btn-link" data-bs-toggle="modal"
+                                                            data-bs-target="#modal{{ $survey->id }}">Baca Selengkapnya</p>
                                                 </div>
                                             </td>
                                             <td class="col-2">

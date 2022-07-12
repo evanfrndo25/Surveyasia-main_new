@@ -45,7 +45,7 @@
             @include('admin.component.sidebar')
         </div>
         <div class="col-10 nopadding">
-            @include('admin.component.header')
+            @include('admin.component.newheader')
 
             <div class="container mt-4">
 
@@ -88,7 +88,7 @@
                         <a href="#collapse-news" data-bs-toggle="collapse" class="text-decoration-none">
                             <div class="font-montserrat px-3 py-2 border-r-sedang" style="background-color: rgba(255, 0, 0, 0.35); color: #CC0000;
                                 ">
-                                <h1 class="fw-bold ms-4">{{ $news }}</h1>
+                                <h1 class="fw-bold ms-4">{{ count($news) }}</h1>
                                 <div class="d-flex align-items-center justify-content-between">
                                     <img src="{{asset('assets/img/fluent_news-28-filled.svg')}}" class="fs-3 p-1 me-4">
                                     <div>
@@ -323,14 +323,6 @@
                     );
 
                 </script>
-
-
-
-
-
-
-
-
             </div>
         </div>
     </div>
