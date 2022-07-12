@@ -34,7 +34,6 @@ class UserController extends Controller
     public $title = "Pengguna";
     public function index()
     {
-        //
         //abort_if(!$user->can('viewAny', User::class), 403, 'Unauthorized');
         $users = User::with('subscription', 'profile')->latest()->get();
         $subscriptions = Subscription::with('users')->get(); //user subscriptions
@@ -44,14 +43,16 @@ class UserController extends Controller
         //$usersWithPermissions = User::with('permissions')->get();
         $month = Carbon::now()->format('m');
         // dd(now());
+
         // Jumlah user di bulan ini
         $users_month = count(User::whereRaw('MONTH(created_at) = ' . $month)->get());
+        
         //Jumlah total user
         $totalUser = User::count();
 
         // dd($jumlahUserBulanIni);
 
-        //test notifiy all users
+        // test notifiy all users
         // Notification::send(User::all(), new Custom);
         $data = [
             'title' => $this->title,
@@ -147,7 +148,7 @@ class UserController extends Controller
         // $user->ktp_postal_code = $request->get('ktp_postal_code');
         // $user->ktp_address = $request->get('ktp_address');
         // $user->save($request->all());
-        return redirect('admin/users/')->with('status', 'Success edit user!');
+        return redirect('admin/users/')->with('status', 'Pengguna berhasil diubah');
     }
 
     /**
@@ -169,7 +170,7 @@ class UserController extends Controller
 
         $user->delete();
 
-        return back()->with('status', 'Deleted user success');
+        return back()->with('status', 'Pengguna berhasil dihapus');
     }
 
     public function notify(User $user)
@@ -238,16 +239,16 @@ class UserController extends Controller
         User::where('id', $id)->update(['status' => $status]);
         // jika user diacc
         if ($status == 2) {
-            return back()->with('status', 'Acc user success');
+            return back()->with('status', 'Pengguna disetujui');
         } else {
-            return back()->with('status', 'Reject user success');
+            return back()->with('status', 'Pengguna ditolak');
         }
     }
 
     public function accUser($id)
     {
         User::where('id', $id)->update(['status' => 2]);
-        return back()->with('status', 'Acc user success');
+        return back()->with('status', 'Pengguna disetujui');
     }
     // public function rejectUser($id)    
     // {

@@ -15,12 +15,28 @@ class NewsController extends Controller
     {
         try {
             $videoList = $this->_videoList();
+            
+            // apakah $videoList memiliki array key bernama error? 
             if( isset($videoList->error) ) {
+                // jika memiliki array key bernama error 
+                // maka akan melempar error 
                 throw new Exception($videoList->error->message);
             }
             
             $all_news = News::where('status', 1)->latest()->paginate(9);
 
+            # proses penggabungan array berdasarkan kategori
+            # politik {
+            #     {element1},
+            #     {element2}
+            # },
+            # hobi {
+            #     {element1}
+            # },
+            # teknologi {
+            #     {element1},
+            #     {element2}
+            # }
             $news = News::where('status', 1)->latest()->get();
             $filteredNews = array();
             foreach ($news as $element) {

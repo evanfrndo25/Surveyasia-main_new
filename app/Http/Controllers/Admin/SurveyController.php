@@ -105,7 +105,6 @@ class SurveyController extends Controller
     public function showSurveyDetailsDeny($survey)
     {
         $surveySelect = Survey::where('id', $survey)->with('user', 'questions')->first();
-
         $categoryName = SurveyCategory::where('id', $surveySelect->category_id)->first();
 
         return view('admin.survey.deny', [
@@ -115,6 +114,8 @@ class SurveyController extends Controller
         ]);
     }
 
+    // merubah status survey dari pending ke tolak
+    // dengan memberikan alasan penolakan (reason_deny)
     public function surveyDeny(Request $request, $survey)
     {
         Survey::where('id', $survey)->update(
@@ -149,6 +150,7 @@ class SurveyController extends Controller
         ]);
     }
 
+    // merubah status survey dari pending ke active
     public function surveyAcc(Survey $survey)
     {
         Survey::where('id', $survey->id)->update(['status' => 'active']);
@@ -156,7 +158,7 @@ class SurveyController extends Controller
         return redirect('/admin/survey');
     }
 
-    // untuk merubah status survey dari tolak ke pending
+    // merubah status survey dari tolak ke pending
     public function surveyChangeStatus($survey)
     {
         Survey::where('id', $survey)->update(
@@ -239,6 +241,6 @@ class SurveyController extends Controller
     public function destroy(Survey $survey)
     {
         $survey->delete();
-        return back()->with('status', 'Deleted Survey success');
+        return back()->with('status', 'Survey berhasil dihapus');
     }
 }

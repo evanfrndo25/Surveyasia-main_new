@@ -81,7 +81,7 @@ class ChartController extends Controller
         }
         Chart::create($chart);
         
-        return redirect('admin/chart/')->with('status', 'Success add Chart!');
+        return redirect('admin/chart/')->with('status', 'Diagram berhasil ditambahkan');
     }
 
     /**
@@ -142,7 +142,7 @@ class ChartController extends Controller
 
         Chart::where('id', $id)->update($chart);
         
-        return redirect('admin/chart/')->with('status', 'Updated Chart success');
+        return redirect('admin/chart/')->with('status', 'Diagram berhasil diubah');
     }
 
     /**
@@ -157,6 +157,6 @@ class ChartController extends Controller
             Storage::delete($chart->img);
         }
         $chart->delete();
-        return redirect('/admin/chart')->with('status', 'Deleted Chart success');
+        return redirect('/admin/chart')->with('status', 'Diagram berhasil dihapus');
     }
 }

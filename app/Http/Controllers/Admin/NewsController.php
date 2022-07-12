@@ -79,12 +79,13 @@ class NewsController extends Controller
         $news['status'] = '1';
         $news['author'] = '1';
         $news['slug'] = Str::slug(request('title'));
-        // dd($news);
+
+        # image is true?
         if ($request->file('img')) {
             $news['img'] = $request->file('img')->store('news-img');
         }
         News::create($news);
-        return redirect('admin/news/')->with('status', 'Success post news!');
+        return redirect('admin/news/')->with('status', 'Berita berhasil diposting');
     }
 
     /**
@@ -124,7 +125,9 @@ class NewsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request->title);
+        # status :
+        # 0 = draft, 1 = publish
+
         $news = $request->validate([
             'title' => 'required',
             'description' => 'required',
@@ -132,9 +135,10 @@ class NewsController extends Controller
             'img' => 'image|file|max:1024',
             'category' => 'required'
         ]);
-        // status :
-        // 0 = draft, 1 = publish, 2 = draft
+        
         $news['author'] = '1';
+
+        # image is true?
         if ($request->file('img')) {
             if ($request->oldImg) {
                 Storage::delete($request->oldImg);
@@ -142,7 +146,7 @@ class NewsController extends Controller
             $news['img'] = $request->file('img')->store('news-img');
         }
         News::where('id', $id)->update($news);
-        return redirect('admin/news/')->with('status', 'Success edit news!');
+        return redirect('admin/news/')->with('status', 'Berita berhasil diubah');
     }
 
     /**
@@ -157,6 +161,6 @@ class NewsController extends Controller
             Storage::delete($request->img);
         }
         News::find($id)->delete();
-        return back()->with('status', 'Deleted news success');
+        return back()->with('status', 'Berita berhasil dihapus');
     }
 }
